@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Home | Ujian Online</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+        //$(".tooltipIcon").tooltip();
+        $(".bagikan").click(function(){
+            $(this).tooltip("hide");
+            $("#modalBagikan").modal("show");
+            $('input.url').focus(function(){
+                $(this).select();
+            });
+        });
+      });
+    </script>
+
+    <!-- Style -->
+    <style>
+      body {
+        font:400 15px Lato, sans-serif;
+        line-height: 1.8;
+        /*color: #818181;*/
+      } 
+      .navbar {
+        margin-bottom: 0;
+        /*z-index: 9999; */
+        border: 0; 
+        font-size: 12px !important;
+        border-radius: 0;
+        /*background-color: #5BC0DE; */
+      } 
+
+      .navbar-default .navbar-brand {
+        /*color: #f5f5f5;*/
+      }
+
+      .navbar-default .navbar-nav > li > a {
+        /*color: #f5f5f5;*/
+      }
+      
+      .container {
+        padding: 20px 20px;
+      }
+      .progress {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border-radius: 0;
+        overflow: visible;
+      }
+      .panel {
+        margin-top: 10px;
+      }
+      span.highlight {
+        background-color: yellow;
+      } 
+      #teksSoal {
+        padding-left: 20px;
+        padding-right: 10px;
+      }
+      .breadcrumb {
+        background: rgba(245, 245, 245, 1);
+        background-color: #ffffff;
+        display: block;
+      }
+      th, label {
+        color: #777; 
+      }
+      .breadcrumb li {
+        font-size: 12px;
+      }
+      .breadcrumb a {
+        color: rgba(109, 116, 122, 1);
+      }
+      .breadcrumb a:hover {
+        color: rgba(42, 100, 150, 1);
+      }
+      .breadcrumb > .active {
+        color: rgba(186, 182, 182, 1);
+      }
+      .breadcrumb > li + li:before {
+        color: #cccccc;
+        content: " > ";
+      }
+      .table a:hover  {
+        color: #5BC0DE;
+      }
+
+      .table span {
+        /*color: #000000;*/
+        color: #5BC0DE;
+      }
+
+      .table span:hover{
+        /*color: #5BC0DE;*/
+        color: #818181;
+      }
+
+      .link2 a:link, a:visited {
+        color: #818181;
+      }
+      .link2 a:hover {
+        color: #000000;
+      }
+
+      .col-md-3 a:link, a:visited {
+        color:#5BC0DE; 
+        border-color:#5BC0DE; 
+        border-width:2px;
+      }
+      .col-md-3 a:hover {
+        background-color: #5BC0DE;  
+        color: #ffffff;
+        border-color: #5BC0DE;
+      }
+
+      .btn-primary, .btn-primary:active, .btn-primary:focus {
+        background-color: #ffffff;
+        border-color: #5BC0DE;
+        color: #5BC0DE;
+        border-width: 2px;
+      }
+      .btn-primary:hover {
+        background-color: #5BC0DE;  
+        color: #ffffff;
+        border-color: #5BC0DE; 
+      }
+
+      .btn-abu, .btn-abu:active, .btn-abu:focus {
+        background-color: #ffffff;
+        border-color: #adadad;
+        color: #adadad;
+      }
+      .btn-abu:hover {
+        background-color: #adadad;  
+        color: #ffffff;
+        border-color: #adadad; 
+      }
+
+      .judul a:link, a:visited {
+        /*color: #2a2a2a;*/
+        color: #5BC0DE;
+      }
+
+      .judul a:hover{
+        /*color: #5BC0DE;*/
+        color: #2a2a2a;
+      }
+
+      .table th, td {
+        text-align: center;
+      }
+      .modal-dialog {
+        height: 80% !important;
+        padding-top:10%;
+      }
+      .modal-body {
+        height: 80%;
+        overflow: auto;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#myPage" style="padding-left: 70px">Ujian Online</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right" style="padding-right: 70px;">
+            <li><a href="#"> Diah Fauziah </a></li>
+            <li><a href="#"><u>Keluar</u></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">
+    <h3 style="margin: 14px; margin-bottom: 0px; color:#5BC0DE;">Atur Peserta Ujian Deret Aritmetika</h3>
+     <ol class="breadcrumb" style="margin-left:0px">
+        <li><a href="index_guru.html">Home</a></li>
+        <li class="active">Atur peserta ujian Deret Aritmetika</li>
+     </ol>
+     <form class="form-horizontal">
+        <div class="form-group">
+          <label class="col-md-2">Peserta perlu login</label>
+          <div class="col-md-5">
+            <select class="form-control">
+              <option>Ya</option>
+              <option>Tidak</option>
+            </select>
+          </div>
+          <div class="col-md-5"></div>
+        </div>
+     </form>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Home | Ujian Online</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Style -->
+    <style>
+      body {
+        font:400 15px Lato, sans-serif;
+        line-height: 1.8;
+        color: #818181;
+      } 
+      .navbar {
+        margin-bottom: 0;
+        z-index: 9999;
+        border: 0; 
+        font-size: 12px !important;
+        border-radius: 0;
+      } 
+      
+      .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #f4511e !important;
+      }
+      .container {
+        padding: 70px 70px;
+      }
+      .progress {
+        margin-top: 5px;
+      }
+      .panel {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#myPage" style="padding-left: 70px">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right" style="padding-right: 70px;">
+            <li><a href="#logout"> Andhini </a></li>
+            <li><a href="#logout">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">
+      Waktu Ujian:
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="90" area-valuemin="0" area-valuemax="100" style="width:70%">
+          <span class="sr-only">70% Complete</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default glyphicon glyphicon-search"></button>
+        <button type="button" class="btn btn-default glyphicon glyphicon-refresh"></button>
+        <button type="button" class="btn btn-default glyphicon glyphicon-home"></button>
+        <button type="button" class="btn btn-default glyphicon glyphicon-refresh"></button>
+      </div>
+      <a class="pull-right" href=""><u>Unhide daftar soal</u></a>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <p style="text-align: center; margin-bottom: 5px;">Soal 1 dari 50 soal</p>
+        </div>
+        <div class="panel-body">
+          <strong>Cermatilah penulisan kalimat berikut!</strong>
+          <p>Ketika berwisata ke (1)cipanas, (2)rudi membeli (3)pisang (4)ambon.</p>
+          <p>Kata yang  huruf pertamanya harus ditulis dengan huruf kapital ditandai nomor...</p>
+          <div class="radio">
+            <label><input type="radio" name="optradio">1 dan 2</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio">2 dan 3</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio">3 dan 4</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio">1 dan 4</label>
+          </div>
+        </div>  
+      </div>
+      <div class="form-group pull-right">
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Soal sebelumnya</button>
+        <button type="button" class="btn btn-default">Soal berikutnya <span class="glyphicon glyphicon-chevron-right"></span></button>
+      </div>
+    </div>
+  </body>
+</html>

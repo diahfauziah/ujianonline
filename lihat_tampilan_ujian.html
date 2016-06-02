@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Home | Ujian Online</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function(){ 
+          $("#hide").click(function(){
+              $("#kotak").toggle();
+              $("#kotakSoal").toggleClass("col-md-10 col-md-12");
+              //$("#hide").text("Unhide daftar soal");
+              if ($("#hide").text() == "Hide daftar soal"){
+                $("#hide").html("<u>Unhide daftar soal</u>");
+              }
+              else{
+                ($("#hide").html("<u>Hide daftar soal</u>"));
+              }
+          });
+         // $('[data-toggle="tooltip"]').tooltip({trigger: 'manual'}).tooltip('show');
+          var i = 301; // i = 60 * menit
+          var counterBack = setInterval(function(){
+            i--;
+            if(i>=0){
+              $('.progress-bar').css('width', (i*100/300)+'%');
+            } else {
+              clearTimeout(counterBack);
+            }
+          }, 1000); 
+          $("#tandai") .click(function(){
+          
+          });
+          
+      });
+    </script>
+
+    <!-- Style -->
+    <style>
+      body {
+        font:400 15px Lato, sans-serif;
+        line-height: 1.8;
+        /*color: #818181;*/
+      } 
+      .navbar {
+        margin-bottom: 0;
+        z-index: 9999;
+        border: 0; 
+        font-size: 12px !important;
+        border-radius: 0;
+      } 
+      
+      .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #f4511e !important;
+      }
+      .container {
+        padding: 20px 20px;
+      }
+      .progress {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border-radius: 0;
+        overflow: visible;
+      }
+      .progress-bar {
+        background-color: #5BC0DE;
+      }
+      .panel {
+        margin-top: 10px;
+      }
+      span.highlight {
+        background-color: yellow;
+      }
+      #teksSoal {
+        padding-left: 20px;
+        padding-right: 10px;
+      }
+      .tooltip{
+        position: relative;
+        float: right;
+      }
+      .back a:link, a:visited {
+        color:#5BC0DE; 
+        border-color:#5BC0DE; 
+        border-width:2px;
+        background-color: #f8f8f8;
+      }
+      .back a:hover {
+        background-color: #5BC0DE;  
+        color: #f8f8f8;
+        border-color: #5BC0DE;
+      }
+
+      .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
+      .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="back" style="padding-top: 20px; padding-left:100px; padding-bottom:20px;">
+          <a href="index_guru.html" class="btn btn-default"><span class="glyphicon glyphicon-menu-left"></span> Kembali</a>
+          <a href="edit_ujian.html" class="btn btn-default pull-right" style="margin-right:100px">Edit</a>
+        </div>
+      </div>  
+      </div>
+    </nav>
+
+    <!-- Navbar -->
+    <div class="container">
+      Waktu Ujian:
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" area-valuemin="0" area-valuemax="100">
+          <span class="popOver" data-toggle="tooltip" data-placement="top" title="04:59"></span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default glyphicon glyphicon-search"></button>
+        <button type="button" class="btn btn-default glyphicon glyphicon-refresh"></button>
+        <button type="button" class="btn btn-default glyphicon glyphicon-home"></button>
+        <button type="button" class="btn btn-default glyphicon glyphicon-refresh"></button>
+      </div>
+      <a class="pull-right" href="#" id="hide"><u>Hide daftar soal</u></a>
+      <div class="row">
+        <div id="kotakSoal" class="col-md-10">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <p style="text-align: center; margin-bottom: 5px;">Soal 1 dari 50 soal</p>
+            </div>
+            <div class="panel-body" id=teksSoal onselect="GetSelectedText()">
+              <strong>Cermatilah penulisan kalimat berikut!</strong>
+              <p>Ketika berwisata ke (1)cipanas, (2)rudi membeli (3)pisang (4)ambon. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lobortis accumsan arcu, eget aliquam nibh fermentum vitae. Vestibulum fringilla gravida mi, et sagittis ipsum elementum vel. Phasellus tempus diam sit amet purus venenatis rutrum. Donec rutrum diam elit, ut tincidunt sapien auctor in. Pellentesque tincidunt fringilla hendrerit. Mauris ut nulla felis. In hac habitasse platea dictumst.
+
+              Morbi iaculis massa scelerisque dictum suscipit. Pellentesque ut nibh ipsum. Nulla malesuada vehicula porta. Nulla gravida commodo quam. Etiam eleifend dolor at augue dictum commodo. Praesent euismod sed sapien vitae feugiat. Praesent sed urna at enim mollis egestas ut in lorem. Mauris ut tempor enim. Aenean fermentum nunc sit amet egestas pretium. Etiam massa erat, consectetur at gravida id, tempor non mauris. Morbi massa justo, posuere at venenatis in, euismod ac metus. Maecenas non mattis risus. Integer tincidunt finibus semper.</p>
+              <p>Kata yang  huruf pertamanya harus ditulis dengan huruf kapital ditandai nomor...</p>
+              <div class="radio">
+                <label><input type="radio" name="optradio">1 dan 2</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="optradio">2 dan 3</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="optradio">3 dan 4</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="optradio">1 dan 4</label>
+              </div>
+              <button type="button" class="btn btn-default pull-right" id=tandai><span class="glyphicon glyphicon-unchecked"></span> Tandai</button>
+            </div>  
+          </div>
+          <div class="form-group pull-right back">
+            <a href="#" type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Soal sebelumnya</a>
+            <a href="#" type="button" class="btn btn-default">Soal berikutnya <span class="glyphicon glyphicon-chevron-right"></span></a>
+          </div>  
+        </div>
+        <div class="col-md-2">
+          <div class="panel panel-default"  id=kotak>
+            <div class="panel-body" style="padding: 10px 10px 10px 10px;">
+              <div class="form-group">
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">1</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">2</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">3</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">4</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">5</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">6</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">7</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">8</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">9</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">10</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">11</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">12</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">13</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">14</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">15</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">16</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">17</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">18</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">19</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">20</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">21</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">22</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">23</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">24</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">25</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">26</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">27</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">28</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">29</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">30</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

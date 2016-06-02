@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Home | Ujian Online</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-tagsinput.min.js"></script>
+    <script type="text/javascript"> 
+      $(function(){
+        /*$('.collapse').collapse(); */
+        $("#collapse1").collapse();
+        $("#collapse2").collapse();
+        $("#collapse1").on("hide.bs.collapse", function(){
+          $(".panahTurun1").html('<span class="glyphicon glyphicon-chevron-down"></span>');
+        });
+        $("#collapse1").on("show.bs.collapse", function(){
+          $(".panahTurun1").html('<span class="glyphicon glyphicon-chevron-up"></span>');
+        });
+        $("#collapse2").on("hide.bs.collapse", function(){
+          $(".panahTurun2").html('<span class="glyphicon glyphicon-chevron-down"></span>');
+        });
+        $("#collapse2").on("show.bs.collapse", function(){
+          $(".panahTurun2").html('<span class="glyphicon glyphicon-chevron-up"></span>');
+        });
+      });
+    </script>
+
+    <!-- Style -->
+    <style>
+      body {
+        font:400 15px Lato, sans-serif;
+        line-height: 1.8;
+        /*color: #818181;*/
+      } 
+      .btn {
+        transition-duration: 0.4s;
+        cursor: pointer;
+      }
+      #panel {
+        display: none;
+      }
+      .navbar {
+        margin-bottom: 0;
+        /*z-index: 9999; */
+        border: 0; 
+        font-size: 12px !important;
+        border-radius: 0;
+        /*background-color: #4ABDAC; */
+      }
+      label, th {
+        line-height: 1.8;
+      } 
+
+      .navbar-default .navbar-brand {
+        /*color: #f5f5f5;*/
+      }
+
+      .navbar-default .navbar-nav > li > a {
+        /*color: #f5f5f5;*/
+      }
+      
+      .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #cccccc;
+      }
+      .container {
+        padding: 20px 20px;
+      }
+      .progress {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border-radius: 0;
+        overflow: visible;
+      }
+      .panel {
+        margin-bottom: 0px;
+        border-radius: 0px;
+      }
+      span.highlight {
+        background-color: yellow;
+      }
+      #teksSoal {
+        padding-left: 20px;
+        padding-right: 10px;
+      }
+      .tooltip{
+        position: relative;
+        float: right;
+      }
+      .btn-default {
+        border-width: 2px;
+        border-color: #cccccc;
+      }
+      .breadcrumb {
+        background: rgba(245, 245, 245, 1);
+        background-color: #ffffff;
+        display: block;
+      }
+      .breadcrumb li {
+        font-size: 12px;
+      }
+      .breadcrumb a {
+        color: rgba(109, 116, 122, 1);
+      }
+      .breadcrumb a:hover {
+        color: rgba(42, 100, 150, 1);
+      }
+      .breadcrumb > .active {
+        color: rgba(186, 182, 182, 1);
+      }
+      .breadcrumb > li + li:before {
+        color: #cccccc;
+        content: " > ";
+      }
+      .modal-dialog {
+        height: 80% !important;
+        padding-top:10%;
+      }
+
+      .modal-body {
+        height: 80%;
+        overflow: auto;
+      }
+
+      .btn-primary, .btn-primary:active, .btn-primary:focus {
+        background-color: #4ABDAC;  
+        color: #ffffff;
+        border-color: #4ABDAC; 
+      }
+
+      .btn-primary:hover {
+        background-color: #ffffff;
+        border-color: #4ABDAC;
+        color: #4ABDAC;
+        border-width: 2px;
+      }
+
+      .edit a:link, a:visited {
+        background-color: #f5f5f5;
+        border-color: #4ABDAC;
+        color: #4ABDAC;
+        border-width: 2px; 
+      }
+      .edit a:hover {
+        background-color: #4ABDAC;  
+        color: #ffffff;
+        border-color: #4ABDAC; 
+      }
+
+      .btn-abu, .btn-abu:active, .btn-abu:focus {
+        background-color: #ffffff;
+        border-color: #adadad;
+        color: #adadad;
+      }
+      .btn-abu:hover {
+        background-color: #adadad;  
+        color: #ffffff;
+        border-color: #adadad; 
+      }
+      th {
+        color: #818181;
+      }
+      .panel > .panel-heading {
+        background-color: #F7B733;
+        border-color: #F7B733;
+        color: #ffffff;
+      }
+      #panel1, #panel2 {
+        border-width: 0px; 
+        border-bottom-width: 2px;
+      }
+
+      .editUjian a:hover, .panahTurun1:hover, .panahTurun2:hover {
+        background-color: #4ABDAC;
+        color: #ffffff;
+        border-color: #4ABDAC;
+      }
+      .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
+      .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#myPage" style="padding-left: 70px">Ujian Online</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right" style="padding-right: 70px;">
+            <li><a href="#"> Diah Fauziah </a></li>
+            <li><a href="#"><u>Keluar</u></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">
+    <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;">Deret Aritmetika</h2>
+    <div class="row">
+      <div class="col-xs-6 col-md-6">
+         <ol class="breadcrumb">
+            <li><a href="index_guru.html">Home</a></li>
+            <li class="active">Deret Aritmetika</li>
+         </ol>
+       </div>
+       <div class="col-md-6">
+          <div class="pull-right">
+            <a href="lihat_tampilan_ujian.html" class="btn btn-primary" style="margin-bottom:10px;"><span class="glyphicon glyphicon-eye-open"></span> Lihat tampilan ujian</a>
+            <a href="index_guru.html" class="btn btn-primary" style="margin-bottom:10px;"><span class="glyphicon glyphicon-menu-left"></span> Kembali ke Daftar Ujian</a>
+          </div>
+       </div>
+     </div>
+
+     <!-- Informasi ujian -->
+     <div class="row">
+        <div class="col-md-7">
+          <div class="panel panel-default" id="panel1">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-xs-9 col-md-10">
+                  <label>Informasi Ujian</label>
+                </div>
+                <div class="col-xs-3 col-md-2">
+                  <a data-toggle="collapse" href="#collapse1" class="btn btn-primary btn-sm pull-right panahTurun1" style="color:#ffffff; border-radius:20px"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                  <div class="editUjian">
+                    <a href="edit_ujian.html" class="btn btn-primary btn-sm pull-right" style="margin-right:2px; border-radius:20px;"><span class="glyphicon glyphicon-pencil"></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+              <table class="table table-hover">
+                <tbody>  
+                 <tr>
+                   <th class="col-md-3">URL</th>
+                   <td><a href=#>https://www.onlineexambuilder.com/fisika/exam-53260</a></td>
+                 </tr>
+                 <tr>
+                   <th>Waktu</th>
+                   <td class="btnbiru">60 Menit</td>
+                 </tr>
+                 <tr>
+                   <th>Jumlah soal</th>
+                   <td>10</td>
+                 </tr>
+                 <tr>
+                   <th>Acak soal</th>
+                   <td>
+                   <div style="padding-left:0px;">
+                     Ya
+                    </select>
+                   </div>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>Kategori</th> 
+                   <td>
+                    <span class="label label-default">Matematika</span>
+                   </td>
+                 </tr>
+              </tbody>
+              </table> 
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="panel panel-default" id="panel2">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-xs-9 col-md-8">
+                  <label>Petunjuk Ujian</label>
+                </div>
+                <div class="col-xs-3 col-md-4">
+                  <a data-toggle="collapse" href="#collapse2" class="btn btn-primary btn-sm pull-right panahTurun2" style="color:#ffffff; border-radius:20px;"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                  <div class="editUjian">
+                    <a href="edit_ujian.html" class="btn btn-primary btn-sm pull-right" style="margin-right:2px; border-radius:20px;"><span class="glyphicon glyphicon-pencil"></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+              <p style="height:180px; overflow-y:scroll;">
+                <u>PETUNJUK A</u><br>
+                Pilih jawaban yang paling benar (A, B, C, D atau E)<br>
+                <br>
+                <u>PETUNJUK B</u><br>
+                Soal terdiri atas tiga bagian yaitu PERNYATAAN, SEBAB, dan ALASAN yang disusun secara berurutan.<br>
+                <br>
+                Pilihlah : <br>
+                <br>
+                A. Jika pernyataan benar, alasan benar, keduanya menunjukkan hubungan sebab akibat.<br>
+                B. Jika pernyataan benar, alasan benar, tetapi keduanya tidak menunjukkan hubungan sebab akibat.<br>
+                C. Jika pernyataan benar, alasan salah.<br>
+                D. Jika pernyataan salah, alasan benar.<br>
+                E. Jika pernyataan dan alasan , keduanya salah.<br>
+              </p>
+            </div>
+          </div>
+        </div>
+     </div>
+
+      
+     
+     
+
+     <div class="row" style="margin-bottom:10px;">
+       <!-- <div class="col-md-8"></div> -->
+       
+     </div> 
+     <div class="panel panel-default">
+       <div class="panel-body">
+         <div class="row">
+          <div style="margin-left:10px; width:15px; float:left;">
+            <strong>1.</strong>
+          </div>
+          <div style="margin-left:0px;">
+            <div class="col-md-12" style="width:96%"> 
+              <strong>Cermatilah penulisan kalimat berikut!</strong>
+                  <p align="justify">Ketika berwisata ke (1)cipanas, (2)rudi membeli (3)pisang (4)ambon. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lobortis accumsan arcu, eget aliquam nibh fermentum vitae. Vestibulum fringilla gravida mi, et sagittis ipsum elementum vel. Phasellus tempus diam sit amet purus venenatis rutrum. Donec rutrum diam elit, ut tincidunt sapien auctor in. Pellentesque tincidunt fringilla hendrerit. Mauris ut nulla felis. In hac habitasse platea dictumst.
+
+                  Morbi iaculis massa scelerisque dictum suscipit. Pellentesque ut nibh ipsum. Nulla malesuada vehicula porta. Nulla gravida commodo quam. Etiam eleifend dolor at augue dictum commodo. Praesent euismod sed sapien vitae feugiat. Praesent sed urna at enim mollis egestas ut in lorem. Mauris ut tempor enim. Aenean fermentum nunc sit amet egestas pretium. Etiam massa erat, consectetur at gravida id, tempor non mauris. Morbi massa justo, posuere at venenatis in, euismod ac metus. Maecenas non mattis risus. Integer tincidunt finibus semper.</p>
+                  <p>Kata yang  huruf pertamanya harus ditulis dengan huruf kapital ditandai nomor...</p>
+                  <div class="radio">
+                    <label><input type="radio" name="optradio">1 dan 2</label>
+                  </div>
+                  <div class="radio">
+                    <label><input type="radio" name="optradio">2 dan 3</label>
+                  </div>
+                  <div class="radio">
+                    <label><input type="radio" name="optradio">3 dan 4</label>
+                  </div>
+                  <div class="radio">
+                    <label><input type="radio" name="optradio">1 dan 4</label>
+                  </div>
+                  <div class="form-group">
+                    <strong>Poin: 10</strong>
+                    <div class="pull-right">
+                      <a href="edit_soal.html" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+                      <button class="btn btn-default" data-toggle="modal" data-target="#modalHapus"><span class="glyphicon glyphicon-trash"></span> Hapus</button>
+                    </div>
+                  </div>
+            </div>
+          </div>
+         </div> 
+        </div>
+       </div>
+     </div>
+     <!-- Modal Hapus -->
+              <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+                      <h4 class="modal-title" id=modalHapusLabel>Hapus Soal Ujian Deret Aritmetika</h4>
+                    </div>
+                    <div class="modal-body">
+                      Apakah anda ingin menghapus Soal no.1?
+                    </div>
+                    <div class="modal-footer">
+                      <button  class="btn btn-primary">Ya</button>
+                      <button class="btn btn-default btn-abu" data-dismiss="modal">Tidak</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    </div>
+  </body>
+</html>

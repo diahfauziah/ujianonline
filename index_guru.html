@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Home | Ujian Online</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+        //$(".tooltipIcon").tooltip();
+        $(".bagikan").click(function(){
+            $(this).tooltip("hide");
+            $("#modalBagikan").modal("show");
+            $('input.url').focus(function(){
+                $(this).select();
+            });
+        });
+      });
+    </script>
+
+    <!-- Style -->
+    <style>
+      body {
+        font:400 15px;
+        font-family: 'Lato', sans-serif;
+        line-height: 1.8;
+        /*color: #81;*/
+      } 
+      .btn {
+        transition-duration: 0.4s;
+        cursor: pointer;
+      }
+      .navbar {
+        margin-bottom: 0;
+        /*z-index: 9999; */
+        border: 0; 
+        font-size: 12px !important;
+        border-radius: 0;
+        /*background-color: #DFDCE; */
+      } 
+
+      .navbar-default .navbar-brand {
+        /*color: #FC4A1A;*/
+      }
+
+      .navbar-default .navbar-nav > li > a {
+        /*color: #f5f5f5;*/
+      }
+      
+      .container {
+        padding: 20px 20px;
+      }
+      .progress {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border-radius: 0;
+        overflow: visible;
+      }
+      .panel {
+        margin-top: 10px;
+      }
+      span.highlight {
+        background-color: yellow;
+      } 
+      #teksSoal {
+        padding-left: 20px;
+        padding-right: 10px;
+      }
+      .breadcrumb {
+        background: rgba(245, 245, 245, 1);
+        background-color: #ffffff;
+        display: block;
+      }
+      label {
+        color: #676767; 
+      }
+      th {
+        color: #ffffff;
+        background-color: #F7B733;
+        text-decoration: none;
+      }
+      .breadcrumb li {
+        font-size: 12px;
+      }
+      .breadcrumb a {
+        color: rgba(109, 116, 122, 1);
+      }
+      .breadcrumb a:hover {
+        color: rgba(42, 100, 150, 1);
+      }
+      .breadcrumb > .active {
+        color: rgba(186, 182, 182, 1);
+      }
+      .breadcrumb > li + li:before {
+        color: #cccccc;
+        content: " > ";
+      }
+      .table a:hover  {
+        color: #4ABDAC;
+      }
+
+      .table span {
+        /*color: #000000;*/
+        color: #4ABDAC;
+      }
+
+      .table span:hover{
+        /*color: #4ABDAC;*/
+        color: #F7B733;
+      }
+
+      table {
+        color: #676767;
+      }
+
+      .link2 a:link, a:visited {
+        color: #818181;
+      }
+      .link2 a:hover {
+        color: #000000;
+      }
+
+      .btn-primary, .btn-primary:link, .btn-primary:visited, .col-md-3 a:link, .col-md-3 a:visited, .col-md-3 a:active {
+        background-color: #4ABDAC;  
+        color: #ffffff;
+        border-color: #4ABDAC;
+      }
+      .col-md-3 a:hover, .btn-primary:hover {
+        color:#4ABDAC; 
+        background-color: #ffffff;
+        border-color:#4ABDAC; 
+        border-width:2px;        
+      }
+
+      .judul a:link, a:visited {
+        /*color: #2a2a2a;*/
+        color: #4ABDAC;
+      }
+
+      .judul a:hover{
+        /*color: #4ABDAC;*/
+        color: #F7B733;
+      }
+
+      .table th, td {
+        text-align: center;
+      }
+      .modal-dialog {
+        height: 80% !important;
+        padding-top:10%;
+      }
+      .modal-body {
+        height: 80%;
+        overflow: auto;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#myPage" style="padding-left: 70px">Ujian Online</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right" style="padding-right: 70px;">
+            <li><a href="#"> Diah Fauziah </a></li>
+            <li><a href="#"><u>Keluar</u></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">
+    <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;">Daftar Ujian</h2>
+     <ol class="breadcrumb" style="margin-left:0px">
+        <li class="active">Home ></li>
+     </ol>
+    <div class="row">
+      <div class="col-xs-9 col-md-9">
+          <form class="form-horizontal" role="form">
+          <div class="form-group">
+          <label class="col-xs-4 col-md-2" style="color:#F7B733">Kategori Ujian</label>
+            <div class="col-xs-pull-1 col-xs-5 col-md-offset-1 col-md-4">
+              <select class="form-control">
+                <option>Matematika</option>
+                <option>Fisika</option>
+              </select>
+              <div class="col-xs-3 col-md-6"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-xs-3 col-md-3">
+        <a href="new_ujian.html" class="btn btn-primary pull-right" style="margin-bottom:10px;"><span class="glyphicon glyphicon-plus"></span> Buat Ujian Baru</a>
+      </div>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th style="text-align: left;">Judul</th>
+          <th>Total Soal</th>
+          <th>Lihat</th>
+          <th>Bagikan</th>
+          <th>Laporan</th>
+          <th>Terakhir diperbarui</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left;">
+            <div class="judul">
+              <a href="view_ujian.html">Deret Aritmetika</a><br>
+            </div>
+            <div style="font-size: 12px; color:#aba8a8;" class="link2">
+              <a href="#">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.html">Tambah Soal</a>
+            </div>
+          </td>
+          <td>50</td>
+          <td><a href="lihat_tampilan_ujian.html" data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>
+          <td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>
+          <td><a href="laporan_ujian.html" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>
+          <td>13 Mei 2016, 23:13</td>
+        </tr>
+        <tr>
+          <td style="text-align:left;">
+            <div class="judul">
+              <a href="view_ujian.html">Gerak Lurus Beraturan</a><br>
+            </div>
+            <div style="font-size: 12px; color:#aba8a8;" class="link2">
+              <a href="edit_ujian.html">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.html">Tambah Soal</a>
+            </div>
+          </td>
+          <td>50</td>
+          <td><a href="#" data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian"><span class="glyphicon glyphicon-eye-open"></span> </a> </td>
+          <td><a href="#" data-toggle="tooltip" data-placement="top" data-target="#ModalBagikan" title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>
+          <td><a href="#" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>
+          <td>15 Mei 2016, 23:13</td>
+        </tr>
+        <tr>
+          <td style="text-align:left;">
+              <div class="judul">
+                <a href="view_ujian.html">Gerak Lurus Berubah Beraturan</a><br>
+              </div>
+              <div style="font-size: 12px; color:#aba8a8;" class="link2">
+              <a href="#">Edit</a> | <a href="#">Hapus</a> | <a href="tambah_soal.html">Tambah Soal</a>
+              </div>
+          </td>
+          <td>50</td>
+          <td><a href="#" data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian"><span class="glyphicon glyphicon-eye-open"></span> </a> </td>
+          <td><a href="#" data-toggle="tooltip" data-placement="top" title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>
+          <td><a href="#" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>
+          <td>15 Mei 2016, 23:13</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Modal Hapus -->
+              <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+                      <h4 class="modal-title" id=modalHapusLabel>Hapus Ujian</h4>
+                    </div>
+                    <div class="modal-body">
+                      Apakah anda ingin menghapus ujian Gerak Lurus Beraturan?
+                    </div>
+                    <div class="modal-footer">
+                      <button  class="btn btn-primary">Ya</button>
+                      <button class="btn btn-default" data-dismiss="modal">Tidak</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    <!-- Modal Bagikan -->
+      <div class="modal fade" id="modalBagikan" tabindex="-1" role="dialog" aria-labelledby="modalBagikanLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+                <label class="modal-title">Link Ujian Deret Aritmetika</label>
+             </div>
+             <div class="modal-body">
+                <input type="text" class="form-control url" value="https://www.onlineexambuilder.com/fisika/exam-53260">
+              </div>
+              <div class="modal-footer"></div>
+           </div>
+        </div>
+      </div>                          
+  </div>
+  </body>
+</html>
