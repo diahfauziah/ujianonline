@@ -23,7 +23,7 @@
     <!-- Style -->
     <style>
       body {
-        font:400 15px Lato, sans-serif;
+        font:400 14px Lato, sans-serif;
         line-height: 1.8;
         /*color: #818181;*/
       } 
@@ -46,9 +46,9 @@
       .navbar-nav li:hover {
         background-color:#e7e7e7;
       }
-      .menu li {
+      /*.menu li {
         background-color: #e7e7e7;
-      }
+      } */
       .container {
         padding: 20px 20px;
       }
@@ -108,14 +108,15 @@
         border-width: 2px;
       }
       .btn-simpan, .btn-simpan:active, .btn-simpan:focus {
-        background-color: #F7b733;  
+        background-color: #4ABDAC;  
         color: #ffffff;
-        border-color: #F7b733; 
+        border-color: #4ABDAC; 
+        border-width: 2px;
       }
       .btn-simpan:hover {
         background-color: #ffffff;
-        border-color: #F7b733;
-        color: #F7b733;
+        border-color: #4ABDAC;
+        color: #4ABDAC;
         border-width: 2px;
       }
       .breadcrumb a {
@@ -140,75 +141,34 @@
     </style>
   </head>
   <body>
-    <!-- Navbar -->
-    <?php include("header.php"); ?>
     
     <!-- Container -->
     <div class="container">
-        <div class="col-md-offset-3 col-md-6">
-          <div class="panel panel-default" id="panelSoal" style="margin-top:-5px;">
+        <div class="col-md-offset-4 col-md-4" style="margin-top:50px; margin-bottom:30px;">
+          <h2 style="text-align:center; font-family:'didact gothic', sans-serif; color:#f7b733; margin-bottom:30px;">Ujian Online</h2>
+          <div class="panel panel-default" id="panelSoal">
             <div class="panel-body">
-              <h3 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Buat Ujian Baru</h3>
+              <h4 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Login Guru</h4>
               <hr>
             <form class="form-horizontal">
               <div class="form-group">
-                <label class="col-md-3">Judul</label>
+                <label class="col-md-3">Username</label>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" id="Judul">
+                  <input type="text" class="form-control">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3">URL</label>
+                <label class="col-md-3">Password</label>
                 <div class="col-md-9">
-                  <a href="#" id="URL">https://www.onlineexambuilder.com/fisika/exam-53260</a>
-                </div>  
-              </div>
-              <div class="form-group">
-                <label class="col-md-3">Waktu</label>
-                <div class="col-md-4">
-                  <input type="text" class="form-control" id="Waktu">
-                </div>
-                <div class="col-md-5">
-                   Menit
-                 </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3">Jumlah soal</label>
-                <div class="col-md-9"  id="JumlahSoal">
-                  0
+                  <input type="text" class="form-control">
                 </div>
               </div>
-              <div class="form-group">
-                <label class="col-md-3">Acak soal</label>
-                <div class="col-md-9">
-                   <select class="form-control">
-                    <option>Ya</option>
-                    <option>Tidak</option>
-                  </select>
-                 </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3">Kategori</label>
-                <div class="col-md-9">
-                   <input type="text" class="form-control" aria-describedby="helpBlock" id="KategoriUjian">
-                   <span id="helpBlock" class="help-block">Pisahkan dengan titik koma (;)</span>
-                 </div>
-              </div>
-              <div class="form-group">
-                  <label class="col-md-3">Peserta perlu login</label>
-                  <div class="col-md-9">
-                    <select class="form-control">
-                      <option>Ya</option>
-                      <option>Tidak</option>
-                    </select>
-                  </div>
-                </div>
               <div class="form-group">
                 <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
-                  <a href="index_guru.php" type="button" class="btn btn-simpan"> Simpan</a>
-                  <a href="index_guru.php" type="button" class="btn btn-default"> Kembali ke Home</a>
+                  <a href="index_guru.php" type="button" class="btn btn-simpan"> Masuk</a>
                 </div>
               </div>
+              <p style="text-align:center;">Belum punya akun? <a href="register.php" style="color:#f7b733">Daftar disini.</a></p>
            </form>
           </div>
           </div>

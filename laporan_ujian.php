@@ -46,14 +46,12 @@
         /*background-color: #4ABDAC; */
       } 
 
-      .navbar-default .navbar-brand {
-        /*color: #f5f5f5;*/
+      .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #4ABDAC !important;
       }
-
-      .navbar-default .navbar-nav > li > a {
-        /*color: #f5f5f5;*/
+      .navbar-nav li:hover {
+        background-color:#e7e7e7;
       }
-      
       .container {
         padding: 20px 20px;
       }
@@ -181,10 +179,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left: 70px">Ujian Online</a>
+          <a class="navbar-brand" href="#myPage">Ujian Online</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right" style="padding-right: 70px;">
+          <ul class="nav navbar-nav menu">
+            <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
+            <li><a href="index_guru.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-form" role="search">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+              </div>
+            </form>
+            </li>
             <li><a href="#"> Diah Fauziah </a></li>
             <li><a href="#"><u>Keluar</u></a></li>
           </ul>
@@ -197,12 +209,11 @@
      <div class="row">
       <div class="col-xs-6 col-md-9">
          <ol class="breadcrumb" style="margin-left:0px">
-            <li><a href="index_guru.html">Home</a></li>
+            <li><a href="index_guru.php">Home</a></li>
             <li class="active">Laporan Ujian Deret Aritmetika</li>
          </ol>
        </div>
        <div class="col-xs-6 col-md-3">
-          <a href="index_guru.html" class="btn btn-custom pull-right"><span class="glyphicon glyphicon-menu-left"></span>Kembali ke Daftar Ujian</a>
        </div>
      </div>
      <div class="col-md-offset-2 col-md-8">
@@ -221,19 +232,13 @@
             $query = mysqli_query($link, "SELECT * FROM `laporan_ujian_guru` WHERE `id_ujian`='$id' ");
             while($laporan = mysqli_fetch_array($query)){
               echo '<tr>';
-              echo '<td>'. $laporan["tanggal_akses"] .'</td>';
-              echo '<td>'. $laporan["nama_peserta"] .'</td>';
-              echo '<td>'. $laporan["nilai"] .'</td>'
-              echo '<td>'. $laporan["total_waktu"] .'</td>'
+              echo  '<td>'. $laporan["tanggal_akses"] .'</td>';
+              echo  '<td>'. $laporan["nama_peserta"] .'</td>';
+              echo  '<td>'. $laporan["nilai"] .'</td>';
+              echo  '<td>'. $laporan["total_waktu"] .'</td>';
               echo '<tr>';
             };
           ?>
-          <tr>
-            <td>23 Mei 2016, 05:20 </td>
-            <td>Andhina</td>
-            <td>87</td>
-            <td>20 menit</td>
-          </tr>
         </tbody>
      </table>
     </div>

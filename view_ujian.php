@@ -32,6 +32,9 @@
         $("#collapse2").on("show.bs.collapse", function(){
           $(".panahTurun2").html('<span class="glyphicon glyphicon-chevron-up"></span>');
         });
+        $(".soal").mouseover(function(){
+         // $(this).css("border-color", "blue");
+        });
       });
     </script>
 
@@ -204,6 +207,11 @@
         color: #ffffff;
         border-color: #4ABDAC;
       }
+      .editUjian a:visited {
+        background-color: #4ABDAC;  
+        color: #ffffff;
+        border-color: #4ABDAC; 
+      }
       .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
       .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
     </style>
@@ -244,12 +252,17 @@
     </nav>
     
     <div class="container">
-    <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;">Deret Aritmetika</h2>
+      <?php include('koneksi.php'); 
+            $id = $_GET['id'];
+            $query = mysqli_query($link, "SELECT * FROM `info_ujian` WHERE `id_ujian`='$id' ");
+            $ujian = mysqli_fetch_array($query);
+      ?>
+    <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;"><?php echo $ujian['judul_ujian'] ?></h2>
     <div class="row">
       <div class="col-xs-6 col-md-6">
          <ol class="breadcrumb">
-            <li><a href="index_guru.html">Home</a></li>
-            <li class="active">Deret Aritmetika</li>
+            <li><a href="index_guru.php">Beranda</a></li>
+            <li class="active"><?php echo $ujian['judul_ujian'] ?></li>
          </ol>
        </div>
        <div class="col-md-6">
@@ -271,7 +284,7 @@
                 <div class="col-xs-3 col-md-2">
                   <a data-toggle="collapse" href="#collapse1" class="btn btn-primary btn-sm pull-right panahTurun1" style="color:#ffffff; border-radius:20px"><span class="glyphicon glyphicon-chevron-up"></span></a>
                   <div class="editUjian">
-                    <a href="edit_ujian.html" class="btn btn-primary btn-sm pull-right" style="margin-right:2px; border-radius:20px;"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="edit_ujian.php?id=<?php echo $ujian['id_ujian'] ?>" class="btn btn-primary btn-sm pull-right" style="margin-right:2px; border-radius:20px;"><span class="glyphicon glyphicon-pencil"></span></a>
                   </div>
                 </div>
               </div>
@@ -281,15 +294,15 @@
                 <tbody>  
                  <tr>
                    <th class="col-md-3">URL</th>
-                   <td><a href=#>https://www.onlineexambuilder.com/fisika/exam-53260</a></td>
+                   <td><a href=#><?php echo $ujian['url_ujian'] ?></a></td>
                  </tr>
                  <tr>
                    <th>Waktu</th>
-                   <td class="btnbiru">60 Menit</td>
+                   <td class="btnbiru"><?php echo $ujian['lama_ujian'] ?> Menit</td>
                  </tr>
                  <tr>
                    <th>Jumlah soal</th>
-                   <td>10</td>
+                   <td><?php echo $ujian['total_soal'] ?></td>
                  </tr>
                  <tr>
                    <th>Acak soal</th>
@@ -321,14 +334,14 @@
                 <div class="col-xs-3 col-md-4">
                   <a data-toggle="collapse" href="#collapse2" class="btn btn-primary btn-sm pull-right panahTurun2" style="color:#ffffff; border-radius:20px;"><span class="glyphicon glyphicon-chevron-up"></span></a>
                   <div class="editUjian">
-                    <a href="edit_ujian.html" class="btn btn-primary btn-sm pull-right" style="margin-right:2px; border-radius:20px;"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="edit_ujian.php?id=<?php echo $ujian['id_ujian'] ?>" class="btn btn-primary btn-sm pull-right" style="margin-right:2px; border-radius:20px;"><span class="glyphicon glyphicon-pencil"></span></a>
                   </div>
                 </div>
               </div>
             </div>
             <div id="collapse2" class="panel-collapse collapse">
               <p style="height:180px; overflow-y:scroll;">
-                <u>PETUNJUK A</u><br>
+            <!--    <u>PETUNJUK A</u><br>
                 Pilih jawaban yang paling benar (A, B, C, D atau E)<br>
                 <br>
                 <u>PETUNJUK B</u><br>
@@ -340,7 +353,8 @@
                 B. Jika pernyataan benar, alasan benar, tetapi keduanya tidak menunjukkan hubungan sebab akibat.<br>
                 C. Jika pernyataan benar, alasan salah.<br>
                 D. Jika pernyataan salah, alasan benar.<br>
-                E. Jika pernyataan dan alasan , keduanya salah.<br>
+                E. Jika pernyataan dan alasan , keduanya salah.<br> -->
+                <?php echo $ujian['petunjuk'] ?>
               </p>
             </div>
           </div>
@@ -355,7 +369,7 @@
        <!-- <div class="col-md-8"></div> -->
        
      </div> 
-     <div class="panel panel-default">
+     <div class="panel panel-default soal">
        <div class="panel-body">
          <div class="row">
           <div style="margin-left:10px; width:15px; float:left;">

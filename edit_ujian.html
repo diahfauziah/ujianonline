@@ -219,76 +219,79 @@
     <div class="row">
       <div class="col-md-3">
         <ul class="nav nav-pills nav-stacked">
-            <li><a data-toggle="pill" href="#EditInfo">Informasi Ujian</a></li>
-            <li class="active"><a data-toggle="pill" href="#EditPetunjuk">Petunjuk Ujian</a></li>
+            <li class="active"><a data-toggle="pill" href="#EditInfo">Informasi Ujian</a></li>
+            <li><a data-toggle="pill" href="#EditPetunjuk">Petunjuk Ujian</a></li>
         </ul>
       </div>
       <div class="col-md-9 tab-content">
         <div class="panel panel-default tab-pane fade" id="EditInfo">
           <div class="panel-body">
-            <form class="form-horizontal">
-              <div class="form-group">
-                <label class="col-md-3">Judul</label>
-                <div class="col-md-9">
-                  <input type="text" class="form-control" value="Deret Aritmetika">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3">URL</label>
-                <div class="col-md-9">
-                  <a href="#">https://www.onlineexambuilder.com/fisika/exam-53260</a>
-                </div>  
-              </div>
-              <div class="form-group">
-                <label class="col-md-3">Waktu</label>
-                <div class="col-md-4">
-                  <input type="text" class="form-control" value="60">
-                </div>
-                <div class="col-md-5">
-                   <select class="form-control">
-                    <option>Menit</option>
-                    <option>Jam</option>
-                    <option>Hari</option>
-                  </select>
-                 </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3">Jumlah soal</label>
-                <div class="col-md-9">
-                  0
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3">Acak soal</label>
-                <div class="col-md-9">
-                   <select class="form-control">
-                    <option>Ya</option>
-                    <option>Tidak</option>
-                  </select>
-                 </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3">Kategori</label>
-                <div class="col-md-9">
-                   <input type="text" class="form-control" aria-describedby="helpBlock" value="matematika; fisika;">
-                   <span id="helpBlock" class="help-block">Pisahkan dengan titik koma (;)</span>
-                 </div>
-              </div>
-              <div class="form-group">
-                  <label class="col-md-3">Peserta perlu login</label>
+            <?php include('koneksi.php'); 
+              $id = $_GET['id'];
+              $query = mysqli_query($link, "SELECT * FROM info_ujian WHERE id=".$id);
+              $ujian = mysqli_fetch_array($query);
+            ?>
+           <!--   <form action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal" method="post">
+                <div class="form-group">
+                  <label class="col-md-3">Judul</label>
                   <div class="col-md-9">
-                    <select class="form-control">
-                      <option>Ya</option>
-                      <option>Tidak</option>
-                    </select>
+                    <input type="text" class="form-control" id="Judul" value="<?php echo $post['judul_ujian'] ?>">
                   </div>
                 </div>
-              <div class="form-group">
-                <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
-                  <a href="index_guru.html" type="button" class="btn btn-primary btn-simpan"> Simpan</a>
+                <div class="form-group">
+                  <label class="col-md-3">URL</label>
+                  <div class="col-md-9">
+                    <a href="#" id="URL"><?php echo $post['url_ujian'] ?></a>
+                  </div>  
                 </div>
-              </div>
-            </form>
+                <div class="form-group">
+                  <label class="col-md-3">Waktu</label>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control" id="Waktu" value="<?php echo $post['lama_ujian'] ?>">
+                  </div>
+                  <div class="col-md-5">
+                     Menit
+                   </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3">Jumlah soal</label>
+                  <div class="col-md-9">
+                    <?php echo $post['total_soal'] ?>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3">Acak soal</label>
+                  <div class="col-md-9">
+                     <?php if($post['acak_soal']==1){
+                              echo "Ya" }
+                            else {
+                              echo "Tidak"
+                            }  
+                      ?>
+                   </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3">Kategori</label>
+                  <div class="col-md-9">
+                     <input type="text" class="form-control" aria-describedby="helpBlock" value="$post['kategori_ujian']">
+                     <span id="helpBlock" class="help-block">Pisahkan dengan titik koma (;)</span>
+                   </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3">Peserta perlu login</label>
+                    <div class="col-md-9">
+                      <select class="form-control">
+                        <option>Ya</option>
+                        <option>Tidak</option>
+                      </select>
+                    </div>
+                  </div>
+                <div class="form-group">
+                  <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
+                    <a href="index_guru.html" type="button" class="btn btn-primary btn-simpan"> Simpan</a>
+                  </div>
+                </div>
+              </form> -->
           </div>  
         </div>
         <div class="panel panel-default tab-pane fade in active" id="EditPetunjuk">

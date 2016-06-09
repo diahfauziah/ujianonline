@@ -97,7 +97,12 @@
      /*   background-color: #F7B733; */
         
       }
-
+      .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #4ABDAC !important;
+      }
+      .navbar-nav li:hover {
+        background-color:#e7e7e7;
+      }
       #teksSoal {
         padding-left: 20px;
         padding-right: 10px;
@@ -188,10 +193,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left: 70px">Ujian Online</a>
+          <a class="navbar-brand" href="#myPage">Ujian Online</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right" style="padding-right: 70px;">
+          <ul class="nav navbar-nav menu">
+            <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
+            <li><a href="index_guru.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-form" role="search">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+              </div>
+            </form>
+            </li>
             <li><a href="#"> Diah Fauziah </a></li>
             <li><a href="#"><u>Keluar</u></a></li>
           </ul>
@@ -204,13 +223,12 @@
       <div class="row">
         <div class="col-xs-6 col-md-9">
          <ol class="breadcrumb">
-            <li><a href="index_guru.html">Home</a></li>
+            <li><a href="index_guru.php">Home</a></li>
             <li><a href="view_ujian.html">Deret Aritmetika</a></li>
             <li class="active">Tambah Soal</li>
          </ol>
         </div>
         <div class="col-xs-6 col-md-3">
-          <a href="index_guru.html" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-menu-left"></span>Kembali ke Daftar Ujian</a>
         </div>
       </div>
       <div id="soal">
@@ -251,6 +269,7 @@
                               </div>
                               <div style="width:93%; margin-left:50px">
                                 <div class="form-control" id="opsiGanda1"></div>
+                                <textarea class="form-control" id="opsiGandaT1"></textarea>
                               </div>
                             </div>
                           </div>
@@ -818,7 +837,7 @@
 			     $('.selector').froalaEditor('commands.show');
         });
     		$(function(){
-    			$('div#opsiGanda1, div#opsiGanda2, div#opsiGanda3, div#opsiGanda4, div#opsiGanda5, div#opsiIsian, textarea#opsiEssay').froalaEditor({
+    			$('div#opsiGanda1, div#opsiGanda2, div#opsiGanda3, div#opsiGanda4, div#opsiGanda5, div#opsiIsian, textarea#opsiEssay, textarea#opsiGandaT1').froalaEditor({
     			  toolbarInline: true,
     			  charCounterCount: false,
     			  toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage', 'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo'],

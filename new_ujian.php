@@ -46,9 +46,9 @@
       .navbar-nav li:hover {
         background-color:#e7e7e7;
       }
-      .menu li {
+      /*.menu li {
         background-color: #e7e7e7;
-      }
+      } */
       .container {
         padding: 20px 20px;
       }
@@ -100,6 +100,7 @@
         background-color: #4ABDAC;  
         color: #ffffff;
         border-color: #4ABDAC; 
+        border-width: 2px;
       }
       .btn-primary:hover {
         background-color: #ffffff;
@@ -111,6 +112,7 @@
         background-color: #F7b733;  
         color: #ffffff;
         border-color: #F7b733; 
+        border-width: 2px;
       }
       .btn-simpan:hover {
         background-color: #ffffff;
@@ -137,24 +139,60 @@
       .panel {
         border-width: 1px;
       }
+      footer {
+        position:relative;
+        bottom:0;
+        width:100%;
+      }
     </style>
   </head>
   <body>
     <!-- Navbar -->
-    <?php include("header.php"); ?>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#myPage">Ujian Online</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav menu">
+            <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
+            <li><a href="index_guru.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-form" role="search">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+              </div>
+            </form>
+            </li>
+            <li><a href="#"> Diah Fauziah </a></li>
+            <li><a href="#"><u>Keluar</u></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     
     <!-- Container -->
     <div class="container">
-        <div class="col-md-offset-3 col-md-6">
-          <div class="panel panel-default" id="panelSoal" style="margin-top:-5px;">
+      <div class="col-md-offset-3 col-md-6">
+          <div class="panel panel-default" id="panelSoal" style="margin-top: 0px;">
             <div class="panel-body">
               <h3 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Buat Ujian Baru</h3>
               <hr>
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="input_ujian.php" method="post">
               <div class="form-group">
                 <label class="col-md-3">Judul</label>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" id="Judul">
+                  <input type="text" class="form-control" id="Judul" name="Judul">
                 </div>
               </div>
               <div class="form-group">
@@ -166,7 +204,7 @@
               <div class="form-group">
                 <label class="col-md-3">Waktu</label>
                 <div class="col-md-4">
-                  <input type="text" class="form-control" id="Waktu">
+                  <input type="text" class="form-control" id="Waktu" name="Waktu">
                 </div>
                 <div class="col-md-5">
                    Menit
@@ -174,46 +212,49 @@
               </div>
               <div class="form-group">
                 <label class="col-md-3">Jumlah soal</label>
-                <div class="col-md-9"  id="JumlahSoal">
+                <div class="col-md-9"  id="JumlahSoal" name="JumlahSoal">
                   0
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-md-3">Acak soal</label>
                 <div class="col-md-9">
-                   <select class="form-control">
-                    <option>Ya</option>
-                    <option>Tidak</option>
+                   <select class="form-control" id="AcakSoal" name="AcakSoal">
+                    <option value="1">Ya</option>
+                    <option value="0">Tidak</option>
                   </select>
                  </div>
               </div>
               <div class="form-group">
                 <label class="col-md-3">Kategori</label>
                 <div class="col-md-9">
-                   <input type="text" class="form-control" aria-describedby="helpBlock" id="KategoriUjian">
+                   <input type="text" class="form-control" aria-describedby="helpBlock" id="KategoriUjian" name="KategoriUjian">
                    <span id="helpBlock" class="help-block">Pisahkan dengan titik koma (;)</span>
                  </div>
               </div>
               <div class="form-group">
                   <label class="col-md-3">Peserta perlu login</label>
                   <div class="col-md-9">
-                    <select class="form-control">
-                      <option>Ya</option>
-                      <option>Tidak</option>
+                    <select class="form-control" id="PerluLogin" name="PerluLogin">
+                      <option value="1">Ya</option>
+                      <option value="0">Tidak</option>
                     </select>
                   </div>
                 </div>
               <div class="form-group">
                 <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
-                  <a href="index_guru.php" type="button" class="btn btn-simpan"> Simpan</a>
-                  <a href="index_guru.php" type="button" class="btn btn-default"> Kembali ke Home</a>
+              <!--    <a href="index_guru.php" type="button" class="btn btn-simpan" > Simpan</a> -->
+                  <input type="submit" name="submit" value="Simpan" class="submit-button btn btn-simpan" >
+                  <a href="index_guru.php" type="button" class="btn btn-default" style="border-width:2px;"> Kembali ke Beranda</a>
                 </div>
               </div>
            </form>
           </div>
           </div>
-        </div>
       </div>
     </div>
+    <footer class="text-center">
+        <p>2016 © Diah Fauziah. Ujian Online Template.</p>
+      </footer>
   </body>
 </html>
