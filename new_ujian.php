@@ -188,11 +188,15 @@
             <div class="panel-body">
               <h3 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Buat Ujian Baru</h3>
               <hr>
+              <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Tidak berhasil</strong> memasukkan ujian baru.
+              </div>
             <form class="form-horizontal" action="input_ujian.php" method="post">
               <div class="form-group">
                 <label class="col-md-3">Judul</label>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" id="Judul" name="Judul">
+                  <input type="text" class="form-control" id="Judul" name="Judul" required>
                 </div>
               </div>
               <div class="form-group">
@@ -204,7 +208,7 @@
               <div class="form-group">
                 <label class="col-md-3">Waktu</label>
                 <div class="col-md-4">
-                  <input type="text" class="form-control" id="Waktu" name="Waktu">
+                  <input type="number" class="form-control" id="Waktu" name="Waktu">
                 </div>
                 <div class="col-md-5">
                    Menit
@@ -227,9 +231,19 @@
               </div>
               <div class="form-group">
                 <label class="col-md-3">Kategori</label>
-                <div class="col-md-9">
-                   <input type="text" class="form-control" aria-describedby="helpBlock" id="KategoriUjian" name="KategoriUjian">
-                   <span id="helpBlock" class="help-block">Pisahkan dengan titik koma (;)</span>
+                <div class="col-md-5">
+                  <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
+                    <option value="">Pilih Mata Pelajaran</option>
+                    <option value="1">Matematika</option>
+                    <option value="0">Fisika</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
+                    <option value="">Pilih Kelas</option>
+                    <option value="1">XII MIPA</option>
+                    <option value="0">XI MIPA</option>
+                  </select>
                  </div>
               </div>
               <div class="form-group">

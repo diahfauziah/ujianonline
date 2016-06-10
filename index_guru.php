@@ -177,6 +177,11 @@
         height: 80%;
         overflow: auto;
       }
+      .alert-success {
+        color: #4abdac;
+        background-color: #ecf8f6;
+        border-color: #ecf8f6;
+      }
       footer {
         position:absolute;
         bottom:0;
@@ -225,33 +230,46 @@
         <li class="active">Home ></li>
      </ol> -->
     <div class="row">
-      <div class="col-xs-9 col-md-9">
-          <form class="form-horizontal" role="form">
+      <div class="col-md-9">
+        <form class="form-inline" role="form">
           <div class="form-group">
-          <label class="col-xs-4 col-md-2" style="color:#F7B733;">Kategori Ujian</label>
-            <div class="col-xs-pull-1 col-xs-5 col-md-offset-1 col-md-4">
+            <label class="col-md-2" style="color:#F7B733;">Kategori</label>
+            <div class="col-md-4">
               <select class="form-control">
+                <option>All (mata pelajaran)</option>
                 <option>Matematika</option>
                 <option>Fisika</option>
               </select>
-              <div class="col-xs-3 col-md-6"></div>
             </div>
+            <div class="col-md-offset-1 col-md-3" style="margin-left:10px">
+              <select class="form-control">
+                <option>All (kelas)</option>
+                <option>XII MIPA</option>
+                <option>XI MIPA</option>
+              </select>
+            </div>
+            <button class="button button1" type="submit" style="margin-left:20px;">Cari</button>
           </div>
         </form>
       </div>
-
-      <div class="col-xs-3 col-md-3">
+      <div class="col-md-3">
         <a href="new_ujian.php" class="button button1 pull-right" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Buat Ujian Baru</a>
       </div>
     </div>
     <?php 
         
     ?>
+    <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Berhasil!</strong> Ujian Kesetimbangan berhasil dibuat.
+    </div>
     <table class="table table-hover">
       <thead>
         <tr>
           <th style="text-align: left;">Judul</th>
           <th>Total Soal</th>
+          <th>Kategori</th>
+          <th>Kelas</th>
           <th>Lihat</th>
           <th>Bagikan</th>
           <th>Laporan</th>
@@ -273,6 +291,8 @@
             echo   '</div>';    
             echo  '</td>';
             echo  '<td>'. $data['total_soal'] .'</td>';     
+            echo  '<td>Matematika</td>';
+            echo  '<td>XII MIPA</td>';
             echo  '<td><a href="lihat_tampilan_ujian.html" data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>';
             echo  '<td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" data-id='.$data['url_ujian'].' title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>';
             echo  '<td><a href="laporan_ujian.php?id='.$data['id_ujian'].'" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>';

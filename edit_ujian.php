@@ -315,7 +315,7 @@
                       <div class="form-group">
                         <label class="col-md-3">Waktu</label>
                         <div class="col-md-4">
-                          <input type="text" class="form-control" id="Waktu" value="<?php echo $ujian['lama_ujian'] ?>">
+                          <input type="number" class="form-control" id="Waktu" value="<?php echo $ujian['lama_ujian'] ?>">
                         </div>
                         <div class="col-md-5">
                            Menit
