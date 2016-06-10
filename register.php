@@ -133,7 +133,7 @@
   <body>
     <!-- Container -->
     <div class="container">
-        <div class="col-md-offset-4 col-md-4" style="margin-top:10px; margin-bottom:10px;">
+        <div class="col-md-offset-3 col-md-6" style="margin-top:10px; margin-bottom:10px;">
           <h2 style="text-align:center; font-family:'didact gothic', sans-serif; color:#f7b733; margin-bottom:30px;">Ujian Online</h2>
           <div class="panel panel-default" id="panelSoal">
             <div class="panel-body">
@@ -141,47 +141,48 @@
               <hr>
             <form class="form-horizontal">
               <div class="form-group">
-                <label class="col-md-3">Nama</label>
-                <div class="col-md-9">
+                <label class="col-md-4">Nama</label>
+                <div class="col-md-8">
                   <input type="text" class="form-control">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3">Username</label>
-                <div class="col-md-9">
+                <label class="col-md-4">Kategori</label>
+                <div class="col-md-8">
+                  <select class="form-control">
+                    <option>SMP/Sederajat</option>
+                    <option>SMA/Sederajat</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-4">Username</label>
+                <div class="col-md-8">
                   <input type="text" class="form-control">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3">Password</label>
-                <div class="col-md-9">
+                <label class="col-md-4">Password</label>
+                <div class="col-md-8">
                   <input type="text" class="form-control">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3">Konfirm Password</label>
-                <div class="col-md-9">
+                <label class="col-md-4">Konfirm Password</label>
+                <div class="col-md-8">
                   <input type="text" class="form-control">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3">Password</label>
-                <div class="col-md-9">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3">Password</label>
-                <div class="col-md-9">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
+                <div class="col-md-offset-4 col md-8" style="padding-left:15px;">
                   <a href="index_guru.php" type="button" class="btn btn-simpan"> Daftar</a>
                 </div>
               </div>
-              <p style="text-align:center;">Sudah punya akun? <a href="register.php" style="color:#f7b733">Masuk disini.</a></p>
+              <div class="form-group">
+                <div class="col-md-offset-4 col md-8" style="padding-left:15px;">
+                  <p>Sudah punya akun? <a href="login.php" style="color:#f7b733">Masuk disini.</a></p>
+                </div>
+              </div>
            </form>
           </div>
           </div>
