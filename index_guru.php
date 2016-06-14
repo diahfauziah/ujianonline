@@ -12,6 +12,7 @@
     <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <script type="text/javascript">
       $(function(){
         $('[data-toggle="tooltip"]').tooltip();
@@ -204,7 +205,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
             <li class="active"><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="index_guru.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+            <li><a href="kategori.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -268,7 +269,7 @@
         <tr>
           <th style="text-align: left;">Judul</th>
           <th>Total Soal</th>
-          <th>Kategori</th>
+          <th>Mata Pelajaran</th>
           <th>Kelas</th>
           <th>Lihat</th>
           <th>Bagikan</th>
@@ -278,7 +279,7 @@
       </thead>
       <tbody>
         <?php include('koneksi.php');
-          $query = mysqli_query($link, "select * from info_ujian");
+          $query = mysqli_query($link, "select * from info_ujian order by modified_date desc");
 
           while($data = mysqli_fetch_array($query)){
             echo '<tr class="table-row">';
@@ -300,6 +301,23 @@
             echo '</tr>';      
           }
         ?>
+        <tr style="background-color:#ecf8f6">
+          <td style="text-align: left;">
+            <div class="judul">
+              <a href="view_ujian.html">Kesetimbangan</a><br>
+            </div>
+            <div style="font-size: 12px; color:#aba8a8;" class="link2">
+              <a href="#">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.html">Tambah Soal</a>
+            </div>
+          </td>
+          <td>50</td>
+          <td>Kimia</td>
+          <td>X MIPA</td>
+          <td><a href="lihat_tampilan_ujian.html" data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>
+          <td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>
+          <td><a href="laporan_ujian.html" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>
+          <td>2016-06-14 00:00:00</td>
+        </tr/>
       </tbody>
     </table>
     <!-- Modal Hapus -->

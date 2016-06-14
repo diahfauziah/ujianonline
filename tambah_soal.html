@@ -23,6 +23,9 @@
     <!-- Include Code Mirror style -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 
+    <!-- Include font awesome -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
     <!-- Include Editor Plugins style. -->
     <link rel="stylesheet" href="froala/css/plugins/char_counter.css">
     <link rel="stylesheet" href="froala/css/plugins/code_view.css">
@@ -39,20 +42,7 @@
     <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
     <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-tagsinput.min.js"></script>
     <script type="text/javascript"> 
-      $(function(){
-        $('[data-toggle="pill"]').tooltip({
-          trigger: 'hover',
-          placement: 'top',
-          animate: true,
-          delay: 500,
-          container: 'body'
-        });
-
-      });
     </script>
 
     <!-- Style -->
@@ -180,6 +170,12 @@
       .nav-pills >li > a:hover, .nav-pills > li, .nav-pills > li {
         color: #F7B733;
       }
+      .tooltip{ 
+        position:relative;
+        float:right;
+      }
+      .tooltip > .tooltip-inner {background-color: #eebf3f; padding:5px 15px; color:rgb(23,44,66); font-weight:bold; font-size:13px;}
+      .popOver + .tooltip > .tooltip-arrow {    border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f;}
       
     </style>
   </head>
@@ -239,14 +235,14 @@
                 <label>Pilih jenis soal:</label>
               </div>
               <ul class="nav nav-pills">
-                <li class="active"><a data-toggle="pill" href="#formPilihanGanda">Pilihan ganda</a></li>
-                <li><a data-toggle="pill" href="#formIsian">Isian singkat</a></li>
-                <li><a data-toggle="pill" href="#formEssay">Essay</a></li>
-                <li><a data-toggle="pill" href="#formPencocokan">Pencocokan</a></li>
-                <li><a data-toggle="pill" href="#formBenarSalah">Benar/Salah</a></li>
-                <li><a data-toggle="pill" href="#formCheckbox">Checkbox</a></li>
-                <li><a data-toggle="pill" href="#formSebabAkibat">Sebab - akibat</a></li>
-                <li><a data-toggle="pill" href="#formPilihan123">Pilihan 1,2,3,4</a></li>
+                <li class="active"><a data-toggle="pill" class="hashtip" href="#formPilihanGanda" title="<u><b>Contoh</b></u><br>Apa Ibukota Provinsi Jawa Barat?<br><i class='fa fa-circle-thin'></i></span> Jakarta<br><i class='fa fa-circle'></i> Bandung<br><i class='fa fa-circle-thin'></i> Surabaya<br><i class='fa fa-circle-thin'></i> Bogor<br>">Pilihan ganda</a></li>
+                <li><a data-toggle="pill" href="#formIsian" class="hashtip" title="<u><b>Contoh</b></u><br>Ibukota Provinsi Jawa Barat yaitu <input type=text class='form-control'>">Isian singkat</a></li>
+                <li><a data-toggle="pill" href="#formEssay" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Essay</a></li>
+                <li><a data-toggle="pill" href="#formPencocokan" class="hashtip" title="<u><b>Contoh</b></u><br>Cocokkan provinsi dan ibukota provinsi yang sesuai!<br> Jawa Barat <span class='glyphicon glyphicon-resize-horizontal'></span> Bandung <br> Jawa Timur <span class='glyphicon glyphicon-resize-horizontal'></span> Surabaya">Pencocokan</a></li>
+                <li><a data-toggle="pill" href="#formBenarSalah" class="hashtip" title="<u><b>Contoh</b></u><br>Bandung adalah Ibukota Provinsi Jawa Barat<br><span class='glyphicon glyphicon-record'></span> Benar<br><span class='glyphicon glyphicon-record'></span> Salah">Benar/Salah</a></li>
+                <li><a data-toggle="pill" href="#formCheckbox" class="hashtip" title="<u><b>Contoh</b></u><br>Manakah yang berada di Provinsi Jawa Barat?<br> <span class='glyphicon glyphicon-unchecked'></span> Jakarta<br><span class='glyphicon glyphicon-check'></span> Bandung<br><span class='glyphicon glyphicon-check'></span> Depok<br><span class='glyphicon glyphicon-unchecked'></span> Banten">Checkbox</a></li>
+                <li><a data-toggle="pill" href="#formSebabAkibat" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Sebab - akibat</a></li>
+                <li><a data-toggle="pill" href="#formPilihan123" class="hashtip" title="">Pilihan 1,2,3,4</a></li>
               </ul>
               <div class="tab-content">
                 <div id="formPilihanGanda" class="tab-pane fade in active">
@@ -262,58 +258,90 @@
                              <textarea id="edit1" class="form-control" rows="3">
                              </textarea>
                           </div>
-                          <div class="form-group">
-                            <div class="row" style="margin-top:10px;">
-                              <div style="margin-left:15px; width:50px; float:left">
-                                <label><span class="label label-default" style="border-radius: 50px; font-size:80%">A</span></label> 
-                              </div>
-                              <div style="width:93%; margin-left:50px">
-                                <div class="form-control" id="opsiGanda1"></div>
-                                <textarea class="form-control" id="opsiGandaT1"></textarea>
-                              </div>
+                          <p style="margin-left:-10px; font-size:11px; color:#818181; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
+                          <div class="form-group" style="margin-bottom:10px">
+                            <div class="row">
+                                <div style="float:left" style="width:15px">
+                                  <i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i>
+                                </div>
+                                <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                  <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                </div>
+                                <div style="width:85%;  margin-left:-20px;" class="col-md-9">
+                                  <div class="form-control" id="opsiGanda1"></div>
+                                </div>
+                                <div style="float:left">
+                                  <i class="fa fa-trash"></i>
+                                </div>
                             </div>
                           </div>
-                          <div class="form-group">
-                            <div class="row" style="margin-top:10px;">
-                              <div style="margin-left:15px; width:50px; float:left">
-                                <label><span class="label label-default" style="border-radius: 50px; font-size:80%">B</span></label> 
-                              </div>
-                              <div style="width:93%; margin-left:50px">
-                                <div class="form-control" id="opsiGanda2"></div>
-                              </div>
+                          <div class="form-group" style="margin-bottom:10px;">
+                            <div class="row">
+                              <div style="float:left" style="width:15px">
+                                  <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
+                                </div>
+                                <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                  <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                </div>
+                                <div style="width:85%; margin-left:-20px;" class="col-md-9">
+                                  <div class="form-control" id="opsiGanda1"></div>
+                                </div>
+                                <div style="float:left">
+                                  <i class="fa fa-trash"></i>
+                                </div>
                             </div>
                           </div>
-                          <div class="form-group">
-                            <div class="row" style="margin-top:10px;">
-                              <div style="margin-left:15px; width:50px; float:left">
-                                <label><span class="label label-default" style="border-radius: 50px; font-size:80%">C</span></label> 
-                              </div>
-                              <div style="width:93%; margin-left:50px">
-                                <div class="form-control" id="opsiGanda3"></div>
-                              </div>
+                          <div class="form-group" style="margin-bottom:10px">
+                            <div class="row">
+                                <div style="float:left" style="width:15px">
+                                  <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
+                                </div>
+                                <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                  <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                </div>
+                                <div style="width:85%; margin-left:-20px;" class="col-md-9">
+                                  <div class="form-control" id="opsiGanda1"></div>
+                                </div>
+                                <div style="float:left">
+                                  <i class="fa fa-trash"></i>
+                                </div>
                             </div>
                           </div>
-                          <div class="form-group">
-                            <div class="row" style="margin-top:10px;">
-                              <div style="margin-left:15px; width:50px; float:left">
-                                <label><span class="label label-default" style="border-radius: 50px; font-size:80%">D</span></label> 
-                              </div>
-                              <div style="width:93%; margin-left:50px">
-                                <div class="form-control" id="opsiGanda4"></div>
-                              </div>
+                          <div class="form-group" style="margin-bottom:10px">
+                            <div class="row">
+                                <div style="float:left" style="width:15px">
+                                  <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
+                                </div>
+                                <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                  <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                </div>
+                                <div style="width:85%;margin-left:-20px;" class="col-md-9">
+                                  <div class="form-control" id="opsiGanda1"></div>
+                                </div>
+                                <div style="float:left">
+                                  <i class="fa fa-trash"></i>
+                                </div>
                             </div>
                           </div>
-                          <div class="form-group" style="margin-bottom: 10px;">
-                            <div class="row" style="margin-top:10px;">
-                              <div style="margin-left:15px; width:50px; float:left">
-                                <label><span class="label label-default" style="border-radius: 50px; font-size:80%">E</span></label> 
-                              </div>
-                              <div style="width:93%; margin-left:50px">
-                                <div class="form-control" id="opsiGanda5"></div>
-                              </div>
+                       <!--  <div style="background-color:#ecf8f6; padding:5px;">
+                            <div class="form-group" >
+                            <div class="row">
+                                <div style="float:left" style="width:15px">
+                                  <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
+                                </div>
+                                <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                  <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                </div>
+                                <div style="width:85%;margin-left:-20px;" class="col-md-9">
+                                  <div class="form-control" id="opsiGanda1"></div>
+                                </div>
+                                <div style="float:left">
+                                  <i class="fa fa-trash"></i>
+                                </div>
                             </div>
-                          </div>
-                          <div class="form-group" style="margin-bottom: 10px;">
+                            </div> 
+                          </div> -->
+                          <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
                             <button class="btn btn-primary" style="margin-left:20px;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
                           </div>
                           <div class="form-group form-inline" style="margin-bottom:10px;">
@@ -787,6 +815,9 @@
 
     <!-- Include jQuery. -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/tooltipsy.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-tagsinput.min.js"></script>
 
     <!-- Include JS files. -->
     <script type="text/javascript" src="froala/js/froala_editor.min.js"></script>
@@ -828,11 +859,45 @@
     <!-- Initialize the editor. -->
     <script>
         $(function() {
-            $('#edit1, #edit2, #edit3, #edit4, #edit5').froalaEditor();
+            $.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
+            $.FroalaEditor.RegisterCommand('clear', {
+              title: 'Reset',
+              focus: false,
+              undo: true,
+              refreshAfterCallback: true,
+              callback: function () {
+                this.html.set('');
+                this.events.focus();
+              }
+            });
+
+            $.FroalaEditor.DefineIcon('highlight', {NAME: 'pencil'});
+            $.FroalaEditor.RegisterCommand('highlight', {
+              title: 'Highlight',
+              focus: true,
+              undo: true,
+              refreshAfterCallback: true,
+              callback: function(e){
+                if (this.colors.background=='#ffff00'){
+                  this.colors.background('#ffffff');
+                  this.events.focus();
+                } else {
+                  this.colors.background('#ffff00');
+                  this.events.focus();
+                }
+              }
+            });
+
+
+            $('#edit1, #edit2, #edit3, #edit4, #edit5').froalaEditor({
+              toolbarButtons: ['undo', 'redo', 'clear', 'bold', 'italic', 'underline', 'strikeThrough', 'highlight', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', 'insertImage', 'remove'],
+              placeholderText: 'Ketik pertanyaan'
+            });
             $('div.opsi').froalaEditor({
               toolbarInline: true,
               charCounterCount: false,
-              toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'emoticons', '-', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage', 'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo']
+              toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', '-', 'undo', 'redo', 'paragraphFormat', 'align', 'formatOL', 'formatUL',  '-', 'insertImage', 'insertLink', 'indent', 'outdent', 'insertFile', 'insertVideo'],
+              placeholderText: 'Ketik jawaban'
             });
 			     $('.selector').froalaEditor('commands.show');
         });
@@ -840,10 +905,53 @@
     			$('div#opsiGanda1, div#opsiGanda2, div#opsiGanda3, div#opsiGanda4, div#opsiGanda5, div#opsiIsian, textarea#opsiEssay, textarea#opsiGandaT1').froalaEditor({
     			  toolbarInline: true,
     			  charCounterCount: false,
-    			  toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage', 'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo'],
-    			  toolbarVisibleWithoutSelection: true
+    			  toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'undo', 'redo', 'insertImage', 'paragraphFormat', 'formatOL', 'formatUL', '-', 'align', 'indent', 'outdent'],
+    			  toolbarVisibleWithoutSelection: true,
+            placeholderText: 'Ketik jawaban'
     			});
         });
+        $(function(){
+            $(".setjawaban").click(function(){
+              $(".setjawaban").removeClass("fa fa-circle-thin");
+              $(".setjawaban").addClass("fa fa-circle-thin");
+              $(this).removeClass("fa fa-circle-thin");
+              $(this).addClass("fa fa-circle");
+              $(this).css({
+                "color" : "#32CD32"
+              });
+              //$(this).closest('.checklist').find()
+            });
+        });
+        $('.hashtip').tooltipsy({
+              offset: [0, 10],
+              show: function (e, $el) {
+                  $el.css({
+                      'left': parseInt($el[0].style.left.replace(/[a-z]/g, '')) - 50 + 'px',
+                      'opacity': '0.0',
+                      'display': 'block'
+                  }).animate({
+                      'left': parseInt($el[0].style.left.replace(/[a-z]/g, '')) + 50 + 'px',
+                      'opacity': '1.0'
+                  }, 300);
+              },
+              hide: function (e, $el) {
+                  $el.slideUp(100);
+              },
+              css: {
+                  'font-size' : '13px',
+                  'font-family':'"Lato", sans-serif',
+                  'padding': '10px',
+                  'max-width': '200px',
+                  'color': '#000000',
+                  'background-color': '#ffffff',
+                  'border-radius': '4px',
+                  'border': '0px solid #F7B733',
+                  '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                  '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                  'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                  'text-shadow': 'none'
+              }
+          });
     </script>
   </body>
 </html>
