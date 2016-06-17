@@ -9,6 +9,37 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Froala -->
+      <!-- Include Font Awesome. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Include Editor style. -->
+    <link href="froala/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
+    <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Include Code Mirror style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+
+    <!-- Include font awesome -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+    <!-- Include Editor Plugins style. -->
+    <link rel="stylesheet" href="froala/css/plugins/char_counter.css">
+    <link rel="stylesheet" href="froala/css/plugins/code_view.css">
+    <link rel="stylesheet" href="froala/css/plugins/colors.css">
+    <link rel="stylesheet" href="froala/css/plugins/emoticons.css">
+    <link rel="stylesheet" href="froala/css/plugins/file.css">
+    <link rel="stylesheet" href="froala/css/plugins/fullscreen.css">
+    <link rel="stylesheet" href="froala/css/plugins/image.css">
+    <link rel="stylesheet" href="froala/css/plugins/image_manager.css">
+    <link rel="stylesheet" href="froala/css/plugins/line_breaker.css">
+    <link rel="stylesheet" href="froala/css/plugins/quick_insert.css">
+    <link rel="stylesheet" href="froala/css/plugins/table.css">
+    <link rel="stylesheet" href="froala/css/plugins/video.css">
+    <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
+    <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
@@ -17,6 +48,7 @@
               $("#kotak").toggle();
               $("#kotakSoal").toggleClass("col-md-10 col-md-12");
               //$("#hide").text("Unhide daftar soal");
+              $("#nomorSoal").toggle();
               if ($("#hide").text() == "Hide daftar soal"){
                 $("#hide").html("<u>Unhide daftar soal</u>");
               }
@@ -82,6 +114,10 @@
         position: relative;
         float: right;
       }
+      .list-group-item {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
       .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
       .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
     </style>
@@ -96,10 +132,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left: 70px">Logo</a>
+          <a class="navbar-brand" href="#myPage" style="padding-left: 110px">Ujian Online</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right" style="padding-right: 70px;">
+          <ul class="nav navbar-nav navbar-right" style="padding-right: 80px;">
             <li><a href="#logout"> Andhini </a></li>
             <li><a href="#logout">Logout</a></li>
           </ul>
@@ -108,89 +144,188 @@
     </nav>
     
     <div class="container">
-      Waktu Ujian:
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" area-valuemin="0" area-valuemax="100">
-          <span class="popOver" data-toggle="tooltip" data-placement="top" title="04:59"></span>
-        </div>
-      </div>
-      <div class="btn-group">
-        <button type="button" class="btn btn-default glyphicon glyphicon-search"></button>
-        <button type="button" class="btn btn-default glyphicon glyphicon-refresh"></button>
-        <button type="button" class="btn btn-default glyphicon glyphicon-home"></button>
-        <button type="button" class="btn btn-default glyphicon glyphicon-refresh"></button>
-      </div>
-      <a class="pull-right" href="#" id="hide"><u>Hide daftar soal</u></a>
-      <div class="row">
+      <div class="col-md-offset-1 col-md-10">
         <div id="kotakSoal" class="col-md-10">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <p style="text-align: center; margin-bottom: 5px;">Soal 1 dari 50 soal</p>
-            </div>
-            <div class="panel-body" id=teksSoal onselect="GetSelectedText()">
-              <strong>Cermatilah penulisan kalimat berikut!</strong>
-              <p>Ketika berwisata ke (1)cipanas, (2)rudi membeli (3)pisang (4)ambon. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lobortis accumsan arcu, eget aliquam nibh fermentum vitae. Vestibulum fringilla gravida mi, et sagittis ipsum elementum vel. Phasellus tempus diam sit amet purus venenatis rutrum. Donec rutrum diam elit, ut tincidunt sapien auctor in. Pellentesque tincidunt fringilla hendrerit. Mauris ut nulla felis. In hac habitasse platea dictumst.
-
-              Morbi iaculis massa scelerisque dictum suscipit. Pellentesque ut nibh ipsum. Nulla malesuada vehicula porta. Nulla gravida commodo quam. Etiam eleifend dolor at augue dictum commodo. Praesent euismod sed sapien vitae feugiat. Praesent sed urna at enim mollis egestas ut in lorem. Mauris ut tempor enim. Aenean fermentum nunc sit amet egestas pretium. Etiam massa erat, consectetur at gravida id, tempor non mauris. Morbi massa justo, posuere at venenatis in, euismod ac metus. Maecenas non mattis risus. Integer tincidunt finibus semper.</p>
-              <p>Kata yang  huruf pertamanya harus ditulis dengan huruf kapital ditandai nomor...</p>
-              <div class="radio">
-                <label><input type="radio" name="optradio">1 dan 2</label>
-              </div>
-              <div class="radio">
-                <label><input type="radio" name="optradio">2 dan 3</label>
-              </div>
-              <div class="radio">
-                <label><input type="radio" name="optradio">3 dan 4</label>
-              </div>
-              <div class="radio">
-                <label><input type="radio" name="optradio">1 dan 4</label>
-              </div>
-              <button type="button" class="btn btn-default pull-right" id=tandai><span class="glyphicon glyphicon-unchecked"></span> Tandai</button>
-            </div>  
+          Waktu Ujian:
+          <a class="pull-right" href="#" id="hide"><u>Hide daftar soal</u></a>
+          <div class="panel panel-default" style="border-radius:0px; margin-bottom:0px">
+            <div class="panel-body" style="margin-bottom:-5px;">
+              <div class="row">
+                <div style="margin-left:10px; width:15px; float:left;">
+                  <strong id="nomor">1.</strong>
+                </div>
+                <div style="margin-left: 0px;">  
+                  <div class="col-md-12" style="width:96%">
+                    <textarea id="edit1" class="form-control" rows="3">
+                      <strong>Cermatilah penulisan kalimat berikut!</strong>
+                      <p>Ketika berwisata ke (1)cipanas, (2)rudi membeli (3)pisang (4)ambon. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lobortis accumsan arcu, eget aliquam nibh fermentum vitae. Vestibulum fringilla gravida mi, et sagittis ipsum elementum vel. Phasellus tempus diam sit amet purus venenatis rutrum. Donec rutrum diam elit, ut tincidunt sapien auctor in. Pellentesque tincidunt fringilla hendrerit. Mauris ut nulla felis. In hac habitasse platea dictumst.</p>
+                      <p>Kata yang  huruf pertamanya harus ditulis dengan huruf kapital ditandai nomor...</p>
+                    </textarea>
+                  </div>
+                </div>
+              </div>  
+              <button type="button" class="btn btn-default btn-sm pull-right" style="margin-top:8px; margin-right:4px; padding: 4px 18px;"><i class="fa fa-bookmark"></i> Tandai</button>
+            </div> 
+            <!-- Opsi Jawaban --> 
+            <ul class="list-group">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Morbi leo risus</li>
+              <li class="list-group-item">Porta ac consectetur ac</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
           </div>
-          <div class="form-group pull-right">
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Soal sebelumnya</button>
-            <button type="button" class="btn btn-default">Soal berikutnya <span class="glyphicon glyphicon-chevron-right"></span></button>
+          <div class="form-group">
+            <button type="button" class="btn btn-default col-md-6" style="border-radius:0px;"><span class="glyphicon glyphicon-chevron-left"></span> Soal sebelumnya</button>
+            <button type="button" class="btn btn-default col-md-6" style="border-radius:0px;">Soal berikutnya <span class="glyphicon glyphicon-chevron-right"></span></button>
           </div>  
         </div>
-        <div class="col-md-2">
-          <div class="panel panel-default"  id=kotak>
-            <div class="panel-body" style="padding: 10px 10px 10px 10px;">
+        <div class="col-md-2" style="padding-left:0px;">
+          <div class="panel panel-default" style="width:185px;" id="nomorSoal">
+            <div class="panel-body" style="padding: 5px 5px 5px 5px;">
               <div class="form-group">
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">1</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">2</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">3</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">4</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">5</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">6</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">7</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">8</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">9</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">10</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">11</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">12</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">13</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">14</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">15</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">16</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">17</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">18</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">19</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">20</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">21</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">22</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">23</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">24</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">25</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">26</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">27</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">28</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">29</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 44px; height: 34px">30</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">1</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">2</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">3</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">4</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">5</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">6</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">7</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">8</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">9</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">10</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">11</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">12</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">13</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">14</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">15</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">16</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">17</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">18</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">19</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">20</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">21</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">22</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">23</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">24</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">25</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">26</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">27</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">28</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">29</a>
+                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">30</a>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Include jQuery. -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/tooltipsy.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-tagsinput.min.js"></script>
+
+    <!-- Include JS files. -->
+    <script type="text/javascript" src="froala/js/froala_editor.min.js"></script>
+
+    <!-- Include Code Mirror. -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+
+    <!-- Include Plugins. -->
+    <script type="text/javascript" src="froala/js/plugins/align.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/char_counter.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/code_beautifier.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/code_view.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/colors.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/emoticons.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/entities.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/file.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/font_family.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/font_size.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/fullscreen.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/image.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/image_manager.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/inline_style.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/line_breaker.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/link.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/lists.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/paragraph_format.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/paragraph_style.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/quick_insert.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/quote.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/table.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/save.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/url.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/video.min.js"></script>
+
+    <!-- Include Language file if we want to use it. -->
+    <script type="text/javascript" src="froala/js/languages/ro.js"></script>
+    <script>
+        $(function() {
+            $.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
+            $.FroalaEditor.RegisterCommand('clear', {
+              title: 'Reset',
+              focus: false,
+              undo: true,
+              refreshAfterCallback: true,
+              callback: function () {
+                this.html.set('');
+                this.events.focus();
+              }
+            });
+
+            $.FroalaEditor.DefineIcon('highlight', {NAME: 'pencil'});
+            $.FroalaEditor.RegisterCommand('highlight', {
+              title: 'Highlight',
+              focus: true,
+              undo: true,
+              refreshAfterCallback: true,
+              callback: function(e){
+                if (this.colors.background=='#ffff00'){
+                  this.colors.background('#ffffff');
+                  this.events.focus();
+                } else {
+                  this.colors.background('#ffff00');
+                  this.events.focus();
+                }
+              }
+            });
+
+
+            $('#edit1').froalaEditor({
+              toolbarButtons: ['undo', 'redo', 'clear', 'bold', 'italic', 'underline', 'strikeThrough', 'highlight', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', 'insertImage', 'remove'],
+              placeholderText: 'Ketik pertanyaan'
+            });
+            $('div.opsi').froalaEditor({
+              toolbarInline: true,
+              charCounterCount: false,
+              toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', '-', 'undo', 'redo', 'paragraphFormat', 'align', 'formatOL', 'formatUL',  '-', 'insertImage', 'insertLink', 'indent', 'outdent', 'insertFile', 'insertVideo'],
+              placeholderText: 'Ketik jawaban'
+            });
+            $('.selector').froalaEditor('commands.show');
+        });
+        $(function(){
+          $('div#opsiGanda1, div#opsiGanda2, div#opsiGanda3, div#opsiGanda4, div#opsiGanda5, div#opsiIsian, textarea#opsiEssay, textarea#opsiGandaT1').froalaEditor({
+            toolbarInline: true,
+            charCounterCount: false,
+            toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'undo', 'redo', 'insertImage', 'paragraphFormat', 'formatOL', 'formatUL', '-', 'align', 'indent', 'outdent'],
+            toolbarVisibleWithoutSelection: true,
+            placeholderText: 'Ketik jawaban'
+          });
+        });
+        $(function(){
+            $(".setjawaban").click(function(){
+              $(".setjawaban").removeClass("fa fa-circle-thin");
+              $(".setjawaban").addClass("fa fa-circle-thin");
+              $(this).removeClass("fa fa-circle-thin");
+              $(this).addClass("fa fa-circle");
+              $(this).css({
+                "color" : "#32CD32"
+              });
+              //$(this).closest('.checklist').find()
+            });
+        });
+    </script>
   </body>
 </html>
