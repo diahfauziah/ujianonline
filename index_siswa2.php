@@ -66,10 +66,6 @@
               clearTimeout(counterBack);
             }
           }, 1000); 
-          $("#tandai") .click(function(){
-          
-          });
-          
       });
     </script>
 
@@ -89,7 +85,7 @@
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #f4511e !important;
+        color: #4ABDAC !important;
       }
       .container {
         padding: 20px 20px;
@@ -118,7 +114,48 @@
         padding-top: 5px;
         padding-bottom: 5px;
       }
-
+      .nomor {
+        margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;
+      }
+      .nomor-active {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .button {
+        background-color: #4ABDAC;
+        border: none;
+        color: #ffffff;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.42857143;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .button1, .button1:link, .button1:visited, .col-md-3 a:link, .col-md-3 a:visited, .col-md-3 a:active {
+        background-color: #ffffff;
+        color: #F7B733;
+        border: 1px solid #F7B733;
+      }
+      .button1:hover, .col-md-3 a:hover {
+        background-color: #F7B733;
+        color: #ffffff;
+        border: 1px solid #F7B733;
+      }
+      .circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        font-size: 14px;
+        color: #ffffff;
+        text-align: center;
+        background: #4ABDAC;
+        line-height: 28px;
+        border: 1px solid #4ABDAC;
+      }
       .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
       .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
     </style>
@@ -145,35 +182,51 @@
     </nav>
     
     <div class="container">
+    <!--  <div class="circle">10</div> -->
       <div class="col-md-offset-1 col-md-10">
         <div id="kotakSoal" class="col-md-10">
-          Waktu Ujian:
+          Waktu ujian tersisa: <b><span id="time">05:00</span></b> menit
           <a class="pull-right" href="#" id="hide"><u>Hide daftar soal</u></a>
           <div class="panel panel-default" style="border-radius:0px; margin-bottom:0px">
             <div class="panel-body" style="margin-bottom:-5px;">
               <div class="row">
                 <?php include("koneksi.php");
+                  $id = $_GET['id'];
                   $query = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
                   $soal = mysqli_fetch_array($query);
                 ?>
                 <div style="margin-left:10px; width:15px; float:left;">
-                  <strong id="nomor"><?php echo $soal['id_soal'] ?></strong>
+                  <strong id="nomor"><?php echo $soal['nomor_soal'] ?>. </strong>
                 </div>
                 <div style="margin-left: 0px;">  
                   <div class="col-md-12" style="width:96%">
                     <textarea id="edit1" class="form-control" rows="3">
-                      <strong>Cermatilah penulisan kalimat berikut!</strong>
-                      <p>Ketika berwisata ke (1)cipanas, (2)rudi membeli (3)pisang (4)ambon. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lobortis accumsan arcu, eget aliquam nibh fermentum vitae. Vestibulum fringilla gravida mi, et sagittis ipsum elementum vel. Phasellus tempus diam sit amet purus venenatis rutrum. Donec rutrum diam elit, ut tincidunt sapien auctor in. Pellentesque tincidunt fringilla hendrerit. Mauris ut nulla felis. In hac habitasse platea dictumst.</p>
-                      <p>Kata yang  huruf pertamanya harus ditulis dengan huruf kapital ditandai nomor...</p>
+                      <?php echo $soal['pertanyaan'] ?>
                     </textarea>
                   </div>
                 </div>
               </div>  
-              <button type="button" class="btn btn-default btn-sm pull-right" style="margin-top:8px; margin-right:4px; padding: 4px 18px;"><i class="fa fa-bookmark"></i> Tandai</button>
+              <button type="button" class="button button1 pull-right" style="margin-top:8px; margin-right:4px; padding: 4px 18px; outline:none;" data-id="<?php echo $soal['nomor_soal'] ?>" id="tandai"><i class="fa fa-bookmark-o"></i> Tandai</button>
             </div> 
             <!-- Opsi Jawaban --> 
             <ul class="list-group">
-              <li class="list-group-item opsijawaban">
+              <?php 
+                $id_soal = $soal['id_soal'];
+                $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+                while($pilihan = mysqli_fetch_array($query2)){
+                  echo '<li class="list-group-item opsijawaban">';
+                  echo   '<div class="row">';
+                  echo     '<div style="margin-left:50px; width:50px; float:left; padding-right:10px;">';
+                  echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>';
+                  echo     '</div>';
+                  echo     '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
+                  echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
+                  echo     '</div>';
+                  echo    '</div>';
+                  echo '</li>';
+                }
+              ?>
+       <!--   <li class="list-group-item opsijawaban">
                 <div class="row">
                   <div style="margin-left:50px; width:50px; float:left; padding-right:10px;">
                     <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
@@ -181,48 +234,8 @@
                   <div style="width:85%;  margin-left:-20px;" class="col-md-9">
                     <div id="opsiGanda1">Ndak </div>
                   </div>  
-                </div>
-              </li>
-              <li class="list-group-item opsijawaban">
-                <div class="row">
-                  <div style="margin-left:50px; width:50px; float:left; padding-right:10px;">
-                    <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                  </div>
-                  <div style="width:85%;  margin-left:-20px;" class="col-md-9">
-                    <div id="opsiGanda1">Ketika berwisata ke (1)cipanas, (2)rudi membeli (3)pisang (4)ambon. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lobortis accumsan arcu, eget aliquam nibh fermentum vitae. </div>
-                  </div>  
-                </div>
-              </li>
-              <li class="list-group-item opsijawaban">
-                <div class="row">
-                  <div style="margin-left:50px; width:50px; float:left; padding-right:10px;">
-                    <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                  </div>
-                  <div style="width:85%;  margin-left:-20px;" class="col-md-9">
-                    <div id="opsiGanda1">Ndak </div>
-                  </div>  
-                </div>
-              </li>
-              <li class="list-group-item opsijawaban">
-                <div class="row">
-                  <div style="margin-left:50px; width:50px; float:left; padding-right:10px;">
-                    <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                  </div>
-                  <div style="width:85%;  margin-left:-20px;" class="col-md-9">
-                    <div id="opsiGanda1">Ndak </div>
-                  </div>  
-                </div>
-              </li>
-              <li class="list-group-item opsijawaban">
-                <div class="row">
-                  <div style="margin-left:50px; width:50px; float:left; padding-right:10px;">
-                    <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                  </div>
-                  <div style="width:85%;  margin-left:-20px;" class="col-md-9">
-                    <div id="opsiGanda1">Ndak </div>
-                  </div>  
-                </div>
-              </li>
+                </div> 
+              </li> -->
             </ul>
           </div>
           <div class="form-group">
@@ -234,36 +247,36 @@
           <div class="panel panel-default" style="width:185px;" id="nomorSoal">
             <div class="panel-body" style="padding: 5px 5px 5px 5px;">
               <div class="form-group">
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">1</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">2</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">3</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">4</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">5</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">6</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">7</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">8</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">9</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">10</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">11</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">12</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">13</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">14</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">15</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">16</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">17</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">18</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">19</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">20</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">21</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">22</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">23</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">24</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">25</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">26</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">27</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">28</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">29</a>
-                <a href="#" class="btn btn-default" style="margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;">30</a>
+                <a href="#" class="btn btn-default nomor nomor-active" data-nomor="1">1</a>
+                <a href="index_siswa2.php?id=2" class="btn btn-default nomor" data-nomor="2">2</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="3">3</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="4">4</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="5">5</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="6">6</a>
+                <a href="#" class="btn btn-default nomor">7</a>
+                <a href="#" class="btn btn-default nomor">8</a>
+                <a href="#" class="btn btn-default nomor">9</a>
+                <a href="#" class="btn btn-default nomor">10</a>
+                <a href="#" class="btn btn-default nomor">11</a>
+                <a href="#" class="btn btn-default nomor">12</a>
+                <a href="#" class="btn btn-default nomor">13</a>
+                <a href="#" class="btn btn-default nomor">14</a>
+                <a href="#" class="btn btn-default nomor">15</a>
+                <a href="#" class="btn btn-default nomor">16</a>
+                <a href="#" class="btn btn-default nomor">17</a>
+                <a href="#" class="btn btn-default nomor">18</a>
+                <a href="#" class="btn btn-default nomor">19</a>
+                <a href="#" class="btn btn-default nomor">20</a>
+                <a href="#" class="btn btn-default nomor">21</a>
+                <a href="#" class="btn btn-default nomor">22</a>
+                <a href="#" class="btn btn-default nomor">23</a>
+                <a href="#" class="btn btn-default nomor">24</a>
+                <a href="#" class="btn btn-default nomor">25</a>
+                <a href="#" class="btn btn-default nomor">26</a>
+                <a href="#" class="btn btn-default nomor">27</a>
+                <a href="#" class="btn btn-default nomor">28</a>
+                <a href="#" class="btn btn-default nomor">29</a>
+                <a href="#" class="btn btn-default nomor">30</a>
             </div>
           </div>
         </div>
@@ -342,13 +355,14 @@
               }
             });
 
-
             $('#edit1').froalaEditor({
               toolbarButtons: ['undo', 'redo', 'clear', 'bold', 'italic', 'underline', 'strikeThrough', 'highlight', 'remove'],
               placeholderText: 'Ketik pertanyaan',
               charCounterCount: false,
+              contenteditable: false,
               spellcheck : false
             });
+            //$(".fr-element").attr("contenteditable", false);
             $('div.opsi').froalaEditor({
               toolbarInline: true,
               charCounterCount: false,
@@ -357,15 +371,18 @@
             });
             $('.selector').froalaEditor('commands.show');
         });
+        
         $(function(){
           $('div#opsiGanda1, div#opsiGanda2, div#opsiGanda3, div#opsiGanda4, div#opsiGanda5, div#opsiIsian, textarea#opsiEssay, textarea#opsiGandaT1').froalaEditor({
             toolbarInline: true,
             charCounterCount: false,
             toolbarButtons: ['strikeThrough', 'highlight', 'bold', 'italic', 'underline', '-', 'undo', 'redo'],
             toolbarVisibleWithoutSelection: true,
-            placeholderText: 'Ketik jawaban'
+            placeholderText: 'Ketik jawaban',
+            spellcheck : false
           });
         });
+        
         $(function(){
             $(".setjawaban").click(function(){
               $(".setjawaban").removeClass("fa fa-circle-thin");
@@ -373,16 +390,60 @@
               $(".setjawaban").css({"color":"#dadada"})
               $(this).removeClass("fa fa-circle-thin");
               $(this).addClass("fa fa-circle");
+              $(this).addClass("selected");
               $(this).css({
                 "color" : "#32CD32"
               });
+              $x = $("#tandai").attr('data-id');
+              $ini = ".nomor[data-nomor="+$x+"]";
+              $($ini).css({"background-color":"#32CD32", "color":"#ffffff", "border-color":"#32CD32"}); 
               //$(this).closest('.checklist').find()
             });
+            $(".nomor[data-nomor='1']").css({"background-color":"#4ABDAC", "color":"#ffffff", "border-color":"#4ABDAC"});
         });
+        
         $(".opsijawaban").hover(function(){
           $(this).css({"background-color" : "#e7e7e7"});
         }, function(){
           $(this).css({"background-color" : "#ffffff"});
+        });
+        
+        $("#tandai") .click(function(){
+            $x = $(this).attr('data-id');
+            $ini = ".nomor[data-nomor="+$x+"]";
+            if ($("#tandai").html() == '<i class="fa fa-bookmark"></i> Batal Tandai'){
+                $("#tandai").html('<i class="fa fa-bookmark-o"></i> Tandai');
+                $($ini).css({"background-color":"#4ABDAC", "color":"#ffffff", "border-color":"#4ABDAC"}); 
+              }
+              else{
+                ($("#tandai").html('<i class="fa fa-bookmark"></i> Batal Tandai'));
+                //$($ini).hasClass("selected").css({"background-color":"#32CD32", "color":"#ffffff", "border-color":"#32CD32"});
+                $($ini).css({"background-color":"#F7B733", "color":"#ffffff", "border-color":"#F7B733"}); 
+              }
+        });
+
+        /* Timer */
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10)
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.text(minutes + ":" + seconds);
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        jQuery(function ($) {
+            var fiveMinutes = 60 * 5,
+                display = $('#time');
+            startTimer(fiveMinutes, display);
         });
     </script>
   </body>
