@@ -325,6 +325,7 @@
     <!-- Include Language file if we want to use it. -->
     <script type="text/javascript" src="froala/js/languages/ro.js"></script>
     <script>
+      /* Froala Editor */
         $(function() {
             $.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
             $.FroalaEditor.RegisterCommand('clear', {
@@ -369,7 +370,6 @@
               toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', '-', 'undo', 'redo', 'align', 'formatOL', 'formatUL',  '-', 'insertImage', 'insertLink', 'indent', 'outdent', 'insertFile', 'insertVideo'],
               placeholderText: 'Ketik jawaban'
             });
-            $('.selector').froalaEditor('commands.show');
         });
         
         $(function(){
@@ -383,6 +383,8 @@
           });
         });
         
+
+        /* Set Jawaban yang dipilih */
         $(function(){
             $(".setjawaban").click(function(){
               $(".setjawaban").removeClass("fa fa-circle-thin");
@@ -402,12 +404,14 @@
             $(".nomor[data-nomor='1']").css({"background-color":"#4ABDAC", "color":"#ffffff", "border-color":"#4ABDAC"});
         });
         
+        /* Hover opsi jawaban */
         $(".opsijawaban").hover(function(){
           $(this).css({"background-color" : "#e7e7e7"});
         }, function(){
           $(this).css({"background-color" : "#ffffff"});
         });
         
+        /* Menandai soal */
         $("#tandai") .click(function(){
             $x = $(this).attr('data-id');
             $ini = ".nomor[data-nomor="+$x+"]";
@@ -439,7 +443,6 @@
                 }
             }, 1000);
         }
-
         jQuery(function ($) {
             var fiveMinutes = 60 * 5,
                 display = $('#time');
