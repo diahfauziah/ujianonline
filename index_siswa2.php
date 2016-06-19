@@ -135,15 +135,26 @@
         cursor: pointer;
         border-radius: 4px;
       }
-      .button1, .button1:link, .button1:visited, .col-md-3 a:link, .col-md-3 a:visited, .col-md-3 a:active {
+      .button1, .button1:link, .button1:visited {
         background-color: #ffffff;
         color: #F7B733;
         border: 1px solid #F7B733;
       }
-      .button1:hover, .col-md-3 a:hover {
+      .button1:hover {
         background-color: #F7B733;
         color: #ffffff;
         border: 1px solid #F7B733;
+      }
+      .button2, .button2:link, .button2:visited {
+        background-color: #ffffff;
+        color: #4ABDAC;
+        border: 1px solid #4ABDAC;
+        font-size: 14px;
+      }
+      .button2:hover {
+        background-color: #4ABDAC;
+        color: #ffffff;
+        border: 1px solid #4ABDAC;
       }
       .circle {
         width: 30px;
@@ -194,6 +205,7 @@
                   $id = $_GET['id'];
                   $query = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
                   $soal = mysqli_fetch_array($query);
+                  $i = $soal['nomor_soal']+1;
                 ?>
                 <div style="margin-left:10px; width:15px; float:left;">
                   <strong id="nomor"><?php echo $soal['nomor_soal'] ?>. </strong>
@@ -206,7 +218,7 @@
                   </div>
                 </div>
               </div>  
-              <button type="button" class="button button1 pull-right" style="margin-top:8px; margin-right:4px; padding: 4px 18px; outline:none;" data-id="<?php echo $soal['nomor_soal'] ?>" id="tandai"><i class="fa fa-bookmark-o"></i> Tandai</button>
+              <button type="button" class="button button1 pull-right" style="margin-top:8px; margin-right:4px; padding: 4px 18px; outline:none;" data-id="<?php echo $soal['nomor_soal'] ?>" id="tandai"><i class="fa fa-bookmark"></i> Tandai</button>
             </div> 
             <!-- Opsi Jawaban --> 
             <ul class="list-group">
@@ -226,21 +238,11 @@
                   echo '</li>';
                 }
               ?>
-       <!--   <li class="list-group-item opsijawaban">
-                <div class="row">
-                  <div style="margin-left:50px; width:50px; float:left; padding-right:10px;">
-                    <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                  </div>
-                  <div style="width:85%;  margin-left:-20px;" class="col-md-9">
-                    <div id="opsiGanda1">Ndak </div>
-                  </div>  
-                </div> 
-              </li> -->
             </ul>
           </div>
           <div class="form-group">
-            <button type="button" class="btn btn-default col-md-6" style="border-radius:0px;"><span class="glyphicon glyphicon-chevron-left"></span> Soal sebelumnya</button>
-            <button type="button" class="btn btn-default col-md-6" style="border-radius:0px;">Soal berikutnya <span class="glyphicon glyphicon-chevron-right"></span></button>
+            <a href="#" type="button" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none"><span class="glyphicon glyphicon-chevron-left"></span> <b>Soal sebelumnya</b></a>
+            <a href="#" type="button" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none"><b>Soal berikutnya</b> <span class="glyphicon glyphicon-chevron-right"></span></a>
           </div>  
         </div>
         <div class="col-md-2" style="padding-left:0px;">
@@ -401,9 +403,11 @@
               $($ini).css({"background-color":"#32CD32", "color":"#ffffff", "border-color":"#32CD32"}); 
               //$(this).closest('.checklist').find()
             });
-            $(".nomor[data-nomor='1']").css({"background-color":"#4ABDAC", "color":"#ffffff", "border-color":"#4ABDAC"});
+
         });
-        
+        /* set nomor sekarang*/
+        $(".nomor[data-nomor='1']").css({"background-color":"#e7e7e7", "color":"#000000", "border-color":"#e7e7e7"});
+
         /* Hover opsi jawaban */
         $(".opsijawaban").hover(function(){
           $(this).css({"background-color" : "#e7e7e7"});
@@ -415,12 +419,12 @@
         $("#tandai") .click(function(){
             $x = $(this).attr('data-id');
             $ini = ".nomor[data-nomor="+$x+"]";
-            if ($("#tandai").html() == '<i class="fa fa-bookmark"></i> Batal Tandai'){
-                $("#tandai").html('<i class="fa fa-bookmark-o"></i> Tandai');
-                $($ini).css({"background-color":"#4ABDAC", "color":"#ffffff", "border-color":"#4ABDAC"}); 
+            if ($("#tandai").html() == '<i class="fa fa-bookmark-o"></i> Batal Tandai'){
+                $("#tandai").html('<i class="fa fa-bookmark"></i> Tandai');
+                $($ini).css({"background-color":"#e7e7e7", "color":"#000000", "border-color":"#e7e7e7"}); 
               }
               else{
-                ($("#tandai").html('<i class="fa fa-bookmark"></i> Batal Tandai'));
+                ($("#tandai").html('<i class="fa fa-bookmark-o"></i> Batal Tandai'));
                 //$($ini).hasClass("selected").css({"background-color":"#32CD32", "color":"#ffffff", "border-color":"#32CD32"});
                 $($ini).css({"background-color":"#F7B733", "color":"#ffffff", "border-color":"#F7B733"}); 
               }
