@@ -74,6 +74,7 @@
       body {
         font:400 14px Lato, sans-serif;
         line-height: 1.8;
+        
         /*color: #818181;*/
       } 
       .navbar {
@@ -82,6 +83,7 @@
         border: 0; 
         font-size: 12px !important;
         border-radius: 0;
+        /*background-color: #ecf8f6;*/
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -136,17 +138,17 @@
         border-radius: 4px;
       }
       .button1, .button1:link, .button1:visited {
-        background-color: #ffffff;
-        color: #F7B733;
-        border: 1px solid #F7B733;
-      }
-      .button1:hover {
         background-color: #F7B733;
         color: #ffffff;
         border: 1px solid #F7B733;
       }
-      .button2, .button2:link, .button2:visited {
+      .button1:hover {
         background-color: #ffffff;
+        color: #F7B733;
+        border: 1px solid #F7B733;
+      }
+      .button2, .button2:link, .button2:visited {
+        background-color: #f8f8f8;
         color: #4ABDAC;
         border: 1px solid #4ABDAC;
         font-size: 14px;
@@ -155,6 +157,9 @@
         background-color: #4ABDAC;
         color: #ffffff;
         border: 1px solid #4ABDAC;
+      }
+      .panel {
+
       }
       .circle {
         width: 30px;
@@ -251,8 +256,7 @@
               echo   '</div>';
             }
           ?>
-        </div>
-
+          </div>
           <div class="form-group">
             <a href="#" type="button" id="btnprev" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none"><span class="glyphicon glyphicon-chevron-left"></span> Soal sebelumnya</a>
             <a href="#" type="button" id="btnnext" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none">Soal berikutnya <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -292,6 +296,7 @@
                 <a href="#" class="btn btn-default nomor">28</a>
                 <a href="#" class="btn btn-default nomor">29</a>
                 <a href="#" class="btn btn-default nomor">30</a>
+              </div>
             </div>
           </div>
         </div>
@@ -436,19 +441,18 @@
           //$("#panelsoal > .panel").not('#kotak2').hide();
         });
 
+        $soal_sekarang = 1;
+
         $("#btnnext").click(function(){
-          var x = $("#tandai").attr('data-id');
-          var y = parseInt(x) + 1;
-          $kotaknext = "#kotak"+y;
+          $soal_sekarang = $soal_sekarang + 1
+          $kotaknext = "#kotak"+$soal_sekarang;
           $($kotaknext).show();
           $($kotaknext).siblings().hide();
         });
 
         $("#btnprev").click(function(){
-          var x = $("#tandai").attr('data-id');
-          var y = parseInt(x) - 1;
-          alert(y);
-          $kotakprev = "#kotak"+y;
+          $soal_sekarang = $soal_sekarang - 1;
+          $kotakprev = "#kotak"+$soal_sekarang;
           $($kotakprev).show();
           $($kotakprev).siblings().hide();
         });
@@ -456,13 +460,22 @@
 
         /* Pilih opsi jawaban */
         $(".opsijawaban").dblclick(function(){
-          $(this).css({"background-color" : "#F7B733"});
+          $(this).css({"background-color" : "#b4e3dc"});
           $(this).addClass("selected");
+          $(this).siblings().find('.setjawaban').removeClass("fa-circle-thin");
+          $(this).siblings().find('.setjawaban').addClass("fa-circle-thin");
+          $(this).siblings().find('.setjawaban').css({"color":"#dadada"});
+          $(this).find('.setjawaban').removeClass("fa fa-circle-thin");
+          $(this).find('.setjawaban').addClass("fa fa-circle");
+          $(this).find('.setjawaban').css({"color" : "#4ABDAC"});
+          $(this).hover(function(){
+            $(this).css({"background-color":"#b4e3dc"});
+          });
         });
 
         /* Hover opsi jawaban */
         $(".opsijawaban").hover(function(){
-          $(this).css({"background-color" : "#e7e7e7"});
+          $(this).css({"background-color" : "#ececec"});
         }, function(){
           $(this).css({"background-color" : "#ffffff"});
         });
