@@ -173,6 +173,13 @@
   </head>
   <body>
     <!-- Navbar -->
+    <?php include("koneksi.php");
+      $id = $_GET['id'];
+      $query = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
+      //$soal = mysqli_fetch_array($query);
+      $query3 = mysqli_query($link, "SELECT `judul_ujian` FROM `info_ujian` WHERE `id_ujian`='$id' ");
+      $judul = mysqli_fetch_array($query3);
+    ?>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -181,7 +188,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left: 230px">Ujian Online</a>
+          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #4ABDAC;"><?php echo $judul['judul_ujian'] ?></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right" style="padding-right: 160px;">
@@ -198,33 +205,36 @@
         <div id="kotakSoal" class="col-md-10">
           Waktu ujian tersisa: <b><span id="time">05:00</span></b> menit
           <a class="pull-right" href="#" id="hide"><u>Hide daftar soal</u></a>
-          <div class="panel panel-default" style="border-radius:0px; margin-bottom:0px">
-            <div class="panel-body" style="margin-bottom:-5px;">
-              <div class="row">
-                <?php include("koneksi.php");
-                  $id = $_GET['id'];
-                  $query = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
-                  $soal = mysqli_fetch_array($query);
-                  $i = $soal['nomor_soal']+1;
-                ?>
-                <div style="margin-left:10px; width:15px; float:left;">
-                  <strong id="nomor"><?php echo $soal['nomor_soal'] ?>. </strong>
-                </div>
-                <div style="margin-left: 0px;">  
-                  <div class="col-md-12" style="width:96%">
-                    <textarea id="edit1" class="form-control" rows="3">
-                      <?php echo $soal['pertanyaan'] ?>
-                    </textarea>
-                  </div>
-                </div>
-              </div>  
-              <button type="button" class="button button1 pull-right" style="margin-top:8px; margin-right:4px; padding: 4px 18px; outline:none;" data-id="<?php echo $soal['nomor_soal'] ?>" id="tandai"><i class="fa fa-bookmark"></i> Tandai</button>
-            </div> 
-            <!-- Opsi Jawaban --> 
-            <ul class="list-group">
-              <?php 
-                $id_soal = $soal['id_soal'];
-                $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+          <div id="panelsoal">
+          <?php 
+            while($soal = mysqli_fetch_array($query)){
+              echo '<div class="panel panel-default kotaksoal" style="border-radius:0px; margin-bottom:0px" id="kotak';
+              echo   $soal['nomor_soal'];
+              echo   '" hidden>';
+              echo   '<div class="panel-body" style="margin-bottom:-5px;">';
+              echo     '<div class="row">';
+              echo       '<div style="margin-left:10px; width:15px; float:left;">';
+              echo         '<strong id="nomor">';
+              echo         $soal['nomor_soal'];
+              echo         '.';
+              echo         '</strong>';
+              echo       '</div>';
+              echo       '<div style="margin-left: 0px;">';
+              echo         '<div class="col-md-12" style="width:96%">';
+              echo           '<textarea id="edit1" class="form-control edit" rows="3">';
+              echo             $soal['pertanyaan'];
+              echo           '</textarea>';
+              echo         '</div>';
+              echo       '</div>';
+              echo     '</div>';
+              echo     '<button type="button" class="button button1 pull-right" style="margin-top:8px; margin-right:4px; padding: 4px 18px; outline:none;" data-id="';
+              echo     $soal['nomor_soal'];
+              echo     '" id="tandai"><i class="fa fa-bookmark"></i> Tandai</button>';
+              echo    '</div>';
+
+              echo    '<ul class="list-group">';
+              $id_soal = $soal['id_soal'];
+              $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
                 while($pilihan = mysqli_fetch_array($query2)){
                   echo '<li class="list-group-item opsijawaban">';
                   echo   '<div class="row">';
@@ -237,12 +247,15 @@
                   echo    '</div>';
                   echo '</li>';
                 }
-              ?>
-            </ul>
-          </div>
+              echo    '</ul>';
+              echo   '</div>';
+            }
+          ?>
+        </div>
+
           <div class="form-group">
-            <a href="#" type="button" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none"><span class="glyphicon glyphicon-chevron-left"></span> <b>Soal sebelumnya</b></a>
-            <a href="#" type="button" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none"><b>Soal berikutnya</b> <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a href="#" type="button" id="btnprev" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none"><span class="glyphicon glyphicon-chevron-left"></span> Soal sebelumnya</a>
+            <a href="#" type="button" id="btnnext" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none">Soal berikutnya <span class="glyphicon glyphicon-chevron-right"></span></a>
           </div>  
         </div>
         <div class="col-md-2" style="padding-left:0px;">
@@ -358,14 +371,14 @@
               }
             });
 
-            $('#edit1').froalaEditor({
+            $('.edit').froalaEditor({
               toolbarButtons: ['undo', 'redo', 'clear', 'bold', 'italic', 'underline', 'strikeThrough', 'highlight', 'remove'],
               placeholderText: 'Ketik pertanyaan',
               charCounterCount: false,
               contenteditable: false,
               spellcheck : false
             });
-            //$(".fr-element").attr("contenteditable", false);
+            $(".fr-element").attr("contenteditable", false);
             $('div.opsi').froalaEditor({
               toolbarInline: true,
               charCounterCount: false,
@@ -383,6 +396,7 @@
             placeholderText: 'Ketik jawaban',
             spellcheck : false
           });
+          //$(".fr-element").attr("contenteditable", false);
         });
         
 
@@ -403,10 +417,48 @@
               $($ini).css({"background-color":"#32CD32", "color":"#ffffff", "border-color":"#32CD32"}); 
               //$(this).closest('.checklist').find()
             });
-
         });
-        /* set nomor sekarang*/
-        $(".nomor[data-nomor='1']").css({"background-color":"#e7e7e7", "color":"#000000", "border-color":"#e7e7e7"});
+
+        /* Set nomor sekarang*/
+        $(function(){
+          $x = $("#tandai").attr('data-id');
+          $ini = ".nomor[data-nomor="+$x+"]";
+          $($ini).css({"background-color":"#e7e7e7", "color":"#000000", "border-color":"#e7e7e7"});
+        });
+
+        /* Tampilkan nomor sekarang */
+        $(function(){
+          //$("#kotak1").removeAttr("hidden");
+          $x = $("#tandai").attr('data-id');
+          $kotaksekarang = "#kotak"+$x;
+          $($kotaksekarang).show();
+          $($kotaksekarang).siblings().hide();
+          //$("#panelsoal > .panel").not('#kotak2').hide();
+        });
+
+        $("#btnnext").click(function(){
+          var x = $("#tandai").attr('data-id');
+          var y = parseInt(x) + 1;
+          $kotaknext = "#kotak"+y;
+          $($kotaknext).show();
+          $($kotaknext).siblings().hide();
+        });
+
+        $("#btnprev").click(function(){
+          var x = $("#tandai").attr('data-id');
+          var y = parseInt(x) - 1;
+          alert(y);
+          $kotakprev = "#kotak"+y;
+          $($kotakprev).show();
+          $($kotakprev).siblings().hide();
+        });
+
+
+        /* Pilih opsi jawaban */
+        $(".opsijawaban").dblclick(function(){
+          $(this).css({"background-color" : "#F7B733"});
+          $(this).addClass("selected");
+        });
 
         /* Hover opsi jawaban */
         $(".opsijawaban").hover(function(){
