@@ -145,13 +145,13 @@
         border-radius: 4px;
       }
       .button1, .button1:link, .button1:visited {
-        background-color: #F7B733;
-        color: #ffffff;
+        background-color: #ffffff;
+        color: #F7B733;
         border: 1px solid #F7B733;
       }
       .button1:hover {
-        background-color: #ffffff;
-        color: #F7B733;
+        background-color: #F7B733;
+        color: #ffffff;
         border: 1px solid #F7B733;
       }
       .button2, .button2:link, .button2:visited {
@@ -183,6 +183,9 @@
         background-color : #F7B733;
         color : #ffffff;
         border-color: #F7B733;
+      }
+      .selected {
+        background-color : #b4e3dc;
       }
       .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
       .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
@@ -459,7 +462,7 @@
           $soal_sebelumnya = $soal_sekarang - 1;
           $sebelumnya = ".nomor[data-nomor="+$soal_sebelumnya+"]";
           $($sebelumnya).removeClass("nomor-active");
-          $($sebelumnya).css({"background-color":"#ffffff", "color":"#000000", "border-color":"#ccc"});
+          $($sebelumnya).css({"background-color":"#f8f8f8", "color":"#000000", "border-color":"f8f8f8"});
         });
 
 
@@ -476,21 +479,25 @@
           $soal_tadi = $soal_sekarang + 1;
           $tadi = ".nomor[data-nomor="+$soal_tadi+"]";
           $($tadi).removeClass("nomor-active");
-          $($tadi).css({"background-color":"#ffffff", "color":"#000000", "border-color":"#ccc"});
+          $($tadi).css({"background-color":"#f8f8f8", "color":"#000000", "border-color":"#f8f8f8"});
         });
 
 
         /* Pilih opsi jawaban */
         $(".opsijawaban").dblclick(function(){
-          $(this).siblings().css({"background-color" : "#ffffff"});
-          $(this).css({"background-color" : "#b4e3dc"});
+          $(".opsijawaban").css({"background-color" : "#ffffff"});
+          
+          $(".opsijawaban").removeClass("selected");
           $(this).addClass("selected");
+
           $(this).siblings().find('.setjawaban').removeClass("fa-circle-thin");
           $(this).siblings().find('.setjawaban').addClass("fa-circle-thin");
           $(this).siblings().find('.setjawaban').css({"color":"#dadada"});
           $(this).find('.setjawaban').removeClass("fa fa-circle-thin");
           $(this).find('.setjawaban').addClass("fa fa-circle");
           $(this).find('.setjawaban').css({"color" : "#4ABDAC"});
+
+          $(this).css({"background-color" : "#b4e3dc"});
           $(this).hover(function(){
             $(this).css({"background-color":"#b4e3dc"});
           });
@@ -502,7 +509,8 @@
         }, function(){
           $(this).css({"background-color" : "#ffffff"});
         });
-        
+
+      
         /* Menandai soal */
         $("#tandai") .click(function(){
             $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
