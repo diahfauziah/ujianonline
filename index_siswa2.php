@@ -74,7 +74,7 @@
       body {
         font:400 14px Lato, sans-serif;
         line-height: 1.8;
-        
+        background-color: #f8f8f8;
         /*color: #818181;*/
       } 
       .navbar {
@@ -84,6 +84,8 @@
         font-size: 12px !important;
         border-radius: 0;
         /*background-color: #ecf8f6;*/
+        background-color: #ebebeb;
+        border-color: #ccc;
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -99,10 +101,14 @@
         overflow: visible;
       }
       .panel {
-        margin-top: 10px;
+        margin-top: 5px;
       }
       span.highlight {
         background-color: yellow;
+      }
+      .btn-default{
+        background-color: #f8f8f8;
+        border-color: #f8f8f8;
       }
       #teksSoal {
         padding-left: 20px;
@@ -120,6 +126,7 @@
         margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;
       }
       .nomor-active {
+        background-color:#e7e7e7; color:#000000; border-color:#e7e7e7;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
       .button {
@@ -159,7 +166,7 @@
         border: 1px solid #4ABDAC;
       }
       .panel {
-
+        border-color: #ffffff;
       }
       .circle {
         width: 30px;
@@ -171,6 +178,11 @@
         background: #4ABDAC;
         line-height: 28px;
         border: 1px solid #4ABDAC;
+      }
+      .tandai {
+        background-color : #F7B733;
+        color : #ffffff;
+        border-color: #F7B733;
       }
       .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
       .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
@@ -205,10 +217,11 @@
     </nav>
     
     <div class="container">
+
     <!--  <div class="circle">10</div> -->
       <div class="col-md-offset-1 col-md-10">
         <div id="kotakSoal" class="col-md-10">
-          Waktu ujian tersisa: <b><span id="time">05:00</span></b> menit
+          Waktu ujian tersisa: <b><span id="time"></span></b>
           <a class="pull-right" href="#" id="hide"><u>Hide daftar soal</u></a>
           <div id="panelsoal">
           <?php 
@@ -232,7 +245,7 @@
               echo         '</div>';
               echo       '</div>';
               echo     '</div>';
-              echo     '<button type="button" class="button button1 pull-right" style="margin-top:8px; margin-right:4px; padding: 4px 18px; outline:none;" data-id="';
+              echo     '<button type="button" class="button button1 pull-right btntandai" style="margin-top:8px; margin-right:4px; padding: 4px 18px; outline:none;" data-id="';
               echo     $soal['nomor_soal'];
               echo     '" id="tandai"><i class="fa fa-bookmark"></i> Tandai</button>';
               echo    '</div>';
@@ -267,35 +280,35 @@
             <div class="panel-body" style="padding: 5px 5px 5px 5px;">
               <div class="form-group">
                 <a href="#" class="btn btn-default nomor nomor-active" data-nomor="1">1</a>
-                <a href="index_siswa2.php?id=2" class="btn btn-default nomor" data-nomor="2">2</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="2">2</a>
                 <a href="#" class="btn btn-default nomor" data-nomor="3">3</a>
                 <a href="#" class="btn btn-default nomor" data-nomor="4">4</a>
                 <a href="#" class="btn btn-default nomor" data-nomor="5">5</a>
                 <a href="#" class="btn btn-default nomor" data-nomor="6">6</a>
-                <a href="#" class="btn btn-default nomor">7</a>
-                <a href="#" class="btn btn-default nomor">8</a>
-                <a href="#" class="btn btn-default nomor">9</a>
-                <a href="#" class="btn btn-default nomor">10</a>
-                <a href="#" class="btn btn-default nomor">11</a>
-                <a href="#" class="btn btn-default nomor">12</a>
-                <a href="#" class="btn btn-default nomor">13</a>
-                <a href="#" class="btn btn-default nomor">14</a>
-                <a href="#" class="btn btn-default nomor">15</a>
-                <a href="#" class="btn btn-default nomor">16</a>
-                <a href="#" class="btn btn-default nomor">17</a>
-                <a href="#" class="btn btn-default nomor">18</a>
-                <a href="#" class="btn btn-default nomor">19</a>
-                <a href="#" class="btn btn-default nomor">20</a>
-                <a href="#" class="btn btn-default nomor">21</a>
-                <a href="#" class="btn btn-default nomor">22</a>
-                <a href="#" class="btn btn-default nomor">23</a>
-                <a href="#" class="btn btn-default nomor">24</a>
-                <a href="#" class="btn btn-default nomor">25</a>
-                <a href="#" class="btn btn-default nomor">26</a>
-                <a href="#" class="btn btn-default nomor">27</a>
-                <a href="#" class="btn btn-default nomor">28</a>
-                <a href="#" class="btn btn-default nomor">29</a>
-                <a href="#" class="btn btn-default nomor">30</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="7">7</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="8">8</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="9">9</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="10">10</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="11">11</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="12">12</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="13">13</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="14">14</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="15">15</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="16">16</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="17">17</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="18">18</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="19">19</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="20">20</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="21">21</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="22">22</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="23">23</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="24">24</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="25">25</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="26">26</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="27">27</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="28">28</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="29">29</a>
+                <a href="#" class="btn btn-default nomor" data-nomor="30">30</a>
               </div>
             </div>
           </div>
@@ -420,46 +433,56 @@
               $x = $("#tandai").attr('data-id');
               $ini = ".nomor[data-nomor="+$x+"]";
               $($ini).css({"background-color":"#32CD32", "color":"#ffffff", "border-color":"#32CD32"}); 
-              //$(this).closest('.checklist').find()
             });
-        });
-
-        /* Set nomor sekarang*/
-        $(function(){
-          $x = $("#tandai").attr('data-id');
-          $ini = ".nomor[data-nomor="+$x+"]";
-          $($ini).css({"background-color":"#e7e7e7", "color":"#000000", "border-color":"#e7e7e7"});
-        });
-
-        /* Tampilkan nomor sekarang */
-        $(function(){
-          //$("#kotak1").removeAttr("hidden");
-          $x = $("#tandai").attr('data-id');
-          $kotaksekarang = "#kotak"+$x;
-          $($kotaksekarang).show();
-          $($kotaksekarang).siblings().hide();
-          //$("#panelsoal > .panel").not('#kotak2').hide();
         });
 
         $soal_sekarang = 1;
 
+        /* Tampilkan nomor sekarang */
+        $(function(){
+          $kotaksekarang = "#kotak"+$soal_sekarang;
+          $($kotaksekarang).show();
+          $($kotaksekarang).siblings().hide();
+        });
+
+
         $("#btnnext").click(function(){
-          $soal_sekarang = $soal_sekarang + 1
+          $soal_sekarang = $soal_sekarang + 1;
           $kotaknext = "#kotak"+$soal_sekarang;
           $($kotaknext).show();
           $($kotaknext).siblings().hide();
+          
+          $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
+          $($ini).addClass("nomor-active");
+          $($ini).css({"background-color":"#e7e7e7", "color":"#000000", "border-color":"#e7e7e7"});
+
+          $soal_sebelumnya = $soal_sekarang - 1;
+          $sebelumnya = ".nomor[data-nomor="+$soal_sebelumnya+"]";
+          $($sebelumnya).removeClass("nomor-active");
+          $($sebelumnya).css({"background-color":"#ffffff", "color":"#000000", "border-color":"#ccc"});
         });
+
 
         $("#btnprev").click(function(){
           $soal_sekarang = $soal_sekarang - 1;
-          $kotakprev = "#kotak"+$soal_sekarang;
-          $($kotakprev).show();
-          $($kotakprev).siblings().hide();
+          $kotaknext = "#kotak"+$soal_sekarang;
+          $($kotaknext).show();
+          $($kotaknext).siblings().hide();
+          
+          $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
+          $($ini).addClass("nomor-active");
+          $($ini).css({"background-color":"#e7e7e7", "color":"#000000", "border-color":"#e7e7e7"});
+
+          $soal_tadi = $soal_sekarang + 1;
+          $tadi = ".nomor[data-nomor="+$soal_tadi+"]";
+          $($tadi).removeClass("nomor-active");
+          $($tadi).css({"background-color":"#ffffff", "color":"#000000", "border-color":"#ccc"});
         });
 
 
         /* Pilih opsi jawaban */
         $(".opsijawaban").dblclick(function(){
+          $(this).siblings().css({"background-color" : "#ffffff"});
           $(this).css({"background-color" : "#b4e3dc"});
           $(this).addClass("selected");
           $(this).siblings().find('.setjawaban').removeClass("fa-circle-thin");
@@ -475,37 +498,39 @@
 
         /* Hover opsi jawaban */
         $(".opsijawaban").hover(function(){
-          $(this).css({"background-color" : "#ececec"});
+          $(this).css({"background-color" : "#ebebeb"});
         }, function(){
           $(this).css({"background-color" : "#ffffff"});
         });
         
         /* Menandai soal */
         $("#tandai") .click(function(){
-            $x = $(this).attr('data-id');
-            $ini = ".nomor[data-nomor="+$x+"]";
+            $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
             if ($("#tandai").html() == '<i class="fa fa-bookmark-o"></i> Batal Tandai'){
-                $("#tandai").html('<i class="fa fa-bookmark"></i> Tandai');
-                $($ini).css({"background-color":"#e7e7e7", "color":"#000000", "border-color":"#e7e7e7"}); 
+                // membatalkan:
+                  $("#tandai").html('<i class="fa fa-bookmark"></i> Tandai');
+                  $($ini).removeClass("tandai");
               }
               else{
-                ($("#tandai").html('<i class="fa fa-bookmark-o"></i> Batal Tandai'));
-                //$($ini).hasClass("selected").css({"background-color":"#32CD32", "color":"#ffffff", "border-color":"#32CD32"});
-                $($ini).css({"background-color":"#F7B733", "color":"#ffffff", "border-color":"#F7B733"}); 
+                // menandai
+                  ($("#tandai").html('<i class="fa fa-bookmark-o"></i> Batal Tandai'));
+                  $($ini).addClass("tandai");
               }
         });
 
         /* Timer */
         function startTimer(duration, display) {
-            var timer = duration, minutes, seconds;
+            var timer = duration, hours, minutes, seconds;
             setInterval(function () {
-                minutes = parseInt(timer / 60, 10)
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt(timer % 3600 / 60, 10)
                 seconds = parseInt(timer % 60, 10);
 
+                hours = hours < 10 ? "0" + hours : hours;
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                display.text(minutes + ":" + seconds);
+                display.text(hours + ":" + minutes + ":" + seconds);
 
                 if (--timer < 0) {
                     timer = duration;
@@ -513,7 +538,7 @@
             }, 1000);
         }
         jQuery(function ($) {
-            var fiveMinutes = 60 * 5,
+            var fiveMinutes = 60 * 97.5,
                 display = $('#time');
             startTimer(fiveMinutes, display);
         });
