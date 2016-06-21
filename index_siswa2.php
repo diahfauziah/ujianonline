@@ -56,16 +56,6 @@
                 ($("#hide").html("<u>Hide daftar soal</u>"));
               }
           });
-         // $('[data-toggle="tooltip"]').tooltip({trigger: 'manual'}).tooltip('show');
-          var i = 301; // i = 60 * menit
-          var counterBack = setInterval(function(){
-            i--;
-            if(i>=0){
-              $('.progress-bar').css('width', (i*100/300)+'%');
-            } else {
-              clearTimeout(counterBack);
-            }
-          }, 1000); 
       });
     </script>
 
@@ -225,7 +215,7 @@
       <div class="col-md-offset-1 col-md-10">
         <div id="kotakSoal" class="col-md-10">
           Waktu ujian tersisa: <b><span id="time"></span></b>
-          <a class="pull-right" href="#" id="hide"><u>Hide daftar soal</u></a>
+      <!--    <a class="pull-right" href="#" id="hide"><u>Hide daftar soal</u></a> -->
           <div id="panelsoal">
           <?php 
             while($soal = mysqli_fetch_array($query)){
@@ -278,7 +268,7 @@
             <a href="#" type="button" id="btnnext" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none">Soal berikutnya <span class="glyphicon glyphicon-chevron-right"></span></a>
           </div>  
         </div>
-        <div class="col-md-2" style="padding-left:0px;">
+        <div class="col-md-2" style="padding-left:0px; margin-top:25px;">
           <div class="panel panel-default" style="width:185px;" id="nomorSoal">
             <div class="panel-body" style="padding: 5px 5px 5px 5px;">
               <div class="form-group">
@@ -501,6 +491,9 @@
           $(this).hover(function(){
             $(this).css({"background-color":"#b4e3dc"});
           });
+
+          $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
+          $($ini).css({"background-color" : "#4ABDAC", "color" : "#ffffff", "border-color" : "#4ABDAC"});
         });
 
         /* Hover opsi jawaban */
