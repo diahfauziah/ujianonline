@@ -10,6 +10,9 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Include font awesome -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
@@ -123,7 +126,7 @@
             <p>Bla blah</p>
           </div>
         </div>
-        <a href="index_siswa2.php?id=<?php echo $id ?>" type="button" class="button button1" style="border-radius:0px; text-decoration:none;">Mulai Ujian</a>
+        <a href="index_siswa2.php?id=<?php echo $id ?>" type="button" class="button button1 pull-right" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
       </div>
     </div>
     <!-- Include jQuery. -->

@@ -131,10 +131,13 @@
               <div class="form-group">
                 <input class="form-control" placeholder="password" style="border-radius:0px">
               </div>
+              <div class="form-group">
+                <a href="petunjuk.php?id=<?php echo $id ?>" type="button" class="button button1 col-md-12" style="border-radius:0px; text-decoration:none;">Masuk</a>
+              </div>
+              <p style="font-size:12px; text-align:center; padding-top:50px;">Belum punya akun? <a href="#">Daftar disini</a></p>
             </form>
           </div>
         </div>
-        <a href="index_siswa2.php?id=<?php echo $id ?>" type="button" class="button button1" style="border-radius:0px; text-decoration:none;">Mulai Ujian</a>
       </div>
     </div>
     <!-- Include jQuery. -->

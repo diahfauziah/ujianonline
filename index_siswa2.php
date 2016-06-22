@@ -240,7 +240,9 @@
               echo     '</div>';
               echo     '<button type="button" class="button button1 pull-right btntandai" style="margin-top:8px; margin-right:4px; padding: 4px 18px; outline:none;" data-id="';
               echo     $soal['nomor_soal'];
-              echo     '" id="tandai"><i class="fa fa-bookmark"></i> Tandai</button>';
+              echo     '" id="tandai';
+              echo     $soal['nomor_soal'];
+              echo     '"><i class="fa fa-bookmark"></i> Tandai</button>';
               echo    '</div>';
 
               echo    '<ul class="list-group">';
@@ -268,7 +270,8 @@
             <a href="#" type="button" id="btnnext" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none">Soal berikutnya <span class="glyphicon glyphicon-chevron-right"></span></a>
           </div>  
         </div>
-        <div class="col-md-2" style="padding-left:0px; margin-top:25px;">
+        <div class="col-md-2" style="padding-left:0px;">
+          Daftar soal
           <div class="panel panel-default" style="width:185px;" id="nomorSoal">
             <div class="panel-body" style="padding: 5px 5px 5px 5px;">
               <div class="form-group">
@@ -383,7 +386,7 @@
             });
 
             $('.edit').froalaEditor({
-              toolbarButtons: ['undo', 'redo', 'clear', 'bold', 'italic', 'underline', 'strikeThrough', 'highlight', 'remove'],
+              toolbarButtons: ['undo', 'redo', 'clearFormatting', 'bold', 'italic', 'underline', 'strikeThrough', 'highlight', 'remove'],
               placeholderText: 'Ketik pertanyaan',
               charCounterCount: false,
               contenteditable: false,
@@ -505,17 +508,20 @@
 
       
         /* Menandai soal */
-        $("#tandai") .click(function(){
-            $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
-            if ($("#tandai").html() == '<i class="fa fa-bookmark-o"></i> Batal Tandai'){
+        $(".btntandai") .click(function(){
+            $nomorini = ".nomor[data-nomor="+$soal_sekarang+"]";
+            $ini = "#tandai"+$soal_sekarang;
+            if ($($ini).html() == '<i class="fa fa-bookmark-o"></i> Batal Tandai'){
                 // membatalkan:
-                  $("#tandai").html('<i class="fa fa-bookmark"></i> Tandai');
-                  $($ini).removeClass("tandai");
+                  $($ini).html('<i class="fa fa-bookmark"></i> Tandai');
+                  $($nomorini).removeClass("tandai");
+                  $($nomorini).addClass("nomor-active");
               }
               else{
                 // menandai
-                  ($("#tandai").html('<i class="fa fa-bookmark-o"></i> Batal Tandai'));
-                  $($ini).addClass("tandai");
+                  $($ini).html('<i class="fa fa-bookmark-o"></i> Batal Tandai');
+                  $($nomorini).removeClass("nomor-active");
+                  $($nomorini).addClass("tandai");
               }
         });
 

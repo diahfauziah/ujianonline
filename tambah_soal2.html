@@ -215,212 +215,191 @@
     </nav>
     
     <div class="container">
-      <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family:'didact gothic', sans-serif">Tambah Soal</h2>
-      <div class="row">
-        <div class="col-xs-6 col-md-9">
-         <ol class="breadcrumb">
-            <li><a href="index_guru.php">Home</a></li>
-            <li><a href="view_ujian.html">Deret Aritmetika</a></li>
-            <li class="active">Tambah Soal</li>
-         </ol>
-        </div>
-        <div class="col-xs-6 col-md-3">
-        </div>
-      </div>
+      <h2 style="margin-left:15px; color:#4ABDAC; margin-bottom:30px; margin-top:0px; font-family:'didact gothic', sans-serif">Tambah Soal</h2>
+      
       <div id="soal">
-        <div class="panel panel-default" style="margin-top:-10px;">
-          <div class="panel-body">
             <div class="row" style="margin-left:5px;">
               <div class="col-md-2">
-                <label>Pilih jenis soal:</label>
+                <ul class="nav nav-pills nav-stacked">
+                  <li class="active"><a data-toggle="pill" class="hashtip" href="#formPilihanGanda" title="<u><b>Contoh</b></u><br>Apa Ibukota Provinsi Jawa Barat?<br><i class='fa fa-circle-thin'></i></span> Jakarta<br><i class='fa fa-circle'></i> Bandung<br><i class='fa fa-circle-thin'></i> Surabaya<br><i class='fa fa-circle-thin'></i> Bogor<br>">Pilihan ganda</a></li>
+                  <li><a data-toggle="pill" href="#formIsian" class="hashtip" title="<u><b>Contoh</b></u><br>Ibukota Provinsi Jawa Barat yaitu <input type=text class='form-control'>">Isian singkat</a></li>
+                  <li><a data-toggle="pill" href="#formEssay" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Essay</a></li>
+                  <li><a data-toggle="pill" href="#formPencocokan" class="hashtip" title="<u><b>Contoh</b></u><br>Cocokkan provinsi dan ibukota provinsi yang sesuai!<br> Jawa Barat <span class='glyphicon glyphicon-resize-horizontal'></span> Bandung <br> Jawa Timur <span class='glyphicon glyphicon-resize-horizontal'></span> Surabaya">Pencocokan</a></li>
+                  <li><a data-toggle="pill" href="#formBenarSalah" class="hashtip" title="<u><b>Contoh</b></u><br>Bandung adalah Ibukota Provinsi Jawa Barat<br><span class='glyphicon glyphicon-record'></span> Benar<br><span class='glyphicon glyphicon-record'></span> Salah">Benar/Salah</a></li>
+                  <li><a data-toggle="pill" href="#formCheckbox" class="hashtip" title="<u><b>Contoh</b></u><br>Manakah yang berada di Provinsi Jawa Barat?<br> <span class='glyphicon glyphicon-unchecked'></span> Jakarta<br><span class='glyphicon glyphicon-check'></span> Bandung<br><span class='glyphicon glyphicon-check'></span> Depok<br><span class='glyphicon glyphicon-unchecked'></span> Banten">Checkbox</a></li>
+                  <li><a data-toggle="pill" href="#formSebabAkibat" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Sebab - akibat</a></li>
+                  <li><a data-toggle="pill" href="#formPilihan123" class="hashtip" title="">Pilihan 1,2,3,4</a></li>
+                </ul>
               </div>
-              <ul class="nav nav-pills">
-                <li class="active"><a data-toggle="pill" class="hashtip" href="#formPilihanGanda" title="<u><b>Contoh</b></u><br>Apa Ibukota Provinsi Jawa Barat?<br><i class='fa fa-circle-thin'></i></span> Jakarta<br><i class='fa fa-circle'></i> Bandung<br><i class='fa fa-circle-thin'></i> Surabaya<br><i class='fa fa-circle-thin'></i> Bogor<br>">Pilihan ganda</a></li>
-                <li><a data-toggle="pill" href="#formIsian" class="hashtip" title="<u><b>Contoh</b></u><br>Ibukota Provinsi Jawa Barat yaitu <input type=text class='form-control'>">Isian singkat</a></li>
-                <li><a data-toggle="pill" href="#formEssay" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Essay</a></li>
-                <li><a data-toggle="pill" href="#formPencocokan" class="hashtip" title="<u><b>Contoh</b></u><br>Cocokkan provinsi dan ibukota provinsi yang sesuai!<br> Jawa Barat <span class='glyphicon glyphicon-resize-horizontal'></span> Bandung <br> Jawa Timur <span class='glyphicon glyphicon-resize-horizontal'></span> Surabaya">Pencocokan</a></li>
-                <li><a data-toggle="pill" href="#formBenarSalah" class="hashtip" title="<u><b>Contoh</b></u><br>Bandung adalah Ibukota Provinsi Jawa Barat<br><span class='glyphicon glyphicon-record'></span> Benar<br><span class='glyphicon glyphicon-record'></span> Salah">Benar/Salah</a></li>
-                <li><a data-toggle="pill" href="#formCheckbox" class="hashtip" title="<u><b>Contoh</b></u><br>Manakah yang berada di Provinsi Jawa Barat?<br> <span class='glyphicon glyphicon-unchecked'></span> Jakarta<br><span class='glyphicon glyphicon-check'></span> Bandung<br><span class='glyphicon glyphicon-check'></span> Depok<br><span class='glyphicon glyphicon-unchecked'></span> Banten">Checkbox</a></li>
-                <li><a data-toggle="pill" href="#formSebabAkibat" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Sebab - akibat</a></li>
-                <li><a data-toggle="pill" href="#formPilihan123" class="hashtip" title="">Pilihan 1,2,3,4</a></li>
-              </ul>
-              <div class="tab-content">
-                <div id="formPilihanGanda" class="tab-pane fade in active">
-                  <div class="row">
-                    <div style="margin-left:10px; width:15px; float:left;">
-                      <strong id="nomor">1.</strong>
-                    </div>
-                    <div style="margin-left: 0px;">  
-                      <div class="col-md-12" style="width:96%">
-                        <form class="form-horizontal col-md-12">
-                          <div class="form-group">
-                             <label class="form-control-label">Pertanyaan</label>
-                             <textarea id="edit1" class="form-control" rows="3">
-                             </textarea>
+              <div class="col-md-10">
+                <div class="tab-content">
+                <div class="panel panel-default tab-pane fade in active" id="formPilihanGanda">
+                  <div class="panel-body">
+                    <div>
+                      <div class="row">
+                        <div style="margin-left:10px; width:15px; float:left;">
+                          <strong id="nomor">1.</strong>
+                        </div>
+                        <div style="margin-left: 0px;">  
+                          <div class="col-md-12" style="width:96%">
+                            <form class="form-horizontal col-md-12">
+                              <div class="form-group">
+                                 <label class="form-control-label">Pertanyaan</label>
+                                 <textarea id="edit1" class="form-control" rows="3">
+                                 </textarea>
+                              </div>
+                              <p style="margin-left:-10px; font-size:11px; color:#818181; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
+                              <div class="form-group" style="margin-bottom:10px">
+                                <div class="row">
+                                    <div style="float:left" style="width:15px">
+                                      <i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i>
+                                    </div>
+                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                    </div>
+                                    <div style="width:85%;  margin-left:-20px;" class="col-md-9">
+                                      <div class="form-control" id="opsiGanda1"></div>
+                                    </div>
+                                    <div style="float:left">
+                                      <i class="fa fa-trash"></i>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group" style="margin-bottom:10px;">
+                                <div class="row">
+                                  <div style="float:left" style="width:15px">
+                                      <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
+                                    </div>
+                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                    </div>
+                                    <div style="width:85%; margin-left:-20px;" class="col-md-9">
+                                      <div class="form-control" id="opsiGanda1"></div>
+                                    </div>
+                                    <div style="float:left">
+                                      <i class="fa fa-trash"></i>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group" style="margin-bottom:10px">
+                                <div class="row">
+                                    <div style="float:left" style="width:15px">
+                                      <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
+                                    </div>
+                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                    </div>
+                                    <div style="width:85%; margin-left:-20px;" class="col-md-9">
+                                      <div class="form-control" id="opsiGanda1"></div>
+                                    </div>
+                                    <div style="float:left">
+                                      <i class="fa fa-trash"></i>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group" style="margin-bottom:10px">
+                                <div class="row">
+                                    <div style="float:left" style="width:15px">
+                                      <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
+                                    </div>
+                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                    </div>
+                                    <div style="width:85%;margin-left:-20px;" class="col-md-9">
+                                      <div class="form-control" id="opsiGanda1"></div>
+                                    </div>
+                                    <div style="float:left">
+                                      <i class="fa fa-trash"></i>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
+                                <button class="btn btn-primary" style="margin-left:20px;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px;">
+                                <strong class="col-md-1">Poin:</strong>
+                                <div class="col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Benar </label>
+                                  <input type="text" class="form-control" style="width:32%">
+                                </div>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px;">
+                                <div class="col-md-push-1 col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Kosong</label>
+                                  <input type="text" class="form-control" style="width:32%" value="0"> 
+                                </div>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px">
+                                <div class="col-md-push-1 col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Salah</label>
+                                  <input type="text" class="form-control" style="width:32%" value="0"> 
+                                </div>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px">
+                                <div class="col-md-push-1 col-md-3">
+                                  <label style="width:60px;" class="form-control-label"></label>
+                                  <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
+                                </div>                            
+                              </div>
+                            </form>
                           </div>
-                          <p style="margin-left:-10px; font-size:11px; color:#818181; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
-                          <div class="form-group" style="margin-bottom:10px">
-                            <div class="row">
-                                <div style="float:left" style="width:15px">
-                                  <i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i>
-                                </div>
-                                <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                  <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                                </div>
-                                <div style="width:85%;  margin-left:-20px;" class="col-md-9">
-                                  <div class="form-control" id="opsiGanda1"></div>
-                                </div>
-                                <div style="float:left">
-                                  <i class="fa fa-trash"></i>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="form-group" style="margin-bottom:10px;">
-                            <div class="row">
-                              <div style="float:left" style="width:15px">
-                                  <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
-                                </div>
-                                <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                  <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                                </div>
-                                <div style="width:85%; margin-left:-20px;" class="col-md-9">
-                                  <div class="form-control" id="opsiGanda1"></div>
-                                </div>
-                                <div style="float:left">
-                                  <i class="fa fa-trash"></i>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="form-group" style="margin-bottom:10px">
-                            <div class="row">
-                                <div style="float:left" style="width:15px">
-                                  <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
-                                </div>
-                                <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                  <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                                </div>
-                                <div style="width:85%; margin-left:-20px;" class="col-md-9">
-                                  <div class="form-control" id="opsiGanda1"></div>
-                                </div>
-                                <div style="float:left">
-                                  <i class="fa fa-trash"></i>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="form-group" style="margin-bottom:10px">
-                            <div class="row">
-                                <div style="float:left" style="width:15px">
-                                  <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
-                                </div>
-                                <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                  <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                                </div>
-                                <div style="width:85%;margin-left:-20px;" class="col-md-9">
-                                  <div class="form-control" id="opsiGanda1"></div>
-                                </div>
-                                <div style="float:left">
-                                  <i class="fa fa-trash"></i>
-                                </div>
-                            </div>
-                          </div>
-                       <!--  <div style="background-color:#ecf8f6; padding:5px;">
-                            <div class="form-group" >
-                            <div class="row">
-                                <div style="float:left" style="width:15px">
-                                  <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
-                                </div>
-                                <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                  <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                                </div>
-                                <div style="width:85%;margin-left:-20px;" class="col-md-9">
-                                  <div class="form-control" id="opsiGanda1"></div>
-                                </div>
-                                <div style="float:left">
-                                  <i class="fa fa-trash"></i>
-                                </div>
-                            </div>
-                            </div> 
-                          </div> -->
-                          <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
-                            <button class="btn btn-primary" style="margin-left:20px;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <strong class="col-md-1">Poin:</strong>
-                            <div class="col-md-3">
-                              <label style="width:60px;" class="form-control-label">Benar </label>
-                              <input type="text" class="form-control" style="width:32%">
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Kosong</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Salah</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label"></label>
-                              <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                            </div>                            
-                          </div>
-                        </form>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div id="formIsian" class="tab-pane fade">
-                  <div class="row">
-                    <div style="margin-left:10px; width:15px; float:left;">
-                      <strong id="nomor">1.</strong>
-                    </div>
-                    <div style="margin-left: 0px;">
-                      <div class="col-md-12" style="width:96%">
-                        <form class="form-horizontal col-md-12">
-                          <div class="form-group">
-                            <label class="form-control-label">Pertanyaan</label>
-                            <textarea id="edit2" class="form-control" rows="3"></textarea>
+                <div class="panel panel-default tab-pane fade" id="formIsian">
+                  <div class="panel-body">
+                    <div>
+                      <div class="row">
+                        <div style="margin-left:10px; width:15px; float:left;">
+                          <strong id="nomor">1.</strong>
+                        </div>
+                        <div style="margin-left: 0px;">
+                          <div class="col-md-12" style="width:96%">
+                            <form class="form-horizontal col-md-12">
+                              <div class="form-group">
+                                <label class="form-control-label">Pertanyaan</label>
+                                <textarea id="edit2" class="form-control" rows="3"></textarea>
+                              </div>
+                              <div class="form-group" style="margin-bottom:10px;">
+                                <label class="form-control-label">Jawaban</label>
+                                <div class="form-control" id="opsiIsian"></div>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px;">
+                                <strong class="col-md-1">Poin:</strong>
+                                <div class="col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Benar </label>
+                                  <input type="text" class="form-control" style="width:32%">
+                                </div>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px;">
+                                <div class="col-md-push-1 col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Kosong</label>
+                                  <input type="text" class="form-control" style="width:32%" value="0"> 
+                                </div>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px">
+                                <div class="col-md-push-1 col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Salah</label>
+                                  <input type="text" class="form-control" style="width:32%" value="0"> 
+                                </div>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px">
+                                <div class="col-md-push-1 col-md-3">
+                                  <label style="width:60px;" class="form-control-label"></label>
+                                  <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
+                                </div>                            
+                              </div>
+                            </form> 
                           </div>
-                          <div class="form-group" style="margin-bottom:10px;">
-                            <label class="form-control-label">Jawaban</label>
-                            <div class="form-control" id="opsiIsian"></div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <strong class="col-md-1">Poin:</strong>
-                            <div class="col-md-3">
-                              <label style="width:60px;" class="form-control-label">Benar </label>
-                              <input type="text" class="form-control" style="width:32%">
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Kosong</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Salah</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label"></label>
-                              <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                            </div>                            
-                          </div>
-                        </form> 
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div id="formCheckbox" class="tab-pane fade">
+
+               <!-- <div id="formCheckbox" class="tab-pane fade">
                   <div class="row">
                     <div style="margin-left:10px; width:15px; float:left;">
                       <strong id="nomor">1.</strong>
@@ -797,19 +776,10 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
- <!--           <div class="btn-group" style="margin-left:-10px;">
-                <button class="btn btn-primary" id="pilihanGanda" data-toggle="tooltip" data-placement="bottom" data-html="true" data-title="<u>Contoh</u><br>Apa Ibukota Provinsi Jawa Barat?<br><span class='glyphicon glyphicon-record'></span> Jakarta<br><span class='glyphicon glyphicon-record'></span> Bandung<br><span class='glyphicon glyphicon-record'></span> Surabaya<br><span class='glyphicon glyphicon-record'></span> Bogor<br>">Pilihan ganda</button>
-                <button class="btn btn-default" id="isian" data-toggle="tooltip" data-placement="bottom" data-html="true" data-title="<u>Contoh</u><br>Ibukota Provinsi Jawa Barat yaitu <input type=text>">Isian singkat</button>
-                <button class="btn btn-default" id="checkbox" data-toggle="tooltip" data-placement="bottom" data-html="true" data-title="<u>Contoh</u><br>Manakah yang berada di Provinsi Jawa Barat?<br> <span class='glyphicon glyphicon-unchecked'></span> Jakarta<br><span class='glyphicon glyphicon-check'></span> Bandung<br><span class='glyphicon glyphicon-check'></span> Depok<br><span class='glyphicon glyphicon-unchecked'></span> Banten">Checkbox</button>
-                <button class="btn btn-default" id="benarSalah" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<u>Contoh</u><br>Bandung adalah Ibukota Provinsi Jawa Barat<br><span class='glyphicon glyphicon-record'></span> Benar<br><span class='glyphicon glyphicon-record'></span> Salah">Benar/Salah</button>
-                <button class="btn btn-default" id="essay" data-toggle="tooltip" data-placement="bottom" data-html="true" data-title="<u>Contoh</u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>"">Essay</button>
-                <button class="btn btn-default" id="pencocokan" data-toggle="tooltip" data-placement="bottom" data-html="true" data-title="<u>Contoh</u><br>Cocokkan provinsi dan ibukota provinsi yang sesuai!<br> Jawa Barat <span class='glyphicon glyphicon-resize-horizontal'></span> Bandung <br> Jawa Timur <span class='glyphicon glyphicon-resize-horizontal'></span> Surabaya"">Pencocokan</button>
-              </div> -->
-            </div> 
-          </div>    
-        </div>
+              </div>
+            </div>
       </div> 
     </div>  
 
@@ -923,7 +893,7 @@
             });
         });
         $('.hashtip').tooltipsy({
-              offset: [0, 10],
+              offset: [10, 0],
               show: function (e, $el) {
                   $el.css({
                       'left': parseInt($el[0].style.left.replace(/[a-z]/g, '')) - 50 + 'px',
