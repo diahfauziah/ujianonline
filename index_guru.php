@@ -34,6 +34,7 @@
         font-family: 'Lato', sans-serif;
         line-height: 1.8;
         /*color: #81;*/
+        /* background-color: #f8f8f8; */
       } 
       .btn {
         transition-duration: 0.4s;
@@ -120,6 +121,7 @@
 
       table {
         color: #676767;
+        margin-top: 15px;
       }
 
       .link2 a:link {
@@ -187,6 +189,17 @@
         position:absolute;
         bottom:0;
         width:100%;
+        background-color: #f8f8f8;
+        padding-top: 10px;
+      }
+      .content {
+        background-color: #ffffff;
+        min-height: 420px;
+        padding: 20px 12px;
+      }
+      .content {
+        margin: 0 auto;
+        max-width: 1024px;
       }
     </style>
   </head>
@@ -226,134 +239,130 @@
     </nav>
     
     <div class="container">
-    <h2 style="margin-bottom: 30px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;">Daftar Ujian</h2>
- <!--    <ol class="breadcrumb" style="margin-left:0px">
-        <li class="active">Home ></li>
-     </ol> -->
-    <div class="row">
-      <div class="col-md-9">
-        <form class="form-inline" role="form">
-          <div class="form-group">
-            <label class="col-md-2" style="color:#F7B733;">Kategori</label>
-            <div class="col-md-4">
-              <select class="form-control">
-                <option>All (mata pelajaran)</option>
-                <option>Matematika</option>
-                <option>Fisika</option>
-              </select>
-            </div>
-            <div class="col-md-offset-1 col-md-3" style="margin-left:10px">
-              <select class="form-control">
-                <option>All (kelas)</option>
-                <option>XII MIPA</option>
-                <option>XI MIPA</option>
-              </select>
-            </div>
-            <button class="button button1" type="submit" style="margin-left:20px;">Cari</button>
+      
+        <h2 style="margin-bottom: 30px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;">Daftar Ujian</h2>
+        <div class="row">
+          <div class="col-md-9">
+            <form class="form-inline" role="form">
+              <div class="form-group">
+                <label class="col-md-2" style="color:#F7B733;">Kategori</label>
+                <div class="col-md-4">
+                  <select class="form-control">
+                    <option>All (mata pelajaran)</option>
+                    <option>Matematika</option>
+                    <option>Fisika</option>
+                  </select>
+                </div>
+                <div class="col-md-offset-1 col-md-3" style="margin-left:10px">
+                  <select class="form-control">
+                    <option>All (kelas)</option>
+                    <option>XII MIPA</option>
+                    <option>XI MIPA</option>
+                  </select>
+                </div>
+                <button class="button button1" type="submit" style="margin-left:20px;">Cari</button>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-      <div class="col-md-3">
-        <a href="new_ujian.php" class="button button1 pull-right" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Buat Ujian Baru</a>
-      </div>
-    </div>
-    <?php 
-        
-    ?>
-    <div class="alert alert-success">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Berhasil!</strong> Ujian Kesetimbangan berhasil dibuat.
-    </div>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th style="text-align: left;">Judul</th>
-          <th>Total Soal</th>
-          <th>Mata Pelajaran</th>
-          <th>Kelas</th>
-          <th>Lihat</th>
-          <th>Bagikan</th>
-          <th>Laporan</th>
-          <th>Terakhir diperbarui</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php include('koneksi.php');
-          $query = mysqli_query($link, "select * from info_ujian order by modified_date desc");
+          <div class="col-md-3">
+            <a href="new_ujian.php" class="button button1 pull-right" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Buat Ujian Baru</a>
+          </div>
+        </div>
+        <div class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Berhasil!</strong> Ujian Kesetimbangan berhasil dibuat.
+        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Judul</th>
+              <th>Total Soal</th>
+              <th>Mata Pelajaran</th>
+              <th>Kelas</th>
+              <th>Lihat</th>
+              <th>Bagikan</th>
+              <th>Laporan</th>
+              <th>Terakhir diperbarui</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php include('koneksi.php');
+              $query = mysqli_query($link, "select * from info_ujian order by modified_date desc");
 
-          while($data = mysqli_fetch_array($query)){
-            echo '<tr class="table-row">';
-            echo '<td style="text-align: left;">';
-            echo   '<div class="judul">';
-            echo     '<a class="link-judul" href="view_ujian.php?id='.$data['id_ujian'].'"">'. $data['judul_ujian'] .'</a><br>';
-            echo   '</div>';
-            echo   '<div style="font-size: 12px; color:#aba8a8;" class="link2">';
-            echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.html">Tambah Soal</a>';
-            echo   '</div>';    
-            echo  '</td>';
-            echo  '<td>'. $data['total_soal'] .'</td>';     
-            echo  '<td>Matematika</td>';
-            echo  '<td>XII MIPA</td>';
-            echo  '<td><a href="lihat_tampilan_ujian.html" data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>';
-            echo  '<td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" data-id='.$data['url_ujian'].' title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>';
-            echo  '<td><a href="laporan_ujian.php?id='.$data['id_ujian'].'" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>';
-            echo  '<td>'. $data['modified_date'] .'</td>';
-            echo '</tr>';      
-          }
-        ?>
-        <tr style="background-color:#ecf8f6">
-          <td style="text-align: left;">
-            <div class="judul">
-              <a href="view_ujian.html">Kesetimbangan</a><br>
-            </div>
-            <div style="font-size: 12px; color:#aba8a8;" class="link2">
-              <a href="#">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.html">Tambah Soal</a>
-            </div>
-          </td>
-          <td>50</td>
-          <td>Kimia</td>
-          <td>X MIPA</td>
-          <td><a href="lihat_tampilan_ujian.html" data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>
-          <td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>
-          <td><a href="laporan_ujian.html" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>
-          <td>2016-06-14 00:00:00</td>
-        </tr/>
-      </tbody>
-    </table>
-    <!-- Modal Hapus -->
-              <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusLabel">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-                      <h4 class="modal-title" id="modalHapusLabel">Hapus Ujian</h4>
-                    </div>
-                    <div class="modal-body">
-                      Apakah anda ingin menghapus ujian <b id="p1"> Gerak Lurus Beraturan?</b>?
-                    </div>
-                    <div class="modal-footer">
-                      <a  href="#" class="button button1" id="simpan" style="text-decoration:none;">Ya</a>
-                      <button class="btn btn-default" data-dismiss="modal" style="border-width:2px;">Tidak</button>
+              while($data = mysqli_fetch_array($query)){
+                echo '<tr class="table-row">';
+                echo '<td style="text-align: left;">';
+                echo   '<div class="judul">';
+                echo     '<a class="link-judul" href="view_ujian.php?id='.$data['id_ujian'].'"">'. $data['judul_ujian'] .'</a><br>';
+                echo   '</div>';
+                echo   '<div style="font-size: 12px; color:#aba8a8;" class="link2">';
+                echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.html">Tambah Soal</a>';
+                echo   '</div>';    
+                echo  '</td>';
+                echo  '<td>'. $data['total_soal'] .'</td>';     
+                echo  '<td>Matematika</td>';
+                echo  '<td>XII MIPA</td>';
+                echo  '<td><a href="lihat_tampilan_ujian.html" data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>';
+                echo  '<td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" data-id='.$data['url_ujian'].' title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>';
+                echo  '<td><a href="laporan_ujian.php?id='.$data['id_ujian'].'" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>';
+                echo  '<td>'. $data['modified_date'] .'</td>';
+                echo '</tr>';      
+              }
+            ?>
+            <!--<tr style="background-color:#ecf8f6">
+              <td style="text-align: left;">
+                <div class="judul">
+                  <a href="view_ujian.html">Kesetimbangan</a><br>
+                </div>
+                <div style="font-size: 12px; color:#aba8a8;" class="link2">
+                  <a href="#">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.html">Tambah Soal</a>
+                </div>
+              </td>
+              <td>50</td>
+              <td>Kimia</td>
+              <td>X MIPA</td>
+              <td><a href="lihat_tampilan_ujian.html" data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>
+              <td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>
+              <td><a href="laporan_ujian.html" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>
+              <td>2016-06-14 00:00:00</td>
+            </tr/>-->
+          </tbody>
+        </table>
+        <!-- Modal Hapus -->
+                  <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+                          <h4 class="modal-title" id="modalHapusLabel">Hapus Ujian</h4>
+                        </div>
+                        <div class="modal-body">
+                          Apakah anda ingin menghapus ujian <b id="p1"> Gerak Lurus Beraturan?</b>?
+                        </div>
+                        <div class="modal-footer">
+                          <a  href="#" class="button button1" id="simpan" style="text-decoration:none;">Ya</a>
+                          <button class="btn btn-default" data-dismiss="modal" style="border-width:2px;">Tidak</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-    <!-- Modal Bagikan -->
-      <div class="modal fade" id="modalBagikan" tabindex="-1" role="dialog" aria-labelledby="modalBagikanLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-                <label class="modal-title">Link Ujian Deret Aritmetika</label>
-             </div>
-             <div class="modal-body">
-                <input type="text" id="modalshare"  class="form-control url" value="">
-              </div>
-              <div class="modal-footer"></div>
-           </div>
-        </div>
-      </div>                          
-  </div>
+        <!-- Modal Bagikan -->
+          <div class="modal fade" id="modalBagikan" tabindex="-1" role="dialog" aria-labelledby="modalBagikanLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+                    <label class="modal-title">Link Ujian Deret Aritmetika</label>
+                 </div>
+                 <div class="modal-body">
+                    <input type="text" id="modalshare"  class="form-control url" value="">
+                  </div>
+                  <div class="modal-footer"></div>
+               </div>
+            </div>
+          </div>           
+      
+    </div>
   <footer class="text-center">
     <p>2016 © Diah Fauziah. Ujian Online Template.</p>
   </footer>

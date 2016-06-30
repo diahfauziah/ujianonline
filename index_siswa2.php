@@ -174,8 +174,12 @@
         color : #ffffff;
         border-color: #F7B733;
       }
-      .selected {
+      li.selected:hover, li.selected {
         background-color : #b4e3dc;
+      }
+      .list-group-item:hover {
+        background-color: #f8f8f8;
+        cursor: pointer;
       }
       .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
       .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
@@ -478,8 +482,6 @@
 
         /* Pilih opsi jawaban */
         $(".opsijawaban").dblclick(function(){
-          $(".opsijawaban").css({"background-color" : "#ffffff"});
-          
           $(".opsijawaban").removeClass("selected");
           $(this).addClass("selected");
 
@@ -490,23 +492,10 @@
           $(this).find('.setjawaban').addClass("fa fa-circle");
           $(this).find('.setjawaban').css({"color" : "#4ABDAC"});
 
-          $(this).css({"background-color" : "#b4e3dc"});
-          $(this).hover(function(){
-            $(this).css({"background-color":"#b4e3dc"});
-          });
-
           $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
           $($ini).css({"background-color" : "#4ABDAC", "color" : "#ffffff", "border-color" : "#4ABDAC"});
         });
 
-        /* Hover opsi jawaban */
-        $(".opsijawaban").hover(function(){
-          $(this).css({"background-color" : "#ebebeb"});
-        }, function(){
-          $(this).css({"background-color" : "#ffffff"});
-        });
-
-      
         /* Menandai soal */
         $(".btntandai") .click(function(){
             $nomorini = ".nomor[data-nomor="+$soal_sekarang+"]";

@@ -860,14 +860,15 @@
 
 
             $('#edit1, #edit2, #edit3, #edit4, #edit5').froalaEditor({
-              toolbarButtons: ['undo', 'redo', 'clear', 'bold', 'italic', 'underline', 'strikeThrough', 'highlight', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', 'insertImage', 'remove'],
+              toolbarButtons: ['undo', 'redo', 'clearFormatting', 'clear', 'bold', 'italic', 'underline', 'strikeThrough', 'highlight', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', 'insertImage', 'remove'],
               placeholderText: 'Ketik pertanyaan'
             });
             $('div.opsi').froalaEditor({
               toolbarInline: true,
               charCounterCount: false,
               toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', '-', 'undo', 'redo', 'paragraphFormat', 'align', 'formatOL', 'formatUL',  '-', 'insertImage', 'insertLink', 'indent', 'outdent', 'insertFile', 'insertVideo'],
-              placeholderText: 'Ketik jawaban'
+              placeholderText: 'Ketik jawaban',
+              spellcheck:false
             });
 			     $('.selector').froalaEditor('commands.show');
         });
@@ -877,7 +878,8 @@
     			  charCounterCount: false,
     			  toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'undo', 'redo', 'insertImage', 'paragraphFormat', 'formatOL', 'formatUL', '-', 'align', 'indent', 'outdent'],
     			  toolbarVisibleWithoutSelection: true,
-            placeholderText: 'Ketik jawaban'
+            placeholderText: 'Ketik jawaban',
+            spellcheck:false
     			});
         });
         $(function(){
