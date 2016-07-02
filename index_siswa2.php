@@ -115,10 +115,16 @@
       .nomor {
         margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;
       }
-      .nomor-active {
+      
+      .nomor-belum-diisi {
         background-color:#e7e7e7; color:#000000; border-color:#e7e7e7;
+      }
+
+      /* shadow */
+      .nomor-sekarang {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
+
       .button {
         background-color: #4ABDAC;
         border: none;
@@ -180,6 +186,11 @@
       .list-group-item:hover {
         background-color: #f8f8f8;
         cursor: pointer;
+      }
+      .hasAnswer {
+        background-color : #4ABDAC;
+        color : #ffffff;
+        border-color : #4ABDAC;
       }
       .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
       .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
@@ -279,7 +290,7 @@
           <div class="panel panel-default" style="width:185px;" id="nomorSoal">
             <div class="panel-body" style="padding: 5px 5px 5px 5px;">
               <div class="form-group">
-                <a href="#" class="btn btn-default nomor nomor-active" data-nomor="1">1</a>
+                <a href="#" class="btn btn-default nomor nomor-belum-diisi nomor-sekarang" data-nomor="1">1</a>
                 <a href="#" class="btn btn-default nomor" data-nomor="2">2</a>
                 <a href="#" class="btn btn-default nomor" data-nomor="3">3</a>
                 <a href="#" class="btn btn-default nomor" data-nomor="4">4</a>
@@ -416,25 +427,6 @@
           });
           //$(".fr-element").attr("contenteditable", false);
         });
-        
-
-        /* Set Jawaban yang dipilih */
-        $(function(){
-            $(".setjawaban").click(function(){
-              $(".setjawaban").removeClass("fa fa-circle-thin");
-              $(".setjawaban").addClass("fa fa-circle-thin");
-              $(".setjawaban").css({"color":"#dadada"})
-              $(this).removeClass("fa fa-circle-thin");
-              $(this).addClass("fa fa-circle");
-              $(this).addClass("selected");
-              $(this).css({
-                "color" : "#32CD32"
-              });
-              $x = $("#tandai").attr('data-id');
-              $ini = ".nomor[data-nomor="+$x+"]";
-              $($ini).css({"background-color":"#32CD32", "color":"#ffffff", "border-color":"#32CD32"}); 
-            });
-        });
 
         $soal_sekarang = 1;
 
@@ -453,13 +445,13 @@
           $($kotaknext).siblings().hide();
           
           $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
-          $($ini).addClass("nomor-active");
-          $($ini).css({"background-color":"#e7e7e7", "color":"#000000", "border-color":"#e7e7e7"});
-
+          $($ini).addClass("nomor-belum-diisi");
+          $($ini).addClass("nomor-sekarang");
+         
           $soal_sebelumnya = $soal_sekarang - 1;
           $sebelumnya = ".nomor[data-nomor="+$soal_sebelumnya+"]";
-          $($sebelumnya).removeClass("nomor-active");
-          $($sebelumnya).css({"background-color":"#f8f8f8", "color":"#000000", "border-color":"f8f8f8"});
+          $($sebelumnya).removeClass("nomor-belum-diisi");
+          $($sebelumnya).removeClass("nomor-sekarang");
         });
 
 
@@ -470,19 +462,19 @@
           $($kotaknext).siblings().hide();
           
           $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
-          $($ini).addClass("nomor-active");
-          $($ini).css({"background-color":"#e7e7e7", "color":"#000000", "border-color":"#e7e7e7"});
+          $($ini).addClass("nomor-belum-diisi");
+          $($ini).addClass("nomor-sekarang");
 
           $soal_tadi = $soal_sekarang + 1;
           $tadi = ".nomor[data-nomor="+$soal_tadi+"]";
-          $($tadi).removeClass("nomor-active");
-          $($tadi).css({"background-color":"#f8f8f8", "color":"#000000", "border-color":"#f8f8f8"});
+          $($tadi).removeClass("nomor-belum-diisi");
+          $($tadi).removeClass("nomor-sekarang");
         });
 
 
         /* Pilih opsi jawaban */
         $(".opsijawaban").dblclick(function(){
-          $(".opsijawaban").removeClass("selected");
+          $(this).siblings().removeClass("selected");
           $(this).addClass("selected");
 
           $(this).siblings().find('.setjawaban').removeClass("fa-circle-thin");
@@ -493,24 +485,48 @@
           $(this).find('.setjawaban').css({"color" : "#4ABDAC"});
 
           $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
-          $($ini).css({"background-color" : "#4ABDAC", "color" : "#ffffff", "border-color" : "#4ABDAC"});
+          $($ini).addClass("hasAnswer");
+
+          $tomboltandai = "#tandai"+$soal_sekarang;
+          if($($ini).hasClass("hasTandai").toString() == "true"){
+            $($tomboltandai).html('<i class="fa fa-bookmark"></i> Tandai');
+          }
+        });
+
+        /* Pilih opsi jawaban: lingkaran dipiilih */
+        $(".setjawaban").click(function(){
+              $(".opsijawaban").removeClass("selected");
+              $(this).closest(".opsijawaban").addClass("selected");
+              $(".setjawaban").removeClass("fa fa-circle-thin");
+              $(".setjawaban").addClass("fa fa-circle-thin");
+              $(".setjawaban").css({"color":"#dadada"})
+              $(this).removeClass("fa fa-circle-thin");
+              $(this).addClass("fa fa-circle");
+              $(this).css({"color" : "#4ABDAC"});
+
+              $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
+              $($ini).css({"background-color":"#4ABDAC", "color":"#ffffff", "border-color":"#4ABDAC"}); 
         });
 
         /* Menandai soal */
         $(".btntandai") .click(function(){
             $nomorini = ".nomor[data-nomor="+$soal_sekarang+"]";
             $ini = "#tandai"+$soal_sekarang;
+
             if ($($ini).html() == '<i class="fa fa-bookmark-o"></i> Batal Tandai'){
                 // membatalkan:
                   $($ini).html('<i class="fa fa-bookmark"></i> Tandai');
                   $($nomorini).removeClass("tandai");
-                  $($nomorini).addClass("nomor-active");
+                  if($("li").hasClass("selected").toString() == "true"){
+                    $($nomorini).addClass("hasAnswer");  
+                  }
               }
               else{
                 // menandai
                   $($ini).html('<i class="fa fa-bookmark-o"></i> Batal Tandai');
-                  $($nomorini).removeClass("nomor-active");
+                  $($nomorini).removeClass("hasAnswer");
                   $($nomorini).addClass("tandai");
+                  $($nomorini).addClass("hasTandai");
               }
         });
 
