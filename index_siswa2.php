@@ -44,6 +44,8 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
       $(function(){ 
+          $("[data-nomor=1]").addClass("nomor-belum-diisi");
+          $("[data-nomor=1]").addClass("nomor-sekarang");
           $("#hide").click(function(){
               $("#kotak").toggle();
               $("#kotakSoal").toggleClass("col-md-10 col-md-12");
@@ -287,39 +289,24 @@
         </div>
         <div class="col-md-2" style="padding-left:0px;">
           Daftar soal
-          <div class="panel panel-default" style="width:185px;" id="nomorSoal">
-            <div class="panel-body" style="padding: 5px 5px 5px 5px;">
+          <div class="panel panel-default" style="width:190px;" id="nomorSoal">
+            <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
               <div class="form-group">
-                <a href="#" class="btn btn-default nomor nomor-belum-diisi nomor-sekarang" data-nomor="1">1</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="2">2</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="3">3</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="4">4</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="5">5</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="6">6</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="7">7</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="8">8</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="9">9</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="10">10</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="11">11</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="12">12</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="13">13</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="14">14</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="15">15</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="16">16</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="17">17</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="18">18</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="19">19</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="20">20</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="21">21</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="22">22</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="23">23</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="24">24</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="25">25</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="26">26</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="27">27</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="28">28</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="29">29</a>
-                <a href="#" class="btn btn-default nomor" data-nomor="30">30</a>
+                <?php 
+                  $query4 = mysqli_query($link, "SELECT MAX(nomor_soal) FROM soal where id_ujian='$id' ");
+                  $arraynomor = mysqli_fetch_array($query4);
+                  $nomormax = (int)$arraynomor[0];
+
+                  $i = 1;
+                  while($i <= $nomormax){
+                    echo '<a href="#" class="btn btn-default nomor" data-nomor="';
+                    echo $i;
+                    echo '" style="margin-right:5px;">';
+                    echo $i;
+                    echo '</a>';
+                    $i++;
+                  }
+                ?>
               </div>
             </div>
           </div>
@@ -528,6 +515,16 @@
                   $($nomorini).addClass("tandai");
                   $($nomorini).addClass("hasTandai");
               }
+        });
+
+        $(".nomor").click(function(){
+          $x = $(this).attr("data-nomor");
+          $kotaksekarang = "#kotak" + $x;
+          $($kotaksekarang).show();
+          $($kotaksekarang).siblings().hide();
+          $(this).siblings().removeClass("nomor-sekarang");
+          $(this).siblings().removeClass("nomor-belum-diisi");
+          $(this).addClass("nomor-sekarang");
         });
 
         /* Timer */
