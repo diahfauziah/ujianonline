@@ -194,6 +194,13 @@
         color : #ffffff;
         border-color : #4ABDAC;
       }
+      .disabled {
+        cursor: not-allowed;
+      }
+      .disabled:hover{
+        background: #f8f8f8;
+        font-color: #f8f8f8;
+      }
       .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
       .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
     </style>
@@ -439,8 +446,12 @@
           $sebelumnya = ".nomor[data-nomor="+$soal_sebelumnya+"]";
           $($sebelumnya).removeClass("nomor-belum-diisi");
           $($sebelumnya).removeClass("nomor-sekarang");
+          $("#btnprev").removeClass("disabled");
         });
 
+        $("#kotak1").show(function(){
+          $("#btnprev").addClass("disabled");
+        });
 
         $("#btnprev").click(function(){
           $soal_sekarang = $soal_sekarang - 1;
@@ -519,7 +530,8 @@
 
         $(".nomor").click(function(){
           $x = $(this).attr("data-nomor");
-          $kotaksekarang = "#kotak" + $x;
+          $soal_sekarang = parseInt($x);
+          $kotaksekarang = "#kotak" + $soal_sekarang;
           $($kotaksekarang).show();
           $($kotaksekarang).siblings().hide();
           $(this).siblings().removeClass("nomor-sekarang");
