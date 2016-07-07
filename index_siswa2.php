@@ -98,10 +98,7 @@
       span.highlight {
         background-color: yellow;
       }
-      .btn-default{
-        background-color: #f8f8f8;
-        border-color: #f8f8f8;
-      }
+      
       #teksSoal {
         padding-left: 20px;
         padding-right: 10px;
@@ -119,7 +116,7 @@
       }
       
       .nomor-belum-diisi {
-        background-color:#e7e7e7; color:#000000; border-color:#e7e7e7;
+        background-color:#f8f8f8; color:#000000; border-color:#f8f8f8;
       }
 
       /* shadow */
@@ -143,14 +140,15 @@
         border-radius: 4px;
       }
       .button1, .button1:link, .button1:visited {
-        background-color: #ffffff;
-        color: #F7B733;
-        border: 1px solid #F7B733;
-      }
-      .button1:hover {
         background-color: #F7B733;
         color: #ffffff;
         border: 1px solid #F7B733;
+      }
+      .button1:hover {
+     /*   background-color: #ffffff;
+        color: #F7B733;
+        border: 1px solid #F7B733; */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
       .button2, .button2:link, .button2:visited {
         background-color: #f8f8f8;
@@ -158,11 +156,27 @@
         border: 1px solid #4ABDAC;
         font-size: 14px;
       }
-      .button2:hover {
+      .button2:hover, .kumpulkan {
         background-color: #4ABDAC;
         color: #ffffff;
         border: 1px solid #4ABDAC;
       }
+      .button4, .button4:link, .button4:visited {
+        background-color: #4ABDAC;
+        color: #ffffff;
+        border-radius: 0px;
+        font-size: 14px;
+      }
+      .button4:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .button3 {
+        background-color: #f8f8f8;
+        border-color: #f8f8f8;
+        color: #000000;
+        font-size: 13px;
+      }
+
       .panel {
         border-color: #ffffff;
       }
@@ -194,12 +208,13 @@
         color : #ffffff;
         border-color : #4ABDAC;
       }
-      .disabled {
+      
+      .disabled, .disabled:hover, .disabled:visited, .disabled:focus{
         cursor: not-allowed;
-      }
-      .disabled:hover{
-        background: #f8f8f8;
-        font-color: #f8f8f8;
+        background-color: #f8f8f8;
+        color: #dadada;
+        border: 1px solid #dadada;
+        font-size: 14px;
       }
       .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
       .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
@@ -243,11 +258,13 @@
           <div id="panelsoal">
           <?php 
             while($soal = mysqli_fetch_array($query)){
-              echo '<div class="panel panel-default kotaksoal" style="border-radius:0px; margin-bottom:0px" id="kotak';
+              echo '<div class="panel panel-default" style="border-radius:0px; margin-bottom:0px" id="kotak';
               echo   $soal['nomor_soal'];
               echo   '" hidden>';
+              //echo   '<div class="panel-heading">Tes</div>';
               echo   '<div class="panel-body" style="margin-bottom:-5px;">';
-              echo     '<div class="row">';
+              //echo   'Soal ini untuk nomor 13-15. <a href="#">Lewati bagian ini</a>';
+              echo     '<div class="row" style="margin-top:5px;">';
               echo       '<div style="margin-left:10px; width:15px; float:left;">';
               echo         '<strong id="nomor">';
               echo         $soal['nomor_soal'];
@@ -296,7 +313,7 @@
         </div>
         <div class="col-md-2" style="padding-left:0px;">
           Daftar soal
-          <div class="panel panel-default" style="width:190px;" id="nomorSoal">
+          <div class="panel panel-default" style="width:190px;margin-bottom:5px;" id="nomorSoal">
             <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
               <div class="form-group">
                 <?php 
@@ -306,17 +323,19 @@
 
                   $i = 1;
                   while($i <= $nomormax){
-                    echo '<a href="#" class="btn btn-default nomor" data-nomor="';
+                    echo '<a href="#" class="button button3 nomor" data-nomor="';
                     echo $i;
-                    echo '" style="margin-right:5px;">';
+                    echo '" style="margin-right:5px; text-decoration:none;">';
                     echo $i;
                     echo '</a>';
                     $i++;
                   }
                 ?>
               </div>
+              <div class="row" style="padding-left:15px;">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p></div>
             </div>
           </div>
+          <a href="login_siswa.php?id=2" class="button button4 col-md-12" style="width:190px;text-decoration:none;" >Kumpulkan</a>
         </div>
       </div>
     </div>
@@ -429,46 +448,88 @@
           $kotaksekarang = "#kotak"+$soal_sekarang;
           $($kotaksekarang).show();
           $($kotaksekarang).siblings().hide();
+
+          $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
+          //$($ini).addClass("nomor-belum-diisi");
+          $($ini).addClass("nomor-sekarang");
+
+          $x = '<?php echo $nomormax ?>';
+          $("#totalsoal").html($x);
         });
 
-
+        /* Tombol selanjutnya */
         $("#btnnext").click(function(){
-          $soal_sekarang = $soal_sekarang + 1;
-          $kotaknext = "#kotak"+$soal_sekarang;
-          $($kotaknext).show();
-          $($kotaknext).siblings().hide();
+          if(($soal_sekarang <'<?php echo $nomormax ?>')){
+            $soal_sekarang = $soal_sekarang + 1;
+            $kotaknext = "#kotak"+$soal_sekarang;
+            $($kotaknext).show();
+            $($kotaknext).siblings().hide();
+
+            
+            $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
+            $($ini).addClass("nomor-belum-diisi");
+            $($ini).addClass("nomor-sekarang");
+           
+            $soal_sebelumnya = $soal_sekarang - 1;
+            $sebelumnya = ".nomor[data-nomor="+$soal_sebelumnya+"]";
+            $($sebelumnya).removeClass("nomor-belum-diisi");
+            $($sebelumnya).removeClass("nomor-sekarang");
+          }          
           
-          $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
-          $($ini).addClass("nomor-belum-diisi");
-          $($ini).addClass("nomor-sekarang");
-         
-          $soal_sebelumnya = $soal_sekarang - 1;
-          $sebelumnya = ".nomor[data-nomor="+$soal_sebelumnya+"]";
-          $($sebelumnya).removeClass("nomor-belum-diisi");
-          $($sebelumnya).removeClass("nomor-sekarang");
-          $("#btnprev").removeClass("disabled");
+          if(($soal_sekarang)==1){
+            $("#btnprev").removeClass("button2");
+            $("#btnprev").addClass("disabled");
+          }else{
+            $("#btnprev").removeClass("disabled");
+            $("#btnprev").addClass("button2");
+          }
+
+          if(($soal_sekarang =='<?php echo $nomormax ?>')){
+            $(this).removeClass("button2");
+            $(this).addClass("disabled");
+          } 
+
         });
 
-        $("#kotak1").show(function(){
-          $("#btnprev").addClass("disabled");
-        });
-
+        /* Tombol sebelumnya */
         $("#btnprev").click(function(){
-          $soal_sekarang = $soal_sekarang - 1;
-          $kotaknext = "#kotak"+$soal_sekarang;
-          $($kotaknext).show();
-          $($kotaknext).siblings().hide();
-          
-          $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
-          $($ini).addClass("nomor-belum-diisi");
-          $($ini).addClass("nomor-sekarang");
+          if($soal_sekarang > 1){
+            $soal_sekarang = $soal_sekarang - 1;
+            $kotaknext = "#kotak"+$soal_sekarang;
+            $($kotaknext).show();
+            $($kotaknext).siblings().hide();
+            
+            $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
+            $($ini).addClass("nomor-belum-diisi");
+            $($ini).addClass("nomor-sekarang");
 
-          $soal_tadi = $soal_sekarang + 1;
-          $tadi = ".nomor[data-nomor="+$soal_tadi+"]";
-          $($tadi).removeClass("nomor-belum-diisi");
-          $($tadi).removeClass("nomor-sekarang");
+            $soal_tadi = $soal_sekarang + 1;
+            $tadi = ".nomor[data-nomor="+$soal_tadi+"]";
+            $($tadi).removeClass("nomor-belum-diisi");
+            $($tadi).removeClass("nomor-sekarang");
+          }
+          
+          if(($soal_sekarang)==1){
+            $(this).removeClass("button2");
+            $(this).addClass("disabled");
+          }else{
+            $(this).removeClass("disabled");
+            $(this).addClass("button2");
+          }
+          if($("#btnnext").hasClass("disabled")){
+            $("#btnnext").removeClass("disabled");
+            $("#btnnext").addClass("button2");
+          }
         });
 
+        /* disabled button prev saat baru diload */
+        if(($soal_sekarang)==1){
+          $("#btnprev").removeClass("button2");
+          $("#btnprev").addClass("disabled");
+        }else{
+          $("#btnprev").removeClass("disabled");
+          $("#btnprev").addClass("button2");
+        };
 
         /* Pilih opsi jawaban */
         $(".opsijawaban").dblclick(function(){
@@ -481,13 +542,21 @@
           $(this).find('.setjawaban').removeClass("fa fa-circle-thin");
           $(this).find('.setjawaban').addClass("fa fa-circle");
           $(this).find('.setjawaban').css({"color" : "#4ABDAC"});
-
+          
           $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
           $($ini).addClass("hasAnswer");
 
           $tomboltandai = "#tandai"+$soal_sekarang;
           if($($ini).hasClass("hasTandai").toString() == "true"){
             $($tomboltandai).html('<i class="fa fa-bookmark"></i> Tandai');
+          }
+          
+          if($(".opsijawaban").hasClass("selected").toString()=="true" && $($ini).hasClass("tercatat").toString()=="false"){
+            $x = $("#soalterjawab").text();
+            $soalterjawab = parseInt($x);
+            $soalterjawab = $soalterjawab + 1;
+            $("#soalterjawab").text($soalterjawab);
+            $($ini).addClass("tercatat");
           }
         });
 
@@ -528,6 +597,7 @@
               }
         });
 
+        /* Navigasi daftar soal */
         $(".nomor").click(function(){
           $x = $(this).attr("data-nomor");
           $soal_sekarang = parseInt($x);
@@ -535,9 +605,18 @@
           $($kotaksekarang).show();
           $($kotaksekarang).siblings().hide();
           $(this).siblings().removeClass("nomor-sekarang");
-          $(this).siblings().removeClass("nomor-belum-diisi");
+          //$(this).siblings().removeClass("nomor-belum-diisi");
           $(this).addClass("nomor-sekarang");
+
+          if(($soal_sekarang)==1){
+            $("#btnprev").removeClass("button2");
+            $("#btnprev").addClass("disabled");
+          }else{
+            $("#btnprev").removeClass("disabled");
+            $("#btnprev").addClass("button2");
+          };
         });
+
 
         /* Timer */
         function startTimer(duration, display) {
