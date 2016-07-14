@@ -25,7 +25,7 @@
       body {
         font:400 15px Lato, sans-serif;
         line-height: 1.8;
-        /*color: #818181;*/
+        background-color: #f8f8f8;
       } 
       .btn {
         transition-duration: 0.4s;
@@ -34,10 +34,11 @@
       .navbar {
         margin-bottom: 0;
         /*z-index: 9999; */
-        border: 0; 
+        border-bottom-width: 1px;
         font-size: 12px !important;
         border-radius: 0;
         /*background-color: #4ABDAC; */
+        border-bottom-color: #e7e7e7;
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -49,8 +50,28 @@
       /*.menu li {
         background-color: #e7e7e7;
       } */
+      
+      .footer {
+          background-color: #F4F4F4;
+          border-top: 1px solid #e5e5e5;
+          color: #999;
+          padding: 20px 15px;
+          background-color: #f5f5f5;
+      }
+      .footer, .content, .topheader {
+          margin: 0 auto;
+          max-width: 1024px;
+      }
+      .content {
+        background-color: #ffffff;
+        min-height: 600px;
+        padding: 20px 12px;
+      }
       .container {
-        padding: 20px 20px;
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
       }
       .progress {
         margin-top: 5px;
@@ -63,6 +84,7 @@
       }
       .panel {
         margin-top: 10px;
+        border: 0px;
       }
       span.highlight {
         background-color: yellow;
@@ -144,26 +166,30 @@
         bottom:0;
         width:100%;
       }
+      .form-control {
+        border-radius: 0px;
+      }
     </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
+      <div class="container">
+        <div class="topheader">
+          <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage">Ujian Online</a>
+          <a class="navbar-brand" href="#myPage" style="padding-left:120px;">Ujian Online</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
             <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="index_guru.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+            <li><a href="kategori.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right" style="padding-right:90px;">
             <li>
               <form class="navbar-form" role="search">
               <div class="input-group">
@@ -178,20 +204,21 @@
             <li><a href="#"><u>Keluar</u></a></li>
           </ul>
         </div>
+        </div>
       </div>
     </nav>
     
     <!-- Container -->
     <div class="container">
       <div class="col-md-offset-3 col-md-6">
-          <div class="panel panel-default" id="panelSoal" style="margin-top: 0px;">
+          <div class="panel panel-default" id="panelSoal" style="margin-top: 10px;">
             <div class="panel-body">
               <h3 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Buat Ujian Baru</h3>
               <hr>
-              <div class="alert alert-danger">
+              <!-- <div class="alert alert-danger">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>Tidak berhasil</strong> memasukkan ujian baru.
-              </div>
+              </div> -->
             <form class="form-horizontal" action="input_ujian.php" method="post">
               <div class="form-group">
                 <label class="col-md-3">Judul</label>
@@ -235,14 +262,14 @@
                   <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
                     <option value="">Pilih Mata Pelajaran</option>
                     <option value="1">Matematika</option>
-                    <option value="0">Fisika</option>
+                    <option value="2">Fisika</option>
                   </select>
                 </div>
                 <div class="col-md-4">
-                  <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
+                  <select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
                     <option value="">Pilih Kelas</option>
                     <option value="1">XII MIPA</option>
-                    <option value="0">XI MIPA</option>
+                    <option value="2">XI MIPA</option>
                   </select>
                  </div>
               </div>

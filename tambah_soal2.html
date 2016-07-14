@@ -51,6 +51,7 @@
         font:400 15px Lato, sans-serif;
         line-height: 1.8;
         /*color: #818181;*/
+        background-color: #f8f8f8; 
       } 
       .btn {
         transition-duration: 0.4s;
@@ -59,9 +60,10 @@
       .navbar {
         margin-bottom: 0;
         /*z-index: 9999; */
-        border: 0; 
         font-size: 12px !important;
         border-radius: 0;
+        border-bottom-color: #e7e7e7;
+        border-bottom-width: 1px;
         /*background-color: #4ABDAC; */
       } 
       
@@ -69,7 +71,10 @@
         color: #4ABDAC !important;
       }
       .container {
-        padding: 20px 20px;
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
       }
       .progress {
         margin-top: 5px;
@@ -90,9 +95,7 @@
       .navbar-nav li a:hover, .navbar-nav li.active a {
         color: #4ABDAC !important;
       }
-      .navbar-nav li:hover {
-        background-color:#e7e7e7;
-      }
+      
       #teksSoal {
         padding-left: 20px;
         padding-right: 10px;
@@ -105,6 +108,8 @@
         background: rgba(245, 245, 245, 1);
         background-color: #ffffff;
         display: block;
+        margin-bottom: 5px;
+        margin-top: -10px;
       }
       .breadcrumb li {
         font-size: 12px;
@@ -146,6 +151,39 @@
         color: #F7B733;
         border-width: 2px;
       }
+      .button {
+        background-color: #4ABDAC;
+        border: none;
+        color: #ffffff;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.42857143;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .button1, .button1:link, .button1:visited {
+        background-color: #4ABDAC;
+        color: #ffffff;
+        border: 1px solid #4ABDAC;
+        border-radius: 0px;
+      }
+      .button1:hover, .button2:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      .button2, .button2:link, .button2:visited {
+        background-color: #F7B733;
+        color: #ffffff;
+        border-color: #F7B733;
+        border: 1px solid #F7B733;
+        border-radius: 0px;
+      }
+
       .btn-glyphicon {
         background-color: #ffffff;
         border-color: #ffffff;
@@ -154,6 +192,11 @@
       .modal-dialog {
         height: 80% !important;
         padding-top:10%;
+      }
+
+      a[data-toggle="pill"]:link, a[data-toggle="pill"]:visited {
+        color: #4ABDAC;
+
       }
 
       .modal-body {
@@ -177,26 +220,59 @@
       .tooltip > .tooltip-inner {background-color: #eebf3f; padding:5px 15px; color:rgb(23,44,66); font-weight:bold; font-size:13px;}
       .popOver + .tooltip > .tooltip-arrow {    border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f;}
       
+      .numberCircle {
+          border-radius: 50%;
+
+          width: 32px;
+          height: 32px;
+          padding: 5px;
+          
+          background: #fff;
+          border: 2px solid #4ABDAC;
+          color: #4ABDAC;
+          text-align: center;
+          
+          font: 15px Arial, sans-serif;
+      }
+      .footer {
+          background-color: #F4F4F4;
+          border-top: 1px solid #e5e5e5;
+          color: #999;
+          padding: 20px 15px;
+          background-color: #f5f5f5;
+      }
+      .footer, .content, .topheader {
+          margin: 0 auto;
+          max-width: 1024px;
+      }
+      .content {
+        background-color: #ffffff;
+        min-height: 600px;
+        padding: 20px 12px;
+      }
     </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
+      <div class="container">
+        <div class="topheader">
+          <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left:120px;">Ujian Online</a>
+          <!-- <a class="navbar-brand" href="#myPage" style="padding-left:120px;">Ujian Online</a> -->
+          <a class="navbar-brand" href="#myPage">Ujian Online</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
             <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
             <li><a href="index_guru.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right" style="padding-right:90px">
+          <!-- <ul class="nav navbar-nav navbar-right" style="padding-right:90px"> -->
+          <ul class="nav navbar-nav navbar-right">
             <li>
               <form class="navbar-form" role="search">
               <div class="input-group">
@@ -211,12 +287,22 @@
             <li><a href="#"><u>Keluar</u></a></li>
           </ul>
         </div>
+        </div>
       </div>
     </nav>
     
     <div class="container">
-      <h2 style="margin-left:15px; color:#4ABDAC; margin-bottom:30px; margin-top:0px; font-family:'didact gothic', sans-serif">Tambah Soal</h2>
-      
+      <div class="content">
+        <h2 style="margin-left:15px; color:#4ABDAC; margin-top:0px; font-family:'didact gothic', sans-serif">Tambah Soal</h2>
+      <div class="row">
+          <div class="col-xs-6 col-md-9">
+             <ol class="breadcrumb">
+                <li><a href="index_guru.php">Beranda</a></li>
+                <!--  <li><a href="view_ujian.php?id=<?php echo $ujian['id_ujian'] ?>"><?php echo $ujian['judul_ujian'] ?></a></li> -->
+                <li class="active">Tambah soal</li>
+             </ol>
+           </div>
+      </div>
       <div id="soal">
             <div class="row" style="margin-left:5px;">
               <div class="col-md-2">
@@ -252,7 +338,7 @@
                               <div class="form-group" style="margin-bottom:10px">
                                 <div class="row">
                                     <div style="float:left" style="width:15px">
-                                      <i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i>
+                                     <i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i> 
                                     </div>
                                     <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
                                       <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
@@ -314,7 +400,7 @@
                                 </div>
                               </div>
                               <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
-                                <button class="btn btn-primary" style="margin-left:20px;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
+                                <button class="button button1" style="margin-left:20px; font-size:13px; background-color:#f8f8f8; border:0px; color:#777"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
                               </div>
                               <div class="form-group form-inline" style="margin-bottom:10px;">
                                 <strong class="col-md-1">Poin:</strong>
@@ -338,7 +424,7 @@
                               <div class="form-group form-inline" style="margin-bottom:10px">
                                 <div class="col-md-push-1 col-md-3">
                                   <label style="width:60px;" class="form-control-label"></label>
-                                  <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
+                                  <a href="view_ujian.html" class="button button2" style="text-decoration:none"> Simpan</a>
                                 </div>                            
                               </div>
                             </form>
@@ -398,389 +484,11 @@
                     </div>
                   </div>
                 </div>
-
-               <!-- <div id="formCheckbox" class="tab-pane fade">
-                  <div class="row">
-                    <div style="margin-left:10px; width:15px; float:left;">
-                      <strong id="nomor">1.</strong>
-                    </div>
-                    <div style="margin-left: 0px;">  
-                      <div class="col-md-12" style="width:96%">
-                        <form class="form-horizontal col-md-12">
-                          <div class="form-group">
-                             <label class="form-control-label">Pertanyaan</label>
-                             <textarea id="edit3" class="form-control" rows="3"></textarea>
-                          </div>
-                          <div class="form-group">
-                            <div class="checkbox">
-                              <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox1"><input type="text" class="form-control"></label>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="checkbox">
-                              <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox2"><input type="text" class="form-control"></label>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="checkbox">
-                              <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox3"><input type="text" class="form-control"></label>
-                            </div>
-                          </div>
-                          <div class="form-group" style="margin-bottom: 10px;">
-                            <div class="checkbox">
-                              <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox4"><input type="text" class="form-control"></label>
-                            </div>    
-                          </div>
-                          <div class="form-group" style="margin-bottom: 10px;">
-                            <button class="btn btn-primary" style="margin-left:20px;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <strong class="col-md-1">Poin:</strong>
-                            <div class="col-md-3">
-                              <label style="width:60px;" class="form-control-label">Benar </label>
-                              <input type="text" class="form-control" style="width:32%">
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Kosong</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Salah</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label"></label>
-                              <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                            </div>                            
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="formBenarSalah" class="tab-pane fade">
-                  <div class="row">
-                    <div style="margin-left:10px; width:15px; float:left;">
-                      <strong id="nomor">1.</strong>
-                    </div>
-                    <div style="margin-left: 0px;">
-                      <div class="col-md-12" style="width:96%">
-                        <form class="form-horizontal col-md-12">
-                          <div class="form-group">
-                             <label class="form-control-label">Pertanyaan</label>
-                             <textarea id="edit4" class="form-control" row="3"></textarea>
-                          </div>
-                          <div class="radio">
-                            <label class="col-xs-12 col-md-12"><input type="radio">Benar</label>
-                          </div>
-                          <div class="radio">
-                            <label class="col-xs-12 col-md-12"><input type="radio">Salah</label>
-                          </div>
-                          <br>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <strong class="col-md-1">Poin:</strong>
-                            <div class="col-md-3">
-                              <label style="width:60px;" class="form-control-label">Benar </label>
-                              <input type="text" class="form-control" style="width:32%">
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Kosong</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Salah</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label"></label>
-                              <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                            </div>                            
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="formEssay" class="tab-pane fade">
-                  <div class="row">
-                    <div style="margin-left:10px; width:15px; float:left;">
-                      <strong id="nomor">1.</strong>
-                    </div>
-                    <div style="margin-left: 0px;">
-                      <div class="col-md-12" style="width:96%">
-                        <form class="form-horizontal col-md-12">
-                          <div class="form-group">
-                             <label class="form-control-label">Pertanyaan</label>
-                             <textarea id="edit5" class="form-control" row="3"></textarea>
-                          </div>
-                          <div class="form-group" style="margin-bottom:10px;">
-                            <label class="form-control-label">Jawaban</label>
-                            <textarea id="opsiEssay" class="form-control" row="3"></textarea>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <strong class="col-md-1">Poin:</strong>
-                            <div class="col-md-3">
-                              <label style="width:60px;" class="form-control-label">Benar </label>
-                              <input type="text" class="form-control" style="width:32%">
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Kosong</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Salah</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label"></label>
-                              <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                            </div>                            
-                          </div>
-                        </form> 
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="formPencocokan" class="tab-pane fade">
-                  <div class="row">
-                    <div style="margin-left:10px; width:15px; float:left;">
-                      <strong id="nomor">1.</strong>
-                    </div>
-                    <div class="col-md-12" style="width:96%">
-                      <div style="margin-left: 0px;">
-                        <form class="form-horizontal col-md-12">
-                          <div class="form-group form-inline">
-                            <div class="col-md-5">
-                              <strong>Pilihan</strong>
-                            </div>
-                            <div class="col-md-offset-2 col-md-5">
-                              <strong>Pasangan</strong>
-                            </div>
-                          </div>
-                          <div class="form-group" style="margin-bottom:10px;">
-                            <div class="col-md-5">
-                              <input type=text class="form-control">
-                            </div>
-                            <div class="col-md-offset-2 col-md-5">
-                              <input type=text class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group" style="margin-bottom:10px;">
-                            <div class="col-md-5">
-                              <input type=text class="form-control">
-                            </div>
-                            <div class="col-md-2" style="text-align:center";>
-                              
-                            </div>
-                            <div class="col-md-5">
-                              <input type=text class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group" style="margin-bottom:10px;">
-                            <div class="col-md-5">
-                              <input type=text class="form-control">
-                            </div>
-                            <div class="col-md-2" style="text-align:center";>
-                              
-                            </div>
-                            <div class="col-md-5">
-                              <input type=text class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group" style="margin-bottom: 10px;">
-                            <button class="btn btn-primary" style="margin-left:20px;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
-                          </div>
-                          <br>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <strong class="col-md-1">Poin:</strong>
-                            <div class="col-md-3">
-                              <label style="width:60px;" class="form-control-label">Benar </label>
-                              <input type="text" class="form-control" style="width:32%">
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Kosong</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Salah</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label"></label>
-                              <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                            </div>                            
-                          </div>
-                        </form> 
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="formSebabAkibat" class="tab-pane fade">
-                  <div class="row">
-                    <div style="margin-left:10px; width:15px; float:left;">
-                      <strong id="nomor">1.</strong>
-                    </div>
-                    <div style="margin-left: 0px;">  
-                      <div class="col-md-12" style="width:96%">
-                        <form class="form-horizontal col-md-12">
-                          <div class="form-group">
-                             <label class="form-control-label">Pernyataan</label>
-                             <textarea class="form-control" rows="2"></textarea>
-                          </div>
-                          <div class="form-group">
-                             <label class="form-control-label col-md-offset-5 col-md-6">SEBAB</label>
-                             <textarea  style="margin-bottom:10px;" class="form-control" rows="2"></textarea>
-                          </div>
-                          <div class="form-group">
-                            <div class="radio">
-                              <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan benar, alasan benar, keduanya menunjukkan hubungan sebab akibat</label>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="radio">
-                              <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan benar, alasan benar, tapi keduanya tidak menunjukkan hubungan sebab akibat</label>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="radio">
-                              <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan benar, alasan salah</label>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="radio">
-                              <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan salah, alasan benar</label>
-                            </div>    
-                          </div>
-                          <div class="form-group" style="margin-bottom: 10px;">
-                            <div class="radio">
-                              <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan dan alasan salah</label>
-                            </div>    
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <strong class="col-md-1">Poin:</strong>
-                            <div class="col-md-3">
-                              <label style="width:60px;" class="form-control-label">Benar </label>
-                              <input type="text" class="form-control" style="width:32%">
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Kosong</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Salah</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label"></label>
-                              <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                            </div>                            
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="formPilihan123" class="tab-pane fade">
-                  <div class="row">
-                    <div style="margin-left:10px; width:15px; float:left;">
-                      <strong id="nomor">1.</strong>
-                    </div>
-                    <div style="margin-left: 0px;">  
-                      <div class="col-md-12" style="width:96%">
-                        <form class="form-horizontal col-md-12">
-                          <div class="form-group">
-                             <label class="form-control-label">Pernyataan</label>
-                             <textarea class="form-control" rows="3"></textarea>
-                          </div>
-                          <div class="form-group">
-                            <div class="radio">
-                              <label class="col-xs-12 col-md-12"><input type="radio">(1), (2), dan (3) benar</label>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="radio">
-                              <label class="col-xs-12 col-md-12"><input type="radio">(1) dan (3) benar</label>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="radio">
-                              <label class="col-xs-12 col-md-12"><input type="radio">(2) dan (4) benar</label>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="radio">
-                              <label class="col-xs-12 col-md-12"><input type="radio">Hanya (4) yang benar</label>
-                            </div>    
-                          </div>
-                          <div class="form-group" style="margin-bottom:10px;">
-                            <div class="radio">
-                              <label class="col-xs-12 col-md-12"><input type="radio">Benar semua</label>
-                            </div>    
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <strong class="col-md-1">Poin:</strong>
-                            <div class="col-md-3">
-                              <label style="width:60px;" class="form-control-label">Benar </label>
-                              <input type="text" class="form-control" style="width:32%">
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px;">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Kosong</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label">Salah</label>
-                              <input type="text" class="form-control" style="width:32%" value="0"> 
-                            </div>
-                          </div>
-                          <div class="form-group form-inline" style="margin-bottom:10px">
-                            <div class="col-md-push-1 col-md-3">
-                              <label style="width:60px;" class="form-control-label"></label>
-                              <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                            </div>                            
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
               </div>
               </div>
             </div>
       </div> 
+      </div>
     </div>  
 
     <!-- Include jQuery. -->

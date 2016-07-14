@@ -43,7 +43,7 @@
       body {
         font:400 15px Lato, sans-serif;
         line-height: 1.8;
-        /*color: #818181;*/
+        background-color: #f8f8f8;
       } 
       .btn {
         transition-duration: 0.4s;
@@ -55,10 +55,10 @@
       .navbar {
         margin-bottom: 0;
         /*z-index: 9999; */
-        border: 0; 
         font-size: 12px !important;
         border-radius: 0;
-        /*background-color: #4ABDAC; */
+        border-bottom-color: #e7e7e7;
+        border-bottom-width: 1px;
       }
       label, th {
         line-height: 1.8;
@@ -71,7 +71,26 @@
         background-color:#e7e7e7;
       }
       .container {
-        padding: 20px 20px;
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
+      }
+      .footer {
+          background-color: #F4F4F4;
+          border-top: 1px solid #e5e5e5;
+          color: #999;
+          padding: 20px 15px;
+          background-color: #f5f5f5;
+      }
+      .footer, .content, .topheader {
+          margin: 0 auto;
+          max-width: 1024px;
+      }
+      .content {
+        background-color: #ffffff;
+        min-height: 600px;
+        padding: 20px 12px;
       }
       .progress {
         margin-top: 5px;
@@ -219,8 +238,9 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
+      <div class="container">
+        <div class="topheader">
+          <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -230,8 +250,8 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
-            <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="index_guru.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+            <li class="active"><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
+            <li><a href="kategori.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -248,29 +268,32 @@
             <li><a href="#"><u>Keluar</u></a></li>
           </ul>
         </div>
+        </div>
       </div>
     </nav>
     
-    <div class="container">
+    
+  <div class="container">
       <?php include('koneksi.php'); 
             $id = $_GET['id'];
             $query = mysqli_query($link, "SELECT * FROM `info_ujian` WHERE `id_ujian`='$id' ");
             $ujian = mysqli_fetch_array($query);
       ?>
-    <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;"><?php echo $ujian['judul_ujian'] ?></h2>
+    <div class="content">
+      <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;"><?php echo $ujian['judul_ujian'] ?></h2>
     <div class="row">
       <div class="col-xs-6 col-md-6">
          <ol class="breadcrumb">
             <li><a href="index_guru.php">Beranda</a></li>
             <li class="active"><?php echo $ujian['judul_ujian'] ?></li>
          </ol>
-       </div>
-       <div class="col-md-6">
+      </div>
+      <div class="col-md-6">
           <div class="pull-right">
             <a href="lihat_tampilan_ujian.html" class="button button1" style="margin-bottom:10px; text-decoration:none;"><span class="glyphicon glyphicon-eye-open"></span> Lihat tampilan ujian</a>
           </div>
-       </div>
-     </div>
+      </div>
+    </div>
 
      <!-- Informasi ujian -->
      <div class="row">
@@ -361,16 +384,11 @@
         </div>
      </div>
 
-      
-     
-     
-
      <div class="row" style="margin-bottom:10px;">
        <!-- <div class="col-md-8"></div> -->
-       
      </div> 
      <div class="panel panel-default soal">
-       <div class="panel-body">
+        <div class="panel-body">
          <div class="row">
           <div style="margin-left:10px; width:15px; float:left;">
             <strong>1.</strong>
@@ -405,8 +423,9 @@
           </div>
          </div> 
         </div>
-       </div>
      </div>
+    </div>
+  </div>
      <!-- Modal Hapus -->
               <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusLabel">
                 <div class="modal-dialog" role="document">
@@ -425,6 +444,6 @@
                   </div>
                 </div>
               </div>
-    </div>
+  </div>
   </body>
 </html>

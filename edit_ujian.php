@@ -12,6 +12,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <script type="text/javascript">
       $(function(){
         $('[data-toggle="tooltip"]').tooltip();
@@ -32,7 +33,89 @@
         font:400 15px Lato, sans-serif;
         line-height: 1.8;
         /*color: #818181;*/
+        background-color: #f8f8f8;
       } 
+      @media (max-width: 768px) {
+        .container {
+          width: 96%;
+        }
+      }
+
+
+      @media (min-width: 1366px) {
+        .container {
+          width: 80%;
+        }
+      }
+      /*  bhoechie tab */
+      div.bhoechie-tab-container{
+        z-index: 10;
+        background-color: #f8f8f8;
+        padding: 0 !important;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        border:0px solid #ddd;
+        margin-top: 0px;
+        margin-left: 30px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        background-clip: padding-box;
+        opacity: 0.97;
+        filter: alpha(opacity=97);
+      }
+      div.bhoechie-tab-menu{
+        padding-right: 0;
+        padding-left: 0;
+        padding-bottom: 0;
+      }
+      div.bhoechie-tab-menu div.list-group{
+        margin-bottom: 0;
+      }
+      div.bhoechie-tab-menu div.list-group>a{
+        margin-bottom: 0;
+      }
+      div.bhoechie-tab-menu div.list-group>a .glyphicon,
+      div.bhoechie-tab-menu div.list-group>a .fa {
+        color: #4ABDAC;
+      }
+      div.bhoechie-tab-menu div.list-group>a:first-child{
+        border-top-right-radius: 0;
+        -moz-border-top-right-radius: 0;
+      }
+      div.bhoechie-tab-menu div.list-group>a:last-child{
+        border-bottom-right-radius: 0;
+        -moz-border-bottom-right-radius: 0;
+      }
+      div.bhoechie-tab-menu div.list-group>a.active,
+      div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
+      div.bhoechie-tab-menu div.list-group>a.active .fa{
+        background-color: #4ABDAC;
+        background-image: #4ABDAC;
+        color: #ffffff;
+      }
+      div.bhoechie-tab-menu div.list-group>a.active:after{
+        content: '';
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        margin-top: -13px;
+        border-left: 0;
+        border-bottom: 13px solid transparent;
+        border-top: 13px solid transparent;
+        border-left: 10px solid #4ABDAC;
+      }
+
+      div.bhoechie-tab-content{
+        background-color: #ffffff;
+        /* border: 1px solid #eeeeee; */
+        padding-left: 20px;
+        padding-top: 10px;
+      }
+
+      div.bhoechie-tab div.bhoechie-tab-content:not(.active){
+        display: none;
+      }
       .btn {
         transition-duration: 0.4s;
         cursor: pointer;
@@ -40,21 +123,24 @@
       .navbar {
         margin-bottom: 0;
         /*z-index: 9999; */
-        border: 0; 
         font-size: 12px !important;
         border-radius: 0;
         /*background-color: #4ABDAC; */
+        border-bottom-width: 1px;
+        border-bottom-color: #e7e7e7;
+
       } 
       .navbar-nav li a:hover, .navbar-nav li.active a {
         color: #4ABDAC !important;
       }
-      .navbar-nav li:hover {
-        background-color:#e7e7e7;
-      }
       
       .container {
-        padding: 20px 20px;
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
       }
+
       .progress {
         margin-top: 5px;
         margin-bottom: 10px;
@@ -91,26 +177,29 @@
         border: 2px solid #F7b733;
       }
       .button2:hover {
-        background-color: #ffffff;
-        color: #F7b733;
-        border: 2px solid #F7b733;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
       .breadcrumb {
         background: rgba(245, 245, 245, 1);
         background-color: #ffffff;
         display: block;
       }
-      th, label {
+      th {
         color: #777; 
+      }
+      label {
+        font-size: 14px;
+        color: #777;
       }
       .breadcrumb li {
         font-size: 12px;
       }
-      .breadcrumb a {
+      .breadcrumb a, .breadcrumb a:visited {
         color: rgba(109, 116, 122, 1);
       }
       .breadcrumb a:hover {
-        color: rgba(42, 100, 150, 1);
+        /* color: rgba(42, 100, 150, 1); */
+        color : #4ABDAC;
       }
       .breadcrumb > .active {
         color: rgba(186, 182, 182, 1);
@@ -172,9 +261,6 @@
         height: 80%;
         overflow: auto;
       }
-      label {
-        color: #F7b733;
-      }
       .btn-simpan, .btn-simpan:active, .btn-simpan:focus {
         background-color: #F7b733;  
         color: #ffffff;
@@ -189,57 +275,50 @@
       .panel {
         border-width: 0px;
       }
-
-            .tabs-left, .tabs-right {
-        border-bottom: none;
-        padding-top: 2px;
+      .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover  {
+        border-color: #f8f8f8;
       }
-      .tabs-left {
-        border-right: 1px solid #ddd;
+      a.list-group-item:hover {
+        background-color: #ecf8f6;
+        color: #4ABDAC;
       }
-      .tabs-right {
-        border-left: 1px solid #ddd;
+      a.list-group-item {
+        color: #4ABDAC;
       }
-      .tabs-left>li, .tabs-right>li {
-        float: none;
-        margin-bottom: 2px;
+      .list-group-item:visited, .list-group-item {
+        background-color: #ffffff;
+        border-color: #f8f8f8;
+        color: #4ABDAC;
       }
-      .tabs-left>li {
-        margin-right: -1px;
-      }
-      .tabs-right>li {
-        margin-left: -1px;
-      }
-      .tabs-left>li.active>a,
-      .tabs-left>li.active>a:hover,
-      .tabs-left>li.active>a:focus {
-        border-bottom-color: #ddd;
-        border-right-color: transparent;
+      .form-control {
+        border-radius: 0px;
       }
 
-      .tabs-right>li.active>a,
-      .tabs-right>li.active>a:hover,
-      .tabs-right>li.active>a:focus {
-        border-bottom: 1px solid #ddd;
-        border-left-color: transparent;
+      .footer {
+          background-color: #F4F4F4;
+          border-top: 1px solid #e5e5e5;
+          color: #999;
+          padding: 20px 15px;
+          background-color: #f5f5f5;
       }
-      .tabs-left>li>a {
-        border-radius: 4px 0 0 4px;
-        margin-right: 0;
-        display:block;
+      .footer, .content, .topheader {
+          margin: 0 auto;
+          max-width: 1024px;
       }
-      .tabs-right>li>a {
-        border-radius: 0 4px 4px 0;
-        margin-right: 0;
+      .content {
+        background-color: #ffffff;
+        min-height: 600px;
+        padding: 20px 12px;
       }
-      
+
     </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
+      <div class="container">
+        <div class="topheader">
+          <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -250,7 +329,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
             <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="index_guru.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+            <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -267,129 +346,144 @@
             <li><a href="#"><u>Keluar</u></a></li>
           </ul>
         </div>
+        </div>
       </div>
     </nav>
     
     <div class="container">
-      <?php include('koneksi.php'); 
+     <div class="content">
+       <?php include('koneksi.php'); 
           $id = $_GET['id'];
           $query = mysqli_query($link, "SELECT * FROM info_ujian WHERE id_ujian=".$id);
           $ujian = mysqli_fetch_array($query);
       ?>
-    <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family:'didact gothic', sans-serif">Edit Ujian <?php echo $ujian['judul_ujian'] ?></h2>
-     <div class="row">
+      <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family:'didact gothic', sans-serif">Edit Ujian <?php echo $ujian['judul_ujian'] ?></h2>
+      <div class="row">
           <div class="col-xs-6 col-md-9">
              <ol class="breadcrumb">
                 <li><a href="index_guru.php">Beranda</a></li>
-                <li><a href="view_ujian.php?id=<?php echo $ujian['id_ujian'] ?>"><?php echo $ujian['judul_ujian'] ?></a></li>
-                <li class="active">Edit Ujian</li>
+                <!--  <li><a href="view_ujian.php?id=<?php echo $ujian['id_ujian'] ?>"><?php echo $ujian['judul_ujian'] ?></a></li> -->
+                <li class="active">Edit Ujian Mulok</li>
              </ol>
            </div>
       </div>
-       <div  class="row">
-        <div class="col-md-3"> <!-- required for floating -->
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs tabs-left sideways">
-            <li class="active"><a href="#home-v" data-toggle="tab">Informasi Ujian</a></li>
-            <li><a href="#profile-v" data-toggle="tab">Petunjuk Ujian</a></li>
-          </ul>
-        </div>
-
-        <div class="col-md-9">
-          <!-- Tab panes -->
-          <div class="tab-content">
-            <div class="tab-pane active" id="home-v">
-                    <form action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal" method="post">
-                      <div class="form-group">
-                        <label class="col-md-3">Judul</label>
-                        <div class="col-md-9">
-                          <input type="text" class="form-control" id="Judul" value="<?php echo $ujian['judul_ujian'] ?>">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-3">URL</label>
-                        <div class="col-md-9">
-                          <a href="#" id="URL"><?php echo $ujian['url_ujian'] ?></a>
-                        </div>  
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-3">Waktu</label>
-                        <div class="col-md-4">
-                          <input type="number" class="form-control" id="Waktu" value="<?php echo $ujian['lama_ujian'] ?>">
-                        </div>
-                        <div class="col-md-5">
-                           Menit
-                         </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-3">Jumlah soal</label>
-                        <div class="col-md-9">
-                          <?php echo $ujian['total_soal'] ?>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-3">Acak soal</label>
-                        <div class="col-md-9">
-                           <?php if($ujian['acak_soal']==1){
-                                    echo "Ya"; }
-                                  else {
-                                    echo "Tidak";
-                                  }  
-                            ?>
-                         </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-3">Kategori</label>
-                        <div class="col-md-9">
-                           <input type="text" class="form-control" aria-describedby="helpBlock" value="<?php echo $ujian['kategori_ujian'] ?>">
-                           <span id="helpBlock" class="help-block">Pisahkan dengan titik koma (;)</span>
-                         </div>
-                      </div>
-                      <div class="form-group">
-                          <label class="col-md-3">Peserta perlu login</label>
-                          <div class="col-md-9">
-                            <select class="form-control">
-                              <option>Ya</option>
-                              <option>Tidak</option>
-                            </select>
-                          </div>
-                        </div>
-                      <div class="form-group">
-                        <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
-                          <a href="index_guru.html" type="button" class="button button2" style="text-decoration:none"> Simpan</a>
-                        </div>
-                      </div>
-                    </form>
-            </div>
-            <div class="tab-pane" id="profile-v">
-                  <form>
-                    <div class="form-group">
-                      <div class="col-md-12">
-                        <label class="form-control-label">Petunjuk</label>
-                        <textarea class="form-control" rows="15">PETUNJUK A
-                        Pilih jawaban yang paling benar (A, B, C, D atau E)
-                        <u>PETUNJUK B</u><br>
-                        Soal terdiri atas tiga bagian yaitu PERNYATAAN, SEBAB, dan ALASAN yang disusun secara berurutan.<br>
-                        <br>
-                        Pilihlah : <br>
-                        <br>
-                        A. Jika pernyataan benar, alasan benar, keduanya menunjukkan hubungan sebab akibat.<br>
-                        B. Jika pernyataan benar, alasan benar, tetapi keduanya tidak menunjukkan hubungan sebab akibat.<br>
-                        C. Jika pernyataan benar, alasan salah.<br>
-                        D. Jika pernyataan salah, alasan benar.<br>
-                        E. Jika pernyataan dan alasan , keduanya salah.<br></textarea>
-                        <a href="view_ujian.html" type="button" class="button button2 pull-right" style="margin-top:10px; text-decoration:none;"> Simpan</a>
-                      </div>  
+      <div class="row">
+              <div class="col-md-offset-2 col-md-10 bhoechie-tab-container">
+                  <div class="col-md-2 bhoechie-tab-menu">
+                    <div class="list-group">
+                      <a href="#tab1" data-toggle="tab" class="list-group-item active text-center">
+                        Informasi Ujian
+                      </a>
+                      <a href="#tab2" data-toggle="tab" class="list-group-item text-center">
+                        Petunjuk Ujian
+                      </a>
                     </div>
-                  </form>
-            </div>
-          </div>
-        </div>
-
-        <div class="clearfix"></div>
-
+                  </div>
+                  <div class="col-md-10 bhoechie-tab" style="background-color:#ffffff;">
+                      <!-- flight section -->
+                      <div class="bhoechie-tab-content active" id="tab1" style="background-color:#ffffff">
+                          <form action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal col-md-offset-1 col-md-8" method="post">
+                            <div class="form-group">
+                              <label for="Judul" class="col-md-3 control-label">Judul</label>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control" id="Judul" value="<?php echo $ujian['judul_ujian'] ?>">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="URL" class="col-md-3 control-label">URL</label>
+                              <div class="col-md-9">
+                                <a href="#" id="URL" class="form-control disabled" style="background-color:#f8f8f8"><?php echo $ujian['url_ujian'] ?></a>
+                              </div>  
+                            </div>
+                            <div class="form-group">
+                              <label for="Waktu" class="col-md-3 control-label">Waktu</label>
+                              <div class="col-md-4">
+                                <input type="number" class="form-control" id="Waktu" value="<?php echo $ujian['lama_ujian'] ?>">
+                              </div>
+                              <div class="col-md-5">
+                                 Menit
+                               </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-md-3 control-label">Acak soal</label>
+                              <div class="col-md-9">
+                                 <?php if($ujian['acak_soal']==1){
+                                          echo '<select class="form-control">';
+                                          echo   '<option>Ya</option>';
+                                          echo   '<option>Tidak</option>';
+                                          echo '</select>';
+                                        } else {
+                                          echo '<select class="form-control">';
+                                          echo   '<option>Tidak</option>';
+                                          echo   '<option>Ya</option>';
+                                          echo '</select>';
+                                        }  
+                                  ?>
+                               </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-md-3 control-label">Kategori</label>
+                              <div class="col-md-5">
+                                <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
+                                  <option value="">Pilih Mata Pelajaran</option>
+                                  <option value="1">Matematika</option>
+                                  <option value="2">Fisika</option>
+                                </select>
+                              </div>
+                              <div class="col-md-4">
+                                <select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
+                                  <option value="">Pilih Kelas</option>
+                                  <option value="1">XII MIPA</option>
+                                  <option value="2">XI MIPA</option>
+                                </select>
+                               </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Peserta perlu login</label>
+                                <div class="col-md-9">
+                                  <select class="form-control">
+                                    <option>Ya</option>
+                                    <option>Tidak</option>
+                                  </select>
+                                </div>
+                              </div>
+                            <div class="form-group">
+                              <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
+                                <a href="index_guru.html" type="button" class="button button2" style="text-decoration:none"> Simpan</a>
+                              </div>
+                            </div>
+                          </form>
+                      </div>
+                      <!-- train section -->
+                      <div class="bhoechie-tab-content" id="tab2" style="background-color:#ffffff">
+                        <form>
+                          <div class="form-group">
+                              <label class="form-control-label">Petunjuk</label>
+                              <textarea class="form-control" rows="15">PETUNJUK A
+                              Pilih jawaban yang paling benar (A, B, C, D atau E)
+                              <u>PETUNJUK B</u><br>
+                              Soal terdiri atas tiga bagian yaitu PERNYATAAN, SEBAB, dan ALASAN yang disusun secara berurutan.<br>
+                              <br>
+                              Pilihlah : <br>
+                              <br>
+                              A. Jika pernyataan benar, alasan benar, keduanya menunjukkan hubungan sebab akibat.<br>
+                              B. Jika pernyataan benar, alasan benar, tetapi keduanya tidak menunjukkan hubungan sebab akibat.<br>
+                              C. Jika pernyataan benar, alasan salah.<br>
+                              D. Jika pernyataan salah, alasan benar.<br>
+                              E. Jika pernyataan dan alasan , keduanya salah.<br></textarea>
+                          </div>
+                          <div class="form-group">
+                              <div class="col md-2" style="">
+                                <a href="view_guru.html" type="button" class="button button2" style="text-decoration:none"> Simpan</a>
+                              </div>
+                          </div>
+                        </form>
+                      </div>
+                  </div>
+              </div>
       </div>
-
+     </div>
+    </div>
   </body>
 
 <!-- <?php
@@ -410,6 +504,16 @@
       }
     });
   });
+  $(document).ready(function() {
+    $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+    });
+});
 
   
 </script>

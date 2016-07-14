@@ -72,12 +72,12 @@
       .navbar {
         margin-bottom: 0;
         z-index: 9999;
-        border: 0; 
         font-size: 12px !important;
         border-radius: 0;
         /*background-color: #ecf8f6;*/
-        background-color: #ebebeb;
-        border-color: #ccc;
+        /* background-color: #e7e7e7; */
+        border-bottom-width: 1px;
+        border-bottom-color: #e7e7e7;
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -198,6 +198,8 @@
       }
       li.selected:hover, li.selected {
         background-color : #b4e3dc;
+        box-shadow: 0 1px #b4e3dc;
+        
       }
       .list-group-item:hover {
         background-color: #f8f8f8;
@@ -216,8 +218,42 @@
         border: 1px solid #dadada;
         font-size: 14px;
       }
-      .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
-      .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
+      .numberCircle {
+          border-radius: 50%;
+
+          width: 32px;
+          height: 32px;
+          padding: 5px;
+          
+          background: #fff;
+          border: 2px solid #4ABDAC;
+          color: #4ABDAC;
+          text-align: center;
+          
+          font: 15px Arial, sans-serif;
+      }
+      .numberCheck {
+          border-radius: 50%;
+
+          width: 32px;
+          height: 32px;
+          padding: 5px;
+          
+          background: #4ABDAC;
+          border: 2px solid #4ABDAC;
+          color: #fff;
+          text-align: center;
+          
+          font: 15px Arial, sans-serif; 
+      }
+      .opsijawaban {
+        border: 1px solid #e7e7e7;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        box-shadow: 0 1px #e7e7e7;
+        width: 96%;
+        margin-left: 25px;
+      }
     </style>
   </head>
   <body>
@@ -279,29 +315,38 @@
               echo         '</div>';
               echo       '</div>';
               echo     '</div>';
-              echo     '<button type="button" class="button button1 pull-right btntandai" style="margin-top:8px; margin-right:4px; padding: 4px 18px; outline:none;" data-id="';
+              echo     '<div class="row">';
+              echo     '<button type="button" class="button button1 pull-right btntandai" style="margin-top:8px; margin-right:17px; padding: 4px 18px; outline:none;" data-id="';
               echo     $soal['nomor_soal'];
               echo     '" id="tandai';
               echo     $soal['nomor_soal'];
               echo     '"><i class="fa fa-bookmark"></i> Tandai</button>';
-              echo    '</div>';
+              echo     '</div>';
+              
 
-              echo    '<ul class="list-group">';
+              echo    '<ul class="list-group" style="margin-top:10px;">';
               $id_soal = $soal['id_soal'];
               $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+              $huruf = array("A","B","C","D","E");
+              $i = 0;
                 while($pilihan = mysqli_fetch_array($query2)){
                   echo '<li class="list-group-item opsijawaban">';
                   echo   '<div class="row">';
-                  echo     '<div style="margin-left:50px; width:50px; float:left; padding-right:10px;">';
-                  echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>';
+                  echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+                  //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
+                  echo        '<div class="numberCircle">';
+                  echo         $huruf[$i];
+                  echo        '</div>'; 
                   echo     '</div>';
                   echo     '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
                   echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
                   echo     '</div>';
                   echo    '</div>';
                   echo '</li>';
+                  $i++;
                 }
               echo    '</ul>';
+              echo    '</div>';
               echo   '</div>';
             }
           ?>
@@ -536,13 +581,15 @@
           $(this).siblings().removeClass("selected");
           $(this).addClass("selected");
 
-          $(this).siblings().find('.setjawaban').removeClass("fa-circle-thin");
+          /*$(this).siblings().find('.setjawaban').removeClass("fa-circle-thin");
           $(this).siblings().find('.setjawaban').addClass("fa-circle-thin");
-          $(this).siblings().find('.setjawaban').css({"color":"#dadada"});
+          $(this).siblings().find('.setjawaban').css({"color":"#4ABDAC"});
           $(this).find('.setjawaban').removeClass("fa fa-circle-thin");
           $(this).find('.setjawaban').addClass("fa fa-circle");
-          $(this).find('.setjawaban').css({"color" : "#4ABDAC"});
-          
+          $(this).find('.setjawaban').css({"color" : "#4ABDAC"}); */
+          $(this).siblings().find('.numberCircle').css({"background":"fff","color":"#4ABDAC"});
+          $(this).find('.numberCircle').css({"background":"#4ABDAC", "color":"#fff"});
+
           $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
           $($ini).addClass("hasAnswer");
 
@@ -566,7 +613,7 @@
               $(this).closest(".opsijawaban").addClass("selected");
               $(".setjawaban").removeClass("fa fa-circle-thin");
               $(".setjawaban").addClass("fa fa-circle-thin");
-              $(".setjawaban").css({"color":"#dadada"})
+              $(".setjawaban").css({"color":"#4ABDAC"})
               $(this).removeClass("fa fa-circle-thin");
               $(this).addClass("fa fa-circle");
               $(this).css({"color" : "#4ABDAC"});

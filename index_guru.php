@@ -34,7 +34,7 @@
         font-family: 'Lato', sans-serif;
         line-height: 1.8;
         /*color: #81;*/
-        /* background-color: #f8f8f8; */
+        background-color: #f8f8f8; 
       } 
       .btn {
         transition-duration: 0.4s;
@@ -43,9 +43,10 @@
       .navbar {
         margin-bottom: 0;
         /*z-index: 9999; */
-        border: 0; 
         font-size: 12px !important;
         border-radius: 0;
+        border-bottom-color: #e7e7e7;
+        border-bottom-width: 1px;
         /*background-color: #DFDCE; */
       } 
 
@@ -56,9 +57,18 @@
       .menu {
         font-size: 13px;
       }
-      .container {
+    /*  .container {
         padding: 20px 20px;
+        background-color: #ffffff;
+        min-height: 100%;
+      } */
+      .container {
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
       }
+ 
       .progress {
         margin-top: 5px;
         margin-bottom: 10px;
@@ -131,7 +141,7 @@
         color: #818181;
       }
       .link2 a:hover {
-        color: #F7B733;
+        color: #4ABDAC;
       }
       .button {
         background-color: #4ABDAC;
@@ -151,14 +161,21 @@
       .button1, .button1:link, .button1:visited, .col-md-3 a:link, .col-md-3 a:visited, .col-md-3 a:active {
         background-color: #4ABDAC;
         color: #ffffff;
-        border: 2px solid #4ABDAC;
+        border: 1px solid #4ABDAC;
+        border-radius: 0px;
       }
-      .button1:hover, .col-md-3 a:hover {
+      .button1:hover, .col-md-3 a:hover, .button2:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      .button2, .button2:link, .button2:visited {
         background-color: #ffffff;
         color: #4ABDAC;
-        border: 2px solid #4ABDAC;
+        border-color: #4ABDAC;
+        border: 1px solid #4ABDAC;
+        border-radius: 0px;
       }
-      
+
       .judul a:link, a:visited {
         /*color: #2a2a2a;*/
         color: #4ABDAC;
@@ -180,47 +197,56 @@
         height: 80%;
         overflow: auto;
       }
+      .modal-content {
+        border-radius: 0px;
+      }
+      .modal-body {
+        padding: 10px;
+      }
       .alert-success {
         color: #4abdac;
         background-color: #ecf8f6;
         border-color: #ecf8f6;
       }
-      footer {
-        position:absolute;
-        bottom:0;
-        width:100%;
-        background-color: #f8f8f8;
-        padding-top: 10px;
+      .footer {
+          background-color: #F4F4F4;
+          border-top: 1px solid #e5e5e5;
+          color: #999;
+          padding: 20px 15px;
+          background-color: #f5f5f5;
+      }
+      .footer, .content, .topheader {
+          margin: 0 auto;
+          max-width: 1024px;
       }
       .content {
         background-color: #ffffff;
-        min-height: 420px;
+        min-height: 600px;
         padding: 20px 12px;
-      }
-      .content {
-        margin: 0 auto;
-        max-width: 1024px;
       }
     </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
+      <div class="container">
+        <div class="topheader">
+          <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left:120px;">Ujian Online</a>
+          <!-- <a class="navbar-brand" href="#myPage" style="padding-left:120px;">Ujian Online</a> -->
+          <a class="navbar-brand" href="#myPage">Ujian Online</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
             <li class="active"><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="kategori.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+            <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right" style="padding-right:90px;">
+          <!-- <ul class="nav navbar-nav navbar-right" style="padding-right:90px;"> -->
+          <ul class="nav navbar-nav navbar-right">
             <li>
               <form class="navbar-form" role="search">
               <div class="input-group">
@@ -235,11 +261,11 @@
             <li><a href="#"><u>Keluar</u></a></li>
           </ul>
         </div>
+        </div>
       </div>
     </nav>
-    
     <div class="container">
-      
+      <div class="content">
         <h2 style="margin-bottom: 30px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;">Daftar Ujian</h2>
         <div class="row">
           <div class="col-md-9">
@@ -268,10 +294,16 @@
             <a href="new_ujian.php" class="button button1 pull-right" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Buat Ujian Baru</a>
           </div>
         </div>
-        <div class="alert alert-success">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Berhasil!</strong> Ujian Kesetimbangan berhasil dibuat.
-        </div>
+
+        <?php 
+          if(!empty($_GET['message']) && $_GET['message'] == 'success')
+          { 
+            echo '<div class="alert alert-success">';
+            echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+            echo   '<strong>Berhasil!</strong> Ujian Kesetimbangan berhasil dibuat.';
+            echo '</div>';
+          }
+        ?>
         <table class="table table-hover">
           <thead>
             <tr>
@@ -296,7 +328,7 @@
                 echo     '<a class="link-judul" href="view_ujian.php?id='.$data['id_ujian'].'"">'. $data['judul_ujian'] .'</a><br>';
                 echo   '</div>';
                 echo   '<div style="font-size: 12px; color:#aba8a8;" class="link2">';
-                echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.html">Tambah Soal</a>';
+                echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal2.html">Tambah Soal</a>';
                 echo   '</div>';    
                 echo  '</td>';
                 echo  '<td>'. $data['total_soal'] .'</td>';     
@@ -309,23 +341,6 @@
                 echo '</tr>';      
               }
             ?>
-            <!--<tr style="background-color:#ecf8f6">
-              <td style="text-align: left;">
-                <div class="judul">
-                  <a href="view_ujian.html">Kesetimbangan</a><br>
-                </div>
-                <div style="font-size: 12px; color:#aba8a8;" class="link2">
-                  <a href="#">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.html">Tambah Soal</a>
-                </div>
-              </td>
-              <td>50</td>
-              <td>Kimia</td>
-              <td>X MIPA</td>
-              <td><a href="lihat_tampilan_ujian.html" data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>
-              <td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>
-              <td><a href="laporan_ujian.html" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>
-              <td>2016-06-14 00:00:00</td>
-            </tr/>-->
           </tbody>
         </table>
         <!-- Modal Hapus -->
@@ -337,11 +352,11 @@
                           <h4 class="modal-title" id="modalHapusLabel">Hapus Ujian</h4>
                         </div>
                         <div class="modal-body">
-                          Apakah anda ingin menghapus ujian <b id="p1"> Gerak Lurus Beraturan?</b>?
+                          <p style="padding-left:20px; margin-bottom:0px">Apakah anda ingin menghapus ujian <b id="p1"> Gerak Lurus Beraturan?</b>?</p>
                         </div>
                         <div class="modal-footer">
-                          <a  href="#" class="button button1" id="simpan" style="text-decoration:none;">Ya</a>
-                          <button class="btn btn-default" data-dismiss="modal" style="border-width:2px;">Tidak</button>
+                          <a href="#" class="button button2 col-md-6" data-dismiss="modal" style="text-decoration:none;">Batalkan</a>
+                          <a href="#" class="button button1 col-md-6" id="simpan" style="text-decoration:none;">Hapus Ujian</a>
                         </div>
                       </div>
                     </div>
@@ -355,24 +370,22 @@
                     <label class="modal-title">Link Ujian Deret Aritmetika</label>
                  </div>
                  <div class="modal-body">
-                    <input type="text" id="modalshare"  class="form-control url" value="">
+                    <a href="#" id="modalshare" style="text-decoration: underline;"></a>
                   </div>
                   <div class="modal-footer"></div>
                </div>
             </div>
-          </div>           
-      
+          </div>  
+      </div>
     </div>
-  <footer class="text-center">
-    <p>2016 © Diah Fauziah. Ujian Online Template.</p>
-  </footer>
   </body>
 </html>
 <script type="text/javascript">
   $(function(){
     $(".bagikan").click(function(){
       x = $(this).attr("data-id");
-      $("#modalshare").val(x);
+      $("#modalshare").text(x);
+      $("#modalshare").attr("href", x);
     });
     $(".hapus").click(function(){
       var x = "";
