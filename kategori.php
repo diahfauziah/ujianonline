@@ -27,7 +27,7 @@
       body {
         font:400 15px Lato, sans-serif;
         line-height: 1.8;
-        /*color: #818181;*/
+        background-color: #f8f8f8;
       } 
       .btn {
         transition-duration: 0.4s;
@@ -36,23 +36,42 @@
       .navbar {
         margin-bottom: 0;
         /*z-index: 9999; */
-        border: 0; 
+        
         font-size: 12px !important;
         border-radius: 0;
         /*background-color: #4ABDAC; */
+        border-bottom-color: #e7e7e7; 
+        border-width: 1px;
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
         color: #4ABDAC !important;
       }
-      .navbar-nav li:hover {
-        background-color:#e7e7e7;
-      }
+
       /*.menu li {
         background-color: #e7e7e7;
       } */
       .container {
-        padding: 20px 20px;
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
+      }
+      .footer {
+          background-color: #F4F4F4;
+          border-top: 1px solid #e5e5e5;
+          color: #999;
+          padding: 20px 15px;
+          background-color: #f5f5f5;
+      }
+      .footer, .content, .topheader {
+          margin: 0 auto;
+          max-width: 1024px;
+      }
+      .content {
+        background-color: #f8f8f8;
+        min-height: 600px;
+        padding: 20px 12px;
       }
       .progress {
         margin-top: 5px;
@@ -192,59 +211,100 @@
         width:100%;
       }
       .link2 a:link {
-        color: rgba(186, 182, 182, 1);;
-      }
-      .link2 a:visited {
-        color: #818181;
-      }
-      .link2 a:hover {
         color: #4ABDAC;
       }
-      .tabs-left, .tabs-right {
-        border-bottom: none;
-        padding-top: 2px;
+      .link2 a:visited {
+        color: #4ABDAC;
       }
-      .tabs-left {
-        border-right: 1px solid #ddd;
+      .link2 a:hover {
+        color: #F7b733;
       }
-      .tabs-right {
-        border-left: 1px solid #ddd;
+    
+      /*  bhoechie tab */
+      div.bhoechie-tab-container{
+        z-index: 10;
+        background-color: #f8f8f8;
+        padding: 0 !important;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        border:0px solid #ddd;
+        margin-top: 0px;
+        margin-left: 30px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        background-clip: padding-box;
+        opacity: 0.97;
+        filter: alpha(opacity=97);
       }
-      .tabs-left>li, .tabs-right>li {
-        float: none;
-        margin-bottom: 2px;
+      div.bhoechie-tab-menu{
+        padding-right: 0;
+        padding-left: 0;
+        padding-bottom: 0;
       }
-      .tabs-left>li {
-        margin-right: -1px;
+      div.bhoechie-tab-menu div.list-group{
+        margin-bottom: 0;
       }
-      .tabs-right>li {
-        margin-left: -1px;
+      div.bhoechie-tab-menu div.list-group>a{
+        margin-bottom: 0;
       }
-      .tabs-left>li.active>a,
-      .tabs-left>li.active>a:hover,
-      .tabs-left>li.active>a:focus {
-        border-bottom-color: #ddd;
-        border-right-color: transparent;
+      div.bhoechie-tab-menu div.list-group>a .glyphicon,
+      div.bhoechie-tab-menu div.list-group>a .fa {
+        color: #F7b733;
+      }
+      div.bhoechie-tab-menu div.list-group>a:first-child{
+        border-top-right-radius: 0;
+        -moz-border-top-right-radius: 0;
+      }
+      div.bhoechie-tab-menu div.list-group>a:last-child{
+        border-bottom-right-radius: 0;
+        -moz-border-bottom-right-radius: 0;
+      }
+      div.bhoechie-tab-menu div.list-group>a.active,
+      div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
+      div.bhoechie-tab-menu div.list-group>a.active .fa{
+        background-color: #F7b733;
+        background-image: #F7b733;
+        color: #ffffff;
+      }
+      div.bhoechie-tab-menu div.list-group>a.active:after{
+        content: '';
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        margin-top: -13px;
+        border-left: 0;
+        border-bottom: 13px solid transparent;
+        border-top: 13px solid transparent;
+        border-left: 10px solid #F7b733;
       }
 
-      .tabs-right>li.active>a,
-      .tabs-right>li.active>a:hover,
-      .tabs-right>li.active>a:focus {
-        border-bottom: 1px solid #ddd;
-        border-left-color: transparent;
+      div.bhoechie-tab-content{
+        background-color: #ffffff;
+        /* border: 1px solid #eeeeee; */
+        padding-left: 20px;
+        padding-top: 10px;
       }
-      .tabs-left>li>a {
-        border-radius: 4px 0 0 4px;
-        margin-right: 0;
-        display:block;
+
+      div.bhoechie-tab div.bhoechie-tab-content:not(.active){
+        display: none;
       }
-      .tabs-right>li>a {
-        border-radius: 0 4px 4px 0;
-        margin-right: 0;
+      .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover  {
+        border-color: #f8f8f8;
       }
-      
-      .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+      a.list-group-item:hover {
+        background-color: #ffffff;
+        color: #F7b733;
+        border-bottom-color: #e7e7e7;
+      }
+      a.list-group-item {
+        color: #F7b733;
+      }
+      .list-group-item:visited, .list-group-item {
         background-color: #f8f8f8;
+        border-color: #f8f8f8;
+        color: #F7b733;
+        border-bottom-color: #e7e7e7;
       }
     </style>
   </head>
@@ -252,21 +312,22 @@
     <!-- Navbar -->
     <!-- Navbar -->
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left:120px;">Ujian Online</a>
+      <div class="container">
+        <div class="topheader">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#myPage">Ujian Online</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
             <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li class="active"><a href="kategori.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+            <li class="active"><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right" style="padding-right:90px;">
+          <ul class="nav navbar-nav navbar-right">
             <li>
               <form class="navbar-form" role="search">
               <div class="input-group">
@@ -281,94 +342,168 @@
             <li><a href="#"><u>Keluar</u></a></li>
           </ul>
         </div>
+        </div>
       </div>
     </nav>
     
     <!-- Container -->
     <div class="container">
-      <h2 style="color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;">Kategori</h2>
-      <p style="font-size:12px; margin-top:10px; color:#818181">Tambah/ubah <b>mata pelajaran</b> dan <b>kelas</b> yang tersedia</p>
-      <br>
-      <div  class="row">
-        <div class="col-md-3" style="padding-right:0px"> <!-- required for floating -->
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs tabs-left sideways">
-            <li class="active"><a href="#home-v" data-toggle="tab">Mata Pelajaran</a></li>
-            <li><a href="#profile-v" data-toggle="tab">Kelas</a></li>
-          </ul>
-        </div>
+      <div class="content">
+        <h2 style="color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;">Kategori</h2>
+        <p style="font-size:12px; margin-top:10px; color:#818181">Tambah/ubah <b>mata pelajaran</b> dan <b>kelas</b> yang tersedia</p>
+        <br>
+        <!-- <div  class="row">
+          <div class="col-md-3" style="padding-right:0px"> 
+            <ul class="nav nav-tabs tabs-left sideways">
+              <li class="active"><a href="#home-v" data-toggle="tab">Mata Pelajaran</a></li>
+              <li><a href="#profile-v" data-toggle="tab">Kelas</a></li>
+            </ul>
+          </div>
 
-        <div class="col-md-6" style="background-color:#f8f8f8">
-          <!-- Tab panes -->
-          <div class="tab-content">
-            <div class="tab-pane active" id="home-v">
-              <br>
-              <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Mata Pelajaran</a>
-              <div class="alert alert-success">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Berhasil!</strong> Mata Pelajaran Biologi berhasil dibuat.
+          <div class="col-md-6" style="background-color:#f8f8f8">
+            <div class="tab-content">
+              <div class="tab-pane active" id="home-v">
+                <br>
+                <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Mata Pelajaran</a>
+                <div class="alert alert-success">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Berhasil!</strong> Mata Pelajaran Biologi berhasil dibuat.
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Nama Mata Pelajaran</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody style="background-color:#ffffff">
+                    <tr>
+                      <td>Matematika</td>
+                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                    </tr>
+                    <tr>
+                      <td>Fisika</td>
+                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                    </tr>
+                    <tr>
+                      <td>B. Indonesia</td>
+                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                    </tr>
+                    <tr style="background-color:#ecf8f6;">
+                    <td>Biologi</td>
+                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Nama Mata Pelajaran</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody style="background-color:#ffffff">
-                  <tr>
-                    <td>Matematika</td>
-                    <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                  </tr>
-                  <tr>
-                    <td>Fisika</td>
-                    <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                  </tr>
-                  <tr>
-                    <td>B. Indonesia</td>
-                    <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                  </tr>
-                  <tr style="background-color:#ecf8f6;">
-                  <td>Biologi</td>
-                    <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="tab-pane" id="profile-v">
-              <br>
-              <a href="#" class="button button1" data-toggle="modal" data-target="#modalKelas" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Kelas</a>
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Kelas</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody style="background-color:#ffffff">
-                  <tr>
-                    <td>X MIPA</td>
-                    <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                  </tr>
-                  <tr>
-                    <td>XI MIPA</td>
-                    <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                  </tr>
-                  <tr>
-                    <td>XII MIPA</td>
-                    <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="tab-pane" id="profile-v">
+                <br>
+                <a href="#" class="button button1" data-toggle="modal" data-target="#modalKelas" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Kelas</a>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Kelas</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody style="background-color:#ffffff">
+                    <tr>
+                      <td>X MIPA</td>
+                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                    </tr>
+                    <tr>
+                      <td>XI MIPA</td>
+                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                    </tr>
+                    <tr>
+                      <td>XII MIPA</td>
+                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
+          <div class="clearfix"></div>
+        </div> -->
+        <div class="row">
+                <div class="col-md-offset-2 col-md-10 bhoechie-tab-container">
+                    <div class="col-md-2 bhoechie-tab-menu">
+                      <div class="list-group">
+                        <a href="#tab1" data-toggle="tab" class="list-group-item active text-center">
+                          Mata Pelajaran
+                        </a>
+                        <a href="#tab2" data-toggle="tab" class="list-group-item text-center">
+                          Kelas
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-md-10 bhoechie-tab" style="background-color:#ffffff;">
+                        <!-- flight section -->
+                        <div class="bhoechie-tab-content active" id="tab1" style="background-color:#ffffff">
+                            <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Mata Pelajaran</a>
+                            <div class="alert alert-success">
+                              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                              <strong>Berhasil!</strong> Mata Pelajaran Biologi berhasil dibuat.
+                            </div>
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Nama Mata Pelajaran</th>
+                                  <th></th>
+                                </tr>
+                              </thead>
+                              <tbody style="background-color:#ffffff">
+                                <tr>
+                                  <td>Matematika</td>
+                                  <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                                </tr>
+                                <tr>
+                                  <td>Fisika</td>
+                                  <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                                </tr>
+                                <tr>
+                                  <td>B. Indonesia</td>
+                                  <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                                </tr>
+                                <tr style="background-color:#ecf8f6;">
+                                <td>Biologi</td>
+                                  <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                        <!-- train section -->
+                        <div class="bhoechie-tab-content" id="tab2" style="background-color:#ffffff">
+                          <a href="#" class="button button1" data-toggle="modal" data-target="#modalKelas" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Kelas</a>
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th>Kelas</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody style="background-color:#ffffff">
+                              <tr>
+                                <td>X MIPA</td>
+                                <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                              </tr>
+                              <tr>
+                                <td>XI MIPA</td>
+                                <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                              </tr>
+                              <tr>
+                                <td>XII MIPA</td>
+                                <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+                </div>
         </div>
-        <div class="clearfix"></div>
       </div>
     </div>
-    <footer class="text-center">
-        <p>2016 © Diah Fauziah. Ujian Online Template.</p>
-      </footer>
     <!-- Modal Kategori -->
     <div class="modal fade" id="modalTambahKategori" tabindex="-1" role="dialog" aria-labelledby="modalTambahKategoriLabel">
       <div class="modal-dialog" role="document">
@@ -416,4 +551,16 @@
       </div>
     </div>
   </body>
+  <script type="text/javascript">
+    $(document).ready(function() {
+    $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+        });
+    });
+  </script>
 </html>

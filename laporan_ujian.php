@@ -31,8 +31,14 @@
       body {
         font:400 15px Lato, sans-serif;
         line-height: 1.8;
-        /*color: #818181;*/
+        background-color: #f8f8f8;
       } 
+      .container {
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
+      }
       .btn {
         transition-duration: 0.4s;
         cursor: pointer;
@@ -40,20 +46,38 @@
       .navbar {
         margin-bottom: 0;
         /*z-index: 9999; */
-        border: 0; 
         font-size: 12px !important;
         border-radius: 0;
         /*background-color: #4ABDAC; */
+        border-bottom-color: #e7e7e7;
+        border-bottom-width: 1px;
       } 
 
       .navbar-nav li a:hover, .navbar-nav li.active a {
         color: #4ABDAC !important;
       }
-      .navbar-nav li:hover {
-        background-color:#e7e7e7;
-      }
+      
       .container {
-        padding: 20px 20px;
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
+      }
+      .footer {
+          background-color: #F4F4F4;
+          border-top: 1px solid #e5e5e5;
+          color: #999;
+          padding: 20px 15px;
+          background-color: #f5f5f5;
+      }
+      .footer, .content, .topheader {
+          margin: 0 auto;
+          max-width: 1024px;
+      }
+      .content {
+        background-color: #ffffff;
+        min-height: 600px;
+        padding: 20px 12px;
       }
       .progress {
         margin-top: 5px;
@@ -166,82 +190,96 @@
         background-color: #F7B733;
         text-decoration: none;
       }
-      
+
     </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#myPage">Ujian Online</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav menu">
-            <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="index_guru.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <form class="navbar-form" role="search">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      <div class="container">
+        <div class="topheader">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#myPage">Ujian Online</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav menu">
+              <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
+              <li><a href="index_guru.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
+            </ul> 
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <form class="navbar-form" role="search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
                 </div>
-              </div>
-            </form>
-            </li>
-            <li><a href="#"> Diah Fauziah </a></li>
-            <li><a href="#"><u>Keluar</u></a></li>
-          </ul>
+              </form>
+              </li>
+              <li><a href="#"> Diah Fauziah </a></li>
+              <li><a href="#"><u>Keluar</u></a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
     
     <div class="container">
-    <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family: 'didact gothic', sans-serif">Laporan Ujian Deret Aritmetika</h2>
-     <div class="row">
-      <div class="col-xs-6 col-md-9">
-         <ol class="breadcrumb" style="margin-left:0px">
-            <li><a href="index_guru.php">Home</a></li>
-            <li class="active">Laporan Ujian Deret Aritmetika</li>
-         </ol>
-       </div>
-       <div class="col-xs-6 col-md-3">
-       </div>
-     </div>
-     <div class="col-md-offset-2 col-md-8">
-     <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Tanggal Akses</th>
-            <th>Nama Peserta</th>
-            <th>Skor</th>
-            <th>Total waktu</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php include('koneksi.php'); 
+      <?php include('koneksi.php'); 
             $id = $_GET['id'];
-            $query = mysqli_query($link, "SELECT * FROM `laporan_ujian_guru` WHERE `id_ujian`='$id' ");
-            while($laporan = mysqli_fetch_array($query)){
-              echo '<tr>';
-              echo  '<td>'. $laporan["tanggal_akses"] .'</td>';
-              echo  '<td>'. $laporan["nama_peserta"] .'</td>';
-              echo  '<td>'. $laporan["nilai"] .'</td>';
-              echo  '<td>'. $laporan["total_waktu"] .'</td>';
-              echo '<tr>';
-            };
-          ?>
-        </tbody>
-     </table>
-    </div>
+            $query = mysqli_query($link, "SELECT * FROM `info_ujian` WHERE `id_ujian`='$id' ");
+            $ujian = mysqli_fetch_array($query);
+      ?>
+      <div class="content">
+        <h2 style="margin: 14px; margin-bottom: 5px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif; text-align:center;">Laporan Ujian <?php echo $ujian['judul_ujian'] ?></h2>
+         <div class="col-md-offset-2 col-md-8">
+          <div class="row">
+             <ol class="breadcrumb" style="margin-left:0px">
+                <li><a href="index_guru.php">Beranda</a></li>
+                <li class="active">Laporan Ujian <?php echo $ujian['judul_ujian'] ?></li>
+             </ol>
+            </div>
+         </div>
+         <div class="col-md-offset-2 col-md-8">
+         <div class="panel panel-default">
+            <table class="table table-hover" style="margin-top:0px; margin-bottom:10px;">
+            <thead>
+              <tr>
+                <th>Tanggal Akses</th>
+                <th>Nama Peserta</th>
+                <th>Skor</th>
+                <th>Total waktu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php include('koneksi.php'); 
+                $id = $_GET['id'];
+                $query = mysqli_query($link, "SELECT * FROM `laporan_ujian_guru` WHERE `id_ujian`='$id' ");
+                while($laporan = mysqli_fetch_array($query)){
+                  echo '<tr>';
+                  echo  '<td>'. $laporan["tanggal_akses"] .'</td>';
+                  echo  '<td>'. $laporan["nama_peserta"] .'</td>';
+                  echo  '<td>'. $laporan["nilai"] .'</td>';
+                  echo  '<td>'. $laporan["total_waktu"] .'</td>';
+                  echo '</tr>';
+                };
+              ?>
+            </tbody>
+         </table>
+         <?php 
+            if(empty(mysqli_fetch_array($query))){
+                  echo 'kosong';
+            }
+         ?>
+         </div>
+        </div>
+      </div>
   </div>
   </body>
 </html>

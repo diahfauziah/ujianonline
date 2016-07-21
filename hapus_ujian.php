@@ -11,7 +11,7 @@
 	$delete_query = mysqli_query($link, $delete);
 
 	if($delete_query){
-		header('location:index_guru.php');
+		header('location:index_guru.php?message=success2');
 	} 
 ?>
 

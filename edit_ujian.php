@@ -77,7 +77,7 @@
       }
       div.bhoechie-tab-menu div.list-group>a .glyphicon,
       div.bhoechie-tab-menu div.list-group>a .fa {
-        color: #4ABDAC;
+        color: #F7b733;
       }
       div.bhoechie-tab-menu div.list-group>a:first-child{
         border-top-right-radius: 0;
@@ -90,8 +90,8 @@
       div.bhoechie-tab-menu div.list-group>a.active,
       div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
       div.bhoechie-tab-menu div.list-group>a.active .fa{
-        background-color: #4ABDAC;
-        background-image: #4ABDAC;
+        background-color: #F7b733;
+        background-image: #F7b733;
         color: #ffffff;
       }
       div.bhoechie-tab-menu div.list-group>a.active:after{
@@ -103,7 +103,7 @@
         border-left: 0;
         border-bottom: 13px solid transparent;
         border-top: 13px solid transparent;
-        border-left: 10px solid #4ABDAC;
+        border-left: 10px solid #F7b733;
       }
 
       div.bhoechie-tab-content{
@@ -181,7 +181,7 @@
       }
       .breadcrumb {
         background: rgba(245, 245, 245, 1);
-        background-color: #ffffff;
+        background-color: #f8f8f8;
         display: block;
       }
       th {
@@ -276,19 +276,20 @@
         border-width: 0px;
       }
       .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover  {
-        border-color: #f8f8f8;
+        border-color: #e7e7e7;
       }
       a.list-group-item:hover {
-        background-color: #ecf8f6;
-        color: #4ABDAC;
+        background-color: #ffffff;
+        color: #F7b733;
       }
       a.list-group-item {
-        color: #4ABDAC;
+        color: #F7b733;
       }
       .list-group-item:visited, .list-group-item {
-        background-color: #ffffff;
+        background-color: #f8f8f8;
         border-color: #f8f8f8;
-        color: #4ABDAC;
+        color: #F7b733;
+        border-bottom-color: #e7e7e7;
       }
       .form-control {
         border-radius: 0px;
@@ -306,7 +307,7 @@
           max-width: 1024px;
       }
       .content {
-        background-color: #ffffff;
+        background-color: #f8f8f8;
         min-height: 600px;
         padding: 20px 12px;
       }
@@ -319,33 +320,33 @@
       <div class="container">
         <div class="topheader">
           <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#myPage">Ujian Online</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav menu">
-            <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <form class="navbar-form" role="search">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#myPage">Ujian Online</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav menu">
+              <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
+              <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <form class="navbar-form" role="search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
                 </div>
-              </div>
-            </form>
-            </li>
-            <li><a href="#"> Diah Fauziah </a></li>
-            <li><a href="#"><u>Keluar</u></a></li>
-          </ul>
-        </div>
+              </form>
+              </li>
+              <li><a href="#"> Diah Fauziah </a></li>
+              <li><a href="#"><u>Keluar</u></a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
@@ -367,7 +368,7 @@
              </ol>
            </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
               <div class="col-md-offset-2 col-md-10 bhoechie-tab-container">
                   <div class="col-md-2 bhoechie-tab-menu">
                     <div class="list-group">
@@ -380,7 +381,6 @@
                     </div>
                   </div>
                   <div class="col-md-10 bhoechie-tab" style="background-color:#ffffff;">
-                      <!-- flight section -->
                       <div class="bhoechie-tab-content active" id="tab1" style="background-color:#ffffff">
                           <form action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal col-md-offset-1 col-md-8" method="post">
                             <div class="form-group">
@@ -454,7 +454,7 @@
                             </div>
                           </form>
                       </div>
-                      <!-- train section -->
+                     
                       <div class="bhoechie-tab-content" id="tab2" style="background-color:#ffffff">
                         <form>
                           <div class="form-group">
@@ -481,6 +481,91 @@
                       </div>
                   </div>
               </div>
+      </div> -->
+      <div class="row">
+        
+          <form action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal" method="post">
+            <div class="col-md-8">
+                            <div class="form-group">
+                              <label for="Judul" class="col-md-4 control-label">Judul</label>
+                              <div class="col-md-8">
+                                <input type="text" class="form-control" id="Judul" value="<?php echo $ujian['judul_ujian'] ?>">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="URL" class="col-md-4 control-label">URL</label>
+                              <div class="col-md-8">
+                                <a href="#" id="URL" class="form-control disabled" style="background-color:#f8f8f8"><?php echo $ujian['url_ujian'] ?></a>
+                              </div>  
+                            </div>
+                            <div class="form-group">
+                              <label for="Waktu" class="col-md-4 control-label">Waktu</label>
+                              <div class="col-md-3">
+                                <input type="number" class="form-control" id="Waktu" value="<?php echo $ujian['lama_ujian'] ?>">
+                              </div>
+                              <div class="col-md-5">
+                                 Menit
+                               </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-md-4 control-label">Acak soal</label>
+                              <div class="col-md-8">
+                                 <?php if($ujian['acak_soal']==1){
+                                          echo '<select class="form-control">';
+                                          echo   '<option>Ya</option>';
+                                          echo   '<option>Tidak</option>';
+                                          echo '</select>';
+                                        } else {
+                                          echo '<select class="form-control">';
+                                          echo   '<option>Tidak</option>';
+                                          echo   '<option>Ya</option>';
+                                          echo '</select>';
+                                        }  
+                                  ?>
+                               </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-md-4 control-label">Kategori</label>
+                              <div class="col-md-5">
+                                <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
+                                  <option value="">Pilih Mata Pelajaran</option>
+                                  <option value="1">Matematika</option>
+                                  <option value="2">Fisika</option>
+                                </select>
+                              </div>
+                              <div class="col-md-3">
+                                <select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
+                                  <option value="">Kelas</option>
+                                  <option value="1">XII MIPA</option>
+                                  <option value="2">XI MIPA</option>
+                                </select>
+                               </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Peserta perlu login</label>
+                                <div class="col-md-8">
+                                  <select class="form-control">
+                                    <option>Ya</option>
+                                    <option>Tidak</option>
+                                  </select>
+                                </div>
+                            </div>
+            </div>
+            <div class="col-md-12">
+                            <div class="form-group" style="margin-left:-55px;">
+                              <label class="col-md-3 control-label">Petunjuk</label>
+                              <div class="col-md-9">
+                                <textarea class="form-control" rows="15">
+                                </textarea>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
+                                <a href="index_guru.html" type="button" class="button button2" style="text-decoration:none"> Simpan</a>
+                              </div>
+                            </div>
+            </div>
+          </form>
       </div>
      </div>
     </div>

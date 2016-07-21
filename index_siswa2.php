@@ -205,6 +205,7 @@
         background-color: #f8f8f8;
         cursor: pointer;
       }
+
       .hasAnswer {
         background-color : #4ABDAC;
         color : #ffffff;
@@ -240,7 +241,7 @@
           padding: 5px;
           
           background: #4ABDAC;
-          border: 2px solid #4ABDAC;
+          border: 1px solid #4ABDAC;
           color: #fff;
           text-align: center;
           
@@ -254,6 +255,11 @@
         width: 96%;
         margin-left: 25px;
       }
+      .hasAnswer, .hasTandai, .hasAnswer:visited, .hasTandai:visited, .hasAnswer:hover , .hasTandai:hover {
+        color: #ffffff;
+      }
+      
+      
     </style>
   </head>
   <body>
@@ -309,7 +315,7 @@
               echo       '</div>';
               echo       '<div style="margin-left: 0px;">';
               echo         '<div class="col-md-12" style="width:96%">';
-              echo           '<textarea id="edit1" class="form-control edit" rows="3">';
+              echo           '<textarea class="form-control edit" rows="3">';
               echo             $soal['pertanyaan'];
               echo           '</textarea>';
               echo         '</div>';
@@ -330,7 +336,7 @@
               $huruf = array("A","B","C","D","E");
               $i = 0;
                 while($pilihan = mysqli_fetch_array($query2)){
-                  echo '<li class="list-group-item opsijawaban">';
+                  echo '<li class="list-group-item opsijawaban" id="opsi">';
                   echo   '<div class="row">';
                   echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
                   //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
@@ -458,13 +464,6 @@
               }
             });
 
-            $('.edit').froalaEditor({
-              toolbarButtons: ['undo', 'redo', 'clearFormatting', 'bold', 'italic', 'underline', 'strikeThrough', 'highlight', 'remove'],
-              placeholderText: 'Ketik pertanyaan',
-              charCounterCount: false,
-              contenteditable: false,
-              spellcheck : false
-            });
             $(".fr-element").attr("contenteditable", false);
             $('div.opsi').froalaEditor({
               toolbarInline: true,
@@ -475,15 +474,13 @@
         });
         
         $(function(){
-          $('div#opsiGanda1, div#opsiGanda2, div#opsiGanda3, div#opsiGanda4, div#opsiGanda5, div#opsiIsian, textarea#opsiEssay, textarea#opsiGandaT1').froalaEditor({
+          $('.edit').froalaEditor({
             toolbarInline: true,
             charCounterCount: false,
-            toolbarButtons: ['strikeThrough', 'highlight', 'bold', 'italic', 'underline', '-', 'undo', 'redo'],
-            toolbarVisibleWithoutSelection: true,
-            placeholderText: 'Ketik jawaban',
+            toolbarButtons: ['strikeThrough', 'highlight', 'undo', 'redo'],
             spellcheck : false
           });
-          //$(".fr-element").attr("contenteditable", false);
+          $(".fr-element").attr("contenteditable", false);
         });
 
         $soal_sekarang = 1;
@@ -501,6 +498,8 @@
           $x = '<?php echo $nomormax ?>';
           $("#totalsoal").html($x);
         });
+
+        
 
         /* Tombol selanjutnya */
         $("#btnnext").click(function(){
@@ -535,7 +534,7 @@
           } 
 
         });
-
+        
         /* Tombol sebelumnya */
         $("#btnprev").click(function(){
           if($soal_sekarang > 1){
@@ -607,6 +606,7 @@
           }
         });
 
+
         /* Pilih opsi jawaban: lingkaran dipiilih */
         $(".setjawaban").click(function(){
               $(".opsijawaban").removeClass("selected");
@@ -662,6 +662,14 @@
             $("#btnprev").removeClass("disabled");
             $("#btnprev").addClass("button2");
           };
+
+          if(($soal_sekarang =='<?php echo $nomormax ?>')){
+            $("#btnnext").removeClass("button2");
+            $("#btnnext").addClass("disabled");
+          }else{
+            $("#btnnext").removeClass("disabled");
+            $("#btnnext").addClass("button2");
+          }
         });
 
 

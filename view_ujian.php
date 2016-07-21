@@ -11,6 +11,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
+      <!-- Include Font Awesome. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -67,9 +69,7 @@
       .navbar-nav li a:hover, .navbar-nav li.active a {
         color: #4ABDAC !important;
       }
-      .navbar-nav li:hover {
-        background-color:#e7e7e7;
-      }
+      
       .container {
           padding-right: 15px;
           padding-left: 15px;
@@ -84,13 +84,17 @@
           background-color: #f5f5f5;
       }
       .footer, .content, .topheader {
-          margin: 0 auto;
+          margin-top: 0px;
+          margin-right: auto;
+          margin-bottom: 0px;
+          margin-left: auto;
           max-width: 1024px;
       }
       .content {
         background-color: #ffffff;
         min-height: 600px;
         padding: 20px 12px;
+        overflow: hidden;
       }
       .progress {
         margin-top: 5px;
@@ -98,10 +102,7 @@
         border-radius: 0;
         overflow: visible;
       }
-      .panel {
-        margin-bottom: 0px;
-        border-radius: 0px;
-      }
+      
       span.highlight {
         background-color: yellow;
       }
@@ -147,7 +148,7 @@
         overflow: auto;
       }
 
-      .btn-primary, .btn-primary:active, .btn-primary:focus {
+      .btn-primary, .btn-primary:active, .btn-primary:focus, .btn-primary:visited {
         background-color: #4ABDAC;  
         color: #ffffff;
         border-color: #4ABDAC; 
@@ -178,9 +179,9 @@
       .button1, .button1:link, .button1:visited, .col-md-3 a:link, .col-md-3 a:visited, .col-md-3 a:active {
         background-color: #4ABDAC;
         color: #ffffff;
-        border: 2px solid #4ABDAC;
+        border: 0px;
       }
-      .button1:hover, .col-md-3 a:hover {
+      .col-md-3 a:hover {
         background-color: #ffffff;
         color: #4ABDAC;
         border: 2px solid #4ABDAC;
@@ -199,27 +200,35 @@
       }
 
       .btn-abu, .btn-abu:active, .btn-abu:focus {
-        background-color: #ffffff;
-        border-color: #adadad;
+        background-color: #f8f8f8;
+        border: 2px solid #f8f8f8; 
         color: #adadad;
       }
       .btn-abu:hover {
         background-color: #adadad;  
         color: #ffffff;
-        border-color: #adadad; 
+        border: 2px solid #adadad; 
       }
       th {
         color: #818181;
+      }
+      .table>tbody>tr>th{
+        padding-left: 15px;
+      }
+      .panel {
+        margin-bottom: 0px;
+        border-radius: 0px;
       }
       .panel > .panel-heading {
         background-color: #F7B733;
         border-color: #F7B733;
         color: #ffffff;
-      }
+      } 
       #panel1, #panel2 {
         border-width: 0px; 
+        border-color: #ffffff;
         border-bottom-width: 2px;
-      }
+      } 
 
       .editUjian a:hover, .panahTurun1:hover, .panahTurun2:hover {
         background-color: #4ABDAC;
@@ -231,8 +240,27 @@
         color: #ffffff;
         border-color: #4ABDAC; 
       }
-      .tooltip > .tooltip-inner {background-color: #eebf3f; padding: 5px 15px; color: rgb(23,44,66); font-weight: bold; font-size: 13px;}
-      .popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f; }
+      .numberCircle {
+          border-radius: 50%;
+
+          width: 32px;
+          height: 32px;
+          padding: 5px;
+          
+          background: #fff;
+          border: 2px solid #4ABDAC;
+          color: #4ABDAC;
+          text-align: center;
+          
+          font: 15px Arial, sans-serif;
+      }
+      .button2 {
+        font-size:13px; background-color:#f8f8f8; border:0px; color:#777;
+      }
+      .button2:hover, .button1:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+
     </style>
   </head>
   <body>
@@ -250,8 +278,8 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
-            <li class="active"><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="kategori.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+            <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
+            <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -280,150 +308,143 @@
             $ujian = mysqli_fetch_array($query);
       ?>
     <div class="content">
-      <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;"><?php echo $ujian['judul_ujian'] ?></h2>
-    <div class="row">
-      <div class="col-xs-6 col-md-6">
-         <ol class="breadcrumb">
-            <li><a href="index_guru.php">Beranda</a></li>
-            <li class="active"><?php echo $ujian['judul_ujian'] ?></li>
-         </ol>
-      </div>
-      <div class="col-md-6">
-          <div class="pull-right">
-            <a href="lihat_tampilan_ujian.html" class="button button1" style="margin-bottom:10px; text-decoration:none;"><span class="glyphicon glyphicon-eye-open"></span> Lihat tampilan ujian</a>
+      <h2 style="margin: 14px; margin-bottom: 5px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif; text-align:center;"><?php echo $ujian['judul_ujian'] ?></h2>
+      
+        <div class="col-md-offset-2 col-md-8">
+          <div class="row">
+              <ol class="breadcrumb" style='margin-bottom:0px; width:100%; float:left'>
+                <li><a href="index_guru.php">Beranda</a></li>
+                <li class="active"><?php echo $ujian['judul_ujian'] ?></li>
+             </ol>
           </div>
-      </div>
-    </div>
-
-     <!-- Informasi ujian -->
-     <div class="row">
-        <div class="col-md-7">
-          <div class="panel panel-default" id="panel1">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-xs-9 col-md-10">
-                  <label>Informasi Ujian</label>
-                </div>
-                <div class="col-xs-3 col-md-2">
-                  <a data-toggle="collapse" href="#collapse1" class="btn btn-primary btn-sm pull-right panahTurun1" style="color:#ffffff; border-radius:20px"><span class="glyphicon glyphicon-chevron-up"></span></a>
-                  <div class="editUjian">
-                    <a href="edit_ujian.php?id=<?php echo $ujian['id_ujian'] ?>" class="btn btn-primary btn-sm pull-right" style="margin-right:2px; border-radius:20px;"><span class="glyphicon glyphicon-pencil"></span></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="collapse1" class="panel-collapse collapse">
-              <table class="table table-hover">
-                <tbody>  
-                 <tr>
-                   <th class="col-md-3">URL</th>
-                   <td><a href=#><?php echo $ujian['url_ujian'] ?></a></td>
-                 </tr>
-                 <tr>
-                   <th>Waktu</th>
-                   <td class="btnbiru"><?php echo $ujian['lama_ujian'] ?> Menit</td>
-                 </tr>
-                 <tr>
-                   <th>Jumlah soal</th>
-                   <td><?php echo $ujian['total_soal'] ?></td>
-                 </tr>
-                 <tr>
-                   <th>Acak soal</th>
-                   <td>
-                   <div style="padding-left:0px;">
-                     Ya
-                    </select>
-                   </div>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Kategori</th> 
-                   <td>
-                    <span class="label label-default">Matematika</span>
-                   </td>
-                 </tr>
-              </tbody>
-              </table> 
-            </div>
-          </div>
+          <button class="button button2 pull-right" style="margin-top:10px; margin-right:10px; margin-bottom:10px;"><span class="glyphicon glyphicon-plus"></span> Lihat tampilan siswa</button>
+          <button class="button button2 pull-right" style="margin-top:10px; margin-right:10px;"><span class="glyphicon glyphicon-plus"></span> Tambah soal</button>
         </div>
-        <div class="col-md-5">
-          <div class="panel panel-default" id="panel2">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-xs-9 col-md-8">
-                  <label>Petunjuk Ujian</label>
-                </div>
-                <div class="col-xs-3 col-md-4">
-                  <a data-toggle="collapse" href="#collapse2" class="btn btn-primary btn-sm pull-right panahTurun2" style="color:#ffffff; border-radius:20px;"><span class="glyphicon glyphicon-chevron-up"></span></a>
-                  <div class="editUjian">
-                    <a href="edit_ujian.php?id=<?php echo $ujian['id_ujian'] ?>" class="btn btn-primary btn-sm pull-right" style="margin-right:2px; border-radius:20px;"><span class="glyphicon glyphicon-pencil"></span></a>
-                  </div>
-                </div>
-              </div>
+       <!-- <div class="col-md-6">
+            <div class="pull-right">
+              <a href="lihat_tampilan_ujian.html" class="button button1" style="margin-bottom:10px; text-decoration:none;"><span class="glyphicon glyphicon-eye-open"></span> Lihat tampilan ujian</a>
             </div>
-            <div id="collapse2" class="panel-collapse collapse">
-              <p style="height:180px; overflow-y:scroll;">
-            <!--    <u>PETUNJUK A</u><br>
-                Pilih jawaban yang paling benar (A, B, C, D atau E)<br>
-                <br>
-                <u>PETUNJUK B</u><br>
-                Soal terdiri atas tiga bagian yaitu PERNYATAAN, SEBAB, dan ALASAN yang disusun secara berurutan.<br>
-                <br>
-                Pilihlah : <br>
-                <br>
-                A. Jika pernyataan benar, alasan benar, keduanya menunjukkan hubungan sebab akibat.<br>
-                B. Jika pernyataan benar, alasan benar, tetapi keduanya tidak menunjukkan hubungan sebab akibat.<br>
-                C. Jika pernyataan benar, alasan salah.<br>
-                D. Jika pernyataan salah, alasan benar.<br>
-                E. Jika pernyataan dan alasan , keduanya salah.<br> -->
-                <?php echo $ujian['petunjuk'] ?>
-              </p>
-            </div>
-          </div>
-        </div>
-     </div>
+        </div> -->
 
-     <div class="row" style="margin-bottom:10px;">
-       <!-- <div class="col-md-8"></div> -->
-     </div> 
-     <div class="panel panel-default soal">
-        <div class="panel-body">
-         <div class="row">
-          <div style="margin-left:10px; width:15px; float:left;">
-            <strong>1.</strong>
-          </div>
-          <div style="margin-left:0px;">
-            <div class="col-md-12" style="width:96%"> 
-              <strong>Cermatilah penulisan kalimat berikut!</strong>
-                  <p align="justify">Ketika berwisata ke (1)cipanas, (2)rudi membeli (3)pisang (4)ambon. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lobortis accumsan arcu, eget aliquam nibh fermentum vitae. Vestibulum fringilla gravida mi, et sagittis ipsum elementum vel. Phasellus tempus diam sit amet purus venenatis rutrum. Donec rutrum diam elit, ut tincidunt sapien auctor in. Pellentesque tincidunt fringilla hendrerit. Mauris ut nulla felis. In hac habitasse platea dictumst.
-
-                  Morbi iaculis massa scelerisque dictum suscipit. Pellentesque ut nibh ipsum. Nulla malesuada vehicula porta. Nulla gravida commodo quam. Etiam eleifend dolor at augue dictum commodo. Praesent euismod sed sapien vitae feugiat. Praesent sed urna at enim mollis egestas ut in lorem. Mauris ut tempor enim. Aenean fermentum nunc sit amet egestas pretium. Etiam massa erat, consectetur at gravida id, tempor non mauris. Morbi massa justo, posuere at venenatis in, euismod ac metus. Maecenas non mattis risus. Integer tincidunt finibus semper.</p>
-                  <p>Kata yang  huruf pertamanya harus ditulis dengan huruf kapital ditandai nomor...</p>
-                  <div class="radio">
-                    <label><input type="radio" name="optradio">1 dan 2</label>
+         <div class="col-md-offset-2 col-md-8">
+            <div class="panel panel-default" style="margin-bottom:5px; border-radius:0px;">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-9 col-md-10">
+                    <label>Informasi Ujian</label>
                   </div>
-                  <div class="radio">
-                    <label><input type="radio" name="optradio">2 dan 3</label>
-                  </div>
-                  <div class="radio">
-                    <label><input type="radio" name="optradio">3 dan 4</label>
-                  </div>
-                  <div class="radio">
-                    <label><input type="radio" name="optradio">1 dan 4</label>
-                  </div>
-                  <div class="form-group">
-                    <strong>Poin: 10</strong>
-                    <div class="pull-right">
-                      <a href="edit_soal.html" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-                      <button class="btn btn-default" data-toggle="modal" data-target="#modalHapus"><span class="glyphicon glyphicon-trash"></span> Hapus</button>
+                  <div class="col-xs-3 col-md-2">
+                    <a data-toggle="collapse" href="#collapse1" class="btn btn-primary btn-sm pull-right panahTurun1" style="color:#ffffff; border-radius:20px"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                    <div class="editUjian">
+                      <a href="edit_ujian.php?id=<?php echo $ujian['id_ujian'] ?>" class="btn btn-primary btn-sm pull-right" style="margin-right:2px; border-radius:20px;"><span class="glyphicon glyphicon-pencil"></span></a>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div id="collapse1" class="panel-collapse collapse">
+                <table class="table table-hover">
+                  <tbody>  
+                   <tr>
+                     <th class="col-md-3">URL</th>
+                     <td><a href=#><?php echo $ujian['url_ujian'] ?></a></td>
+                   </tr>
+                   <tr>
+                     <th>Waktu</th>
+                     <td class="btnbiru"><?php echo $ujian['lama_ujian'] ?> Menit</td>
+                   </tr>
+                   <tr>
+                     <th>Jumlah soal</th>
+                     <td><?php echo $ujian['total_soal'] ?></td>
+                   </tr>
+                   <tr>
+                     <th>Acak soal</th>
+                     <td>
+                     <div style="padding-left:0px;">
+                       Ya
+                     </div>
+                     </td>
+                   </tr>
+                   <tr>
+                    <th>Perlu login</th>
+                    <td>
+                      <div style="padding-left:0px;">
+                       Ya
+                     </div>
+                    </td>
+                   </tr>
+                   <tr>
+                     <th>Kategori</th> 
+                     <td>
+                      <span class="label label-default">Matematika</span>
+                     </td>
+                   </tr>
+                   <tr>
+                     <th>Petunjuk</th> 
+                     <td>
+                      <?php echo $ujian['petunjuk'] ?>
+                     </td>
+                   </tr>
+                  </tbody>
+                </table> 
+              </div>  
             </div>
-          </div>
+            <?php 
+            $query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
+            
+            while ($soal = mysqli_fetch_array($query1)){
+            echo '<div class="panel panel-default soal">';
+            echo   '<div class="panel-body">';
+            echo     '<div class="row">';
+            echo       '<div style="margin-left:10px; width:15px; float:left;">';
+            echo        '<strong>';
+            echo          $soal['nomor_soal'];
+            echo        '.</strong>';
+            echo      '</div>';
+            echo      '<div style="margin-left:0px;">';
+            echo        '<div class="col-md-12" style="width:96%">';
+            echo           $soal['pertanyaan'];
+
+                      $id_soal = $soal['id_soal'];
+                      $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+                      $huruf = array("A","B","C","D","E");
+                      $i = 0;
+                      echo    '<ul class="list-group" style="margin-top:10px;">';
+                        while($pilihan = mysqli_fetch_array($query2)){
+                          echo '<li class="list-group-item opsijawaban">';
+                          echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+                        //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
+                          echo        '<div class="numberCircle">';
+                          echo         $huruf[$i];
+                          echo        '</div>'; 
+                          echo     '</div>';
+                          echo     '<div style="width:85%;  margin-left:-20px;">';
+                          echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
+                          echo     '</div>';
+                          echo '</li>';
+                          $i++;
+                        }
+                      echo '</ul>';
+
+                      echo '<div class="row">';
+                      echo   '<div class="col-md-3">Poin Benar: 10</div>';
+                      echo   '<div class="col-md-3">Poin Salah: 0</div>';
+                      echo   '<div class="col-md-3">Poin Kosong: 0</div>';
+                      echo '</div>';
+                        
+                      echo  '<div class="form-group" style="margin-top:10px;">';
+                      echo    '<div class="col-md-6"></div>';
+                      echo    '<a href="edit_soal.html" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none"><span class="glyphicon glyphicon-pencil"></span> Edit</a>';
+                      echo    '<button class="button button2 col-md-2" data-toggle="modal" data-target="#modalHapus" style="font-size:14px; margin-left:10px;"><span class="glyphicon glyphicon-trash"></span> Hapus</button>';
+                      echo   '</div>';
+                  echo '</div>';
+                echo '</div>';
+               echo '</div>';
+              echo '</div>';
+           echo '</div>';
+           };
+         ?>
+         
          </div> 
-        </div>
-     </div>
     </div>
   </div>
      <!-- Modal Hapus -->

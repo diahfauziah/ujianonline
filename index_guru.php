@@ -33,7 +33,6 @@
         font:400 15px;
         font-family: 'Lato', sans-serif;
         line-height: 1.8;
-        /*color: #81;*/
         background-color: #f8f8f8; 
       } 
       .btn {
@@ -47,7 +46,6 @@
         border-radius: 0;
         border-bottom-color: #e7e7e7;
         border-bottom-width: 1px;
-        /*background-color: #DFDCE; */
       } 
 
       .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -57,11 +55,7 @@
       .menu {
         font-size: 13px;
       }
-    /*  .container {
-        padding: 20px 20px;
-        background-color: #ffffff;
-        min-height: 100%;
-      } */
+    
       .container {
           padding-right: 15px;
           padding-left: 15px;
@@ -224,6 +218,9 @@
         min-height: 600px;
         padding: 20px 12px;
       }
+      .form-control {
+        border-radius: 0px;
+      }
     </style>
   </head>
   <body>
@@ -242,7 +239,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
-            <li class="active"><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
+            <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
             <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
           </ul>
           <!-- <ul class="nav navbar-nav navbar-right" style="padding-right:90px;"> -->
@@ -303,6 +300,13 @@
             echo   '<strong>Berhasil!</strong> Ujian Kesetimbangan berhasil dibuat.';
             echo '</div>';
           }
+          if(!empty($_GET['message']) && $_GET['message'] == 'success2')
+          { 
+            echo '<div class="alert alert-success">';
+            echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+            echo   '<strong>Berhasil!</strong> Ujian Kesetimbangan berhasil dihapus.';
+            echo '</div>';
+          }
         ?>
         <table class="table table-hover">
           <thead>
@@ -311,7 +315,7 @@
               <th>Total Soal</th>
               <th>Mata Pelajaran</th>
               <th>Kelas</th>
-              <th>Lihat</th>
+              <th>Tampilan siswa</th>
               <th>Bagikan</th>
               <th>Laporan</th>
               <th>Terakhir diperbarui</th>
@@ -328,13 +332,13 @@
                 echo     '<a class="link-judul" href="view_ujian.php?id='.$data['id_ujian'].'"">'. $data['judul_ujian'] .'</a><br>';
                 echo   '</div>';
                 echo   '<div style="font-size: 12px; color:#aba8a8;" class="link2">';
-                echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal2.html">Tambah Soal</a>';
+                echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal2.php?id='.$data['id_ujian'].'">Tambah Soal</a>';
                 echo   '</div>';    
                 echo  '</td>';
                 echo  '<td>'. $data['total_soal'] .'</td>';     
                 echo  '<td>Matematika</td>';
                 echo  '<td>XII MIPA</td>';
-                echo  '<td><a href="lihat_tampilan_ujian.html" data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>';
+                echo  '<td><a href="lihat_tampilan_ujian.html" data-toggle="tooltip" data-placement="top" title="Lihat tampilan siswa" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>';
                 echo  '<td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" data-id='.$data['url_ujian'].' title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>';
                 echo  '<td><a href="laporan_ujian.php?id='.$data['id_ujian'].'" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>';
                 echo  '<td>'. $data['modified_date'] .'</td>';
@@ -355,8 +359,10 @@
                           <p style="padding-left:20px; margin-bottom:0px">Apakah anda ingin menghapus ujian <b id="p1"> Gerak Lurus Beraturan?</b>?</p>
                         </div>
                         <div class="modal-footer">
-                          <a href="#" class="button button2 col-md-6" data-dismiss="modal" style="text-decoration:none;">Batalkan</a>
-                          <a href="#" class="button button1 col-md-6" id="simpan" style="text-decoration:none;">Hapus Ujian</a>
+                          <!-- <a href="#" class="button button2 col-md-6" data-dismiss="modal" style="text-decoration:none;">Batalkan</a>
+                          <a href="#" class="button button1 col-md-6" id="simpan" style="text-decoration:none;">Hapus Ujian</a> -->
+                          <a  href="kategori.php" class="button button1" id="simpan" style="text-decoration:none;">Hapus Ujian</a>
+                          <button class="btn btn-default" data-dismiss="modal" style="border-width:2px;">Batalkan</button>
                         </div>
                       </div>
                     </div>
