@@ -207,9 +207,9 @@
       }
 
       .hasAnswer {
-        background-color : #4ABDAC;
+        background-color : #b4e3dc;
         color : #ffffff;
-        border-color : #4ABDAC;
+        border-color : #b4e3dc;
       }
       
       .disabled, .disabled:hover, .disabled:visited, .disabled:focus{
@@ -252,7 +252,7 @@
         border-radius: 4px;
         margin-bottom: 5px;
         box-shadow: 0 1px #e7e7e7;
-        width: 96%;
+        width: 85%;
         margin-left: 25px;
       }
       .hasAnswer, .hasTandai, .hasAnswer:visited, .hasTandai:visited, .hasAnswer:hover , .hasTandai:hover {
@@ -349,6 +349,7 @@
                   echo     '</div>';
                   echo    '</div>';
                   echo '</li>';
+                  //echo  '<button class="button button2" style="float:left">A</button>';
                   $i++;
                 }
               echo    '</ul>';
@@ -591,6 +592,7 @@
 
           $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
           $($ini).addClass("hasAnswer");
+          $($ini).css({"color":"#ffffff"});
 
           $tomboltandai = "#tandai"+$soal_sekarang;
           if($($ini).hasClass("hasTandai").toString() == "true"){
@@ -626,18 +628,22 @@
         $(".btntandai") .click(function(){
             $nomorini = ".nomor[data-nomor="+$soal_sekarang+"]";
             $ini = "#tandai"+$soal_sekarang;
+            $kotakini = "#kotak"+$soal_sekarang;
 
             if ($($ini).html() == '<i class="fa fa-bookmark-o"></i> Batal Tandai'){
                 // membatalkan:
                   $($ini).html('<i class="fa fa-bookmark"></i> Tandai');
                   $($nomorini).removeClass("tandai");
-                  if($("li").hasClass("selected").toString() == "true"){
-                    $($nomorini).addClass("hasAnswer");  
+                  $($nomorini).css({"color":"#000000"});
+                  if($($kotakini).find("li").hasClass("selected").toString() == "true"){
+                    $($nomorini).addClass("hasAnswer"); 
+                    $($nomorini).css({"color":"#ffffff"}); 
                   }
               }
               else{
                 // menandai
                   $($ini).html('<i class="fa fa-bookmark-o"></i> Batal Tandai');
+                  $($nomorini).css({"color":"#ffffff"});
                   $($nomorini).removeClass("hasAnswer");
                   $($nomorini).addClass("tandai");
                   $($nomorini).addClass("hasTandai");
