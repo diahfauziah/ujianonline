@@ -479,9 +479,9 @@
             toolbarInline: true,
             charCounterCount: false,
             toolbarButtons: ['strikeThrough', 'highlight', 'undo', 'redo'],
-            spellcheck : false
+            spellcheck : false,
+			contenteditable : false
           });
-          $(".fr-element").attr("contenteditable", false);
         });
 
         $soal_sekarang = 1;
