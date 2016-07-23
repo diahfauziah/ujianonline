@@ -334,8 +334,8 @@
               echo     $soal['nomor_soal'];
               echo     '"><i class="fa fa-bookmark"></i> Tandai</button>';
 
-              echo     '<button type="button" class="button btnreset pull-right" style="margin-top:8px; margin-right:10px; padding: 4px 18px; outline:none;" data-id="';
-              echo     $soal['nomor_soal'];
+              echo     '<button type="button" class="button btnreset pull-right" style="margin-top:8px; margin-right:10px; padding: 4px 18px; outline:none;" data-soal="';
+              echo     $soal['pertanyaan'];
               echo     '" id="reset';
               echo     $soal['nomor_soal'];
               echo     '"><i class="fa fa-refresh"></i> Reset</button>';
@@ -503,6 +503,7 @@
         });
 
         $soal_sekarang = 1;
+        $pertanyaan_sekarang = "";
 
         /* Tampilkan nomor sekarang */
         $(function(){
@@ -666,6 +667,11 @@
                   $($nomorini).addClass("tandai");
                   $($nomorini).addClass("hasTandai");
               }
+        });
+
+        $(".btnreset").click(function(){
+            $soal = $(this).attr("data-soal");
+
         });
 
         /* Navigasi daftar soal */
