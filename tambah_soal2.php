@@ -1004,7 +1004,7 @@
                   this.colors.background('#ffffff');
                   this.events.focus();
                 } else {
-                  this.colors.background('#ffff00');
+                  this.toggleClass("fr-active", this.format.applyStyle("background-color", "#ffff00;"));
                   this.events.focus();
                 }
               }
