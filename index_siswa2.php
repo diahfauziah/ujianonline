@@ -144,7 +144,12 @@
         color: #ffffff;
         border: 1px solid #F7B733;
       }
-      .button1:hover {
+      .btnreset, .btnreset:link, .btnreset:visited {
+        background-color:#f8f8f8;
+        color:#777; 
+        border: 1px solid #e7e7e7; 
+      }
+      .button1:hover, .btnreset:hover {
      /*   background-color: #ffffff;
         color: #F7B733;
         border: 1px solid #F7B733; */
@@ -322,11 +327,19 @@
               echo       '</div>';
               echo     '</div>';
               echo     '<div class="row">';
+
               echo     '<button type="button" class="button button1 pull-right btntandai" style="margin-top:8px; margin-right:17px; padding: 4px 18px; outline:none;" data-id="';
               echo     $soal['nomor_soal'];
               echo     '" id="tandai';
               echo     $soal['nomor_soal'];
               echo     '"><i class="fa fa-bookmark"></i> Tandai</button>';
+
+              echo     '<button type="button" class="button btnreset pull-right" style="margin-top:8px; margin-right:10px; padding: 4px 18px; outline:none;" data-id="';
+              echo     $soal['nomor_soal'];
+              echo     '" id="reset';
+              echo     $soal['nomor_soal'];
+              echo     '"><i class="fa fa-refresh"></i> Reset</button>';
+
               echo     '</div>';
               
 
