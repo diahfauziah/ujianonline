@@ -349,7 +349,6 @@
                   echo     '</div>';
                   echo    '</div>';
                   echo '</li>';
-                  //echo  '<button class="button button2" style="float:left">A</button>';
                   $i++;
                 }
               echo    '</ul>';
@@ -449,6 +448,7 @@
             });
 
             $.FroalaEditor.DefineIcon('highlight', {NAME: 'pencil'});
+            
             $.FroalaEditor.RegisterCommand('highlight', {
               title: 'Highlight',
               focus: true,
@@ -478,9 +478,9 @@
           $('.edit').froalaEditor({
             toolbarInline: true,
             charCounterCount: false,
-            toolbarButtons: ['strikeThrough', 'highlight', 'undo', 'redo'],
+            toolbarButtons: ['strikeThrough', 'highlight', 'undo', 'redo', 'clearFormatting'],
             spellcheck : false,
-			contenteditable : false
+			      contenteditable : false
           });
         });
 
