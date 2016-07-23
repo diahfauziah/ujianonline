@@ -304,9 +304,10 @@
       <!--    <a class="pull-right" href="#" id="hide"><u>Hide daftar soal</u></a> -->
           <div id="panelsoal">
           <?php 
+		    $j = 1;
             while($soal = mysqli_fetch_array($query)){
               echo '<div class="panel panel-default" style="border-radius:0px; margin-bottom:0px" id="kotak';
-              echo   $soal['nomor_soal'];
+              echo   $j;
               echo   '" hidden>';
               //echo   '<div class="panel-heading">Tes</div>';
               echo   '<div class="panel-body" style="margin-bottom:-5px;">';
@@ -314,31 +315,39 @@
               echo     '<div class="row" style="margin-top:5px;">';
               echo       '<div style="margin-left:10px; width:15px; float:left;">';
               echo         '<strong id="nomor">';
-              echo         $soal['nomor_soal'];
+              echo         $j;
               echo         '.';
               echo         '</strong>';
               echo       '</div>';
               echo       '<div style="margin-left: 0px;">';
               echo         '<div class="col-md-12" style="width:96%">';
-              echo           '<textarea class="form-control edit" rows="3">';
+              echo           '<div id="soal';
+			  echo 			  $j;
+			  echo 			 '" rows="3">';
               echo             $soal['pertanyaan'];
-              echo           '</textarea>';
+              echo           '</div>';
+			  echo			'<textarea id="soal';
+			  echo			  $j;
+			  echo			'" style="display:none">';
+			  echo             $soal['pertanyaan'];
+			  echo			'</textarea>';
               echo         '</div>';
               echo       '</div>';
               echo     '</div>';
               echo     '<div class="row">';
 
               echo     '<button type="button" class="button button1 pull-right btntandai" style="margin-top:8px; margin-right:17px; padding: 4px 18px; outline:none;" data-id="';
-              echo     $soal['nomor_soal'];
+              echo     $j;
               echo     '" id="tandai';
-              echo     $soal['nomor_soal'];
+              echo     $j;
               echo     '"><i class="fa fa-bookmark"></i> Tandai</button>';
+              
+              echo     '<button type="button" class="button btnreset pull-right" style="margin-top:8px; margin-right:10px; padding: 4px 18px; outline:none;" data-id="';
+              echo     $j;
 
-              echo     '<button type="button" class="button btnreset pull-right" style="margin-top:8px; margin-right:10px; padding: 4px 18px; outline:none;" data-soal="';
-              echo     $soal['pertanyaan'];
               echo     '" id="reset';
-              echo     $soal['nomor_soal'];
-              echo     '"><i class="fa fa-refresh"></i> Reset</button>';
+              echo     $j;
+              echo     '"><i class="fa fa-refresh"></i> Reset Soal</button>';
 
               echo     '</div>';
               
@@ -367,6 +376,7 @@
               echo    '</ul>';
               echo    '</div>';
               echo   '</div>';
+			  $j++;
             }
           ?>
           </div>
@@ -381,7 +391,7 @@
             <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
               <div class="form-group">
                 <?php 
-                  $query4 = mysqli_query($link, "SELECT MAX(nomor_soal) FROM soal where id_ujian='$id' ");
+                  $query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");
                   $arraynomor = mysqli_fetch_array($query4);
                   $nomormax = (int)$arraynomor[0];
 
@@ -488,7 +498,17 @@
         });
         
         $(function(){
-          $('.edit').froalaEditor({
+		  $n = '<?php echo $nomormax ?>';
+		  $instance = "";
+		  
+		  for (var $i = 1; $i <= $n; $i++){
+			  $instance = $instance + "div#soal" + $i;
+			  if ($i < $n){
+				  $instance = $instance + ", ";
+			  }
+		  }
+		  
+          $($instance).froalaEditor({
             toolbarInline: true,
             charCounterCount: false,
             toolbarButtons: ['strikeThrough', 'highlight', 'undo', 'redo', 'clearFormatting'],
@@ -596,7 +616,7 @@
         };
 
         /* Pilih opsi jawaban */
-        $(".opsijawaban").dblclick(function(){
+        $(".opsijawaban").click(function(){
           $(this).siblings().removeClass("selected");
           $(this).addClass("selected");
 
@@ -644,7 +664,7 @@
         });
 
         /* Menandai soal */
-        $(".btntandai") .click(function(){
+        $(".btntandai").click(function(){
             $nomorini = ".nomor[data-nomor="+$soal_sekarang+"]";
             $ini = "#tandai"+$soal_sekarang;
             $kotakini = "#kotak"+$soal_sekarang;
@@ -668,6 +688,15 @@
                   $($nomorini).addClass("hasTandai");
               }
         });
+		
+		/* Mengatur ulang soal */
+		$(".btnreset").click(function(){
+			$initext = "textarea#soal"+$soal_sekarang;
+			$data = $($initext).val();
+			$inieditor = "div#soal"+$soal_sekarang;
+			$($inieditor).froalaEditor("undo.reset");
+			$($inieditor).froalaEditor("html.set", $data);
+		});
 
         $(".btnreset").click(function(){
             $soal = $(this).attr("data-soal");
