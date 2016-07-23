@@ -437,7 +437,7 @@
         $(function() {
             $.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
             $.FroalaEditor.RegisterCommand('clear', {
-              title: 'Reset',
+              title: 'Hapus Semua',
               focus: false,
               undo: true,
               refreshAfterCallback: true,
@@ -459,7 +459,7 @@
                   this.colors.background('#ffffff');
                   this.events.focus();
                 } else {
-                  this.colors.background('#ffff00');
+                  this.toggleClass("fr-active", this.format.applyStyle("background-color", "#ffff00;"));
                   this.events.focus();
                 }
               }
