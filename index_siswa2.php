@@ -524,7 +524,7 @@
 			      contenteditable : false
           });
 		  $(".fr-element").keydown(function(e){
-			  if (e.keyCode == 8 || e.keyCode == 46){
+			  if (e.keyCode < 37  || e.keyCode > 40){
 				  e.preventDefault();
 			  }
 		  });
