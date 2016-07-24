@@ -144,11 +144,17 @@
         color: #ffffff;
         border: 1px solid #F7B733;
       }
-      .btnreset, .btnreset:link, .btnreset:visited {
+      .btnreset, .btnreset:link, .btnreset:visited{
         background-color:#f8f8f8;
         color:#777; 
         border: 1px solid #e7e7e7; 
       }
+      .btncoret, .btncoret:link, .btncoret:visited {
+        background-color:#ffffff;
+        color:#4ABDAC; 
+        border: 1px solid #e7e7e7;  
+      }
+
       .button1:hover, .btnreset:hover {
      /*   background-color: #ffffff;
         color: #F7B733;
@@ -161,7 +167,7 @@
         border: 1px solid #4ABDAC;
         font-size: 14px;
       }
-      .button2:hover, .kumpulkan {
+      .button2:hover, .kumpulkan, .btncoret:hover {
         background-color: #4ABDAC;
         color: #ffffff;
         border: 1px solid #4ABDAC;
@@ -257,7 +263,7 @@
         border-radius: 4px;
         margin-bottom: 5px;
         box-shadow: 0 1px #e7e7e7;
-        width: 85%;
+        width: 91%;
         margin-left: 25px;
       }
       .hasAnswer, .hasTandai, .hasAnswer:visited, .hasTandai:visited, .hasAnswer:hover , .hasTandai:hover {
@@ -311,7 +317,7 @@
               echo   '" hidden>';
               //echo   '<div class="panel-heading">Tes</div>';
               echo   '<div class="panel-body" style="margin-bottom:-5px;">';
-              //echo   'Soal ini untuk nomor 13-15. <a href="#">Lewati bagian ini</a>';
+              echo   'Soal ini untuk nomor 1-3. <a href="#">Lewati bagian ini</a>';
               echo     '<div class="row" style="margin-top:5px;">';
               echo       '<div style="margin-left:10px; width:15px; float:left;">';
               echo         '<strong id="nomor">';
@@ -341,10 +347,9 @@
               echo     '" id="tandai';
               echo     $j;
               echo     '"><i class="fa fa-bookmark"></i> Tandai</button>';
-              
+
               echo     '<button type="button" class="button btnreset pull-right" style="margin-top:8px; margin-right:10px; padding: 4px 18px; outline:none;" data-id="';
               echo     $j;
-
               echo     '" id="reset';
               echo     $j;
               echo     '"><i class="fa fa-refresh"></i> Reset Soal</button>';
@@ -358,7 +363,8 @@
               $huruf = array("A","B","C","D","E");
               $i = 0;
                 while($pilihan = mysqli_fetch_array($query2)){
-                  echo '<li class="list-group-item opsijawaban" id="opsi">';
+                  echo '<div class="row">';
+                  echo '<li class="list-group-item opsijawaban" id="opsi" style="float:left">';
                   echo   '<div class="row">';
                   echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
                   //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
@@ -366,11 +372,13 @@
                   echo         $huruf[$i];
                   echo        '</div>'; 
                   echo     '</div>';
-                  echo     '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
+                  echo     '<div style="width:90%;  margin-left:-20px;" class="col-md-9">';
                   echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
                   echo     '</div>';
                   echo    '</div>';
                   echo '</li>';
+                  echo '<i id="coret" class="fa fa-times-circle fa-lg" style="color:#4ABDAC; margin-left:5px;"></i>';
+                  echo '</div>';
                   $i++;
                 }
               echo    '</ul>';
