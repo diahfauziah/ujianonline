@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Home | Ujian Online</title>
+    <title>Login Guru | Ujian Online</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -150,22 +153,34 @@
             <div class="panel-body">
               <h4 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Login Guru</h4>
               <hr>
-            <form class="form-horizontal">
+            <form id="form" method="post" class="form-horizontal" action="loginval.php">
+			  <?php 
+				if (isset($_SESSION["statuspesan"])){
+				  if ($_SESSION["statuspesan"]!=""){
+					echo '<div class="alert alert-danger">';
+					echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+					echo   '<strong>Gagal login!</strong>';
+					echo   $_SESSION['pesan'];
+					echo '</div>';
+					$_SESSION['statuspesan'] = "";
+				  }
+				}
+			  ?>
               <div class="form-group">
                 <label class="col-md-3">Username</label>
                 <div class="col-md-9">
-                  <input type="text" class="form-control">
+                  <input type="text" name="username" id="username" class="form-control">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-md-3">Password</label>
                 <div class="col-md-9">
-                  <input type="text" class="form-control">
+                  <input type="password" name="password" id="password" class="form-control">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
-                  <a href="index_guru.php" type="button" class="btn btn-simpan"> Masuk</a>
+				  <button type="submit"class="btn btn-simpan">Masuk</button>
                 </div>
               </div>
               <p style="text-align:center;">Belum punya akun? <a href="register.php" style="color:#f7b733">Daftar disini.</a></p>

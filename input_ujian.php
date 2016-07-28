@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include ("koneksi.php");
 	if(isset($_POST)) {
 		if(isset($_POST["Judul"])){
@@ -29,7 +30,7 @@
 			$perlulogin = $_POST['PerluLogin'];
 		}
 
-		$url = "http://ujianonline.com/"+ $_POST['Judul'];
+		$url = "http://ujianonline.com/ujian.php?judul="+ $_POST['Judul'];
 
 	}
 	$insert1 = "INSERT INTO `info_ujian`(`mata_pelajaran`, `id_kelas`, `lama_ujian`, `url_ujian`, `judul_ujian`, `total_soal`, `acak_soal`, `petunjuk`, `perlu_login`) VALUES ('$kategoriujian', '$kategorikelas', '$waktu', 'http://localhost', '$judul', '0', '$acaksoal', NULL, '$perlulogin')";
@@ -38,6 +39,14 @@
 	
 
 	if($insert_query){
-		header('location:index_guru.php?message=success');
+		
+		
+		$_SESSION['statuspesan'] = "sukses";
+		$_SESSION['pesan'] = "Ujian $judul berhasil dibuat";
+		header('location:index_guru.php');
+	} else {
+		$_SESSION['statuspesan'] = "gagal";
+		$_SESSION['pesan'] = "Ujian $judul gagal dibuat";
+		header('location:index_guru.php');
 	}
 ?>

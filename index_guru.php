@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -254,8 +257,8 @@
               </div>
             </form>
             </li>
-            <li><a href="#"> Diah Fauziah </a></li>
-            <li><a href="#"><u>Keluar</u></a></li>
+            <li><a href="#"> <?php echo $_SESSION["nama"]; ?> </a></li>
+            <li><a href="logout.php"><u>Keluar</u></a></li>
           </ul>
         </div>
         </div>
@@ -293,19 +296,23 @@
         </div>
 
         <?php 
-          if(!empty($_GET['message']) && $_GET['message'] == 'success')
-          { 
-            echo '<div class="alert alert-success">';
-            echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-            echo   '<strong>Berhasil!</strong> Ujian Kesetimbangan berhasil dibuat.';
-            echo '</div>';
-          }
-          if(!empty($_GET['message']) && $_GET['message'] == 'success2')
-          { 
-            echo '<div class="alert alert-success">';
-            echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-            echo   '<strong>Berhasil!</strong> Ujian Kesetimbangan berhasil dihapus.';
-            echo '</div>';
+          if(!empty($_SESSION['statuspesan']))
+          {
+			if (($_SESSION['statuspesan'] == "sukses")){
+				echo '<div class="alert alert-success">';
+				echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+				echo   '<strong>Berhasil!</strong> ';
+				echo   $_SESSION['pesan'];
+				echo '</div>';
+				$_SESSION['statuspesan'] = "";
+			} else {
+				echo '<div class="alert alert-danger">';
+				echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+				echo   '<strong>Gagal!</strong>';
+				echo   $_SESSION['pesan'];
+				echo '</div>';
+				$_SESSION['statuspesan'] = "";
+			}
           }
         ?>
         <table class="table table-hover">
