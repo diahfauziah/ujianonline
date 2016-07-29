@@ -1,3 +1,12 @@
+<?php
+	session_start();
+	$aidi = $_GET['id'];
+	if ($_SESSION['role']=="murid" || $_SESSION['role']=="guru"){
+		
+	} else {
+		header('location:ujian.php?id='.$aidi);
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,14 +21,14 @@
 
     <!-- Froala -->
       <!-- Include Font Awesome. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Include Editor style. -->
     <link href="froala/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
     <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Include Code Mirror style -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/codemirror.min.css">
 
     <!-- Include font awesome -->
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -40,7 +49,7 @@
     <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
     <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
       $(function(){ 
@@ -438,8 +447,9 @@
         </div>
       </div>
     </div>
-    <!-- Include jQuery. -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    
+	<!-- Include jQuery. -->
+    <script type="text/javascript" src="js/jquery1.11.min.js"></script>
     <script type="text/javascript" src="js/tooltipsy.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-tagsinput.min.js"></script>

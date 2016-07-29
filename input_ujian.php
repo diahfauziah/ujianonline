@@ -39,8 +39,6 @@
 	
 
 	if($insert_query){
-		
-		
 		$_SESSION['statuspesan'] = "sukses";
 		$_SESSION['pesan'] = "Ujian $judul berhasil dibuat";
 		header('location:index_guru.php');

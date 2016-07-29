@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if ($_SESSION['role']!="guru"){
+		header('location:login.php');
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,12 +11,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Home | Ujian Online</title>
+    <title>Edit Ujian | Ujian Online</title>
 
     <!-- Bootstrap -->
-    <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+    <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <script type="text/javascript">
@@ -343,8 +349,8 @@
                 </div>
               </form>
               </li>
-              <li><a href="#"> Diah Fauziah </a></li>
-              <li><a href="#"><u>Keluar</u></a></li>
+              <li><a href="#"> <?php echo $_SESSION["nama"]; ?> </a></li>
+			  <li><a href="logout.php"><u>Keluar</u></a></li>
             </ul>
           </div>
         </div>
@@ -486,84 +492,84 @@
         
           <form action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal" method="post">
             <div class="col-md-8">
-                            <div class="form-group">
-                              <label for="Judul" class="col-md-4 control-label">Judul</label>
-                              <div class="col-md-8">
-                                <input type="text" class="form-control" id="Judul" value="<?php echo $ujian['judul_ujian'] ?>">
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="URL" class="col-md-4 control-label">URL</label>
-                              <div class="col-md-8">
-                                <a href="#" id="URL" class="form-control disabled" style="background-color:#f8f8f8"><?php echo $ujian['url_ujian'] ?></a>
-                              </div>  
-                            </div>
-                            <div class="form-group">
-                              <label for="Waktu" class="col-md-4 control-label">Waktu</label>
-                              <div class="col-md-3">
-                                <input type="number" class="form-control" id="Waktu" value="<?php echo $ujian['lama_ujian'] ?>">
-                              </div>
-                              <div class="col-md-5">
-                                 Menit
-                               </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-md-4 control-label">Acak soal</label>
-                              <div class="col-md-8">
-                                 <?php if($ujian['acak_soal']==1){
-                                          echo '<select class="form-control">';
-                                          echo   '<option>Ya</option>';
-                                          echo   '<option>Tidak</option>';
-                                          echo '</select>';
-                                        } else {
-                                          echo '<select class="form-control">';
-                                          echo   '<option>Tidak</option>';
-                                          echo   '<option>Ya</option>';
-                                          echo '</select>';
-                                        }  
-                                  ?>
-                               </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-md-4 control-label">Kategori</label>
-                              <div class="col-md-5">
-                                <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
-                                  <option value="">Pilih Mata Pelajaran</option>
-                                  <option value="1">Matematika</option>
-                                  <option value="2">Fisika</option>
-                                </select>
-                              </div>
-                              <div class="col-md-3">
-                                <select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
-                                  <option value="">Kelas</option>
-                                  <option value="1">XII MIPA</option>
-                                  <option value="2">XI MIPA</option>
-                                </select>
-                               </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Peserta perlu login</label>
-                                <div class="col-md-8">
-                                  <select class="form-control">
-                                    <option>Ya</option>
-                                    <option>Tidak</option>
-                                  </select>
-                                </div>
-                            </div>
+				<div class="form-group">
+				  <label for="Judul" class="col-md-4 control-label">Judul</label>
+				  <div class="col-md-8">
+					<input type="text" class="form-control" id="Judul" value="<?php echo $ujian['judul_ujian'] ?>">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label for="URL" class="col-md-4 control-label">URL</label>
+				  <div class="col-md-8">
+					<a href="#" id="URL" class="form-control disabled" style="background-color:#f8f8f8"><?php echo $ujian['url_ujian'] ?></a>
+				  </div>  
+				</div>
+				<div class="form-group">
+				  <label for="Waktu" class="col-md-4 control-label">Waktu</label>
+				  <div class="col-md-3">
+					<input type="number" class="form-control" id="Waktu" value="<?php echo $ujian['lama_ujian'] ?>">
+				  </div>
+				  <div class="col-md-5">
+					 Menit
+				   </div>
+				</div>
+				<div class="form-group">
+				  <label class="col-md-4 control-label">Acak soal</label>
+				  <div class="col-md-8">
+					 <?php if($ujian['acak_soal']==1){
+							  echo '<select class="form-control">';
+							  echo   '<option>Ya</option>';
+							  echo   '<option>Tidak</option>';
+							  echo '</select>';
+							} else {
+							  echo '<select class="form-control">';
+							  echo   '<option>Tidak</option>';
+							  echo   '<option>Ya</option>';
+							  echo '</select>';
+							}  
+					  ?>
+				   </div>
+				</div>
+				<div class="form-group">
+				  <label class="col-md-4 control-label">Kategori</label>
+				  <div class="col-md-5">
+					<select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
+					  <option value="">Pilih Mata Pelajaran</option>
+					  <option value="1">Matematika</option>
+					  <option value="2">Fisika</option>
+					</select>
+				  </div>
+				  <div class="col-md-3">
+					<select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
+					  <option value="">Kelas</option>
+					  <option value="1">XII MIPA</option>
+					  <option value="2">XI MIPA</option>
+					</select>
+				   </div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label">Peserta perlu login</label>
+					<div class="col-md-8">
+					  <select class="form-control">
+						<option>Ya</option>
+						<option>Tidak</option>
+					  </select>
+					</div>
+				</div>
             </div>
             <div class="col-md-12">
-                            <div class="form-group" style="margin-left:-55px;">
-                              <label class="col-md-3 control-label">Petunjuk</label>
-                              <div class="col-md-9">
-                                <textarea class="form-control" rows="15">
-                                </textarea>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
-                                <a href="index_guru.html" type="button" class="button button2" style="text-decoration:none"> Simpan</a>
-                              </div>
-                            </div>
+				<div class="form-group" style="margin-left:-55px;">
+				  <label class="col-md-3 control-label">Petunjuk</label>
+				  <div class="col-md-9">
+					<textarea class="form-control" rows="15">
+					</textarea>
+				  </div>
+				</div>
+				<div class="form-group">
+				  <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
+					<a href="index_guru.html" type="button" class="button button2" style="text-decoration:none"> Simpan</a>
+				  </div>
+				</div>
             </div>
           </form>
       </div>

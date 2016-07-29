@@ -1,3 +1,10 @@
+<?php
+	session_start();
+	if (isset($_SESSION['role']!="guru")){
+		session_unset();
+		session_destroy();
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,13 +12,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Home | Ujian Online</title>
+    <title>Daftar | Ujian Online</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+    <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-tagsinput.min.js"></script>
     <script type="text/javascript">

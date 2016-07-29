@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if ($_SESSION['role']!="guru"){
+		header('location:login.php');
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,19 +15,19 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+    <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
 
     <!-- Froala -->
       <!-- Include Font Awesome. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Include Editor style. -->
     <link href="froala/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
     <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Include Code Mirror style -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/codemirror.min.css">
 
     <!-- Include font awesome -->
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -281,8 +287,8 @@
               </div>
             </form>
             </li>
-            <li><a href="#"> Diah Fauziah </a></li>
-            <li><a href="#"><u>Keluar</u></a></li>
+            <li><a href="#"> <?php echo $_SESSION["nama"]; ?> </a></li>
+			  <li><a href="logout.php"><u>Keluar</u></a></li>
           </ul>
         </div>
         </div>
@@ -936,7 +942,7 @@
     </div>  
 
     <!-- Include jQuery. -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/tooltipsy.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-tagsinput.min.js"></script>
@@ -945,8 +951,8 @@
     <script type="text/javascript" src="froala/js/froala_editor.min.js"></script>
 
     <!-- Include Code Mirror. -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+    <script type="text/javascript" src="js/codemirror.min.js"></script>
+    <script type="text/javascript" src="js/xml.min.js"></script>
 
     <!-- Include Plugins. -->
     <script type="text/javascript" src="froala/js/plugins/align.min.js"></script>

@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if ($_SESSION['role']!="guru"){
+		header('location:login.php');
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,12 +11,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Home | Ujian Online</title>
+    <title>Laporan Ujian | Ujian Online</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
       $(function(){
@@ -209,7 +215,7 @@
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav menu">
               <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-              <li><a href="index_guru.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
+              <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
             </ul> 
             <ul class="nav navbar-nav navbar-right">
               <li>
@@ -222,8 +228,8 @@
                 </div>
               </form>
               </li>
-              <li><a href="#"> Diah Fauziah </a></li>
-              <li><a href="#"><u>Keluar</u></a></li>
+              <li><a href="#"> <?php echo $_SESSION["nama"]; ?> </a></li>
+			  <li><a href="logout.php"><u>Keluar</u></a></li>
             </ul>
           </div>
         </div>
@@ -274,7 +280,7 @@
          </table>
          <?php 
             if(empty(mysqli_fetch_array($query))){
-                  echo 'kosong';
+                  echo 'tidak ada data untuk ditampilkan';
             }
          ?>
          </div>

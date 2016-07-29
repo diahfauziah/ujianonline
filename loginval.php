@@ -15,6 +15,7 @@
 				$_SESSION['userid'] = $user["id_guru"];
 				$_SESSION['username'] = $user["username"];
 				$_SESSION['kategori_guru'] = $user["kategori_guru"];
+				$_SESSION['role'] = "guru";
 				$newURL = "index_guru.php";
 				header('Location: '.$newURL);
 			} else {
