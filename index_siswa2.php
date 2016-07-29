@@ -237,8 +237,8 @@
           height: 32px;
           padding: 5px;
           
-          background: #fff;
-          border: 2px solid #4ABDAC;
+          background: #f8f8f8;
+          border: 2px solid #e7e7e7;
           color: #4ABDAC;
           text-align: center;
           
@@ -268,6 +268,9 @@
       }
       .hasAnswer, .hasTandai, .hasAnswer:visited, .hasTandai:visited, .hasAnswer:hover , .hasTandai:hover {
         color: #ffffff;
+      }
+      .tercoret{
+        text-decoration: line-through;
       }
       
       
@@ -317,7 +320,8 @@
               echo   '" hidden>';
               //echo   '<div class="panel-heading">Tes</div>';
               echo   '<div class="panel-body" style="margin-bottom:-5px;">';
-              echo   'Soal ini untuk nomor 1-3. <a href="#">Lewati bagian ini</a>';
+              //echo   'Soal ini untuk nomor 1-3. <a href="#">Lewati bagian ini</a>';
+              //echo   '<b>Fisika</b>. <a href="#">Lewati bagian ini</a>';
               echo     '<div class="row" style="margin-top:5px;">';
               echo       '<div style="margin-left:10px; width:15px; float:left;">';
               echo         '<strong id="nomor">';
@@ -364,7 +368,7 @@
               $i = 0;
                 while($pilihan = mysqli_fetch_array($query2)){
                   echo '<div class="row">';
-                  echo '<li class="list-group-item opsijawaban" id="opsi" style="float:left">';
+                  echo '<li class="list-group-item opsijawaban" style="float:left">';
                   echo   '<div class="row">';
                   echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
                   //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
@@ -373,11 +377,11 @@
                   echo        '</div>'; 
                   echo     '</div>';
                   echo     '<div style="width:90%;  margin-left:-20px;" class="col-md-9">';
-                  echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
+                  echo       '<div class="opsiGanda">'.$pilihan['opsi_jawaban'].'</div>';
                   echo     '</div>';
                   echo    '</div>';
                   echo '</li>';
-                  echo '<i id="coret" class="fa fa-times-circle fa-lg" style="color:#4ABDAC; margin-left:5px;"></i>';
+                  echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#4ABDAC; margin-left:5px; cursor:pointer;"></i>';
                   echo '</div>';
                   $i++;
                 }
@@ -397,6 +401,7 @@
           Daftar soal
           <div class="panel panel-default" style="width:190px;margin-bottom:5px;" id="nomorSoal">
             <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
+              <p style="text-decoration:underline;margin-bottom:0px;">Fisika</p>
               <div class="form-group">
                 <?php 
                   $query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");
@@ -411,8 +416,20 @@
                     echo $i;
                     echo '</a>';
                     $i++;
-                  }
+                  }               
                 ?>
+              </div>
+              <p style="text-decoration:underline;margin-bottom:0px;">Kimia</p>
+              <div class="form-group">
+                 <?php 
+                  while($i <= 10){
+                    echo '<a href="#" class="button button3 nomor" data-nomor="';
+                    echo $i;
+                    echo '" style="margin-right:5px; text-decoration:none;">';
+                    echo $i;
+                    echo '</a>';
+                    $i++;
+                  } ?>
               </div>
               <div class="row" style="padding-left:15px;">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p></div>
             </div>
@@ -497,12 +514,12 @@
             });
 
             $(".fr-element").attr("contenteditable", false);
-            $('div.opsi').froalaEditor({
+            /* $('div.opsi').froalaEditor({
               toolbarInline: true,
               charCounterCount: false,
               toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', '-', 'undo', 'redo', 'align', 'formatOL', 'formatUL',  '-', 'insertImage', 'insertLink', 'indent', 'outdent', 'insertFile', 'insertVideo'],
               placeholderText: 'Ketik jawaban'
-            });
+            }); */
         });
         
         $(function(){
@@ -582,7 +599,12 @@
           } 
 
         });
-        
+
+        if(($soal_sekarang) == '<?php echo $nomormax ?>'){
+          $("#btnnext").removeClass("button2");
+          $("#btnnext").addClass("disabled");
+        }
+
         /* Tombol sebelumnya */
         $("#btnprev").click(function(){
           if($soal_sekarang > 1){
@@ -625,37 +647,69 @@
 
         /* Pilih opsi jawaban */
         $(".opsijawaban").click(function(){
-          $(this).siblings().removeClass("selected");
-          $(this).addClass("selected");
+          if($(this).hasClass("selected")){
+            $(this).closest('ul').find('li.list-group-item').removeClass("selected");
+            $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
 
-          /*$(this).siblings().find('.setjawaban').removeClass("fa-circle-thin");
-          $(this).siblings().find('.setjawaban').addClass("fa-circle-thin");
-          $(this).siblings().find('.setjawaban').css({"color":"#4ABDAC"});
-          $(this).find('.setjawaban').removeClass("fa fa-circle-thin");
-          $(this).find('.setjawaban').addClass("fa fa-circle");
-          $(this).find('.setjawaban').css({"color" : "#4ABDAC"}); */
-          $(this).siblings().find('.numberCircle').css({"background":"fff","color":"#4ABDAC"});
-          $(this).find('.numberCircle').css({"background":"#4ABDAC", "color":"#fff"});
+            $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
+            $($ini).removeClass("hasAnswer");
+            $($ini).css({"color":"#000000"});
 
-          $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
-          $($ini).addClass("hasAnswer");
-          $($ini).css({"color":"#ffffff"});
-
-          $tomboltandai = "#tandai"+$soal_sekarang;
-          if($($ini).hasClass("hasTandai").toString() == "true"){
-            $($tomboltandai).html('<i class="fa fa-bookmark"></i> Tandai');
-          }
-          
-          if($(".opsijawaban").hasClass("selected").toString()=="true" && $($ini).hasClass("tercatat").toString()=="false"){
             $x = $("#soalterjawab").text();
             $soalterjawab = parseInt($x);
-            $soalterjawab = $soalterjawab + 1;
+            $soalterjawab = $soalterjawab - 1;
+            if($soalterjawab <= 0){
+              $soalterjawab = 0;
+            }
             $("#soalterjawab").text($soalterjawab);
-            $($ini).addClass("tercatat");
+            $($ini).removeClass("tercatat");
+
+            if($($ini).hasClass("hasTandai").toString() == "true"){
+              $($ini).css({"color":"#ffffff"});              
+            }else{
+              $($ini).css({"color":"#000000"});
+            }
+
+            $(this).siblings('i.fa.coret').css({"display":"inline-block"});
+
+          }else{
+            $(this).closest('ul').find('li.list-group-item').removeClass("selected");
+            $(this).addClass("selected");
+            $(this).closest('ul').find('i.fa.coret').css({"display":"inline-block"});
+
+            $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
+            $(this).find('.numberCircle').css({"background":"#b4e3dc", "color":"#fff", "border-color":"#fff"});
+
+            $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
+            $($ini).addClass("hasAnswer");
+            $($ini).css({"color":"#ffffff"});
+
+
+            $tomboltandai = "#tandai"+$soal_sekarang;
+            if($($ini).hasClass("hasTandai").toString() == "true"){
+              $($tomboltandai).html('<i class="fa fa-bookmark"></i> Tandai');
+            }
+            
+            if($(".opsijawaban").hasClass("selected").toString()=="true" && $($ini).hasClass("tercatat").toString()=="false"){
+              $x = $("#soalterjawab").text();
+              $soalterjawab = parseInt($x);
+              $soalterjawab = $soalterjawab + 1;
+              $("#soalterjawab").text($soalterjawab);
+              $($ini).addClass("tercatat");
+            }
+            $(this).siblings('i.fa.coret').css({"display":"none"});
           }
         });
 
-
+        $(".coret").click(function(){
+          $(this).toggleClass("fa-times-circle fa-times-circle-o");
+          if($(this).closest('.row').find('.list-group-item').find('.opsiGanda').hasClass("tercoret")){
+            $(this).closest('.row').find('.list-group-item').find('.opsiGanda').removeClass("tercoret");
+          }else {
+            $(this).closest('.row').find('.list-group-item').find('.opsiGanda').addClass("tercoret");
+          }
+        });
+        
         /* Pilih opsi jawaban: lingkaran dipiilih */
         $(".setjawaban").click(function(){
               $(".opsijawaban").removeClass("selected");
@@ -681,6 +735,7 @@
                 // membatalkan:
                   $($ini).html('<i class="fa fa-bookmark"></i> Tandai');
                   $($nomorini).removeClass("tandai");
+                  $($nomorini).removeClass("hasTandai");
                   $($nomorini).css({"color":"#000000"});
                   if($($kotakini).find("li").hasClass("selected").toString() == "true"){
                     $($nomorini).addClass("hasAnswer"); 
