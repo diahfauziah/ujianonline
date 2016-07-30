@@ -354,30 +354,30 @@
                                   while($i<4){
                                     echo '<div class="form-group" style="margin-bottom:10px">';
                                     echo   '<div class="row">';
-                                    echo     '<div style="float:left" style="width:15px"><i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i></div>';
-                                    echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-                                    echo        '<div class="numberCircle">';
-                                    echo         $huruf[$i];
-                                    echo        '</div>'; 
-                                    echo     '</div>';
-                                    echo     '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
-                                    echo       '<div class="form-control" id="opsiGanda1"></div>';
-                                    echo     '</div>';
-                                    echo     '<div style="float:left">';
-                                    echo       '<i class="fa fa-trash"></i>';
-                                    echo     '</div>';
-                                    echo    '</div>';
+                                      echo     '<div style="float:left" style="width:15px"><i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i></div>';
+                                        echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+                                          echo        '<div class="numberCircle">';
+                                          echo         $huruf[$i];
+                                          echo        '</div>'; 
+                                        echo     '</div>';
+                                        echo     '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
+                                          echo       '<div class="form-control" id="opsiGanda1"></div>';
+                                        echo     '</div>';
+                                        echo     '<div style="float:left">';
+                                          echo       '<i class="fa fa-trash"></i>';
+                                        echo     '</div>';
+                                      echo    '</div>';
                                     echo   '</div>';
                                     $i++;
                                   }
                               ?>
-                            <!--  <div class="form-group" style="margin-bottom:10px">
+                              <div class="form-group" style="margin-bottom:10px" id="opsiGandaE" hidden>
                                 <div class="row">
                                     <div style="float:left" style="width:15px">
                                      <i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i> 
                                     </div>
                                     <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                      <div class="numberCircle">E</div>
                                     </div>
                                     <div style="width:85%;  margin-left:-20px;" class="col-md-9">
                                       <div class="form-control" id="opsiGanda1"></div>
@@ -387,56 +387,8 @@
                                     </div>
                                 </div>
                               </div>
-                              <div class="form-group" style="margin-bottom:10px;">
-                                <div class="row">
-                                  <div style="float:left" style="width:15px">
-                                      <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
-                                    </div>
-                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                                    </div>
-                                    <div style="width:85%; margin-left:-20px;" class="col-md-9">
-                                      <div class="form-control" id="opsiGanda1"></div>
-                                    </div>
-                                    <div style="float:left">
-                                      <i class="fa fa-trash"></i>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="form-group" style="margin-bottom:10px">
-                                <div class="row">
-                                    <div style="float:left" style="width:15px">
-                                      <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
-                                    </div>
-                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                                    </div>
-                                    <div style="width:85%; margin-left:-20px;" class="col-md-9">
-                                      <div class="form-control" id="opsiGanda1"></div>
-                                    </div>
-                                    <div style="float:left">
-                                      <i class="fa fa-trash"></i>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="form-group" style="margin-bottom:10px">
-                                <div class="row">
-                                    <div style="float:left" style="width:15px">
-                                      <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
-                                    </div>
-                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                                    </div>
-                                    <div style="width:85%;margin-left:-20px;" class="col-md-9">
-                                      <div class="form-control" id="opsiGanda1"></div>
-                                    </div>
-                                    <div style="float:left">
-                                      <i class="fa fa-trash"></i>
-                                    </div>
-                                </div>
-                              </div> -->
                               <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
-                                <button class="button button1" style="margin-left:20px; font-size:13px; background-color:#f8f8f8; border:0px; color:#777"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
+                                <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#f8f8f8; border:0px; color:#777; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
                               </div>
                               <div class="form-group form-inline" style="margin-bottom:10px;">
                                 <strong class="col-md-1">Poin:</strong>
@@ -1012,23 +964,25 @@
 
 
             $('#edit1, #edit2, #edit3, #edit4, #edit5').froalaEditor({
-              toolbarButtons: ['undo', 'redo', 'clearFormatting', 'clear', 'bold', 'italic', 'underline', 'strikeThrough', 'highlight', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', 'insertImage', 'remove'],
-              placeholderText: 'Ketik pertanyaan'
+              toolbarButtons: ['insertImage', 'undo', 'redo', 'clearFormatting', 'clear', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'highlight', 'strikeThrough', 'align', 'formatOL', 'formatUL', 'remove'],
+              placeholderText: 'Ketik pertanyaan',
+              spellcheck: false
             });
             $('div.opsi').froalaEditor({
               toolbarInline: true,
               charCounterCount: false,
-              toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', '-', 'undo', 'redo', 'paragraphFormat', 'align', 'formatOL', 'formatUL',  '-', 'insertImage', 'insertLink', 'indent', 'outdent', 'insertFile', 'insertVideo'],
+              toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'undo', 'redo', 'align', 'insertImage'],
               placeholderText: 'Ketik jawaban',
               spellcheck:false
             });
 			     $('.selector').froalaEditor('commands.show');
+           $('span.fr-placeholder').css({"height":"35px"});
         });
     		$(function(){
     			$('div#opsiGanda1, div#opsiGanda2, div#opsiGanda3, div#opsiGanda4, div#opsiGanda5, div#opsiIsian, textarea#opsiEssay, textarea#opsiGandaT1').froalaEditor({
     			  toolbarInline: true,
     			  charCounterCount: false,
-    			  toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'undo', 'redo', 'insertImage', 'paragraphFormat', 'formatOL', 'formatUL', '-', 'align', 'indent', 'outdent'],
+    			  toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'align', 'insertImage', 'undo', 'redo'],
     			  toolbarVisibleWithoutSelection: true,
             placeholderText: 'Ketik jawaban',
             spellcheck:false
@@ -1045,7 +999,11 @@
               });
               //$(this).closest('.checklist').find()
             });
+            $('.tambahopsi').click(function(){
+              $('#opsiGandaE').removeAttr("hidden");
+            });
         });
+
         $('.hashtip').tooltipsy({
               offset: [10, 0],
               show: function (e, $el) {

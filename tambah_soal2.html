@@ -250,6 +250,7 @@
         min-height: 600px;
         padding: 20px 12px;
       }
+
     </style>
   </head>
   <body>
@@ -968,9 +969,12 @@
 
 
             $('#edit1, #edit2, #edit3, #edit4, #edit5').froalaEditor({
-              toolbarButtons: ['undo', 'redo', 'clearFormatting', 'clear', 'bold', 'italic', 'underline', 'strikeThrough', 'highlight', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', 'insertImage', 'remove'],
+              toolbarButtons: ['undo', 'redo', 'clearFormatting', 'clear', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'highlight', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', 'insertImage', 'remove'],
               placeholderText: 'Ketik pertanyaan'
             });
+
+            $('span.fr-placeholder').css({"height":"35px"});
+
             $('div.opsi').froalaEditor({
               toolbarInline: true,
               charCounterCount: false,
