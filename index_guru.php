@@ -1,5 +1,8 @@
 <?php
-session_start();
+	session_start();
+	if ($_SESSION['role']!="guru"){
+		header('location:login.php');
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +15,8 @@ session_start();
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <script type="text/javascript">

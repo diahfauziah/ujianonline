@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if ($_SESSION['role']!="guru"){
+		header('location:login.php');
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,13 +11,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Home | Ujian Online</title>
+    <title>Buat Ujian Baru | Ujian Online</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+    <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-tagsinput.min.js"></script>
     <script type="text/javascript">
@@ -200,8 +206,8 @@
               </div>
             </form>
             </li>
-            <li><a href="#"> Diah Fauziah </a></li>
-            <li><a href="#"><u>Keluar</u></a></li>
+            <li><a href="#"> <?php echo $_SESSION["nama"]; ?> </a></li>
+            <li><a href="logout.php"><u>Keluar</u></a></li>
           </ul>
         </div>
         </div>

@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include ("koneksi.php");
 	if(isset($_POST)) {
 		if(isset($_POST["edit1"])){

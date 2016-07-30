@@ -13,6 +13,9 @@
 		
 		$delete = "DELETE FROM `info_ujian` WHERE `id_ujian`='$id' ";
 		$delete_query = mysqli_query($link, $delete);
+		
+		$delete = "DELETE FROM `soal` WHERE `id_ujian`='$id' ";
+		$delete_query = mysqli_query($link, $delete);
 
 		if($delete_query){
 			$_SESSION['statuspesan'] = "sukses";

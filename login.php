@@ -12,9 +12,9 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+    <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-tagsinput.min.js"></script>
     <script type="text/javascript">

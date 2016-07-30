@@ -1,3 +1,14 @@
+<?php
+	session_start();
+	$aidi = $_GET['id'];
+	if ($_SESSION['role']!="murid"){
+		if ($_SESSION['role']!="guru"){
+			header('location:ujian.php?id=$aidi');
+		} else {
+			header('location:login.php');
+		}
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +24,7 @@
     <!-- Include font awesome -->
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
     </script>
@@ -130,7 +141,6 @@
       </div>
     </div>
     <!-- Include jQuery. -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/tooltipsy.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-tagsinput.min.js"></script>
