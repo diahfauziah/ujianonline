@@ -454,6 +454,9 @@
          </div> 
     </div>
   </div>
+    <footer class="text-center">
+	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
+    </footer>
      <!-- Modal Hapus -->
               <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusLabel">
                 <div class="modal-dialog" role="document">

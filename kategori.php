@@ -556,6 +556,9 @@
         </div>
       </div>
     </div>
+	<footer class="text-center">
+	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
+    </footer>
   </body>
   <script type="text/javascript">
     $(document).ready(function() {

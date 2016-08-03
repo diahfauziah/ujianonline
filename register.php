@@ -1,8 +1,7 @@
 <?php
 	session_start();
-	if (isset($_SESSION['role']!="guru")){
+	if (isset($_SESSION['role'])){
 		session_unset();
-		session_destroy();
 	}
 ?>
 <!DOCTYPE html>
@@ -18,9 +17,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-tagsinput.min.js"></script>
     <script type="text/javascript">
       $(function(){
         $('[data-toggle="tooltip"]').tooltip();
@@ -146,43 +142,43 @@
             <div class="panel-body">
               <h4 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Register Guru</h4>
               <hr>
-            <form class="form-horizontal">
+            <form id="form" action="registerval.php" method="post" class="form-horizontal">
               <div class="form-group">
                 <label class="col-md-4">Nama</label>
                 <div class="col-md-8">
-                  <input type="text" class="form-control">
+                  <input type="text" id="nama" name="nama" class="form-control">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-md-4">Kategori</label>
                 <div class="col-md-8">
-                  <select class="form-control">
-                    <option>SMP/Sederajat</option>
-                    <option>SMA/Sederajat</option>
+                  <select id="kategori" name="kategori" class="form-control">
+                    <option value="1">SMP/Sederajat</option>
+                    <option value="2">SMA/Sederajat</option>
                   </select>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-md-4">Username</label>
                 <div class="col-md-8">
-                  <input type="text" class="form-control">
+                  <input type="text" id="username" name="username" class="form-control">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-md-4">Password</label>
                 <div class="col-md-8">
-                  <input type="text" class="form-control">
+                  <input type="password" id="password" name="password" class="form-control">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-md-4">Konfirm Password</label>
                 <div class="col-md-8">
-                  <input type="text" class="form-control">
+                  <input type="password" id="repassword" name="repassword" class="form-control">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-md-offset-4 col md-8" style="padding-left:15px;">
-                  <a href="index_guru.php" type="button" class="btn btn-simpan"> Daftar</a>
+                  <button type="submit" class="btn btn-simpan"> Daftar</a>
                 </div>
               </div>
               <div class="form-group">
@@ -195,5 +191,66 @@
           </div>
         </div>
     </div>
+	<footer class="text-center">
+	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
+    </footer>
+	
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-tagsinput.min.js"></script>
+	<!-- jquery validation -->
+	<script src="js/jquery.validate.min.js"></script>
+	<script>
+		jQuery(document).ready(function(){
+			var $form = $('#form');
+
+            $form.validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-block help-block-error', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "",  // validate all fields including form hidden input
+                rules: {
+                    nama: {
+                        required: true,
+                        maxlength: 100
+                    },
+                    kategori: {
+                        required: true,
+                    },
+                    username: {
+                        required: true,
+                        maxlength: 50
+                    },
+					password: {
+                        required: true
+                    },
+                    repassword: {
+                        required: true,
+                        equalTo: "#password"
+                    }
+                },
+                messages: {},
+
+                highlight: function (element) { // hightlight error inputs
+                    $(element)
+                        .closest('.form-group').addClass('has-error'); // set error class to the control group
+                },
+
+                unhighlight: function (element) { // revert the change done by hightlight
+                    $(element)
+                        .closest('.form-group').removeClass('has-error'); // set error class to the control group
+                },
+
+                success: function (label) {
+                    label
+                        .closest('.form-group').removeClass('has-error'); // set success class to the control group
+                },
+
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+		});
+	</script>
   </body>
 </html>

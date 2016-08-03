@@ -222,6 +222,7 @@
     
     <!-- Container -->
     <div class="container">
+	<?php include("koneksi.php"); ?>
       <div class="col-md-offset-3 col-md-6">
           <div class="panel panel-default" id="panelSoal" style="margin-top: 10px;">
             <div class="panel-body">
@@ -235,15 +236,17 @@
               <div class="form-group">
                 <label class="col-md-3">Judul</label>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" id="Judul" name="Judul" required>
+                  <input type="text" class="form-control" id="Judul" name="Judul">
                 </div>
               </div>
+			  <!--
               <div class="form-group">
                 <label class="col-md-3">URL</label>
                 <div class="col-md-9">
-                  <a href="#" id="URL">https://www.onlineexambuilder.com/fisika/exam-53260</a>
+                  <a href="#" id="URL">http://localhost/ujianonline/ujian.php?id=</a>
                 </div>  
               </div>
+			  -->
               <div class="form-group">
                 <label class="col-md-3">Waktu</label>
                 <div class="col-md-4">
@@ -255,7 +258,8 @@
               </div>
               <div class="form-group">
                 <label class="col-md-3">Jumlah soal</label>
-                <div class="col-md-9"  id="JumlahSoal" name="JumlahSoal">
+                <div class="col-md-9"  >
+				  <input type="hidden" id="JumlahSoal" name="JumlahSoal" />
                   0
                 </div>
               </div>
@@ -273,15 +277,39 @@
                 <div class="col-md-5">
                   <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
                     <option value="">Pilih Mata Pelajaran</option>
-                    <option value="1">Matematika</option>
-                    <option value="2">Fisika</option>
+					<?php
+					  $dibuat = $_SESSION['userid'];
+					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1 or `dibuat_oleh`=$dibuat");
+					  
+					  while($kate = mysqli_fetch_array($kat)){
+						echo '<option value="';
+						echo $kate['id_kategori'];
+						echo '">';
+						echo $kate['nama'];
+						echo '</option>';
+					  }
+					?>
                   </select>
                 </div>
                 <div class="col-md-4">
                   <select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
                     <option value="">Pilih Kelas</option>
-                    <option value="1">XII MIPA</option>
-                    <option value="2">XI MIPA</option>
+                    <?php
+					  if ($_SESSION['kategori_guru']=="SMA"){
+						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
+					  } else {
+						$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
+					  }
+					  $kel = mysqli_query($link, $querykelas);
+					  
+					  while($kate = mysqli_fetch_array($kel)){
+						echo '<option value="';
+						echo $kate['id_kelas'];
+						echo '">';
+						echo $kate['nama'];
+						echo '</option>';
+					  }
+					?>
                   </select>
                  </div>
               </div>
@@ -307,7 +335,7 @@
       </div>
     </div>
     <footer class="text-center">
-        <p>2016 © Diah Fauziah. Ujian Online Template.</p>
-      </footer>
+	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
+    </footer>
   </body>
 </html>

@@ -269,25 +269,79 @@
       </div>
     </nav>
     <div class="container">
+	  <?php include("koneksi.php"); ?>
       <div class="content">
         <h2 style="margin-bottom: 30px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;">Daftar Ujian</h2>
         <div class="row">
           <div class="col-md-9">
-            <form class="form-inline" role="form">
+            <form id="form1" action="index_guru.php" method="post" class="form-inline" role="form">
               <div class="form-group">
                 <label class="col-md-2" style="color:#F7B733;">Kategori</label>
                 <div class="col-md-4">
-                  <select class="form-control">
-                    <option>All (mata pelajaran)</option>
-                    <option>Matematika</option>
-                    <option>Fisika</option>
+				  <select id="kategori" name="kategori" class="form-control">
+					<?php
+					  $dibuat = $_SESSION['userid'];
+					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1 or `dibuat_oleh`=$dibuat");
+					  
+					  if (isset($_POST['kategori'])){
+						$_SESSION['matapelajaran'] = $_POST['kategori'];
+					  }
+					  
+					  echo '<option value="0" ';
+					  if ($_SESSION['matapelajaran']=="0"){
+						  echo "selected";
+					  }
+					  echo '>All (Mata Pelajaran)</option>';
+					  
+					  
+					  while($kate = mysqli_fetch_array($kat)){
+						echo '<option value="';
+						echo $kate['id_kategori'];
+						echo '" ';
+						if ($_SESSION['matapelajaran']==$kate['id_kategori']){
+							echo 'selected';
+						}
+						echo '>';
+						echo $kate['nama'];
+						echo '</option>';
+					  }
+					  
+					?>
                   </select>
                 </div>
                 <div class="col-md-offset-1 col-md-3" style="margin-left:10px">
-                  <select class="form-control">
-                    <option>All (kelas)</option>
-                    <option>XII MIPA</option>
-                    <option>XI MIPA</option>
+                  <select id="kelas" name="kelas" class="form-control">
+                    <?php
+					  if ($_SESSION['kategori_guru']=="SMA"){
+						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
+					  } else {
+						$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
+					  }
+					  $kel = mysqli_query($link, $querykelas);
+					  
+					  if (isset($_POST['kelas'])){
+						$_SESSION['kelas'] = $_POST['kelas'];
+					  }
+					  
+					  echo '<option value="0" ';
+					  if ($_SESSION['kelas']=="0"){
+						  echo "selected";
+					  }
+					  echo '>All (Kelas)</option>';
+					  
+					  
+					  while($kate = mysqli_fetch_array($kel)){
+						echo '<option value="';
+						echo $kate['id_kelas'];
+						echo '" ';
+						if ($_SESSION['kelas']==$kate['id_kelas']){
+							echo 'selected';
+						}
+						echo '>';
+						echo $kate['nama'];
+						echo '</option>';
+					  }
+					?>
                   </select>
                 </div>
                 <button class="button button1" type="submit" style="margin-left:20px;">Cari</button>
@@ -333,8 +387,22 @@
             </tr>
           </thead>
           <tbody>
-            <?php include('koneksi.php');
-              $query = mysqli_query($link, "select * from info_ujian order by modified_date desc");
+            <?php
+			  if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']=="0"){
+				$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat order by modified_date desc";
+			  } else if ($_SESSION['matapelajaran']!="0" && $_SESSION['kelas']=="0") {
+				$idmapel = $_SESSION['matapelajaran'];
+				$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and mata_pelajaran=$idmapel order by modified_date desc";
+			  } else if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']!="0") {
+				$idkel = $_SESSION['kelas'];
+				$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel order by modified_date desc";
+			  } else {
+				$idmapel = $_SESSION['matapelajaran'];
+				$idkel = $_SESSION['kelas'];
+				$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and mata_pelajaran=$idmapel and id_kelas=$idkel order by modified_date desc";
+			  }
+			  
+              $query = mysqli_query($link, $querymapel);
 
               while($data = mysqli_fetch_array($query)){
                 echo '<tr class="table-row">';
@@ -343,12 +411,24 @@
                 echo     '<a class="link-judul" href="view_ujian.php?id='.$data['id_ujian'].'"">'. $data['judul_ujian'] .'</a><br>';
                 echo   '</div>';
                 echo   '<div style="font-size: 12px; color:#aba8a8;" class="link2">';
-                echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal2.php?id='.$data['id_ujian'].'">Tambah Soal</a>';
+                echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.php?id='.$data['id_ujian'].'">Tambah Soal</a>';
                 echo   '</div>';    
                 echo  '</td>';
-                echo  '<td>'. $data['total_soal'] .'</td>';     
-                echo  '<td>Matematika</td>';
-                echo  '<td>XII MIPA</td>';
+                echo  '<td>'. $data['total_soal'] .'</td>';
+				$idm = $data['mata_pelajaran'];
+				$querynamamapel = "select * from mata_pelajaran where id_kategori=$idm";
+				$qnm = mysqli_query($link, $querynamamapel);
+				$namamp = mysqli_fetch_array($qnm);
+                echo  '<td>';
+				echo  $namamp['nama'];
+				echo  '</td>';
+				$idk = $data['id_kelas'];
+				$querynmk = "select * from kelas where id_kelas=$idk";
+				$qnk = mysqli_query($link, $querynmk);
+				$namak = mysqli_fetch_array($qnk);
+                echo  '<td>';
+				echo  $namak['nama'];
+				echo  '</td>';
                 echo  '<td><a href="#" class="lihat_tampilan" data-id='.$data['id_ujian'].' data-toggle="tooltip" data-placement="top" title="Lihat tampilan siswa" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>';
                 echo  '<td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" data-id='.$data['url_ujian'].' title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>';
                 echo  '<td><a href="laporan_ujian.php?id='.$data['id_ujian'].'" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>';
@@ -396,6 +476,9 @@
           </div>  
       </div>
     </div>
+	<footer class="text-center">
+	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
+    </footer>
   </body>
 </html>
 <script type="text/javascript">
