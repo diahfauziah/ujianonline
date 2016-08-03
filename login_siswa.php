@@ -146,6 +146,9 @@
         </div>
       </div>
     </div>
+	<footer class="text-center">
+	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
+    </footer>
     <!-- Include jQuery. -->
     <script type="text/javascript" src="js/tooltipsy.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

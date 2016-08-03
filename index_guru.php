@@ -411,7 +411,7 @@
                 echo     '<a class="link-judul" href="view_ujian.php?id='.$data['id_ujian'].'"">'. $data['judul_ujian'] .'</a><br>';
                 echo   '</div>';
                 echo   '<div style="font-size: 12px; color:#aba8a8;" class="link2">';
-                echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal2.php?id='.$data['id_ujian'].'">Tambah Soal</a>';
+                echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.php?id='.$data['id_ujian'].'">Tambah Soal</a>';
                 echo   '</div>';    
                 echo  '</td>';
                 echo  '<td>'. $data['total_soal'] .'</td>';
@@ -476,6 +476,9 @@
           </div>  
       </div>
     </div>
+	<footer class="text-center">
+	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
+    </footer>
   </body>
 </html>
 <script type="text/javascript">

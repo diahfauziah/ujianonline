@@ -138,6 +138,9 @@
         <a href="index_siswa.php?id=<?php echo $id ?>" type="button" class="button button1 pull-right" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
       </div>
     </div>
+	<footer class="text-center">
+	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
+    </footer>
     <!-- Include jQuery. -->
     <script type="text/javascript" src="js/tooltipsy.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

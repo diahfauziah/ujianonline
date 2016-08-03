@@ -29,16 +29,24 @@
 		if(isset($_POST["PerluLogin"])){
 			$perlulogin = $_POST['PerluLogin'];
 		}
-
-		$url = "http://ujianonline.com/ujian.php?judul="+ $_POST['Judul'];
-
 	}
-	$insert1 = "INSERT INTO `info_ujian`(`mata_pelajaran`, `id_kelas`, `lama_ujian`, `url_ujian`, `judul_ujian`, `total_soal`, `acak_soal`, `petunjuk`, `perlu_login`, `dibuat_oleh`) VALUES ('$kategoriujian', '$kategorikelas', '$waktu', 'http://localhost', '$judul', '0', '$acaksoal', NULL, '$perlulogin', 2)";
+	
+	$dibuat = $_SESSION['userid'];
+	
+	$insert1 = "INSERT INTO `info_ujian`(`mata_pelajaran`, `id_kelas`, `lama_ujian`, `judul_ujian`, `total_soal`, `acak_soal`, `petunjuk`, `perlu_login`, `dibuat_oleh`) VALUES ('$kategoriujian', '$kategorikelas', '$waktuujian', '$judul', '0', '$acaksoal', NULL, '$perlulogin', '$dibuat')";
 	
 	$insert_query = mysqli_query($link, $insert1);
 	
+	$getlast = mysqli_query($link, "SELECT MAX(id_ujian) FROM info_ujian");
+	$getid = mysqli_fetch_array($getlast);
+	$idujian = $getid['MAX(id_ujian)'];
+	
+	$url = "http://localhost/ujianonline/ujian.php?id=$idujian";
+	
+	$updatequery = mysqli_query($link, "UPDATE info_ujian SET url_ujian='$url' WHERE id_ujian='$idujian'");
+	
 
-	if($insert_query){
+	if($updatequery){
 		$_SESSION['statuspesan'] = "sukses";
 		$_SESSION['pesan'] = "Ujian $judul berhasil dibuat";
 		header('location:index_guru.php');
