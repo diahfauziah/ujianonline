@@ -4,6 +4,17 @@
 		// check id ke database, lalu proses sesuai aturan login
 		// jika perlu login maka lanjut ke login
 		// jika tidak maka lanjut ke halaman masukkan nama
+		include("koneksi.php");
+		
+		$id = $_GET['id'];
+		
+		$query = mysqli_query($link, "select * from info_ujian where id_ujian=$id");
+		
+		if ($data = mysqli_fetch_array($query)){
+			header('location:login_siswa.php?id='.$id);
+		} else {
+			header('location:notfound.php');
+		}
 	} else {
 		header('location:notfound.php');
 	}

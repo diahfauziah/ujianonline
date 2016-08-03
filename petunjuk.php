@@ -1,12 +1,10 @@
 <?php
 	session_start();
 	$aidi = $_GET['id'];
-	if ($_SESSION['role']!="murid"){
-		if ($_SESSION['role']!="guru"){
-			header('location:ujian.php?id=$aidi');
-		} else {
-			header('location:login.php');
-		}
+	if ($_SESSION['role']=="murid" || $_SESSION['role']=="guru"){
+		
+	} else {
+		header('location:ujian.php?id='.$aidi);
 	}
 ?>
 <!DOCTYPE html>
@@ -137,7 +135,7 @@
             <p>Bla blah</p>
           </div>
         </div>
-        <a href="index_siswa2.php?id=<?php echo $id ?>" type="button" class="button button1 pull-right" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
+        <a href="index_siswa.php?id=<?php echo $id ?>" type="button" class="button button1 pull-right" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
       </div>
     </div>
     <!-- Include jQuery. -->

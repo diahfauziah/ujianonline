@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if (!isset($_GET['id'])){
-		header('location:not_found.php');
+		header('location:notfound.php');
 	}
 ?>
 <!DOCTYPE html>

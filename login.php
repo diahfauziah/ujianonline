@@ -156,10 +156,17 @@
             <form id="form" method="post" class="form-horizontal" action="loginval.php">
 			  <?php 
 				if (isset($_SESSION["statuspesan"])){
-				  if ($_SESSION["statuspesan"]!=""){
+				  if ($_SESSION["statuspesan"]=="gagal"){
 					echo '<div class="alert alert-danger">';
 					echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-					echo   '<strong>Gagal login!</strong>';
+					echo   '<strong>Gagal!</strong>';
+					echo   $_SESSION['pesan'];
+					echo '</div>';
+					$_SESSION['statuspesan'] = "";
+				  } else {
+					echo '<div class="alert alert-success">';
+					echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+					echo   '<strong>Berhasil!</strong>';
 					echo   $_SESSION['pesan'];
 					echo '</div>';
 					$_SESSION['statuspesan'] = "";
@@ -190,5 +197,49 @@
         </div>
       </div>
     </div>
+	
+	<!-- jquery validation -->
+	<script src="js/jquery.validate.min.js"></script>
+	<script>
+		jQuery(document).ready(function(){
+			var $form = $('#form');
+
+            $form.validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-block help-block-error', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "",  // validate all fields including form hidden input
+                rules: {
+                    username: {
+                        required: true,
+                        maxlength: 50
+                    },
+					password: {
+                        required: true
+                    }
+                },
+                messages: {},
+
+                highlight: function (element) { // hightlight error inputs
+                    $(element)
+                        .closest('.form-group').addClass('has-error'); // set error class to the control group
+                },
+
+                unhighlight: function (element) { // revert the change done by hightlight
+                    $(element)
+                        .closest('.form-group').removeClass('has-error'); // set error class to the control group
+                },
+
+                success: function (label) {
+                    label
+                        .closest('.form-group').removeClass('has-error'); // set success class to the control group
+                },
+
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+		});
+	</script>
   </body>
 </html>
