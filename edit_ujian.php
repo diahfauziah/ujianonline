@@ -201,11 +201,11 @@
         font-size: 12px;
       }
       .breadcrumb a, .breadcrumb a:visited {
-        color: rgba(109, 116, 122, 1);
+        color: #4ABDAC;
       }
       .breadcrumb a:hover {
         /* color: rgba(42, 100, 150, 1); */
-        color : #4ABDAC;
+        text-decoration: underline;
       }
       .breadcrumb > .active {
         color: rgba(186, 182, 182, 1);
@@ -369,8 +369,7 @@
           <div class="col-xs-6 col-md-9">
              <ol class="breadcrumb">
                 <li><a href="index_guru.php">Beranda</a></li>
-                <!--  <li><a href="view_ujian.php?id=<?php echo $ujian['id_ujian'] ?>"><?php echo $ujian['judul_ujian'] ?></a></li> -->
-                <li class="active">Edit Ujian Mulok</li>
+                <li class="active">Edit Ujian</li>
              </ol>
            </div>
       </div>
@@ -566,7 +565,7 @@
 				  </div>
 				</div>
 				<div class="form-group">
-				  <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
+				  <div class="col-md-offset-3 col md-9" style="padding-left:0px;">
 					<a href="index_guru.html" type="button" class="button button2" style="text-decoration:none"> Simpan</a>
 				  </div>
 				</div>

@@ -113,10 +113,10 @@
         font-size: 12px;
       }
       .breadcrumb a {
-        color: rgba(109, 116, 122, 1);
+        color: #4ABDAC;
       }
       .breadcrumb a:hover {
-        color: rgba(42, 100, 150, 1);
+        text-decoration: underline;
       }
       .breadcrumb > .active {
         color: rgba(186, 182, 182, 1);
@@ -196,6 +196,12 @@
         background-color: #F7B733;
         text-decoration: none;
       }
+      a:link {
+        color: #4ABDAC;
+      }
+      a:hover{
+        text-decoration: underline;
+      }
 
     </style>
   </head>
@@ -243,18 +249,18 @@
             $ujian = mysqli_fetch_array($query);
       ?>
       <div class="content">
-        <h2 style="margin: 14px; margin-bottom: 5px; color:#4ABDAC; font-family: 'Didact Gothic', sans-serif; text-align:center;">Laporan Ujian <?php echo $ujian['judul_ujian'] ?></h2>
+        <h2 style="margin: 14px; margin-bottom: 5px; color:rgba(186, 182, 182, 1); font-family: 'Didact Gothic', sans-serif; text-align:center;">Laporan Ujian <a href="#"><?php echo $ujian['judul_ujian'] ?></a></h2>
          <div class="col-md-offset-2 col-md-8">
           <div class="row">
              <ol class="breadcrumb" style="margin-left:0px">
                 <li><a href="index_guru.php">Beranda</a></li>
-                <li class="active">Laporan Ujian <?php echo $ujian['judul_ujian'] ?></li>
+                <li class="active">Laporan Ujian</li>
              </ol>
             </div>
          </div>
          <div class="col-md-offset-2 col-md-8">
          <div class="panel panel-default">
-            <table class="table table-hover" style="margin-top:0px; margin-bottom:10px;">
+            <table class="table table-hover" style="margin-top:0px;">
             <thead>
               <tr>
                 <th>Tanggal Akses</th>
@@ -280,7 +286,7 @@
          </table>
          <?php 
             if(empty(mysqli_fetch_array($query))){
-                  echo 'tidak ada data untuk ditampilkan';
+                  echo   '<div style="text-align:center; background-color:#f8f8f8; color:#777; padding-top:10px; padding-bottom:10px">tidak ada data untuk ditampilkan</div>';
             }
          ?>
          </div>

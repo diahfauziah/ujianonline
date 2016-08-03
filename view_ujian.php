@@ -133,10 +133,12 @@
         font-size: 12px;
       }
       .breadcrumb a {
-        color: rgba(109, 116, 122, 1);
+        /* color: rgba(109, 116, 122, 1); */
+        color: #4ABDAC;
       }
       .breadcrumb a:hover {
-        color: rgba(42, 100, 150, 1);
+        /* color: rgba(42, 100, 150, 1); */
+        text-decoration: underline;
       }
       .breadcrumb > .active {
         color: rgba(186, 182, 182, 1);
@@ -194,18 +196,6 @@
         border: 2px solid #4ABDAC;
       }
 
-      .edit a:link, a:visited {
-        background-color: #f5f5f5;
-        border-color: #4ABDAC;
-        color: #4ABDAC;
-        border-width: 2px; 
-      }
-      .edit a:hover {
-        background-color: #4ABDAC;  
-        color: #ffffff;
-        border-color: #4ABDAC; 
-      }
-
       .btn-abu, .btn-abu:active, .btn-abu:focus {
         background-color: #f8f8f8;
         border: 2px solid #f8f8f8; 
@@ -261,11 +251,20 @@
           
           font: 15px Arial, sans-serif;
       }
-      .button2 {
+      .button2, .button2:visited, .button2:link {
         font-size:13px; background-color:#f8f8f8; border:0px; color:#777;
       }
       .button2:hover, .button1:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      a:link, a:visited {
+        color: #4ABDAC;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .box {
+        background-color: #f8f8f8;
       }
 
     </style>
@@ -324,8 +323,8 @@
                 <li class="active"><?php echo $ujian['judul_ujian'] ?></li>
              </ol>
           </div>
-          <button class="button button2 pull-right" style="margin-top:10px; margin-right:10px; margin-bottom:10px;"><span class="glyphicon glyphicon-plus"></span> Lihat tampilan siswa</button>
-          <button class="button button2 pull-right" style="margin-top:10px; margin-right:10px;"><span class="glyphicon glyphicon-plus"></span> Tambah soal</button>
+          <a href="#" class="button button2 pull-right" style="margin-top:10px; margin-right:10px; margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-eye-open"></span> Lihat tampilan siswa</a>
+          <a href="tambah_soal2.php?id=<?php echo $ujian['id_ujian'] ?>" class="button button2 pull-right" style="margin-top:10px; margin-right:10px; text-decoration:none;"><span class="glyphicon glyphicon-plus"></span> Tambah soal</a>
         </div>
        <!-- <div class="col-md-6">
             <div class="pull-right">
@@ -431,18 +430,19 @@
                           $i++;
                         }
                       echo '</ul>';
-
+                      echo '<div class="panel-footer">';
                       echo '<div class="row">';
                       echo   '<div class="col-md-3">Poin Benar: 10</div>';
                       echo   '<div class="col-md-3">Poin Salah: 0</div>';
                       echo   '<div class="col-md-3">Poin Kosong: 0</div>';
                       echo '</div>';
                         
-                      echo  '<div class="form-group" style="margin-top:10px;">';
+                      echo  '<div class="form-group row" style="margin-top:10px;">';
                       echo    '<div class="col-md-6"></div>';
                       echo    '<a href="edit_soal.html" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none"><span class="glyphicon glyphicon-pencil"></span> Edit</a>';
                       echo    '<button class="button button2 col-md-2" data-toggle="modal" data-target="#modalHapus" style="font-size:14px; margin-left:10px;"><span class="glyphicon glyphicon-trash"></span> Hapus</button>';
                       echo   '</div>';
+                      echo '</div>';
                   echo '</div>';
                 echo '</div>';
                echo '</div>';

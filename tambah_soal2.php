@@ -121,10 +121,12 @@
         font-size: 12px;
       }
       .breadcrumb a {
-        color: rgba(109, 116, 122, 1);
+        /* color: rgba(109, 116, 122, 1); */
+        color: #4ABDAC;
       }
       .breadcrumb a:hover {
-        color: rgba(42, 100, 150, 1);
+        /* color: rgba(42, 100, 150, 1); */
+        text-decoration: underline;
       }
       .breadcrumb > .active {
         color: rgba(186, 182, 182, 1);
@@ -180,6 +182,12 @@
       }
       .button1:hover, .button2:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      a:link, a:visited {
+        color: #4ABDAC;
+      }
+      a:hover {
+        text-decoration: underline;
       }
 
       .button2, .button2:link, .button2:visited {
@@ -274,7 +282,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
             <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="index_guru.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+            <li><a href="index_guru.php"><span class="glyphicon glyphicon-tag" style="font-size:13px"></span> Kategori</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -296,9 +304,20 @@
     </nav>
     
     <div class="container">
+      <?php include('koneksi.php'); 
+            $id = $_GET['id'];
+            $query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");
+            $arraynomor = mysqli_fetch_array($query4);
+            $nomormax = (int)$arraynomor[0];
+            $nomor = $nomormax + 1;
+            $query3 = mysqli_query($link, "SELECT * FROM info_ujian where id_ujian='$id' ");
+            $judul = mysqli_fetch_array($query3);
+      ?>
       <div class="content">
-      <h2 style="margin-left:15px; color:#4ABDAC; margin-top:0px; font-family:'didact gothic', sans-serif">Tambah Soal</h2>
       <div class="row">
+        <h2 style="margin-left:25px; color:rgba(186, 182, 182, 1); margin-top:0px; margin-bottom:10px; font-family:'didact gothic', sans-serif">Tambah Soal <a href="http://localhost/ujianonline/view_ujian.php?id=<?php echo $judul['id_ujian'] ?>"><?php echo $judul['judul_ujian'] ?></a></h2>
+      </div>
+      <div class="row" style="margin-top:5px;">
           <div class="col-xs-6 col-md-9">
              <ol class="breadcrumb">
                 <li><a href="index_guru.php">Beranda</a></li>
@@ -343,14 +362,14 @@
                     <div class="panel-body">
                       <div class="row">
                         <div style="margin-left:10px; width:15px; float:left;">
-                          <strong id="nomor">1.</strong>
+                          <strong id="nomor"><?php echo $nomor; ?>.</strong>
                         </div>
                         <div style="margin-left: 0px;">  
                           <div class="col-md-12" style="width:96%">
-                            <form class="form-horizontal col-md-12">
+                            <form class="form-horizontal col-md-12" action="input_soal.php?id=<?php echo $id ?>" method="post">
                               <div class="form-group">
                                  <label class="form-control-label">Pertanyaan</label>
-                                 <textarea id="edit1" class="form-control" rows="3">
+                                 <textarea id="edit1" name="edit1" class="form-control" rows="3">
                                  </textarea>
                               </div>
                               <p style="margin-left:-10px; font-size:11px; color:#818181; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
@@ -367,7 +386,9 @@
                                           echo        '</div>'; 
                                         echo     '</div>';
                                         echo     '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
-                                          echo       '<div class="form-control" id="opsiGanda1"></div>';
+                                          echo       '<textarea class="form-control" id="opsiGanda1" name="opsiGanda';
+                                          echo        $i;
+                                          echo        '"></textarea>';
                                         echo     '</div>';
                                         echo     '<div style="float:left">';
                                           echo       '<i class="fa fa-trash"></i>';
@@ -377,7 +398,7 @@
                                     $i++;
                                   }
                               ?>
-                              <div class="form-group" style="margin-bottom:10px" id="opsiGandaE" hidden>
+                              <div class="form-group opsiGandaE" style="margin-bottom:10px" id="opsiGanda1" hidden>
                                 <div class="row">
                                     <div style="float:left" style="width:15px">
                                      <i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i> 
@@ -418,7 +439,7 @@
                               <div class="form-group form-inline" style="margin-bottom:10px">
                                 <div class="col-md-push-1 col-md-3">
                                   <label style="width:60px;" class="form-control-label"></label>
-                                  <a href="view_ujian.html" class="button button2" style="text-decoration:none"> Simpan</a>
+                                  <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
                                 </div>                            
                               </div>
                             </form>
@@ -985,7 +1006,7 @@
            $('span.fr-placeholder').css({"height":"35px"});
         });
     		$(function(){
-    			$('div#opsiGanda1, div#opsiGanda2, div#opsiGanda3, div#opsiGanda4, div#opsiGanda5, div#opsiIsian, textarea#opsiEssay, textarea#opsiGandaT1').froalaEditor({
+    			$('textarea#opsiGanda1, div#opsiGanda2, div#opsiGanda3, div#opsiGanda4, div#opsiGanda5, div#opsiIsian, textarea#opsiEssay, textarea#opsiGandaT1').froalaEditor({
     			  toolbarInline: true,
     			  charCounterCount: false,
     			  toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'align', 'insertImage', 'undo', 'redo'],
@@ -1006,7 +1027,7 @@
               //$(this).closest('.checklist').find()
             });
             $('.tambahopsi').click(function(){
-              $('#opsiGandaE').removeAttr("hidden");
+              $('.opsiGandaE').removeAttr("hidden");
             });
         });
 

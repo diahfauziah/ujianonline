@@ -410,13 +410,12 @@
           Daftar soal
           <div class="panel panel-default" style="width:190px;margin-bottom:5px;" id="nomorSoal">
             <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
-              <p style="text-decoration:underline;margin-bottom:0px;">Fisika</p>
+               <p style="text-decoration:underline;margin-bottom:0px;">Fisika</p>
               <div class="form-group">
                 <?php 
                   $query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");
                   $arraynomor = mysqli_fetch_array($query4);
                   $nomormax = (int)$arraynomor[0];
-
                   $i = 1;
                   while($i <= $nomormax){
                     echo '<a href="#" class="button button3 nomor" data-nomor="';
@@ -443,7 +442,7 @@
               <div class="row" style="padding-left:15px;">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p></div>
             </div>
           </div>
-          <a href="login_siswa.php?id=2" class="button button4 col-md-12" style="width:190px;text-decoration:none;" >Kumpulkan</a>
+          <a href="hasil.php" class="button button4 col-md-12" style="width:190px;text-decoration:none;" >Kumpulkan</a>
         </div>
       </div>
     </div>

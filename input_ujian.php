@@ -33,7 +33,7 @@
 		$url = "http://ujianonline.com/ujian.php?judul="+ $_POST['Judul'];
 
 	}
-	$insert1 = "INSERT INTO `info_ujian`(`mata_pelajaran`, `id_kelas`, `lama_ujian`, `url_ujian`, `judul_ujian`, `total_soal`, `acak_soal`, `petunjuk`, `perlu_login`) VALUES ('$kategoriujian', '$kategorikelas', '$waktu', 'http://localhost', '$judul', '0', '$acaksoal', NULL, '$perlulogin')";
+	$insert1 = "INSERT INTO `info_ujian`(`mata_pelajaran`, `id_kelas`, `lama_ujian`, `url_ujian`, `judul_ujian`, `total_soal`, `acak_soal`, `petunjuk`, `perlu_login`, `dibuat_oleh`) VALUES ('$kategoriujian', '$kategorikelas', '$waktu', 'http://localhost', '$judul', '0', '$acaksoal', NULL, '$perlulogin', 2)";
 	
 	$insert_query = mysqli_query($link, $insert1);
 	

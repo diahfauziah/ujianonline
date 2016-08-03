@@ -175,6 +175,12 @@
       .form-control {
         border-radius: 0px;
       }
+      a:link {
+        color: #4ABDAC;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>

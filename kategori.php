@@ -217,13 +217,13 @@
         width:100%;
       }
       .link2 a:link {
-        color: #4ABDAC;
+        color: #818181;
       }
       .link2 a:visited {
-        color: #4ABDAC;
+        color: #818181;
       }
       .link2 a:hover {
-        color: #F7b733;
+        color: #4ABDAC;
       }
     
       /*  bhoechie tab */
@@ -331,7 +331,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
             <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li class="active"><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
+            <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>

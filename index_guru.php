@@ -183,7 +183,8 @@
 
       .judul a:hover{
         /*color: #4ABDAC;*/
-        color: #F7B733;
+        /* color: #F7B733; */
+        text-decoration: underline;
       }
 
       .table th, td {
@@ -348,7 +349,7 @@
                 echo  '<td>'. $data['total_soal'] .'</td>';     
                 echo  '<td>Matematika</td>';
                 echo  '<td>XII MIPA</td>';
-                echo  '<td><a href="lihat_tampilan_ujian.html" data-toggle="tooltip" data-placement="top" title="Lihat tampilan siswa" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>';
+                echo  '<td><a href="#" class="lihat_tampilan" data-id='.$data['id_ujian'].' data-toggle="tooltip" data-placement="top" title="Lihat tampilan siswa" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>';
                 echo  '<td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" data-id='.$data['url_ujian'].' title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>';
                 echo  '<td><a href="laporan_ujian.php?id='.$data['id_ujian'].'" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>';
                 echo  '<td>'. $data['modified_date'] .'</td>';
@@ -387,6 +388,7 @@
                  </div>
                  <div class="modal-body">
                     <a href="#" id="modalshare" style="text-decoration: underline;"></a>
+                    <button class="button button1 pull-right">Copy</button>
                   </div>
                   <div class="modal-footer"></div>
                </div>
@@ -402,6 +404,10 @@
       x = $(this).attr("data-id");
       $("#modalshare").text(x);
       $("#modalshare").attr("href", x);
+    });
+    $(".lihat_tampilan").click(function(){
+      x = $(this).attr("data-id");
+      $(this).attr("href","http://localhost/ujianonline/petunjuk.php?id="+x);
     });
     $(".hapus").click(function(){
       var x = "";
