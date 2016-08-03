@@ -163,7 +163,7 @@
 					echo   $_SESSION['pesan'];
 					echo '</div>';
 					$_SESSION['statuspesan'] = "";
-				  } else {
+				  } else if ($_SESSION["statuspesan"]=="sukses") {
 					echo '<div class="alert alert-success">';
 					echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
 					echo   '<strong>Berhasil!</strong>';
