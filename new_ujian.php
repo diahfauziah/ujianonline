@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <script src="js/bootstrap-tagsinput.min.js"></script>
     <script type="text/javascript">
       $(function(){
@@ -199,7 +200,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
             <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="kategori.php"><span class="glyphicon glyphicon-cog" style="font-size:13px"></span> Kategori</a></li>
+            <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
