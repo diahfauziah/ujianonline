@@ -98,7 +98,7 @@
           max-width: 1024px;
       }
       .content {
-        background-color: #ffffff;
+        background-color: #f8f8f8;
         min-height: 600px;
         padding: 20px 12px;
         overflow: hidden;
@@ -126,7 +126,7 @@
       }
       .breadcrumb {
         background: rgba(245, 245, 245, 1);
-        background-color: #ffffff;
+        background-color: #f8f8f8;
         display: block;
       }
       .breadcrumb li {
@@ -252,7 +252,7 @@
           font: 15px Arial, sans-serif;
       }
       .button2, .button2:visited, .button2:link {
-        font-size:13px; background-color:#f8f8f8; border:0px; color:#777;
+        font-size:13px; background-color:#ffffff; border-width:1px; color:#777;
       }
       .button2:hover, .button1:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -405,9 +405,9 @@
             echo        '<strong>';
             echo          $soal['nomor_soal'];
             echo        '.</strong>';
-            echo      '</div>';
-            echo      '<div style="margin-left:0px;">';
-            echo        '<div class="col-md-12" style="width:96%">';
+            echo       '</div>';
+            echo       '<div style="margin-left:0px;">';
+            echo        '<div class="col-md-10" style="width:96%">';
             echo           $soal['pertanyaan'];
 
                       $id_soal = $soal['id_soal'];
@@ -429,22 +429,23 @@
                           echo '</li>';
                           $i++;
                         }
-                      echo '</ul>';
-                      echo '<div class="panel-footer">';
-                      echo '<div class="row">';
-                      echo   '<div class="col-md-3">Poin Benar: 10</div>';
-                      echo   '<div class="col-md-3">Poin Salah: 0</div>';
-                      echo   '<div class="col-md-3">Poin Kosong: 0</div>';
-                      echo '</div>';
+                          echo '</ul>';
+                          echo '<div class="panel-footer">';
+                          echo '<div class="row">';
+                          echo   '<div class="col-md-3">Poin Benar: 10</div>';
+                          echo   '<div class="col-md-3">Poin Salah: 0</div>';
+                          echo   '<div class="col-md-3">Poin Kosong: 0</div>';
+                          echo '</div>';
                         
-                      echo  '<div class="form-group row" style="margin-top:10px;">';
-                      echo    '<div class="col-md-6"></div>';
-                      echo    '<a href="edit_soal.html" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none"><span class="glyphicon glyphicon-pencil"></span> Edit</a>';
-                      echo    '<button class="button button2 col-md-2" data-toggle="modal" data-target="#modalHapus" style="font-size:14px; margin-left:10px;"><span class="glyphicon glyphicon-trash"></span> Hapus</button>';
-                      echo   '</div>';
-                      echo '</div>';
-                  echo '</div>';
+                          echo  '<div class="form-group row" style="margin-top:10px;">';
+                          echo    '<div class="col-md-6"></div>';
+                          echo    '<a href="edit_soal.html" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none"><span class="glyphicon glyphicon-pencil"></span> Edit</a>';
+                          echo    '<button class="button button2 col-md-2" data-toggle="modal" data-target="#modalHapus" style="font-size:14px; margin-left:10px;"><span class="glyphicon glyphicon-trash"></span> Hapus</button>';
+                          echo   '</div>';
+                          echo '</div>';
+                    echo '</div>';
                 echo '</div>';
+                echo '<div class="col-md-2">A</div>';
                echo '</div>';
               echo '</div>';
            echo '</div>';
