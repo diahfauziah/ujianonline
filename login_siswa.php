@@ -15,9 +15,11 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-tagsinput.min.js"></script>
     <script type="text/javascript">
     </script>
 
@@ -26,133 +28,177 @@
       body {
         font:400 14px Lato, sans-serif;
         line-height: 1.8;
-        background-color: #f8f8f8;
         /*color: #818181;*/
       } 
+      .btn {
+        transition-duration: 0.4s;
+        cursor: pointer;
+      }
       .navbar {
         margin-bottom: 0;
-        z-index: 9999;
+        /*z-index: 9999; */
         border: 0; 
         font-size: 12px !important;
         border-radius: 0;
-        /*background-color: #ecf8f6;*/
-        background-color: #ebebeb;
-        border-color: #ccc;
+        /*background-color: #4ABDAC; */
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
         color: #4ABDAC !important;
       }
+      .navbar-nav li:hover {
+        background-color:#e7e7e7;
+      }
+      /*.menu li {
+        background-color: #e7e7e7;
+      } */
       .container {
-          position: absolute;
-          top: 40%;
-          left: 50%;
-          transform: translateX(-50%) translateY(-50%);
+        padding: 20px 20px;
       }
-      
-      .panel {
+      .progress {
         margin-top: 5px;
+        margin-bottom: 10px;
+        border-radius: 0;
+        overflow: visible;
       }
-
-      .button {
-        background-color: #4ABDAC;
-        border: none;
-        color: #ffffff;
-        padding: 6px 12px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 1.42857143;
-        transition-duration: 0.4s;
-        cursor: pointer;
-        border-radius: 4px;
-      }
-      .button1, .button1:link, .button1:visited {
-        background-color: #F7B733;
-        color: #ffffff;
-        border: 1px solid #F7B733;
-        font-size: 13px;
-      }
-      .button1:hover {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      }
-      .button2, .button2:link, .button2:visited {
-        background-color: #f8f8f8;
-        color: #4ABDAC;
-        border: 1px solid #4ABDAC;
-        font-size: 14px;
-      }
-      .button2:hover {
-        background-color: #4ABDAC;
-        color: #ffffff;
-        border: 1px solid #4ABDAC;
+      label {
+        color: #818181;
       }
       .panel {
-        border-color: #ffffff;
+        margin-top: 10px;
       }
-
+      span.highlight {
+        background-color: yellow;
+      }
+      #teksSoal {
+        padding-left: 20px;
+        padding-right: 10px;
+      }
+      .breadcrumb {
+        background: rgba(245, 245, 245, 1);
+        background-color: #ffffff;
+        display: block;
+      }
+      .breadcrumb li {
+        font-size: 12px;
+      }
+      textarea {
+        outline: none;
+      }
+      .txtstuff {
+        overflow: hidden;
+      }
+      .hiddendiv {
+        display: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      .common {
+        width: 1050px;
+        min-height: 50px;
+        overflow: hidden;
+      }
+      .btn-primary, .btn-primary:active, .btn-primary:focus {
+        background-color: #4ABDAC;  
+        color: #ffffff;
+        border-color: #4ABDAC; 
+      }
+      .btn-primary:hover {
+        background-color: #ffffff;
+        border-color: #4ABDAC;
+        color: #4ABDAC;
+        border-width: 2px;
+      }
+      .btn-simpan, .btn-simpan:active, .btn-simpan:focus {
+        background-color: #4ABDAC;  
+        color: #ffffff;
+        border-color: #4ABDAC; 
+        border-width: 2px;
+      }
+      .btn-simpan:hover {
+        background-color: #ffffff;
+        border-color: #4ABDAC;
+        color: #4ABDAC;
+        border-width: 2px;
+      }
+      .breadcrumb a {
+        color: rgba(109, 116, 122, 1);
+      }
+      .breadcrumb a:hover {
+        color: #4ABDAC;
+      }
+      .breadcrumb > .active {
+        color: rgba(186, 182, 182, 1);
+      }
+      .breadcrumb > li + li:before {
+        color: #cccccc;
+        content: " > ";
+      }
+      .tooltip-inner {
+        text-align: left;
+      }
+      .panel {
+        border-width: 1px;
+      }
     </style>
   </head>
   <body>
-    <!-- Navbar -->
-    <?php include("koneksi.php");
-      $id = $_GET['id'];
-      $query = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
-      //$soal = mysqli_fetch_array($query);
-      $query3 = mysqli_query($link, "SELECT `judul_ujian` FROM `info_ujian` WHERE `id_ujian`='$id' ");
-      $judul = mysqli_fetch_array($query3);
-    ?>
-  <!--  <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #4ABDAC;"><?php echo $judul['judul_ujian'] ?></a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right" style="padding-right: 160px;">
-            <li><a href="#logout"> Andhini </a></li>
-            <li><a href="#logout">Logout</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav> -->
-    
+        
+    <!-- Container -->
     <div class="container">
-    <!--  <div class="circle">10</div> -->
-      <div class="col-md-offset-4 col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <h4 style="text-align:center; color:#4ABDAC">Login Ujian Online</h4>
-            <hr>
-            <form>
+        <div class="col-md-offset-4 col-md-4" style="margin-top:50px; margin-bottom:30px;">
+          <h2 style="text-align:center; font-family:'didact gothic', sans-serif; color:#f7b733; margin-bottom:30px;">Ujian Online</h2>
+          <div class="panel panel-default" id="panelSoal">
+            <div class="panel-body">
+              <h4 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Login Siswa</h4>
+              <hr>
+            <form id="form" method="post" class="form-horizontal" action="loginsiswaval.php">
+			  <?php 
+				if (isset($_SESSION["statuspesan"])){
+				  if ($_SESSION["statuspesan"]=="gagal"){
+					echo '<div class="alert alert-danger">';
+					echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+					echo   '<strong>Gagal!</strong>';
+					echo   $_SESSION['pesan'];
+					echo '</div>';
+					$_SESSION['statuspesan'] = "";
+				  } else if ($_SESSION["statuspesan"]=="sukses") {
+					echo '<div class="alert alert-success">';
+					echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+					echo   '<strong>Berhasil!</strong>';
+					echo   $_SESSION['pesan'];
+					echo '</div>';
+					$_SESSION['statuspesan'] = "";
+				  }
+				}
+			  ?>
               <div class="form-group">
-                <input class="form-control" placeholder="username" style="border-radius:0px">
+                <label class="col-md-3">Username</label>
+                <div class="col-md-9">
+                  <input type="text" name="username" id="username" class="form-control">
+                </div>
               </div>
               <div class="form-group">
-                <input class="form-control" placeholder="password" style="border-radius:0px">
+                <label class="col-md-3">Password</label>
+                <div class="col-md-9">
+                  <input type="password" name="password" id="password" class="form-control">
+                </div>
               </div>
               <div class="form-group">
-                <a href="petunjuk.php?id=<?php echo $id ?>" type="button" class="button button1 col-md-12" style="border-radius:0px; text-decoration:none;">Masuk</a>
+                <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
+				  <button type="submit"class="btn btn-simpan">Masuk</button>
+                </div>
               </div>
-              <p style="font-size:12px; text-align:center; padding-top:50px;">Belum punya akun? <a href="#">Daftar disini</a></p>
-            </form>
+              <p style="text-align:center;">Belum punya akun? <a href="register.php" style="color:#f7b733">Daftar disini.</a></p>
+           </form>
+          </div>
           </div>
         </div>
-      </div>
     </div>
+	
 	<footer class="text-center">
 	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
     </footer>
-    <!-- Include jQuery. -->
-    <script type="text/javascript" src="js/tooltipsy.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-tagsinput.min.js"></script>
-    <script></script>
   </body>
 </html>
