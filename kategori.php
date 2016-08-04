@@ -16,7 +16,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
-     <!-- Include Font Awesome. -->
+    <!-- Include Font Awesome. -->
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
     <script src="js/jquery.min.js"></script>

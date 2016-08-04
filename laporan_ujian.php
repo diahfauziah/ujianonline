@@ -18,6 +18,8 @@
     <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+	<!-- Include Font Awesome. -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <script type="text/javascript">
       $(function(){
         $('[data-toggle="tooltip"]').tooltip();
