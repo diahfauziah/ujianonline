@@ -19,6 +19,34 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	
+	<!-- Froala -->
+      <!-- Include Font Awesome. -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Include Editor style. -->
+    <link href="froala/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
+    <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Include Code Mirror style -->
+    <link rel="stylesheet" href="css/codemirror.min.css">
+
+	<!-- Include Editor Plugins style. -->
+    <link rel="stylesheet" href="froala/css/plugins/char_counter.css">
+    <link rel="stylesheet" href="froala/css/plugins/code_view.css">
+    <link rel="stylesheet" href="froala/css/plugins/colors.css">
+    <link rel="stylesheet" href="froala/css/plugins/emoticons.css">
+    <link rel="stylesheet" href="froala/css/plugins/file.css">
+    <link rel="stylesheet" href="froala/css/plugins/fullscreen.css">
+    <link rel="stylesheet" href="froala/css/plugins/image.css">
+    <link rel="stylesheet" href="froala/css/plugins/image_manager.css">
+    <link rel="stylesheet" href="froala/css/plugins/line_breaker.css">
+    <link rel="stylesheet" href="froala/css/plugins/quick_insert.css">
+    <link rel="stylesheet" href="froala/css/plugins/table.css">
+    <link rel="stylesheet" href="froala/css/plugins/video.css">
+    <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
+    <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+	
     <script type="text/javascript">
       $(function(){
         $('[data-toggle="tooltip"]').tooltip();
@@ -323,6 +351,7 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-default">
+	<?php include("koneksi.php"); ?>
       <div class="container">
         <div class="topheader">
           <div class="navbar-header">
@@ -359,7 +388,7 @@
     
     <div class="container">
      <div class="content">
-       <?php include('koneksi.php'); 
+       <?php
           $id = $_GET['id'];
           $query = mysqli_query($link, "SELECT * FROM info_ujian WHERE id_ujian=".$id);
           $ujian = mysqli_fetch_array($query);
@@ -373,140 +402,27 @@
              </ol>
            </div>
       </div>
-      <!-- <div class="row">
-              <div class="col-md-offset-2 col-md-10 bhoechie-tab-container">
-                  <div class="col-md-2 bhoechie-tab-menu">
-                    <div class="list-group">
-                      <a href="#tab1" data-toggle="tab" class="list-group-item active text-center">
-                        Informasi Ujian
-                      </a>
-                      <a href="#tab2" data-toggle="tab" class="list-group-item text-center">
-                        Petunjuk Ujian
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-md-10 bhoechie-tab" style="background-color:#ffffff;">
-                      <div class="bhoechie-tab-content active" id="tab1" style="background-color:#ffffff">
-                          <form action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal col-md-offset-1 col-md-8" method="post">
-                            <div class="form-group">
-                              <label for="Judul" class="col-md-3 control-label">Judul</label>
-                              <div class="col-md-9">
-                                <input type="text" class="form-control" id="Judul" value="<?php echo $ujian['judul_ujian'] ?>">
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="URL" class="col-md-3 control-label">URL</label>
-                              <div class="col-md-9">
-                                <a href="#" id="URL" class="form-control disabled" style="background-color:#f8f8f8"><?php echo $ujian['url_ujian'] ?></a>
-                              </div>  
-                            </div>
-                            <div class="form-group">
-                              <label for="Waktu" class="col-md-3 control-label">Waktu</label>
-                              <div class="col-md-4">
-                                <input type="number" class="form-control" id="Waktu" value="<?php echo $ujian['lama_ujian'] ?>">
-                              </div>
-                              <div class="col-md-5">
-                                 Menit
-                               </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-md-3 control-label">Acak soal</label>
-                              <div class="col-md-9">
-                                 <?php if($ujian['acak_soal']==1){
-                                          echo '<select class="form-control">';
-                                          echo   '<option>Ya</option>';
-                                          echo   '<option>Tidak</option>';
-                                          echo '</select>';
-                                        } else {
-                                          echo '<select class="form-control">';
-                                          echo   '<option>Tidak</option>';
-                                          echo   '<option>Ya</option>';
-                                          echo '</select>';
-                                        }  
-                                  ?>
-                               </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-md-3 control-label">Kategori</label>
-                              <div class="col-md-5">
-                                <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
-                                  <option value="">Pilih Mata Pelajaran</option>
-                                  <option value="1">Matematika</option>
-                                  <option value="2">Fisika</option>
-                                </select>
-                              </div>
-                              <div class="col-md-4">
-                                <select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
-                                  <option value="">Pilih Kelas</option>
-                                  <option value="1">XII MIPA</option>
-                                  <option value="2">XI MIPA</option>
-                                </select>
-                               </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Peserta perlu login</label>
-                                <div class="col-md-9">
-                                  <select class="form-control">
-                                    <option>Ya</option>
-                                    <option>Tidak</option>
-                                  </select>
-                                </div>
-                              </div>
-                            <div class="form-group">
-                              <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
-                                <a href="index_guru.html" type="button" class="button button2" style="text-decoration:none"> Simpan</a>
-                              </div>
-                            </div>
-                          </form>
-                      </div>
-                     
-                      <div class="bhoechie-tab-content" id="tab2" style="background-color:#ffffff">
-                        <form>
-                          <div class="form-group">
-                              <label class="form-control-label">Petunjuk</label>
-                              <textarea class="form-control" rows="15">PETUNJUK A
-                              Pilih jawaban yang paling benar (A, B, C, D atau E)
-                              <u>PETUNJUK B</u><br>
-                              Soal terdiri atas tiga bagian yaitu PERNYATAAN, SEBAB, dan ALASAN yang disusun secara berurutan.<br>
-                              <br>
-                              Pilihlah : <br>
-                              <br>
-                              A. Jika pernyataan benar, alasan benar, keduanya menunjukkan hubungan sebab akibat.<br>
-                              B. Jika pernyataan benar, alasan benar, tetapi keduanya tidak menunjukkan hubungan sebab akibat.<br>
-                              C. Jika pernyataan benar, alasan salah.<br>
-                              D. Jika pernyataan salah, alasan benar.<br>
-                              E. Jika pernyataan dan alasan , keduanya salah.<br></textarea>
-                          </div>
-                          <div class="form-group">
-                              <div class="col md-2" style="">
-                                <a href="view_guru.html" type="button" class="button button2" style="text-decoration:none"> Simpan</a>
-                              </div>
-                          </div>
-                        </form>
-                      </div>
-                  </div>
-              </div>
-      </div> -->
       <div class="row">
         
-          <form action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal" method="post">
+          <form id="form" action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal" method="post">
             <div class="col-md-8">
 				<div class="form-group">
 				  <label for="Judul" class="col-md-4 control-label">Judul</label>
 				  <div class="col-md-8">
-					<input type="text" class="form-control" id="Judul" value="<?php echo $ujian['judul_ujian'] ?>">
+					<input type="text" class="form-control" id="Judul" name="Judul" value="<?php echo $ujian['judul_ujian'] ?>">
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label for="URL" class="col-md-4 control-label">URL</label>
 				  <div class="col-md-8">
-					<a href="#" id="URL" class="form-control disabled" style="background-color:#f8f8f8"><?php echo $ujian['url_ujian'] ?></a>
-				  </div>  
+					<a href="#" class="form-control disabled" style="background-color:#f8f8f8"><?php echo $ujian['url_ujian'] ?></a>
+				  </div> 
+				  <input type="hidden" id="URL" name="URL" value="<?php echo $ujian['url_ujian'] ?>" />
 				</div>
 				<div class="form-group">
 				  <label for="Waktu" class="col-md-4 control-label">Waktu</label>
 				  <div class="col-md-3">
-					<input type="number" class="form-control" id="Waktu" value="<?php echo $ujian['lama_ujian'] ?>">
+					<input type="number" class="form-control" id="Waktu" name="Waktu" value="<?php echo $ujian['lama_ujian'] ?>">
 				  </div>
 				  <div class="col-md-5">
 					 Menit
@@ -515,15 +431,15 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label">Acak soal</label>
 				  <div class="col-md-8">
-					 <?php if($ujian['acak_soal']==1){
-							  echo '<select class="form-control">';
-							  echo   '<option>Ya</option>';
-							  echo   '<option>Tidak</option>';
+					  <?php if($ujian['acak_soal']==1){
+							  echo '<select id="AcakSoal" name="AcakSoal" class="form-control">';
+							  echo   '<option value="1" selected>Ya</option>';
+							  echo   '<option value="0">Tidak</option>';
 							  echo '</select>';
 							} else {
-							  echo '<select class="form-control">';
-							  echo   '<option>Tidak</option>';
-							  echo   '<option>Ya</option>';
+							  echo '<select id="AcakSoal" name="AcakSoal" class="form-control">';
+							  echo   '<option value="1">Ya</option>';
+							  echo   '<option value="0" selected>Tidak</option>';
 							  echo '</select>';
 							}  
 					  ?>
@@ -533,26 +449,64 @@
 				  <label class="col-md-4 control-label">Kategori</label>
 				  <div class="col-md-5">
 					<select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
-					  <option value="">Pilih Mata Pelajaran</option>
-					  <option value="1">Matematika</option>
-					  <option value="2">Fisika</option>
+					  <?php
+					  $dibuat = $_SESSION['userid'];
+					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1 or `dibuat_oleh`=$dibuat");
+					  
+					  while($kate = mysqli_fetch_array($kat)){
+						echo '<option value="';
+						echo $kate['id_kategori'];
+						echo '" ';
+						if ($kate['id_kategori']==$ujian['mata_pelajaran']){
+							echo 'selected';
+						}
+						echo '>';
+						echo $kate['nama'];
+						echo '</option>';
+					  }
+					?>
 					</select>
 				  </div>
 				  <div class="col-md-3">
 					<select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
-					  <option value="">Kelas</option>
-					  <option value="1">XII MIPA</option>
-					  <option value="2">XI MIPA</option>
+					  <?php
+					  if ($_SESSION['kategori_guru']=="SMA"){
+						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
+					  } else {
+						$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
+					  }
+					  $kel = mysqli_query($link, $querykelas);
+					  
+					  while($kate = mysqli_fetch_array($kel)){
+						echo '<option value="';
+						echo $kate['id_kelas'];
+						echo '"';
+						if ($kate['id_kelas']==$ujian['id_kelas']){
+							echo 'selected';
+						}
+						echo '>';
+						echo $kate['nama'];
+						echo '</option>';
+					  }
+					?>
 					</select>
 				   </div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-4 control-label">Peserta perlu login</label>
 					<div class="col-md-8">
-					  <select class="form-control">
-						<option>Ya</option>
-						<option>Tidak</option>
-					  </select>
+					  <?php if($ujian['perlu_login']==1){
+							  echo '<select id="PerluLogin" name="PerluLogin" class="form-control">';
+							  echo   '<option value="1" selected>Ya</option>';
+							  echo   '<option value="0">Tidak</option>';
+							  echo '</select>';
+							} else {
+							  echo '<select id="PerluLogin" name="PerluLogin" class="form-control">';
+							  echo   '<option value="1">Ya</option>';
+							  echo   '<option value="0" selected>Tidak</option>';
+							  echo '</select>';
+							}  
+					  ?>
 					</div>
 				</div>
             </div>
@@ -560,13 +514,14 @@
 				<div class="form-group" style="margin-left:-55px;">
 				  <label class="col-md-3 control-label">Petunjuk</label>
 				  <div class="col-md-9">
-					<textarea class="form-control" rows="15">
+					<textarea id="Petunjuk" name="Petunjuk" class="form-control" rows="15">
+					  <?php echo $ujian['petunjuk']; ?>
 					</textarea>
 				  </div>
 				</div>
 				<div class="form-group">
 				  <div class="col-md-offset-3 col md-9" style="padding-left:0px;">
-					<a href="index_guru.html" type="button" class="button button2" style="text-decoration:none"> Simpan</a>
+					<button type="submit" class="button button2" style="text-decoration:none"> Simpan</button>
 				  </div>
 				</div>
             </div>
@@ -577,37 +532,154 @@
 	<footer class="text-center">
 	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
     </footer>
+	
+	<!-- Include jQuery. -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/tooltipsy.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-tagsinput.min.js"></script>
+
+    <!-- Include JS files. -->
+    <script type="text/javascript" src="froala/js/froala_editor.min.js"></script>
+
+    <!-- Include Code Mirror. -->
+    <script type="text/javascript" src="js/codemirror.min.js"></script>
+    <script type="text/javascript" src="js/xml.min.js"></script>
+
+    <!-- Include Plugins. -->
+    <script type="text/javascript" src="froala/js/plugins/align.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/char_counter.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/code_beautifier.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/code_view.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/colors.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/emoticons.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/entities.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/file.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/font_family.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/font_size.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/fullscreen.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/image.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/image_manager.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/inline_style.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/line_breaker.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/link.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/lists.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/paragraph_format.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/paragraph_style.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/quick_insert.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/quote.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/table.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/save.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/url.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/video.min.js"></script>
+	
+	<!-- jquery validation -->
+	<script src="js/jquery.validate.min.js"></script>
+	<script>
+		jQuery(document).ready(function(){
+			var $form = $('#form');
+
+            $form.validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-block help-block-error', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "",  // validate all fields including form hidden input
+                rules: {
+                    Judul: {
+                        required: true,
+                        maxlength: 100
+                    },
+                    Waktu: {
+                        required: true,
+                    },
+					AcakSoal: {
+                        required: true,
+                    },
+					KategoriUjian: {
+                        required: true,
+                    },
+					KategoriKelas: {
+                        required: true,
+                    },
+					PerluLogin: {
+                        required: true,
+                    }
+                },
+                messages: {},
+
+                highlight: function (element) { // hightlight error inputs
+                    $(element)
+                        .closest('.form-group').addClass('has-error'); // set error class to the control group
+                },
+
+                unhighlight: function (element) { // revert the change done by hightlight
+                    $(element)
+                        .closest('.form-group').removeClass('has-error'); // set error class to the control group
+                },
+
+                success: function (label) {
+                    label
+                        .closest('.form-group').removeClass('has-error'); // set success class to the control group
+                },
+
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+		});
+	</script>
+	
+	<script type="text/javascript">
+	  $(function(){
+		$.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
+		$.FroalaEditor.RegisterCommand('clear', {
+		  title: 'Reset',
+		  focus: false,
+		  undo: true,
+		  refreshAfterCallback: true,
+		  callback: function () {
+			this.html.set('');
+			this.events.focus();
+		  }
+		});
+
+		$.FroalaEditor.DefineIcon('highlight', {NAME: 'pencil'});
+		$.FroalaEditor.RegisterCommand('highlight', {
+		  title: 'Highlight',
+		  focus: true,
+		  undo: true,
+		  refreshAfterCallback: true,
+		  callback: function(e){
+			if (this.colors.background=='#ffff00'){
+			  this.colors.background('#ffffff');
+			  this.events.focus();
+			} else {
+			  this.toggleClass("fr-active", this.format.applyStyle("background-color", "#ffff00;"));
+			  this.events.focus();
+			}
+		  }
+		});
+
+
+		$('#Petunjuk').froalaEditor({
+		  toolbarButtons: ['insertImage', 'undo', 'redo', 'clearFormatting', 'clear', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'highlight', 'strikeThrough', 'align', 'formatOL', 'formatUL', 'remove'],
+		  placeholderText: 'Ketik untuk menambahkan petunjuk',
+		  spellcheck: false
+		}); 
+	  });
+	  
+	  $(document).ready(function() {
+		$("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+			e.preventDefault();
+			$(this).siblings('a.active').removeClass("active");
+			$(this).addClass("active");
+			var index = $(this).index();
+			$("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+			$("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+		});
+	});
+
+	  
+	</script>
   </body>
-
-<!-- <?php
-  $class = $_REQUEST['class'];
-?> -->
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('.btn-pill').click(function(){
-      $tab = $('#EditInfo');
-      $tab1 = $('EditPetunjuk');
-      if ($tab.is(':visible')){
-        $tab1.show();
-        $tab.hide();
-      } else {
-        $tab.show();
-        $tab1.hide();  
-      }
-    });
-  });
-  $(document).ready(function() {
-    $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
-        e.preventDefault();
-        $(this).siblings('a.active').removeClass("active");
-        $(this).addClass("active");
-        var index = $(this).index();
-        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-    });
-});
-
-  
-</script>
 </html>
