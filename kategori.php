@@ -319,6 +319,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-default">
       <div class="container">
+	  <?php include("koneksi.php"); ?>
         <div class="topheader">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -358,80 +359,6 @@
         <h2 style="color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;">Kategori</h2>
         <p style="font-size:12px; margin-top:10px; color:#818181">Tambah/ubah <b>mata pelajaran</b> dan <b>kelas</b> yang tersedia</p>
         <br>
-        <!-- <div  class="row">
-          <div class="col-md-3" style="padding-right:0px"> 
-            <ul class="nav nav-tabs tabs-left sideways">
-              <li class="active"><a href="#home-v" data-toggle="tab">Mata Pelajaran</a></li>
-              <li><a href="#profile-v" data-toggle="tab">Kelas</a></li>
-            </ul>
-          </div>
-
-          <div class="col-md-6" style="background-color:#f8f8f8">
-            <div class="tab-content">
-              <div class="tab-pane active" id="home-v">
-                <br>
-                <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Mata Pelajaran</a>
-                <div class="alert alert-success">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Berhasil!</strong> Mata Pelajaran Biologi berhasil dibuat.
-                </div>
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>Nama Mata Pelajaran</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody style="background-color:#ffffff">
-                    <tr>
-                      <td>Matematika</td>
-                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                    </tr>
-                    <tr>
-                      <td>Fisika</td>
-                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                    </tr>
-                    <tr>
-                      <td>B. Indonesia</td>
-                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                    </tr>
-                    <tr style="background-color:#ecf8f6;">
-                    <td>Biologi</td>
-                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="tab-pane" id="profile-v">
-                <br>
-                <a href="#" class="button button1" data-toggle="modal" data-target="#modalKelas" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Kelas</a>
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>Kelas</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody style="background-color:#ffffff">
-                    <tr>
-                      <td>X MIPA</td>
-                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                    </tr>
-                    <tr>
-                      <td>XI MIPA</td>
-                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                    </tr>
-                    <tr>
-                      <td>XII MIPA</td>
-                      <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-        </div> -->
         <div class="row">
                 <div class="col-md-offset-2 col-md-10 bhoechie-tab-container">
                     <div class="col-md-2 bhoechie-tab-menu">
@@ -448,10 +375,26 @@
                         <!-- flight section -->
                         <div class="bhoechie-tab-content active" id="tab1" style="background-color:#ffffff">
                             <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Mata Pelajaran</a>
-                            <div class="alert alert-success">
-                              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                              <strong>Berhasil!</strong> Mata Pelajaran Biologi berhasil dibuat.
-                            </div>
+                            <?php 
+							  if(!empty($_SESSION['statuspesan']))
+							  {
+								if (($_SESSION['statuspesan'] == "sukses")){
+									echo '<div class="alert alert-success">';
+									echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+									echo   '<strong>Berhasil!</strong> ';
+									echo   $_SESSION['pesan'];
+									echo '</div>';
+									$_SESSION['statuspesan'] = "";
+								} else if ($_SESSION["statuspesan"]=="gagal") {
+									echo '<div class="alert alert-danger">';
+									echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+									echo   '<strong>Gagal!</strong>';
+									echo   $_SESSION['pesan'];
+									echo '</div>';
+									$_SESSION['statuspesan'] = "";
+								}
+							  }
+							?>
                             <table class="table table-hover">
                               <thead>
                                 <tr>
@@ -460,28 +403,55 @@
                                 </tr>
                               </thead>
                               <tbody style="background-color:#ffffff">
-                                <tr>
-                                  <td>Matematika</td>
-                                  <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                                </tr>
-                                <tr>
-                                  <td>Fisika</td>
-                                  <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                                </tr>
-                                <tr>
-                                  <td>B. Indonesia</td>
-                                  <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                                </tr>
-                                <tr style="background-color:#ecf8f6;">
-                                <td>Biologi</td>
-                                  <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                                </tr>
+							  <?php
+							    $dibuat = $_SESSION['userid'];
+								$mp1 = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1");
+								
+								while($data = mysqli_fetch_array($mp1)){
+								  echo '<tr>';
+								  echo   '<td>';
+								  echo   $data['nama'];
+								  echo   '<td></td>';
+								  echo '</tr>';
+								}
+								
+								$mp2 = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
+								
+								while($data1 = mysqli_fetch_array($mp2)){
+								  echo '<tr>';
+								  echo   '<td>';
+								  echo   $data1['nama'];
+								  echo   '<td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>';
+								  echo '</tr>';
+								}
+								
+							  ?>
                               </tbody>
                             </table>
                         </div>
                         <!-- train section -->
                         <div class="bhoechie-tab-content" id="tab2" style="background-color:#ffffff">
                           <a href="#" class="button button1" data-toggle="modal" data-target="#modalKelas" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Kelas</a>
+						  <?php 
+						  if(!empty($_SESSION['statuspesan']))
+						  {
+							if (($_SESSION['statuspesan'] == "sukses")){
+								echo '<div class="alert alert-success">';
+								echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+								echo   '<strong>Berhasil!</strong> ';
+								echo   $_SESSION['pesan'];
+								echo '</div>';
+								$_SESSION['statuspesan'] = "";
+							} else if ($_SESSION["statuspesan"]=="gagal") {
+								echo '<div class="alert alert-danger">';
+								echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+								echo   '<strong>Gagal!</strong>';
+								echo   $_SESSION['pesan'];
+								echo '</div>';
+								$_SESSION['statuspesan'] = "";
+							}
+						  }
+						?>
                           <table class="table table-hover">
                             <thead>
                               <tr>
@@ -490,18 +460,34 @@
                               </tr>
                             </thead>
                             <tbody style="background-color:#ffffff">
-                              <tr>
-                                <td>X MIPA</td>
-                                <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                              </tr>
-                              <tr>
-                                <td>XI MIPA</td>
-                                <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                              </tr>
-                              <tr>
-                                <td>XII MIPA</td>
-                                <td> <div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>
-                              </tr>
+                              <?php
+							    $dibuat = $_SESSION['userid'];
+								if ($_SESSION['kategori_guru']=="SMA"){
+								  $querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and `dibuat_oleh`=1";
+							    } else {
+								  $querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and `dibuat_oleh`=1";
+							    } 
+								$kel1 = mysqli_query($link, $querykelas);
+								
+								while($data2 = mysqli_fetch_array($kel1)){
+								  echo '<tr>';
+								  echo   '<td>';
+								  echo   $data2['nama'];
+								  echo   '<td></td>';
+								  echo '</tr>';
+								}
+								
+								$kel2 = mysqli_query($link, "SELECT * FROM `kelas` WHERE `dibuat_oleh`=$dibuat");
+								
+								while($data3 = mysqli_fetch_array($kel2)){
+								  echo '<tr>';
+								  echo   '<td>';
+								  echo   $data3['nama'];
+								  echo   '<td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>';
+								  echo '</tr>';
+								}
+								
+							  ?>
                             </tbody>
                           </table>
                         </div>
@@ -516,19 +502,19 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-            <h4 class="modal-title" id="modalTambahKategoriLabel">Kategori Baru</h4>
+            <h4 class="modal-title" id="modalTambahKategoriLabel">Mata Pelajaran Baru</h4>
           </div>
           <div class="modal-body">
-            <form class="form form-inline"> 
+            <form id="form1" action="newmapel.php" method="post" class="form form-inline"> 
               <div class="form-group col-md-12">
-                <label class="form-control-label col-md-3">Nama Kategori</label>
-                <input type="text" class="form-control col-md-9" style="width:70%">
+                <label class="form-control-label col-md-3">Nama</label>
+                <input type="text" id="namamapel" name="namamapel" class="form-control col-md-9" style="width:70%">
               </div>
-            </form>
           </div>
           <div class="modal-footer">
-            <a  href="kategori.php" class="button button1" id="simpan" style="text-decoration:none;">Simpan</a>
+            <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
             <button class="btn btn-default" data-dismiss="modal" style="border-width:2px;">Batal</button>
+			</form>
           </div>
         </div>
       </div>
@@ -542,16 +528,16 @@
             <h4 class="modal-title" id="modalKelasLabel">Kelas Baru</h4>
           </div>
           <div class="modal-body">
-            <form class="form form-inline"> 
+            <form id="form2" action="newkelas.php" method="post" class="form form-inline"> 
               <div class="form-group col-md-12">
                 <label class="form-control-label col-md-3">Nama Kelas</label>
-                <input type="text" class="form-control col-md-9" style="width:70%">
+                <input type="text" id="namakelas" name="namakelas" class="form-control col-md-9" style="width:70%">
               </div>
-            </form>
           </div>
           <div class="modal-footer">
-            <a  href="#" class="button button1" id="simpan" style="text-decoration:none;">Simpan</a>
+            <button class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
             <button class="btn btn-default" data-dismiss="modal" style="border-width:2px;">Batal</button>
+			</form>
           </div>
         </div>
       </div>
