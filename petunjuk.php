@@ -1,10 +1,15 @@
 <?php
+	ini_set('session.gc_maxlifetime', 23400);
 	session_start();
-	$aidi = $_GET['id'];
-	if ($_SESSION['role']=="murid" || $_SESSION['role']=="guru"){
-		
+	if (!isset($_GET['id'])){
+		header('location:notfound.php');
 	} else {
-		header('location:ujian.php?id='.$aidi);
+		$aidi = $_GET['id'];
+		if ($_SESSION['role']=="murid" || $_SESSION['role']=="guru"){
+			
+		} else {
+			header('location:ujian.php?id='.$aidi);
+		}
 	}
 ?>
 <!DOCTYPE html>
@@ -14,7 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Home | Ujian Online</title>
+    <title>Petunjuk Ujian | Ujian Online</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -101,10 +106,8 @@
     <!-- Navbar -->
     <?php include("koneksi.php");
       $id = $_GET['id'];
-      $query = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
-      //$soal = mysqli_fetch_array($query);
-      $query3 = mysqli_query($link, "SELECT `judul_ujian` FROM `info_ujian` WHERE `id_ujian`='$id' ");
-      $judul = mysqli_fetch_array($query3);
+      $query3 = mysqli_query($link, "SELECT * FROM `info_ujian` WHERE `id_ujian`='$id' ");
+      $ujian = mysqli_fetch_array($query3);
     ?>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -114,12 +117,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #4ABDAC;"><?php echo $judul['judul_ujian'] ?></a>
+          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #4ABDAC;"><?php echo $ujian['judul_ujian'] ?></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right" style="padding-right: 160px;">
-            <li><a href="#logout"> Andhini </a></li>
-            <li><a href="#logout">Logout</a></li>
+            <li><a href="#"> <?php echo $_SESSION['nama']; ?> </a></li>
           </ul>
         </div>
       </div>
@@ -132,7 +134,13 @@
           <div class="panel-body">
             <h5>Petunjuk</h5>
             <hr>
-            <p>Bla blah</p>
+			<?php 
+				if ($ujian['petunjuk']){
+					echo $ujian['petunjuk'];
+				} else {
+					echo 'Tidak ada petunjuk ujian';
+				}
+			?>
           </div>
         </div>
         <a href="index_siswa.php?id=<?php echo $id ?>" type="button" class="button button1 pull-right" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>

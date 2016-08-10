@@ -153,8 +153,8 @@
             <div class="panel-body">
               <h4 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Login Siswa</h4>
               <hr>
-            <form id="form" method="post" class="form-horizontal" action="login_siswaval.php">
-			  <?php 
+            <form id="form" method="post" class="form-horizontal" action="nologin_siswaval.php">
+              <?php 
 				if (isset($_SESSION["statuspesan"])){
 				  if ($_SESSION["statuspesan"]=="gagal"){
 					echo '<div class="alert alert-danger">';
@@ -174,16 +174,10 @@
 				}
 			  ?>
 			  <input type="hidden" name="id" id="id" value="<?php echo $_GET['id']; ?>" />
-              <div class="form-group">
-                <label class="col-md-3">Username</label>
+			  <div class="form-group">
+                <label class="col-md-3">Nama</label>
                 <div class="col-md-9">
-                  <input type="text" name="username" id="username" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3">Password</label>
-                <div class="col-md-9">
-                  <input type="password" name="password" id="password" class="form-control">
+                  <input type="text" name="name" id="name" class="form-control">
                 </div>
               </div>
               <div class="form-group">

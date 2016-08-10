@@ -1,10 +1,15 @@
 <?php
+	ini_set('session.gc_maxlifetime', 23400);
 	session_start();
-	$aidi = $_GET['id'];
-	if ($_SESSION['role']=="murid" || $_SESSION['role']=="guru"){
-		
+	if (!isset($_GET['id'])){
+		header('location:notfound.php');
 	} else {
-		header('location:ujian.php?id='.$aidi);
+		$aidi = $_GET['id'];
+		if ($_SESSION['role']=="murid" || $_SESSION['role']=="guru"){
+			
+		} else {
+			header('location:ujian.php?id='.$aidi);
+		}
 	}
 ?>
 <!DOCTYPE html>
