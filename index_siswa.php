@@ -1,10 +1,15 @@
 <?php
+	ini_set('session.gc_maxlifetime', 23400);
 	session_start();
-	$aidi = $_GET['id'];
-	if ($_SESSION['role']=="murid" || $_SESSION['role']=="guru"){
-		
+	if (!isset($_GET['id'])){
+		header('location:notfound.php');
 	} else {
-		header('location:ujian.php?id='.$aidi);
+		$aidi = $_GET['id'];
+		if ($_SESSION['role']=="murid" || $_SESSION['role']=="guru"){
+			
+		} else {
+			header('location:ujian.php?id='.$aidi);
+		}
 	}
 ?>
 <!DOCTYPE html>
@@ -291,8 +296,8 @@
       $id = $_GET['id'];
       $query = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
       //$soal = mysqli_fetch_array($query);
-      $query3 = mysqli_query($link, "SELECT `judul_ujian` FROM `info_ujian` WHERE `id_ujian`='$id' ");
-      $judul = mysqli_fetch_array($query3);
+      $query3 = mysqli_query($link, "SELECT * FROM `info_ujian` WHERE `id_ujian`='$id' ");
+      $ujian = mysqli_fetch_array($query3);
     ?>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -302,7 +307,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #4ABDAC;"><?php echo $judul['judul_ujian'] ?></a>
+          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #4ABDAC;"><?php echo $ujian['judul_ujian'] ?></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right" style="padding-right: 160px;">
@@ -828,7 +833,7 @@
             }, 1000);
         }
         jQuery(function ($) {
-            var fiveMinutes = 60 * 97.5,
+            var fiveMinutes = 60 * <?php echo $ujian['lama_ujian']; ?>,
                 display = $('#time');
             startTimer(fiveMinutes, display);
         });

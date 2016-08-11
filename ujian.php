@@ -11,7 +11,11 @@
 		$query = mysqli_query($link, "select * from info_ujian where id_ujian=$id");
 		
 		if ($data = mysqli_fetch_array($query)){
-			header('location:login_siswa.php?id='.$id);
+			if ($data['perlu_login']==1){
+				header('location:login_siswa.php?id='.$id);
+			} else {
+				header('location:nologin_siswa.php?id='.$id);
+			}
 		} else {
 			header('location:notfound.php');
 		}
