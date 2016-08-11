@@ -373,31 +373,30 @@
                                  </textarea>
                               </div>
                               <p style="margin-left:-10px; font-size:11px; color:#818181; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
-                              <?php 
+                               <?php 
                                   $huruf = array("A","B","C","D","E");
                                   $i = 0; 
                                   while($i<4){
                                     echo '<div class="form-group" style="margin-bottom:10px">';
                                     echo   '<div class="row">';
-                                      echo     '<div style="float:left" style="width:15px"><i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i></div>';
-                                        echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-                                          echo        '<div class="numberCircle">';
-                                          echo         $huruf[$i];
-                                          echo        '</div>'; 
-                                        echo     '</div>';
-                                        echo     '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
-                                          echo       '<textarea class="form-control" id="opsiGanda1" name="opsiGanda';
-                                          echo        $i;
-                                          echo        '"></textarea>';
-                                        echo     '</div>';
-                                        echo     '<div style="float:left">';
-                                          echo       '<i class="fa fa-trash"></i>';
-                                        echo     '</div>';
-                                      echo    '</div>';
-                                    echo   '</div>';
+                                          echo '<div style="float:left" style="width:15px">';
+                                          echo '<i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i>';
+                                          echo '</div>';
+                                          echo '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+                                            echo '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>';
+                                          echo '</div>';
+                                          echo '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
+                                            echo '<div class="form-control" id="opsiGanda1"></div>';
+                                          echo '</div>';
+                                          echo '<div style="float:left">';
+                                            echo '<i class="fa fa-trash"></i>';
+                                          echo '</div>';
+                                      echo '</div>';
+                                    echo '</div>';
                                     $i++;
                                   }
-                              ?>
+                              ?> 
+                              
                               <div class="form-group opsiGandaE" style="margin-bottom:10px" id="opsiGanda1" hidden>
                                 <div class="row">
                                     <div style="float:left" style="width:15px">
@@ -988,7 +987,16 @@
                 }
               }
             });
-
+            $(function(){
+              $('div#opsiGanda1, div#opsiGanda2, div#opsiGanda3, div#opsiGanda4, div#opsiGanda5, div#opsiIsian, textarea#opsiEssay, textarea#opsiGandaT1').froalaEditor({
+                toolbarInline: true,
+                charCounterCount: false,
+                toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'undo', 'redo', 'insertImage', 'paragraphFormat', 'formatOL', 'formatUL', '-', 'align', 'indent', 'outdent'],
+                toolbarVisibleWithoutSelection: true,
+                placeholderText: 'Ketik jawaban',
+                spellcheck:false
+              });
+            });
 
             $('#edit1, #edit2, #edit3, #edit4, #edit5').froalaEditor({
               toolbarButtons: ['insertImage', 'undo', 'redo', 'clearFormatting', 'clear', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'highlight', 'strikeThrough', 'align', 'formatOL', 'formatUL', 'remove'],

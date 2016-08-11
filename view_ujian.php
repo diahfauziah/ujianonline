@@ -17,6 +17,17 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
+
+    <!-- Froala -->
+      <!-- Include Font Awesome. -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Include Editor style. -->
+    <link href="froala/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
+    <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Include Code Mirror style -->
+    <link rel="stylesheet" href="css/codemirror.min.css">
     
 	<!-- Include Font Awesome. -->
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -394,12 +405,125 @@
                 </table> 
               </div>  
             </div>
+            <div class="panel panel-default tab-pane fade in active" id="formPilihanGanda">
+                    <div class="panel-body">
+                      <div class="row">
+                        <div style="margin-left:10px; width:15px; float:left;">
+                          <strong id="nomor">1.</strong>
+                        </div>
+                        <div style="margin-left: 0px;">  
+                          <div class="col-md-12" style="width:96%">
+                            <form class="form-horizontal col-md-12">
+                              <div class="form-group">
+                                 <label class="form-control-label">Pertanyaan</label>
+                                 <textarea id="edit1" class="form-control" rows="3">
+                                 </textarea>
+                              </div>
+                              <p style="margin-left:-10px; font-size:11px; color:#818181; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
+                              <div class="form-group" style="margin-bottom:10px">
+                                <div class="row">
+                                    <div style="float:left" style="width:15px">
+                                     <i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i> 
+                                    </div>
+                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                    </div>
+                                    <div style="width:85%;  margin-left:-20px;" class="col-md-9">
+                                      <div class="form-control" id="opsiGanda1"></div>
+                                    </div>
+                                    <div style="float:left">
+                                      <i class="fa fa-trash"></i>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group" style="margin-bottom:10px;">
+                                <div class="row">
+                                  <div style="float:left" style="width:15px">
+                                      <i class="fa fa-check-circle fa-lg" style="color:#32cd32"></i>
+                                    </div>
+                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                      <i class="fa fa-circle fa-2x setjawaban" style="color:#32cd32"></i>
+                                    </div>
+                                    <div style="width:85%; margin-left:-20px;" class="col-md-9">
+                                      <div class="form-control" id="opsiGanda1"></div>
+                                    </div>
+                                    <div style="float:left">
+                                      <i class="fa fa-trash"></i>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group" style="margin-bottom:10px">
+                                <div class="row">
+                                    <div style="float:left" style="width:15px">
+                                      <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
+                                    </div>
+                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                    </div>
+                                    <div style="width:85%; margin-left:-20px;" class="col-md-9">
+                                      <div class="form-control" id="opsiGanda1"></div>
+                                    </div>
+                                    <div style="float:left">
+                                      <i class="fa fa-trash"></i>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group" style="margin-bottom:10px">
+                                <div class="row">
+                                    <div style="float:left" style="width:15px">
+                                      <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
+                                    </div>
+                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                    </div>
+                                    <div style="width:85%;margin-left:-20px;" class="col-md-9">
+                                      <div class="form-control" id="opsiGanda1"></div>
+                                    </div>
+                                    <div style="float:left">
+                                      <i class="fa fa-trash"></i>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
+                                <button class="button button1" style="margin-left:20px; font-size:13px; background-color:#f8f8f8; border:0px; color:#777"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px;">
+                                <strong class="col-md-1">Poin:</strong>
+                                <div class="col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Benar </label>
+                                  <input type="text" class="form-control" style="width:32%">
+                                </div>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px;">
+                                <div class="col-md-push-1 col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Kosong</label>
+                                  <input type="text" class="form-control" style="width:32%" value="0"> 
+                                </div>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px">
+                                <div class="col-md-push-1 col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Salah</label>
+                                  <input type="text" class="form-control" style="width:32%" value="0"> 
+                                </div>
+                              </div>
+                              <div class="form-group form-inline" style="margin-bottom:10px">
+                                <div class="col-md-push-1 col-md-3">
+                                  <label style="width:60px;" class="form-control-label"></label>
+                                  <a href="view_ujian.html" class="button button2" style="text-decoration:none"> Simpan</a>
+                                </div>                            
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             <?php 
             $query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
             
             while ($soal = mysqli_fetch_array($query1)){
             echo '<div class="panel panel-default soal">';
-            echo   '<div class="panel-body">';
+            echo '<div class="panel-body">';
             echo     '<div class="row">';
             echo       '<div style="margin-left:10px; width:15px; float:left;">';
             echo        '<strong>';
@@ -407,13 +531,12 @@
             echo        '.</strong>';
             echo       '</div>';
             echo       '<div style="margin-left:0px;">';
-            echo        '<div class="col-md-10" style="width:96%">';
-            echo           $soal['pertanyaan'];
-
-                      $id_soal = $soal['id_soal'];
-                      $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
-                      $huruf = array("A","B","C","D","E");
-                      $i = 0;
+            echo        '<div class="col-md-12" style="width:96%">';
+            echo          $soal['pertanyaan'];
+                          $id_soal = $soal['id_soal'];
+                          $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+                          $huruf = array("A","B","C","D","E");
+                          $i = 0;
                       echo    '<ul class="list-group" style="margin-top:10px;">';
                         while($pilihan = mysqli_fetch_array($query2)){
                           echo '<li class="list-group-item opsijawaban">';
@@ -424,7 +547,7 @@
                           echo        '</div>'; 
                           echo     '</div>';
                           echo     '<div style="width:85%;  margin-left:-20px;">';
-                          echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
+                          echo       '<div id="opsiGanda1" class="form-control">'.$pilihan['opsi_jawaban'].'</div>';
                           echo     '</div>';
                           echo '</li>';
                           $i++;
@@ -445,7 +568,6 @@
                           echo '</div>';
                     echo '</div>';
                 echo '</div>';
-                echo '<div class="col-md-2">A</div>';
                echo '</div>';
               echo '</div>';
            echo '</div>';
@@ -477,5 +599,90 @@
                 </div>
               </div>
   </div>
+
+  <!-- Include JS files. -->
+    <script type="text/javascript" src="froala/js/froala_editor.min.js"></script>
+
+    <!-- Include Code Mirror. -->
+    <script type="text/javascript" src="js/codemirror.min.js"></script>
+    <script type="text/javascript" src="js/xml.min.js"></script>
+
+    <!-- Include Plugins. -->
+    <script type="text/javascript" src="froala/js/plugins/align.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/char_counter.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/code_beautifier.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/code_view.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/colors.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/emoticons.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/entities.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/file.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/font_family.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/font_size.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/fullscreen.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/image.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/image_manager.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/inline_style.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/line_breaker.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/link.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/lists.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/paragraph_format.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/paragraph_style.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/quote.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/table.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/save.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/url.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/video.min.js"></script>
+
+    <script>
+      $(function(){
+        $.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
+        $.FroalaEditor.RegisterCommand('clear', {
+          title: 'Reset',
+          focus: false,
+          undo: true,
+          refreshAfterCallback: true,
+          callback: function () {
+            this.html.set('');
+            this.events.focus();
+          }
+        });
+
+        $.FroalaEditor.DefineIcon('highlight', {NAME: 'pencil'});
+        $.FroalaEditor.RegisterCommand('highlight', {
+          title: 'Highlight',
+          focus: true,
+          undo: true,
+          refreshAfterCallback: true,
+          callback: function(e){
+            if (this.colors.background=='#ffff00'){
+              this.colors.background('#ffffff');
+              this.events.focus();
+            } else {
+              this.toggleClass("fr-active", this.format.applyStyle("background-color", "#ffff00;"));
+              this.events.focus();
+            }
+          }
+        });
+
+
+        $('#edit1').froalaEditor({
+          toolbarButtons: ['insertImage', 'undo', 'redo', 'clearFormatting', 'clear', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'highlight', 'strikeThrough', 'align', 'formatOL', 'formatUL', 'remove'],
+          placeholderText: 'Ketik pertanyaan',
+          charCounterCount: false,
+          spellcheck: false
+        });
+
+        $(function(){
+          $('div#opsiGanda1').froalaEditor({
+            toolbarInline: true,
+            charCounterCount: false,
+            toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'undo', 'redo', 'insertImage', 'paragraphFormat', 'formatOL', 'formatUL', '-', 'align', 'indent', 'outdent'],
+            toolbarVisibleWithoutSelection: true,
+            placeholderText: 'Ketik jawaban',
+            spellcheck:false
+          });
+        });
+      });
+    </script>
   </body>
 </html>

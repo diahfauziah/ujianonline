@@ -48,6 +48,8 @@
 
 	if($updatequery){
 		$_SESSION['statuspesan'] = "sukses";
+		$_SESSION['matapelajaran'] = "0";
+		$_SESSION['kelas'] = "0";
 		$_SESSION['pesan'] = "Ujian $judul berhasil dibuat";
 		header('location:index_guru.php');
 	} else {

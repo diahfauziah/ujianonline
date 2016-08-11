@@ -258,13 +258,6 @@
                  </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3">Jumlah soal</label>
-                <div class="col-md-9"  >
-				  <input type="hidden" id="JumlahSoal" name="JumlahSoal" />
-                  0
-                </div>
-              </div>
-              <div class="form-group">
                 <label class="col-md-3">Acak soal</label>
                 <div class="col-md-9">
                    <select class="form-control" id="AcakSoal" name="AcakSoal">
@@ -314,7 +307,7 @@
                   </select>
                  </div>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                   <label class="col-md-3">Peserta perlu login</label>
                   <div class="col-md-9">
                     <select class="form-control" id="PerluLogin" name="PerluLogin">
@@ -322,12 +315,11 @@
                       <option value="0">Tidak</option>
                     </select>
                   </div>
-                </div>
+                </div> -->
               <div class="form-group">
                 <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
               <!--    <a href="index_guru.php" type="button" class="btn btn-simpan" > Simpan</a> -->
                   <input type="submit" name="submit" value="Simpan" class="submit-button btn btn-simpan" >
-                  <a href="index_guru.php" type="button" class="btn btn-default" style="border-width:2px;"> Kembali ke Beranda</a>
                 </div>
               </div>
            </form>

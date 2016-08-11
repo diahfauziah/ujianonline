@@ -359,7 +359,7 @@
               echo     $j;
               echo     '" id="tandai';
               echo     $j;
-              echo     '"><i class="fa fa-bookmark"></i> Tandai</button>';
+              echo     '"><i class="fa fa-bookmark"></i> Tandai Soal</button>';
 
               echo     '<button type="button" class="button btnreset pull-right" style="margin-top:8px; margin-right:10px; padding: 4px 18px; outline:none;" data-id="';
               echo     $j;
@@ -700,7 +700,7 @@
 
             $tomboltandai = "#tandai"+$soal_sekarang;
             if($($ini).hasClass("hasTandai").toString() == "true"){
-              $($tomboltandai).html('<i class="fa fa-bookmark"></i> Tandai');
+              $($tomboltandai).html('<i class="fa fa-bookmark"></i> Tandai Soal');
             }
             
             if($(".opsijawaban").hasClass("selected").toString()=="true" && $($ini).hasClass("tercatat").toString()=="false"){
@@ -746,7 +746,7 @@
 
             if ($($ini).html() == '<i class="fa fa-bookmark-o"></i> Batal Tandai'){
                 // membatalkan:
-                  $($ini).html('<i class="fa fa-bookmark"></i> Tandai');
+                  $($ini).html('<i class="fa fa-bookmark"></i> Tandai Soal');
                   $($nomorini).removeClass("tandai");
                   $($nomorini).removeClass("hasTandai");
                   $($nomorini).css({"color":"#000000"});

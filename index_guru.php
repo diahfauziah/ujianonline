@@ -278,7 +278,7 @@
               <div class="form-group">
                 <label class="col-md-2" style="color:#F7B733;">Kategori</label>
                 <div class="col-md-4">
-				  <select id="kategori" name="kategori" class="form-control">
+				  <select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control">
 					<?php
 					  $dibuat = $_SESSION['userid'];
 					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1 or `dibuat_oleh`=$dibuat");
@@ -310,7 +310,7 @@
                   </select>
                 </div>
                 <div class="col-md-offset-1 col-md-3" style="margin-left:10px">
-                  <select id="kelas" name="kelas" class="form-control">
+                  <select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control">
                     <?php
 					  if ($_SESSION['kategori_guru']=="SMA"){
 						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
@@ -380,8 +380,8 @@
               <th>Total Soal</th>
               <th>Mata Pelajaran</th>
               <th>Kelas</th>
-              <th>Tampilan siswa</th>
-              <th>Bagikan</th>
+              <th>Tampilan ujian</th>
+              <th>Link ujian</th>
               <th>Laporan</th>
               <th>Terakhir diperbarui</th>
             </tr>
