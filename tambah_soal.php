@@ -339,9 +339,9 @@
                   <li>
                     <a data-toggle="pill" href="#formEssay" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Essay</a>
                   </li>
-                  <li>
+                 <!-- <li>
                     <a data-toggle="pill" href="#formPencocokan" class="hashtip" title="<u><b>Contoh</b></u><br>Cocokkan provinsi dan ibukota provinsi yang sesuai!<br> Jawa Barat <span class='glyphicon glyphicon-resize-horizontal'></span> Bandung <br> Jawa Timur <span class='glyphicon glyphicon-resize-horizontal'></span> Surabaya">Pencocokan</a>
-                  </li>
+                  </li> -->
                   <li>
                     <a data-toggle="pill" href="#formBenarSalah" class="hashtip" title="<u><b>Contoh</b></u><br>Bandung adalah Ibukota Provinsi Jawa Barat<br><span class='glyphicon glyphicon-record'></span> Benar<br><span class='glyphicon glyphicon-record'></span> Salah">Benar/Salah</a>
                   </li>
@@ -543,7 +543,7 @@
                       </div>
                     </div>
                   </div>    
-                  <div class="panel panel-default tab-pane fade" id="formPencocokan">
+                  <!-- <div class="panel panel-default tab-pane fade" id="formPencocokan">
                     <div class="panel-body">
                       <div class="row">
                         <div style="margin-left:10px; width:15px; float:left;">
@@ -624,7 +624,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="panel panel-default tab-pane fade" id="formSebabAkibat">
                     <div class="panel-body">
                       <div class="row">

@@ -100,6 +100,20 @@
       .panel {
         border-color: #ffffff;
       }
+      .imagecontainer {
+        position: relative;
+      }
+      .imageposition {
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        font-size: 18px;
+        width: 80px;
+        height: 80px;
+
+      }
+
     </style>
   </head>
   <body>
@@ -144,6 +158,10 @@
           </div>
         </div>
         <a href="index_siswa.php?id=<?php echo $id ?>" type="button" class="button button1 pull-right" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
+        <a href="#" style="pull-right">Panduan Ujian</a>
+        <br />
+
+        <img src="image/popup.png" style="max-width:100%; border:1px solid #ddd; border-radius:4px; padding:5px; margin-top:10px">
       </div>
     </div>
 	<footer class="text-center">

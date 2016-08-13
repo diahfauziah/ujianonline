@@ -351,12 +351,41 @@
               echo           '</div>';
 			  echo			'<textarea id="soal';
 			  echo			  $j;
-			  echo			'" style="display:none">';
+			  echo			'" style="display:none; float:left">';
 			  echo             $soal['pertanyaan'];
 			  echo			'</textarea>';
+        if($soal['kategori_pertanyaan']==2){
+                echo '<div style="margin-left:0px; display:inline-block">';
+                  echo 'Jawaban:';
+                  echo '<input class="form-control" style="width:100%">';
+                echo '</div>';
+              }
+              if($soal['kategori_pertanyaan']==3){
+                echo '<div style="margin-left:0px;">';
+                  echo 'Jawaban:';
+                  echo '<textarea class="form-control" style="width:100%" rows="3"></textarea>';
+                echo '</div>';
+              }
+              if($soal['kategori_pertanyaan']==4){
+                echo '<ul class="list-group">';
+                 echo '<div class="row col-md-12">';
+                  echo '<li class="list-group-item opsijawaban col-md-6" style="float:left;">';
+                    echo '<div style="text-align:center">Benar</div>';
+                  echo '</li>';
+                  echo '<li class="list-group-item opsijawaban col-md-6" style="float:left">';
+                    echo '<div style="text-align:center">Salah</div>';
+                  echo '</li>';
+                  echo '</div>';
+                  echo '</ul>';
+              }
+
+        
               echo         '</div>';
               echo       '</div>';
               echo     '</div>';
+
+              
+              
               echo     '<div class="row">';
 
               echo     '<button type="button" class="button button1 pull-right btntandai" style="margin-top:8px; margin-right:17px; padding: 4px 18px; outline:none;" data-id="';
@@ -369,7 +398,7 @@
               echo     $j;
               echo     '" id="reset';
               echo     $j;
-              echo     '"><i class="fa fa-refresh"></i> Reset Soal</button>';
+              echo     '"><i class="fa fa-refresh"></i> Atur Ulang Soal</button>';
 
               echo     '</div>';
               
@@ -399,6 +428,8 @@
                   $i++;
                 }
               echo    '</ul>';
+
+              
               echo    '</div>';
               echo   '</div>';
 			  $j++;
