@@ -312,7 +312,6 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right" style="padding-right: 160px;">
             <li><a href="#logout"> Andhini </a></li>
-            <li><a href="#logout">Logout</a></li>
           </ul>
         </div>
       </div>
