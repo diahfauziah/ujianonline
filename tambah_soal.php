@@ -112,7 +112,7 @@
       }
       .breadcrumb {
         background: rgba(245, 245, 245, 1);
-        background-color: #ffffff;
+        background-color: #f8f8f8;
         display: block;
         margin-bottom: 5px;
         margin-top: -10px;
@@ -264,7 +264,7 @@
           max-width: 1024px;
       }
       .content {
-        background-color: #ffffff;
+        background-color: #f8f8f8;
         min-height: 600px;
         padding: 20px 12px;
       }
@@ -324,553 +324,640 @@
             $nomor = $nomormax + 1;
             $query3 = mysqli_query($link, "SELECT * FROM info_ujian where id_ujian='$id' ");
             $judul = mysqli_fetch_array($query3);
+            $query = mysqli_query($link, "SELECT * FROM `info_ujian` WHERE `id_ujian`='$id' ");
+            $ujian = mysqli_fetch_array($query);
       ?>
       <div class="content">
-      <div class="row">
-        <h2 style="margin-left:25px; color:rgba(186, 182, 182, 1); margin-top:0px; margin-bottom:10px; font-family:'didact gothic', sans-serif">Tambah Soal <a href="http://localhost/ujianonline/view_ujian.php?id=<?php echo $judul['id_ujian'] ?>"><?php echo $judul['judul_ujian'] ?></a></h2>
-      </div>
-      <div class="row" style="margin-top:5px;">
-          <div class="col-xs-6 col-md-9">
-             <ol class="breadcrumb">
-                <li><a href="index_guru.php">Beranda</a></li>
-                <!--  <li><a href="view_ujian.php?id=<?php echo $ujian['id_ujian'] ?>"><?php echo $ujian['judul_ujian'] ?></a></li> -->
-                <li class="active">Tambah soal</li>
-             </ol>
-           </div>
-      </div>
-      <div id="soal">
-            <div class="row" style="margin-left:5px;">
-              <div class="col-md-2">
-                <ul class="nav nav-pills nav-stacked">
-                  <li class="active">
-                    <a data-toggle="pill" class="hashtip" href="#formPilihanGanda" title="<u><b>Contoh</b></u><br>Apa Ibukota Provinsi Jawa Barat?<br><i class='fa fa-circle-thin'></i></span> Jakarta<br><i class='fa fa-circle'></i> Bandung<br><i class='fa fa-circle-thin'></i> Surabaya<br><i class='fa fa-circle-thin'></i> Bogor<br>">Pilihan ganda</a>
-                  </li>
-                  <li>
-                    <a data-toggle="pill" href="#formIsian" class="hashtip" title="<u><b>Contoh</b></u><br>Ibukota Provinsi Jawa Barat yaitu <input type=text class='form-control'>">Isian singkat</a>
-                  </li>
-                  <li>
-                    <a data-toggle="pill" href="#formEssay" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Essay</a>
-                  </li>
-                 <!-- <li>
-                    <a data-toggle="pill" href="#formPencocokan" class="hashtip" title="<u><b>Contoh</b></u><br>Cocokkan provinsi dan ibukota provinsi yang sesuai!<br> Jawa Barat <span class='glyphicon glyphicon-resize-horizontal'></span> Bandung <br> Jawa Timur <span class='glyphicon glyphicon-resize-horizontal'></span> Surabaya">Pencocokan</a>
-                  </li> -->
-                  <li>
-                    <a data-toggle="pill" href="#formBenarSalah" class="hashtip" title="<u><b>Contoh</b></u><br>Bandung adalah Ibukota Provinsi Jawa Barat<br><span class='glyphicon glyphicon-record'></span> Benar<br><span class='glyphicon glyphicon-record'></span> Salah">Benar/Salah</a>
-                  </li>
-                  <li>
-                    <a data-toggle="pill" href="#formCheckbox" class="hashtip" title="<u><b>Contoh</b></u><br>Manakah yang berada di Provinsi Jawa Barat?<br> <span class='glyphicon glyphicon-unchecked'></span> Jakarta<br><span class='glyphicon glyphicon-check'></span> Bandung<br><span class='glyphicon glyphicon-check'></span> Depok<br><span class='glyphicon glyphicon-unchecked'></span> Banten">Checkbox</a>
-                  </li>
-                  <li>
-                    <a data-toggle="pill" href="#formSebabAkibat" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Sebab - akibat</a>
-                  </li>
-                  <li>
-                    <a data-toggle="pill" href="#formPilihan123" class="hashtip" title="">Pilihan 1,2,3,4</a>
-                  </li>
-                </ul>
+        <div class="row">
+          <h2 style="margin-left:25px; color:#4abdac; margin-top:0px; margin-bottom:10px; text-align:center; font-family:'didact gothic', sans-serif"><a href="http://localhost/ujianonline/view_ujian.php?id=<?php echo $judul['id_ujian'] ?>"><?php echo $judul['judul_ujian'] ?></a></h2>
+        </div>
+        <div id="soal">
+          <div class="panel panel-default col-md-offset-1 col-md-10" style="margin-top:20px; id="informasiujian" background-color:#ffffff;">
+            <div class="panel-body">
+              <div class="row">
+                <h5 style="text-align:center" class="col-md-offset-1 col-md-10"><b>Informasi Ujian</b></h5>
+                <button class="button button1" class="col-md-1"><i class="fa fa-pencil"></i></button>
               </div>
-              <div class="col-md-10">
-                <div class="tab-content">
-                  <div class="panel panel-default tab-pane fade in active" id="formPilihanGanda" style="background-color:#f8f8f8">
-                    <div class="panel-body">
+              <hr />
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Judul:</label>
+                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['judul_ujian']; ?></div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-5" style="text-align:right; padding-right:0px;">URL:</label>
+                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['url_ujian'] ?></div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Waktu:</label>
+                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['lama_ujian'] ?></div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Jumlah soal:</label>
+                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['total_soal'] ?></div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Acak soal:</label>
+                  <div class="col-md-2" style="text-align:left;">Ya</div>
+                  <label class="col-md-3" style="text-align:left; padding-right:0px;">Acak soal:</label>
+                  <div class="col-md-2 pull-left" style="text-align:left;">Ya</div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Perlu login:</label>
+                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['total_soal'] ?></div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Kategori:</label>
+                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['total_soal'] ?></div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Petunjuk:</label>
+                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['total_soal'] ?></div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-offset-1 col-md-10" style="margin-top:10px;">
+            <button class="button button1 pull-right" style="font-size:13px;"><i class="fa fa-plus"></i> Tambah soal</button>
+          </div>
+          <?php 
+            include('koneksi.php'); 
+            $id = $_GET['id'];
+            $query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
+            
+            while ($soal = mysqli_fetch_array($query1)){
+            echo '<div class="panel panel-default col-md-offset-1 col-md-10" style="margin-top:10px; background-color:#ffffff; border:0px;">';
+            echo '<div class="panel-body">';
+            echo     '<div class="row">';
+            echo       '<div style="margin-left:10px; width:15px; float:left;">';
+            echo        '<strong>';
+            echo          $soal['nomor_soal'];
+            echo        '.</strong>';
+            echo       '</div>';
+            echo       '<div style="margin-left:0px;">';
+            echo        '<div class="col-md-12" style="width:96%">';
+            echo          $soal['pertanyaan'];
+                          $id_soal = $soal['id_soal'];
+                          $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+                          $huruf = array("A","B","C","D","E");
+                          $i = 0;
+                      echo    '<ul class="list-group" style="margin-top:10px;">';
+                        while($pilihan = mysqli_fetch_array($query2)){
+                          echo '<li class="list-group-item opsijawaban">';
+                          echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+                        //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
+                          echo        '<div class="numberCircle">';
+                          echo         $huruf[$i];
+                          echo        '</div>'; 
+                          echo     '</div>';
+                          echo     '<div style="width:85%;  margin-left:-20px;">';
+                          echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
+                          echo     '</div>';
+                          echo '</li>';
+                          $i++;
+                        }
+                          echo '</ul>';
+                          echo '<div class="panel-footer">';
+                          echo '<div class="row">';
+                          echo   '<div class="col-md-3">Poin Benar: 10</div>';
+                          echo   '<div class="col-md-3">Poin Salah: 0</div>';
+                          echo   '<div class="col-md-3">Poin Kosong: 0</div>';
+                          echo '</div>';
+                        
+                          echo  '<div class="form-group row" style="margin-top:10px;">';
+                          echo    '<div class="col-md-6"></div>';
+                          echo    '<a href="edit_soal.html" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none"><span class="glyphicon glyphicon-pencil"></span> Edit</a>';
+                          echo    '<button class="button button2 col-md-2" data-toggle="modal" data-target="#modalHapus" style="font-size:14px; margin-left:10px;"><span class="glyphicon glyphicon-trash"></span> Hapus</button>';
+                          echo   '</div>';
+                          echo '</div>';
+                    echo '</div>';
+                echo '</div>';
+               echo '</div>';
+              echo '</div>';
+           echo '</div>';
+           };
+         ?>
+          <div class="panel panel-default col-md-offset-1 col-md-10" style="margin-top:10px; background-color:#ffffff;">
+            <div class="panel-body">
+              <div class="row" style="margin-left:5px;">
+                <ul class="nav nav-pills">
+                            <li class="active">
+                              <a data-toggle="pill" class="hashtip" href="#formPilihanGanda" title="<u><b>Contoh</b></u><br>Apa Ibukota Provinsi Jawa Barat?<br><i class='fa fa-circle-thin'></i></span> Jakarta<br><i class='fa fa-circle'></i> Bandung<br><i class='fa fa-circle-thin'></i> Surabaya<br><i class='fa fa-circle-thin'></i> Bogor<br>">Pilihan ganda</a>
+                            </li>
+                            <li>
+                              <a data-toggle="pill" href="#formIsian" class="hashtip" title="<u><b>Contoh</b></u><br>Ibukota Provinsi Jawa Barat yaitu <input type=text class='form-control'>">Isian singkat</a>
+                            </li>
+                            <li>
+                              <a data-toggle="pill" href="#formEssay" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Essay</a>
+                            </li>
+                           <!-- <li>
+                              <a data-toggle="pill" href="#formPencocokan" class="hashtip" title="<u><b>Contoh</b></u><br>Cocokkan provinsi dan ibukota provinsi yang sesuai!<br> Jawa Barat <span class='glyphicon glyphicon-resize-horizontal'></span> Bandung <br> Jawa Timur <span class='glyphicon glyphicon-resize-horizontal'></span> Surabaya">Pencocokan</a>
+                            </li> -->
+                            <li>
+                              <a data-toggle="pill" href="#formBenarSalah" class="hashtip" title="<u><b>Contoh</b></u><br>Bandung adalah Ibukota Provinsi Jawa Barat<br><span class='glyphicon glyphicon-record'></span> Benar<br><span class='glyphicon glyphicon-record'></span> Salah">Benar/Salah</a>
+                            </li>
+                            <li>
+                              <a data-toggle="pill" href="#formCheckbox" class="hashtip" title="<u><b>Contoh</b></u><br>Manakah yang berada di Provinsi Jawa Barat?<br> <span class='glyphicon glyphicon-unchecked'></span> Jakarta<br><span class='glyphicon glyphicon-check'></span> Bandung<br><span class='glyphicon glyphicon-check'></span> Depok<br><span class='glyphicon glyphicon-unchecked'></span> Banten">Checkbox</a>
+                            </li>
+                            <li>
+                              <a data-toggle="pill" href="#formSebabAkibat" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Sebab - akibat</a>
+                            </li>
+                            <li>
+                              <a data-toggle="pill" href="#formPilihan123" class="hashtip" title="">Pilihan 1,2,3,4</a>
+                            </li>
+                </ul>
+                <div class="tab-content" style="margin-top:10px;">
+                    <div class="tab-pane fade in active" id="formPilihanGanda">
                       <div class="row">
-                        <div style="margin-left:10px; width:15px; float:left;">
-                          <strong id="nomor"><?php echo $nomor; ?>.</strong>
-                        </div>
-                        <div style="margin-left: 0px;">  
-                          <div class="col-md-12" style="width:96%">
-                            <form class="form-horizontal col-md-12" action="input_soal.php?id=<?php echo $id ?>" method="post">
-                              <div class="form-group">
-                                 <label class="form-control-label">Pertanyaan</label>
-                                 <textarea id="edit1" name="edit1" class="form-control" rows="3">
-                                 </textarea>
-                              </div>
-                              <p style="margin-left:-10px; font-size:12px; color:#f7b733; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
-                               <?php 
-                                  $huruf = array("A","B","C","D","E");
-                                  $i = 0; 
-                                  while($i<4){
-                                    echo '<div class="form-group" style="margin-bottom:10px">';
-                                    echo   '<div class="row">';
-                                          echo '<div style="float:left" style="width:15px">';
-                                          echo '<i class="fa fa-check-circle fa-2x checklist" style="color:#f8f8f8"></i>';
-                                          echo '</div>';
-                                          echo '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-                                            //echo '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>';
-                                            echo '<div class="numberCircle">';
-                                            echo $huruf[$i];
-                                            echo  '</div>';
-                                          echo '</div>';
-                                          echo '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
-                                            echo '<div style="border:1px solid #ddd; padding:5px; background-color:#ffffff">';
-                                            echo '<textarea class="form-control" id="opsiGanda1" style="border:0px"></textarea>';
+                          <div style="margin-left:10px; width:15px; float:left;">
+                            <strong id="nomor"><?php echo $nomor; ?>.</strong>
+                          </div>
+                          <div style="margin-left: 0px;">  
+                            <div class="col-md-12" style="width:96%">
+                              <form class="form-horizontal col-md-12" action="input_soal.php?id=<?php echo $id ?>" method="post">
+                                <div class="form-group">
+                                   <label class="form-control-label">Pertanyaan</label>
+                                   <textarea id="edit1" name="edit1" class="form-control" rows="3">
+                                   </textarea>
+                                </div>
+                                <p style="margin-left:-10px; font-size:12px; color:#f7b733; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
+                                 <?php 
+                                    $huruf = array("A","B","C","D","E");
+                                    $i = 0; 
+                                    while($i<4){
+                                      echo '<div class="form-group" style="margin-bottom:10px">';
+                                      echo   '<div class="row">';
+                                            echo '<div style="float:left" style="width:15px">';
+                                            echo '<i class="fa fa-check-circle fa-2x checklist" style="color:#ffffff"></i>';
                                             echo '</div>';
-                                          echo '</div>';
-                                          echo '<div style="float:left">';
-                                            echo '<i class="fa fa-trash"></i>';
-                                          echo '</div>';
+                                            echo '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+                                              //echo '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>';
+                                              echo '<div class="numberCircle">';
+                                              echo $huruf[$i];
+                                              echo  '</div>';
+                                            echo '</div>';
+                                            echo '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
+                                              echo '<div style="border:1px solid #ddd; padding:5px; background-color:#ffffff">';
+                                              echo '<textarea class="form-control" id="opsiGanda1" style="border:0px"></textarea>';
+                                              echo '</div>';
+                                            echo '</div>';
+                                            echo '<div style="float:left">';
+                                              echo '<i class="fa fa-trash"></i>';
+                                            echo '</div>';
+                                        echo '</div>';
                                       echo '</div>';
-                                    echo '</div>';
-                                    $i++;
-                                  }
-                              ?> 
-                              
-                              <div class="form-group opsiGandaE" style="margin-bottom:10px" hidden>
-                                <div class="row">
-                                    <div style="float:left" style="width:15px">
-                                     <i class="fa fa-check-circle fa-2x checklist" style="color:#ffffff"></i> 
-                                    </div>
-                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                      <div class="numberCircle">E</div>
-                                    </div>
-                                    <div style="width:85%;  margin-left:-20px;" class="col-md-9">
-                                      <div style="border:1px solid #ddd; padding:5px; background-color:#ffffff">
-                                        <textarea class="form-control" id="opsiGanda1" style="border:0px"></textarea>
+                                      $i++;
+                                    }
+                                ?> 
+                                
+                                <div class="form-group opsiGandaE" style="margin-bottom:10px" hidden>
+                                  <div class="row">
+                                      <div style="float:left" style="width:15px">
+                                       <i class="fa fa-check-circle fa-2x checklist" style="color:#ffffff"></i> 
                                       </div>
-                                    </div>
-                                    <div style="float:left">
-                                      <i class="fa fa-trash"></i>
-                                    </div>
+                                      <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                        <div class="numberCircle">E</div>
+                                      </div>
+                                      <div style="width:85%;  margin-left:-20px;" class="col-md-9">
+                                        <div style="border:1px solid #ddd; padding:5px; background-color:#ffffff">
+                                          <textarea class="form-control" id="opsiGanda1" style="border:0px"></textarea>
+                                        </div>
+                                      </div>
+                                      <div style="float:left">
+                                        <i class="fa fa-trash"></i>
+                                      </div>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
-                                <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#e7e7e7; border:0px; color:#777; border:1px solid #ddd; border-radius:20px; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <strong class="col-md-1">Poin:</strong>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Benar </label>
-                                  <input type="text" class="form-control" style="width:32%">
+                                <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
+                                  <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#e7e7e7; border:0px; color:#777; border:1px solid #ddd; border-radius:20px; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
                                 </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Salah</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
+                                <div class="form-group form-inline" style="margin-bottom:10px;">
+                                  <strong class="col-md-1">Poin:</strong>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Benar </label>
+                                    <input type="text" class="form-control" style="width:32%">
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Salah</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
                                 </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
-                              </div>
-                            </form>
+                              </form>
+                            </div>
                           </div>
-                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="panel panel-default tab-pane fade" id="formIsian">
-                    <div class="panel-body">
+                    <div class="tab-pane fade" id="formIsian">
                       <div class="row">
-                        <div style="margin-left:10px; width:15px; float:left;">
-                          <strong id="nomor">1.</strong>
-                        </div>
-                        <div style="margin-left: 0px;">
-                          <div class="col-md-12" style="width:96%">
-                            <form class="form-horizontal col-md-12">
-                              <div class="form-group">
-                                <label class="form-control-label">Pertanyaan</label>
-                                <textarea id="edit2" class="form-control" rows="3"></textarea>
-                              </div>
-                              <div class="form-group" style="margin-bottom:10px;">
-                                <label class="form-control-label">Jawaban</label>
-                                <div class="form-control" id="opsiIsian"></div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <strong class="col-md-1">Poin:</strong>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Benar </label>
-                                  <input type="text" class="form-control" style="width:32%">
-                                </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
-                              </div>
-                            </form> 
+                          <div style="margin-left:10px; width:15px; float:left;">
+                            <strong id="nomor">1.</strong>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="panel panel-default tab-pane fade" id="formEssay">
-                    <div class="panel-body">
-                      <div class="row">
-                        <div style="margin-left:10px; width:15px; float:left;">
-                          <strong id="nomor">1.</strong>
-                        </div>
-                        <div style="margin-left: 0px;">
-                          <div class="col-md-12" style="width:96%">
-                            <form class="form-horizontal col-md-12">
-                              <div class="form-group">
-                                 <label class="form-control-label">Pertanyaan</label>
-                                 <textarea id="edit5" class="form-control" row="3"></textarea>
-                              </div>
-                              <div class="form-group" style="margin-bottom:10px;">
-                                <label class="form-control-label">Jawaban</label>
-                                <div style="border:1px solid #ddd; padding:5px; background-color:#ffffff">
-                                  <textarea id="opsiEssay" class="form-control" row="3" placeholder="Ketik jawaban"></textarea>
-                                </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <strong class="col-md-1">Poin:</strong>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Benar </label>
-                                  <input type="text" class="form-control" style="width:32%">
-                                </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
-                              </div>
-                            </form> 
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>    
-                  <!-- <div class="panel panel-default tab-pane fade" id="formPencocokan">
-                    <div class="panel-body">
-                      <div class="row">
-                        <div style="margin-left:10px; width:15px; float:left;">
-                          <strong id="nomor">1.</strong>
-                        </div>
-                        <div class="col-md-12" style="width:96%">
                           <div style="margin-left: 0px;">
-                            <form class="form-horizontal col-md-12">
-                              <div class="form-group form-inline">
-                                <div class="col-md-5">
-                                  <strong>Pilihan</strong>
+                            <div class="col-md-12" style="width:96%">
+                              <form class="form-horizontal col-md-12">
+                                <div class="form-group">
+                                  <label class="form-control-label">Pertanyaan</label>
+                                  <textarea id="edit2" class="form-control" rows="3"></textarea>
                                 </div>
-                                <div class="col-md-offset-2 col-md-5">
-                                  <strong>Pasangan</strong>
+                                <div class="form-group" style="margin-bottom:10px;">
+                                  <label class="form-control-label">Jawaban</label>
+                                  <div class="form-control" id="opsiIsian"></div>
                                 </div>
-                              </div>
-                              <div class="form-group" style="margin-bottom:10px;">
-                                <div class="col-md-5">
-                                  <input type=text class="form-control">
+                                <div class="form-group form-inline" style="margin-bottom:10px;">
+                                  <strong class="col-md-1">Poin:</strong>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Benar </label>
+                                    <input type="text" class="form-control" style="width:32%">
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
                                 </div>
-                                <div class="col-md-offset-2 col-md-5">
-                                  <input type=text class="form-control">
-                                </div>
-                              </div>
-                              <div class="form-group" style="margin-bottom:10px;">
-                                <div class="col-md-5">
-                                  <input type=text class="form-control">
-                                </div>
-                                <div class="col-md-2" style="text-align:center";>
-                                  
-                                </div>
-                                <div class="col-md-5">
-                                  <input type=text class="form-control">
-                                </div>
-                              </div>
-                              <div class="form-group" style="margin-bottom:10px;">
-                                <div class="col-md-5">
-                                  <input type=text class="form-control">
-                                </div>
-                                <div class="col-md-2" style="text-align:center";>
-                                  
-                                </div>
-                                <div class="col-md-5">
-                                  <input type=text class="form-control">
-                                </div>
-                              </div>
-                              <div class="form-group" style="margin-bottom: 10px;">
-                                <button class="button button1" style="margin-left:20px; font-size:13px; background-color:#f8f8f8; border:0px; color:#777"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
-                              </div>
-                              <br>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <strong class="col-md-1">Poin:</strong>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Benar </label>
-                                  <input type="text" class="form-control" style="width:32%">
-                                </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Salah</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label"></label>
-                                  <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                                </div>                            
-                              </div>
-                            </form> 
+                              </form> 
+                            </div>
                           </div>
-                        </div>
                       </div>
                     </div>
-                  </div> -->
-                  <div class="panel panel-default tab-pane fade" id="formSebabAkibat">
-                    <div class="panel-body">
+                    <div class="tab-pane fade" id="formEssay">
                       <div class="row">
-                        <div style="margin-left:10px; width:15px; float:left;">
-                          <strong id="nomor">1.</strong>
-                        </div>
-                        <div style="margin-left: 0px;">  
+                          <div style="margin-left:10px; width:15px; float:left;">
+                            <strong id="nomor">1.</strong>
+                          </div>
+                          <div style="margin-left: 0px;">
+                            <div class="col-md-12" style="width:96%">
+                              <form class="form-horizontal col-md-12">
+                                <div class="form-group">
+                                   <label class="form-control-label">Pertanyaan</label>
+                                   <textarea id="edit5" class="form-control" row="3"></textarea>
+                                </div>
+                                <div class="form-group" style="margin-bottom:10px;">
+                                  <label class="form-control-label">Jawaban</label>
+                                  <div style="border:1px solid #ddd; padding:5px; background-color:#ffffff">
+                                    <textarea id="opsiEssay" class="form-control" row="3" placeholder="Ketik jawaban"></textarea>
+                                  </div>
+                                </div>
+                                <div class="form-group form-inline" style="margin-bottom:10px;">
+                                  <strong class="col-md-1">Poin:</strong>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Benar </label>
+                                    <input type="text" class="form-control" style="width:32%">
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
+                                </div>
+                              </form> 
+                            </div>
+                          </div>
+                      </div>
+                    </div>    
+                    <!-- <div class="panel panel-default tab-pane fade" id="formPencocokan">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div style="margin-left:10px; width:15px; float:left;">
+                            <strong id="nomor">1.</strong>
+                          </div>
                           <div class="col-md-12" style="width:96%">
-                            <form class="form-horizontal col-md-12">
-                              <div class="form-group">
-                                 <label class="form-control-label">Pernyataan</label>
-                                 <textarea class="form-control" rows="2"></textarea>
-                              </div>
-                              <div class="form-group">
-                                 <label class="form-control-label col-md-offset-5 col-md-6">SEBAB</label>
-                              </div>
-                              <div class="form-group">
-                                 <label class="form-control-label">Alasan</label>
-                                 <textarea class="form-control" rows="2"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <div class="radio">
-                                  <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan benar, alasan benar, keduanya menunjukkan hubungan sebab akibat</label>
+                            <div style="margin-left: 0px;">
+                              <form class="form-horizontal col-md-12">
+                                <div class="form-group form-inline">
+                                  <div class="col-md-5">
+                                    <strong>Pilihan</strong>
+                                  </div>
+                                  <div class="col-md-offset-2 col-md-5">
+                                    <strong>Pasangan</strong>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="form-group">
-                                <div class="radio">
-                                  <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan benar, alasan benar, tapi keduanya tidak menunjukkan hubungan sebab akibat</label>
+                                <div class="form-group" style="margin-bottom:10px;">
+                                  <div class="col-md-5">
+                                    <input type=text class="form-control">
+                                  </div>
+                                  <div class="col-md-offset-2 col-md-5">
+                                    <input type=text class="form-control">
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="form-group">
-                                <div class="radio">
-                                  <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan benar, alasan salah</label>
+                                <div class="form-group" style="margin-bottom:10px;">
+                                  <div class="col-md-5">
+                                    <input type=text class="form-control">
+                                  </div>
+                                  <div class="col-md-2" style="text-align:center";>
+                                    
+                                  </div>
+                                  <div class="col-md-5">
+                                    <input type=text class="form-control">
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="form-group">
-                                <div class="radio">
-                                  <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan salah, alasan benar</label>
-                                </div>    
-                              </div>
-                              <div class="form-group" style="margin-bottom: 10px;">
-                                <div class="radio">
-                                  <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan dan alasan salah</label>
-                                </div>    
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <strong class="col-md-1">Poin:</strong>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Benar </label>
-                                  <input type="text" class="form-control" style="width:32%">
+                                <div class="form-group" style="margin-bottom:10px;">
+                                  <div class="col-md-5">
+                                    <input type=text class="form-control">
+                                  </div>
+                                  <div class="col-md-2" style="text-align:center";>
+                                    
+                                  </div>
+                                  <div class="col-md-5">
+                                    <input type=text class="form-control">
+                                  </div>
                                 </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                  <button class="button button1" style="margin-left:20px; font-size:13px; background-color:#f8f8f8; border:0px; color:#777"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
                                 </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
+                                <br>
+                                <div class="form-group form-inline" style="margin-bottom:10px;">
+                                  <strong class="col-md-1">Poin:</strong>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Benar </label>
+                                    <input type="text" class="form-control" style="width:32%">
+                                  </div>
                                 </div>
-                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
-                              </div>
-                            </form>
+                                <div class="form-group form-inline" style="margin-bottom:10px;">
+                                  <div class="col-md-push-1 col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                </div>
+                                <div class="form-group form-inline" style="margin-bottom:10px">
+                                  <div class="col-md-push-1 col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Salah</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                </div>
+                                <div class="form-group form-inline" style="margin-bottom:10px">
+                                  <div class="col-md-push-1 col-md-3">
+                                    <label style="width:60px;" class="form-control-label"></label>
+                                    <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
+                                  </div>                            
+                                </div>
+                              </form> 
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div class="panel panel-default tab-pane fade" id="formPilihan123">
-                    <div class="panel-body">
+                    </div> -->
+                    <div class="tab-pane fade" id="formSebabAkibat">
                       <div class="row">
-                        <div style="margin-left:10px; width:15px; float:left;">
-                          <strong id="nomor">1.</strong>
-                        </div>
-                        <div style="margin-left: 0px;">  
-                          <div class="col-md-12" style="width:96%">
-                            <form class="form-horizontal col-md-12">
-                              <div class="form-group">
-                                 <label class="form-control-label">Pernyataan</label>
-                                 <textarea class="form-control" rows="3"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <div class="radio">
-                                  <label class="col-xs-12 col-md-12"><input type="radio">(1), (2), dan (3) benar</label>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <div class="radio">
-                                  <label class="col-xs-12 col-md-12"><input type="radio">(1) dan (3) benar</label>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <div class="radio">
-                                  <label class="col-xs-12 col-md-12"><input type="radio">(2) dan (4) benar</label>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <div class="radio">
-                                  <label class="col-xs-12 col-md-12"><input type="radio">Hanya (4) yang benar</label>
-                                </div>    
-                              </div>
-                              <div class="form-group" style="margin-bottom:10px;">
-                                <div class="radio">
-                                  <label class="col-xs-12 col-md-12"><input type="radio">Benar semua</label>
-                                </div>    
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <strong class="col-md-1">Poin:</strong>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Benar </label>
-                                  <input type="text" class="form-control" style="width:32%">
-                                </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
-                              </div>
-                            </form>
+                          <div style="margin-left:10px; width:15px; float:left;">
+                            <strong id="nomor">1.</strong>
                           </div>
-                        </div>
+                          <div style="margin-left: 0px;">  
+                            <div class="col-md-12" style="width:96%">
+                              <form class="form-horizontal col-md-12">
+                                <div class="form-group">
+                                   <label class="form-control-label">Pernyataan</label>
+                                   <textarea class="form-control" rows="2"></textarea>
+                                </div>
+                                <div class="form-group">
+                                   <label class="form-control-label col-md-offset-5 col-md-6">SEBAB</label>
+                                </div>
+                                <div class="form-group">
+                                   <label class="form-control-label">Alasan</label>
+                                   <textarea class="form-control" rows="2"></textarea>
+                                </div>
+                                <div class="form-group">
+                                  <div class="radio">
+                                    <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan benar, alasan benar, keduanya menunjukkan hubungan sebab akibat</label>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="radio">
+                                    <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan benar, alasan benar, tapi keduanya tidak menunjukkan hubungan sebab akibat</label>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="radio">
+                                    <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan benar, alasan salah</label>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="radio">
+                                    <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan salah, alasan benar</label>
+                                  </div>    
+                                </div>
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                  <div class="radio">
+                                    <label class="col-xs-12 col-md-12"><input type="radio">Pernyataan dan alasan salah</label>
+                                  </div>    
+                                </div>
+                                <div class="form-group form-inline" style="margin-bottom:10px;">
+                                  <strong class="col-md-1">Poin:</strong>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Benar </label>
+                                    <input type="text" class="form-control" style="width:32%">
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
+                                </div>
+                              </form>
+                            </div>
+                          </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="panel panel-default tab-pane fade" id="formCheckbox">
-                    <div class="panel-body">
+                    <div class="tab-pane fade" id="formPilihan123">
                       <div class="row">
-                        <div style="margin-left:10px; width:15px; float:left;">
-                          <strong id="nomor">1.</strong>
-                        </div>
-                        <div style="margin-left: 0px;">  
-                          <div class="col-md-12" style="width:96%">
-                            <form class="form-horizontal col-md-12">
-                              <div class="form-group">
-                                 <label class="form-control-label">Pertanyaan</label>
-                                 <textarea id="edit3" class="form-control" rows="3"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <div class="checkbox">
-                                  <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox1"><input type="text" class="form-control"></label>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <div class="checkbox">
-                                  <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox2"><input type="text" class="form-control"></label>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <div class="checkbox">
-                                  <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox3"><input type="text" class="form-control"></label>
-                                </div>
-                              </div>
-                              <div class="form-group" style="margin-bottom: 10px;">
-                                <div class="checkbox">
-                                  <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox4"><input type="text" class="form-control"></label>
-                                </div>    
-                              </div>
-                              <div class="form-group" style="margin-bottom: 10px;">
-                                <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#e7e7e7; border:0px; color:#777; border:1px solid #ddd; border-radius:20px; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <strong class="col-md-1">Poin:</strong>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Benar </label>
-                                  <input type="text" class="form-control" style="width:32%">
-                                </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
-                              </div>
-                            </form>
+                          <div style="margin-left:10px; width:15px; float:left;">
+                            <strong id="nomor">1.</strong>
                           </div>
-                        </div>
+                          <div style="margin-left: 0px;">  
+                            <div class="col-md-12" style="width:96%">
+                              <form class="form-horizontal col-md-12">
+                                <div class="form-group">
+                                   <label class="form-control-label">Pernyataan</label>
+                                   <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                  <div class="radio">
+                                    <label class="col-xs-12 col-md-12"><input type="radio">(1), (2), dan (3) benar</label>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="radio">
+                                    <label class="col-xs-12 col-md-12"><input type="radio">(1) dan (3) benar</label>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="radio">
+                                    <label class="col-xs-12 col-md-12"><input type="radio">(2) dan (4) benar</label>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="radio">
+                                    <label class="col-xs-12 col-md-12"><input type="radio">Hanya (4) yang benar</label>
+                                  </div>    
+                                </div>
+                                <div class="form-group" style="margin-bottom:10px;">
+                                  <div class="radio">
+                                    <label class="col-xs-12 col-md-12"><input type="radio">Benar semua</label>
+                                  </div>    
+                                </div>
+                                <div class="form-group form-inline" style="margin-bottom:10px;">
+                                  <strong class="col-md-1">Poin:</strong>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Benar </label>
+                                    <input type="text" class="form-control" style="width:32%">
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
+                                </div>
+                              </form>
+                            </div>
+                          </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="panel panel-default tab-pane fade" id="formBenarSalah">
-                    <div class="panel-body">
+                    <div class="tab-pane fade" id="formCheckbox">
                       <div class="row">
-                        <div style="margin-left:10px; width:15px; float:left;">
-                          <strong id="nomor">1.</strong>
-                        </div>
-                        <div style="margin-left: 0px;">
-                          <div class="col-md-12" style="width:96%">
-                            <form class="form-horizontal col-md-12">
-                              <div class="form-group">
-                                 <label class="form-control-label">Pertanyaan</label>
-                                 <textarea id="edit4" class="form-control" row="3"></textarea>
-                              </div>
-                              <p style="margin-left:-10px; font-size:12px; color:#f7b733; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
-                              <div class="form-group" style="margin-bottom:10px; margin-top:10px;">
-                                <div class="row">
-                                  <div style="float:left" style="width:15px">
-                                      <i class="fa fa-check-circle fa-lg" style="color:#f8f8f8"></i>
-                                    </div>
-                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                                    </div>
-                                    <div style="width:85%; margin-left:-20px;" class="col-md-9">
-                                      Benar
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="form-group" style="margin-bottom:10px; margin-top:10px;">
-                                <div class="row">
-                                  <div style="float:left" style="width:15px">
-                                      <i class="fa fa-check-circle fa-lg" style="color:#f8f8f8"></i>
-                                    </div>
-                                    <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
-                                      <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
-                                    </div>
-                                    <div style="width:85%; margin-left:-20px;" class="col-md-9">
-                                      Salah
-                                    </div>
-                                </div>
-                              </div>
-                              <br>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <strong class="col-md-1">Poin:</strong>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Benar </label>
-                                  <input type="text" class="form-control" style="width:32%">
-                                </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                                <div class="col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
-                              </div>
-                            </form>
+                          <div style="margin-left:10px; width:15px; float:left;">
+                            <strong id="nomor">1.</strong>
                           </div>
-                        </div>
+                          <div style="margin-left: 0px;">  
+                            <div class="col-md-12" style="width:96%">
+                              <form class="form-horizontal col-md-12">
+                                <div class="form-group">
+                                   <label class="form-control-label">Pertanyaan</label>
+                                   <textarea id="edit3" class="form-control" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                  <div class="checkbox">
+                                    <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox1"><input type="text" class="form-control"></label>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="checkbox">
+                                    <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox2"><input type="text" class="form-control"></label>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="checkbox">
+                                    <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox3"><input type="text" class="form-control"></label>
+                                  </div>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                  <div class="checkbox">
+                                    <label class="col-xs-12 col-md-12"><input type="checkbox" name="checkbox4"><input type="text" class="form-control"></label>
+                                  </div>    
+                                </div>
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                  <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#e7e7e7; border:0px; color:#777; border:1px solid #ddd; border-radius:20px; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
+                                </div>
+                                <div class="form-group form-inline" style="margin-bottom:10px;">
+                                  <strong class="col-md-1">Poin:</strong>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Benar </label>
+                                    <input type="text" class="form-control" style="width:32%">
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
+                                </div>
+                              </form>
+                            </div>
+                          </div>
                       </div>
                     </div>
-                  </div>
+                    <div class="tab-pane fade" id="formBenarSalah">
+                      <div class="row">
+                          <div style="margin-left:10px; width:15px; float:left;">
+                            <strong id="nomor">1.</strong>
+                          </div>
+                          <div style="margin-left: 0px;">
+                            <div class="col-md-12" style="width:96%">
+                              <form class="form-horizontal col-md-12">
+                                <div class="form-group">
+                                   <label class="form-control-label">Pertanyaan</label>
+                                   <textarea id="edit4" class="form-control" row="3"></textarea>
+                                </div>
+                                <p style="margin-left:-10px; font-size:12px; color:#f7b733; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
+                                <div class="form-group" style="margin-bottom:10px; margin-top:10px;">
+                                  <div class="row">
+                                    <div style="float:left" style="width:15px">
+                                        <i class="fa fa-check-circle fa-lg" style="color:#f8f8f8"></i>
+                                      </div>
+                                      <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                        <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                      </div>
+                                      <div style="width:85%; margin-left:-20px;" class="col-md-9">
+                                        Benar
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="form-group" style="margin-bottom:10px; margin-top:10px;">
+                                  <div class="row">
+                                    <div style="float:left" style="width:15px">
+                                        <i class="fa fa-check-circle fa-lg" style="color:#f8f8f8"></i>
+                                      </div>
+                                      <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
+                                        <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
+                                      </div>
+                                      <div style="width:85%; margin-left:-20px;" class="col-md-9">
+                                        Salah
+                                      </div>
+                                  </div>
+                                </div>
+                                <br>
+                                <div class="form-group form-inline" style="margin-bottom:10px;">
+                                  <strong class="col-md-1">Poin:</strong>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Benar </label>
+                                    <input type="text" class="form-control" style="width:32%">
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label style="width:60px;" class="form-control-label">Kosong</label>
+                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                  </div>
+                                  <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
-      </div> 
+          </div>
+          <div class="col-md-offset-1 col-md-10" style="margin-top:10px;">
+            <button class="button button1 pull-right" style="font-size:13px;"><i class="fa fa-plus"></i> Tambah soal</button>
+          </div>
+        </div> 
       </div>
     </div>  
 
