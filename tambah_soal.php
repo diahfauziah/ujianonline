@@ -341,44 +341,38 @@
               <hr />
               <form class="form-horizontal">
                 <div class="form-group">
-                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Judul:</label>
-                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['judul_ujian']; ?></div>
+                  <label class="col-md-2" style="text-align:right; padding-right:0px;">Judul:</label>
+                    <div class="col-md-10" style="text-align:left"><?php echo $ujian['judul_ujian']; ?></div>
                 </div>
                 <div class="form-group">
-                  <label class="col-md-5" style="text-align:right; padding-right:0px;">URL:</label>
-                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['url_ujian'] ?></div>
+                  <label class="col-md-2" style="text-align:right; padding-right:0px;">URL:</label>
+                    <div class="col-md-10" style="text-align:left"><?php echo $ujian['url_ujian']; ?></div>
                 </div>
                 <div class="form-group">
-                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Waktu:</label>
-                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['lama_ujian'] ?></div>
+                  <label class="col-md-2" style="text-align:right; padding-right:0px;">Waktu:</label>
+                  <div class="col-md-3" style="text-align:left"><?php echo $ujian['lama_ujian']; ?></div>
+                  <label class="col-md-offset-1 col-md-2" style="text-align:right; padding-right:0px;">Jumlah soal:</label>
+                  <div class="col-md-3" style="text-align:left"><?php echo $ujian['total_soal']; ?></div>
                 </div>
                 <div class="form-group">
-                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Jumlah soal:</label>
-                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['total_soal'] ?></div>
+                  <label class="col-md-2" style="text-align:right; padding-right:0px;">Perlu login:</label>
+                  <div class="col-md-3" style="text-align:left">Ya</div>
+                  <label class="col-md-offset-1 col-md-2" style="text-align:right; padding-right:0px;">Acak soal:</label>
+                  <div class="col-md-3" style="text-align:left">Ya</div>
                 </div>
                 <div class="form-group">
-                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Acak soal:</label>
-                  <div class="col-md-2" style="text-align:left;">Ya</div>
-                  <label class="col-md-3" style="text-align:left; padding-right:0px;">Acak soal:</label>
-                  <div class="col-md-2 pull-left" style="text-align:left;">Ya</div>
+                  <label class="col-md-2" style="text-align:right; padding-right:0px;">Kategori:</label>
+                    <div class="col-md-10" style="text-align:left">MTK XII IPA</div>
                 </div>
                 <div class="form-group">
-                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Perlu login:</label>
-                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['total_soal'] ?></div>
-                </div>
-                <div class="form-group">
-                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Kategori:</label>
-                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['total_soal'] ?></div>
-                </div>
-                <div class="form-group">
-                  <label class="col-md-5" style="text-align:right; padding-right:0px;">Petunjuk:</label>
-                  <div class="col-md-7" style="text-align:left"><?php echo $ujian['total_soal'] ?></div>
+                  <label class="col-md-2" style="text-align:right; padding-right:0px;">Petunjuk:</label>
+                  <div class="col-md-10" style="text-align:left" rows="3">-</div>
                 </div>
               </form>
             </div>
           </div>
           <div class="col-md-offset-1 col-md-10" style="margin-top:10px;">
-            <button class="button button1 pull-right" style="font-size:13px;"><i class="fa fa-plus"></i> Tambah soal</button>
+            <button class="button button1 pull-right btntambahsoal" style="font-size:13px;"><i class="fa fa-plus"></i> Tambah soal</button>
           </div>
           <?php 
             include('koneksi.php'); 
@@ -386,7 +380,7 @@
             $query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
             
             while ($soal = mysqli_fetch_array($query1)){
-            echo '<div class="panel panel-default col-md-offset-1 col-md-10" style="margin-top:10px; background-color:#ffffff; border:0px;">';
+            echo '<div class="panel panel-default col-md-offset-1 col-md-10 soaltersimpan" style="margin-top:10px; background-color:#ffffff; border:0px;">';
             echo '<div class="panel-body">';
             echo     '<div class="row">';
             echo       '<div style="margin-left:10px; width:15px; float:left;">';
@@ -437,7 +431,7 @@
            echo '</div>';
            };
          ?>
-          <div class="panel panel-default col-md-offset-1 col-md-10" style="margin-top:10px; background-color:#ffffff;">
+          <div class="panel panel-default col-md-offset-1 col-md-10" id="formTambahSoal" style="margin-top:10px; background-color:#ffffff;">
             <div class="panel-body">
               <div class="row" style="margin-left:5px;">
                 <ul class="nav nav-pills">
@@ -1100,7 +1094,7 @@
 
 
         $('.hashtip').tooltipsy({
-              offset: [10, 0],
+              offset: [0, -10],
               show: function (e, $el) {
                   $el.css({
                       'left': parseInt($el[0].style.left.replace(/[a-z]/g, '')) - 50 + 'px',
@@ -1128,6 +1122,9 @@
                   'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
                   'text-shadow': 'none'
               }
+          });
+          $('.btntambahsoal').click(function(){
+            //$(".soaltersimpan").last().append($("#formTambahSoal"));
           });
     </script>
   </body>
