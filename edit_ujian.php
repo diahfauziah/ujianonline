@@ -412,13 +412,13 @@
 					<input type="text" class="form-control" id="Judul" name="Judul" value="<?php echo $ujian['judul_ujian'] ?>">
 				  </div>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 				  <label for="URL" class="col-md-4 control-label">URL</label>
 				  <div class="col-md-8">
 					<a href="#" class="form-control disabled" style="background-color:#f8f8f8"><?php echo $ujian['url_ujian'] ?></a>
 				  </div> 
 				  <input type="hidden" id="URL" name="URL" value="<?php echo $ujian['url_ujian'] ?>" />
-				</div>
+				</div> -->
 				<div class="form-group">
 				  <label for="Waktu" class="col-md-4 control-label">Waktu</label>
 				  <div class="col-md-3">
@@ -662,10 +662,12 @@
 
 
 		$('#Petunjuk').froalaEditor({
-		  toolbarButtons: ['insertImage', 'undo', 'redo', 'clearFormatting', 'clear', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'highlight', 'strikeThrough', 'align', 'formatOL', 'formatUL', 'remove'],
+		  toolbarButtons: ['insertImage', 'undo', 'redo', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'formatOL', 'formatUL', 'align','remove'],
 		  placeholderText: 'Ketik untuk menambahkan petunjuk',
+       charCounterCount: false,
 		  spellcheck: false
 		}); 
+    $('span.fr-placeholder').css({"height":"35px"});
 	  });
 	  
 	  $(document).ready(function() {

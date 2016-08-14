@@ -241,12 +241,16 @@
           height: 32px;
           padding: 5px;
           
-          background: #fff;
-          border: 2px solid #4ABDAC;
+          background: #ffffff;
+          border: 2px solid #e7e7e7;
           color: #4ABDAC;
           text-align: center;
           
           font: 15px Arial, sans-serif;
+          cursor: pointer;
+      }
+      .numberCircle:hover {
+        background-color: #e7e7e7;
       }
       .footer {
           background-color: #F4F4F4;
@@ -264,6 +268,14 @@
         min-height: 600px;
         padding: 20px 12px;
       }
+      .form-control {
+        border-radius:0px;
+      }
+      .panel {
+        background-color: #f8f8f8;
+        /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+      }
+
     </style>
   </head>
   <body>
@@ -358,7 +370,7 @@
               </div>
               <div class="col-md-10">
                 <div class="tab-content">
-                  <div class="panel panel-default tab-pane fade in active" id="formPilihanGanda">
+                  <div class="panel panel-default tab-pane fade in active" id="formPilihanGanda" style="background-color:#f8f8f8">
                     <div class="panel-body">
                       <div class="row">
                         <div style="margin-left:10px; width:15px; float:left;">
@@ -372,7 +384,7 @@
                                  <textarea id="edit1" name="edit1" class="form-control" rows="3">
                                  </textarea>
                               </div>
-                              <p style="margin-left:-10px; font-size:11px; color:#818181; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
+                              <p style="margin-left:-10px; font-size:12px; color:#f7b733; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
                                <?php 
                                   $huruf = array("A","B","C","D","E");
                                   $i = 0; 
@@ -380,13 +392,18 @@
                                     echo '<div class="form-group" style="margin-bottom:10px">';
                                     echo   '<div class="row">';
                                           echo '<div style="float:left" style="width:15px">';
-                                          echo '<i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i>';
+                                          echo '<i class="fa fa-check-circle fa-2x checklist" style="color:#f8f8f8"></i>';
                                           echo '</div>';
                                           echo '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-                                            echo '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>';
+                                            //echo '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>';
+                                            echo '<div class="numberCircle">';
+                                            echo $huruf[$i];
+                                            echo  '</div>';
                                           echo '</div>';
                                           echo '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
-                                            echo '<div class="form-control" id="opsiGanda1"></div>';
+                                            echo '<div style="border:1px solid #ddd; padding:5px; background-color:#ffffff">';
+                                            echo '<textarea class="form-control" id="opsiGanda1" style="border:0px"></textarea>';
+                                            echo '</div>';
                                           echo '</div>';
                                           echo '<div style="float:left">';
                                             echo '<i class="fa fa-trash"></i>';
@@ -397,16 +414,18 @@
                                   }
                               ?> 
                               
-                              <div class="form-group opsiGandaE" style="margin-bottom:10px" id="opsiGanda1" hidden>
+                              <div class="form-group opsiGandaE" style="margin-bottom:10px" hidden>
                                 <div class="row">
                                     <div style="float:left" style="width:15px">
-                                     <i class="fa fa-check-circle fa-lg checklist" style="color:#ffffff"></i> 
+                                     <i class="fa fa-check-circle fa-2x checklist" style="color:#ffffff"></i> 
                                     </div>
                                     <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
                                       <div class="numberCircle">E</div>
                                     </div>
                                     <div style="width:85%;  margin-left:-20px;" class="col-md-9">
-                                      <div class="form-control" id="opsiGanda1"></div>
+                                      <div style="border:1px solid #ddd; padding:5px; background-color:#ffffff">
+                                        <textarea class="form-control" id="opsiGanda1" style="border:0px"></textarea>
+                                      </div>
                                     </div>
                                     <div style="float:left">
                                       <i class="fa fa-trash"></i>
@@ -414,7 +433,7 @@
                                 </div>
                               </div>
                               <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
-                                <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#f8f8f8; border:0px; color:#777; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
+                                <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#e7e7e7; border:0px; color:#777; border:1px solid #ddd; border-radius:20px; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
                               </div>
                               <div class="form-group form-inline" style="margin-bottom:10px;">
                                 <strong class="col-md-1">Poin:</strong>
@@ -422,24 +441,15 @@
                                   <label style="width:60px;" class="form-control-label">Benar </label>
                                   <input type="text" class="form-control" style="width:32%">
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Kosong</label>
-                                  <input type="text" class="form-control" style="width:32%" value="0"> 
-                                </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
+                                <div class="col-md-3">
                                   <label style="width:60px;" class="form-control-label">Salah</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label"></label>
-                                  <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
-                                </div>                            
+                                <div class="col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Kosong</label>
+                                  <input type="text" class="form-control" style="width:32%" value="0"> 
+                                </div>
+                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
                               </div>
                             </form>
                           </div>
@@ -470,24 +480,15 @@
                                   <label style="width:60px;" class="form-control-label">Benar </label>
                                   <input type="text" class="form-control" style="width:32%">
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <div class="col-md-push-1 col-md-3">
+                                <div class="col-md-3">
                                   <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Salah</label>
+                                <div class="col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label"></label>
-                                  <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                                </div>                            
+                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
                               </div>
                             </form> 
                           </div>
@@ -510,7 +511,9 @@
                               </div>
                               <div class="form-group" style="margin-bottom:10px;">
                                 <label class="form-control-label">Jawaban</label>
-                                <textarea id="opsiEssay" class="form-control" row="3"></textarea>
+                                <div style="border:1px solid #ddd; padding:5px; background-color:#ffffff">
+                                  <textarea id="opsiEssay" class="form-control" row="3" placeholder="Ketik jawaban"></textarea>
+                                </div>
                               </div>
                               <div class="form-group form-inline" style="margin-bottom:10px;">
                                 <strong class="col-md-1">Poin:</strong>
@@ -518,24 +521,15 @@
                                   <label style="width:60px;" class="form-control-label">Benar </label>
                                   <input type="text" class="form-control" style="width:32%">
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <div class="col-md-push-1 col-md-3">
+                                <div class="col-md-3">
                                   <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Salah</label>
+                                <div class="col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label"></label>
-                                  <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                                </div>                            
+                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
                               </div>
                             </form> 
                           </div>
@@ -640,7 +634,10 @@
                               </div>
                               <div class="form-group">
                                  <label class="form-control-label col-md-offset-5 col-md-6">SEBAB</label>
-                                 <textarea  style="margin-bottom:10px;" class="form-control" rows="2"></textarea>
+                              </div>
+                              <div class="form-group">
+                                 <label class="form-control-label">Alasan</label>
+                                 <textarea class="form-control" rows="2"></textarea>
                               </div>
                               <div class="form-group">
                                 <div class="radio">
@@ -673,24 +670,15 @@
                                   <label style="width:60px;" class="form-control-label">Benar </label>
                                   <input type="text" class="form-control" style="width:32%">
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <div class="col-md-push-1 col-md-3">
+                                <div class="col-md-3">
                                   <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Salah</label>
+                                <div class="col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label"></label>
-                                  <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                                </div>                            
+                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
                               </div>
                             </form>
                           </div>
@@ -742,24 +730,15 @@
                                   <label style="width:60px;" class="form-control-label">Benar </label>
                                   <input type="text" class="form-control" style="width:32%">
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <div class="col-md-push-1 col-md-3">
+                                <div class="col-md-3">
                                   <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Salah</label>
+                                <div class="col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label"></label>
-                                  <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                                </div>                            
+                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
                               </div>
                             </form>
                           </div>
@@ -801,7 +780,7 @@
                                 </div>    
                               </div>
                               <div class="form-group" style="margin-bottom: 10px;">
-                                <button class="button button1" style="margin-left:20px; font-size:13px; background-color:#f8f8f8; border:0px; color:#777"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
+                                <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#e7e7e7; border:0px; color:#777; border:1px solid #ddd; border-radius:20px; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
                               </div>
                               <div class="form-group form-inline" style="margin-bottom:10px;">
                                 <strong class="col-md-1">Poin:</strong>
@@ -809,24 +788,15 @@
                                   <label style="width:60px;" class="form-control-label">Benar </label>
                                   <input type="text" class="form-control" style="width:32%">
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <div class="col-md-push-1 col-md-3">
+                                <div class="col-md-3">
                                   <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Salah</label>
+                                <div class="col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label"></label>
-                                  <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                                </div>                            
+                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
                               </div>
                             </form>
                           </div>
@@ -847,11 +817,11 @@
                                  <label class="form-control-label">Pertanyaan</label>
                                  <textarea id="edit4" class="form-control" row="3"></textarea>
                               </div>
-                              <p style="margin-left:-10px; font-size:11px; color:#818181; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
+                              <p style="margin-left:-10px; font-size:12px; color:#f7b733; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
                               <div class="form-group" style="margin-bottom:10px; margin-top:10px;">
                                 <div class="row">
                                   <div style="float:left" style="width:15px">
-                                      <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
+                                      <i class="fa fa-check-circle fa-lg" style="color:#f8f8f8"></i>
                                     </div>
                                     <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
                                       <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
@@ -864,7 +834,7 @@
                               <div class="form-group" style="margin-bottom:10px; margin-top:10px;">
                                 <div class="row">
                                   <div style="float:left" style="width:15px">
-                                      <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
+                                      <i class="fa fa-check-circle fa-lg" style="color:#f8f8f8"></i>
                                     </div>
                                     <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
                                       <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
@@ -881,24 +851,15 @@
                                   <label style="width:60px;" class="form-control-label">Benar </label>
                                   <input type="text" class="form-control" style="width:32%">
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px;">
-                                <div class="col-md-push-1 col-md-3">
+                                <div class="col-md-3">
                                   <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label">Salah</label>
+                                <div class="col-md-3">
+                                  <label style="width:60px;" class="form-control-label">Kosong</label>
                                   <input type="text" class="form-control" style="width:32%" value="0"> 
                                 </div>
-                              </div>
-                              <div class="form-group form-inline" style="margin-bottom:10px">
-                                <div class="col-md-push-1 col-md-3">
-                                  <label style="width:60px;" class="form-control-label"></label>
-                                  <a href="view_ujian.html" id="hapusSoal" class="btn btn-simpan"> Simpan</a>
-                                </div>                            
+                                <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
                               </div>
                             </form>
                           </div>
@@ -999,8 +960,9 @@
             });
 
             $('#edit1, #edit2, #edit3, #edit4, #edit5').froalaEditor({
-              toolbarButtons: ['insertImage', 'undo', 'redo', 'clearFormatting', 'clear', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'highlight', 'strikeThrough', 'align', 'formatOL', 'formatUL', 'remove'],
+              toolbarButtons: ['insertImage', 'undo', 'redo', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'formatUL', 'formatOL', 'align', 'remove'],
               placeholderText: 'Ketik pertanyaan',
+              charCounterCount:false,
               spellcheck: false
             });
             $('div.opsi').froalaEditor({
@@ -1026,11 +988,12 @@
         $(function(){
             $(".setjawaban").click(function(){
               $(".setjawaban").removeClass("fa fa-circle-thin");
+              $(".setjawaban").css({"color":"#dadada"})
               $(".setjawaban").addClass("fa fa-circle-thin");
               $(this).removeClass("fa fa-circle-thin");
               $(this).addClass("fa fa-circle");
               $(this).css({
-                "color" : "#32CD32"
+                "color" : "#b4e3dc"
               });
               //$(this).closest('.checklist').find()
             });
@@ -1038,6 +1001,16 @@
               $('.opsiGandaE').removeAttr("hidden");
             });
         });
+
+        $(function(){
+            $(".numberCircle").click(function(){
+              $(".fa-check-circle").css({"color":"#f8f8f8"});
+              $(".numberCircle").css({"background":"#fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
+              $(this).css({"background":"#b4e3dc", "color":"#fff", "border-color":"#e7e7e7"});
+              $(this).closest('.row').find(".fa-check-circle").css({"color":"#b4e3dc"});
+            });
+        });
+
 
         $('.hashtip').tooltipsy({
               offset: [10, 0],

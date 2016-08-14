@@ -10,7 +10,7 @@
 		$jam = intval($totalwaktu / 3600, 10);
 		$menit = intval(($totalwaktu % 3600) / 60, 10);
 		$detik = intval($totalwaktu % 60, 10);
-		$tampilwaktu = "$jam jam: $menit menit: $detik detik";
+		$tampilwaktu = "$jam jam  $menit menit $detik detik";
 		$soalterjawab = 0;
 		$totalnilai = 0;
 		

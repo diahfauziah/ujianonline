@@ -255,8 +255,8 @@
           height: 32px;
           padding: 5px;
           
-          background: #fff;
-          border: 2px solid #4ABDAC;
+          background: #f8f8f8;
+          border: 2px solid #e7e7e7;
           color: #4ABDAC;
           text-align: center;
           
@@ -344,7 +344,7 @@
         </div> -->
 
          <div class="col-md-offset-2 col-md-8">
-            <div class="panel panel-default" style="margin-bottom:5px; border-radius:0px;">
+            <div class="panel panel-default" style="margin-bottom:5px; border-radius:0px; border:0px;">
               <div class="panel-heading">
                 <div class="row">
                   <div class="col-xs-9 col-md-10">
@@ -405,7 +405,7 @@
                 </table> 
               </div>  
             </div>
-            <div class="panel panel-default tab-pane fade in active" id="formPilihanGanda">
+            <!-- <div class="panel panel-default tab-pane fade in active" id="formPilihanGanda">
                     <div class="panel-body">
                       <div class="row">
                         <div style="margin-left:10px; width:15px; float:left;">
@@ -517,12 +517,12 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
             <?php 
             $query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
             
             while ($soal = mysqli_fetch_array($query1)){
-            echo '<div class="panel panel-default soal">';
+            echo '<div class="panel panel-default soal" style="border:0px;">';
             echo '<div class="panel-body">';
             echo     '<div class="row">';
             echo       '<div style="margin-left:10px; width:15px; float:left;">';
@@ -547,7 +547,7 @@
                           echo        '</div>'; 
                           echo     '</div>';
                           echo     '<div style="width:85%;  margin-left:-20px;">';
-                          echo       '<div id="opsiGanda1" class="form-control">'.$pilihan['opsi_jawaban'].'</div>';
+                          echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
                           echo     '</div>';
                           echo '</li>';
                           $i++;

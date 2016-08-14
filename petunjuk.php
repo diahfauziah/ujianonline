@@ -158,10 +158,11 @@
           </div>
         </div>
         <a href="index_siswa.php?id=<?php echo $id ?>" type="button" class="button button1 pull-right" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
-        <a href="#" style="pull-right">Panduan Ujian</a>
+        <a href="#" style="pull-right" id="panduan">Panduan Ujian</a>
         <br />
-
-        <img src="image/popup.png" style="max-width:100%; border:1px solid #ddd; border-radius:4px; padding:5px; margin-top:10px">
+        <div id="isiPanduan" class="collapse">
+          <img src="image/blok.png" style="border:1px solid #ddd; border-radius:4px; padding:5px; margin:auto;">
+        </div>
       </div>
     </div>
 	<footer class="text-center">
@@ -171,6 +172,12 @@
     <script type="text/javascript" src="js/tooltipsy.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-tagsinput.min.js"></script>
-    <script></script>
+    <script>
+      $(function(){
+        $('#panduan').click(function(){
+          $('.collapse').collapse('toggle');
+        });
+      });
+    </script>
   </body>
 </html>

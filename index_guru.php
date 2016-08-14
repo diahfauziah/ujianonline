@@ -309,7 +309,7 @@
 					?>
                   </select>
                 </div>
-                <div class="col-md-offset-1 col-md-3" style="margin-left:10px">
+                <div class="col-md-offset-1 col-md-3" style="margin-left:30px">
                   <select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control">
                     <?php
 					  if ($_SESSION['kategori_guru']=="SMA"){
@@ -344,7 +344,7 @@
 					?>
                   </select>
                 </div>
-                <button class="button button1" type="submit" style="margin-left:20px;">Cari</button>
+                
               </div>
             </form>
           </div>

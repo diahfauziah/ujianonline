@@ -50,7 +50,7 @@
 		$_SESSION['statuspesan'] = "sukses";
 		$_SESSION['matapelajaran'] = "0";
 		$_SESSION['kelas'] = "0";
-		$_SESSION['pesan'] = "Ujian $judul berhasil dibuat";
+		$_SESSION['pesan'] = "Ujian $judul berhasil dibuat <i class='fa fa-check-circle'></i>";
 		header('location:index_guru.php');
 	} else {
 		$_SESSION['statuspesan'] = "gagal";

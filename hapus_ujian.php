@@ -19,7 +19,7 @@
 
 		if($delete_query){
 			$_SESSION['statuspesan'] = "sukses";
-			$_SESSION['pesan'] = "Ujian $judul berhasil dihapus";
+			$_SESSION['pesan'] = "Ujian $judul berhasil dihapus <i class='fa fa-trash-o'></i>";
 			header('location:index_guru.php');
 		} else {
 			$_SESSION['statuspesan'] = "gagal";
