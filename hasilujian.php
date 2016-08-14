@@ -1,5 +1,15 @@
 <?php
 	session_start();
+	if ((!isset($_GET['id']))||(!isset($_SESSION['Nilai']))){
+		header('location:notfound.php');
+	} else {
+		$aidi = $_GET['id'];
+		if ($_SESSION['role']=="murid" || $_SESSION['role']=="guru"){
+			
+		} else {
+			header('location:ujian.php?id='.$aidi);
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +137,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right" style="padding-right: 160px;">
-            <li class="active"><a href="#"> Login </a></li>
+            <li ><a href="#"> <?php echo $_SESSION['nama']; ?> </a></li>
           </ul>
         </div>
       </div>
@@ -138,12 +148,12 @@
       <div class="col-md-offset-3 col-md-6">
         <div class="panel panel-default">
           <div class="panel-body">
-            <h4 style="text-align:center;">Hasil Ujian</h4>
+            <h4 style="text-align:center;">Hasil Ujian - <?php echo $ujian['judul_ujian']; ?></h4>
             <hr>
 			<form class="form-horizontal">
 				<div class="form-group">
 					<label class="col-md-5" style="text-align:right; padding-right:0px;">Nama:</label>
-					<div class="col-md-7" style="text-align:left">Diah Fauziah</div>
+					<div class="col-md-7" style="text-align:left"><?php echo $_SESSION['nama']; ?></div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-5" style="text-align:right; padding-right:0px;">Ujian:</label>
@@ -151,21 +161,26 @@
 				</div>
 				<div class="form-group">
 					<label class="col-md-5" style="text-align:right; padding-right:0px;">Total Waktu:</label>
-					<div class="col-md-7" style="text-align:left">87 Menit</div>
+					<div class="col-md-7" style="text-align:left"><?php echo $_SESSION['TotalWaktu'] ?></div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-5" style="text-align:right; padding-right:0px;">Soal Terjawab:</label>
-					<div class="col-md-7" style="text-align:left">16 dari 20 soal</div>
+					<div class="col-md-7" style="text-align:left"><?php echo $_SESSION['SoalTerjawab']; ?> dari <?php echo $_SESSION['SoalTotal']; ?> soal</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-5" style="text-align:right; padding-right:0px;">Nilai:</label>
-					<div class="col-md-7" style="text-align:left; font-size:50px; margin-top:-20px; color:#4abdac;">78</div>
+					<div class="col-md-7" style="text-align:left; font-size:50px; margin-top:-20px; color:#4abdac;"><?php echo $_SESSION['Nilai']; ?></div>
 				</div>
 			</form>
           </div>
         </div>
         <!-- <a href="index_siswa.php?id=<?php echo $id ?>" type="button" class="button button1 pull-right" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a> -->
-       
+        <?php 
+			if ($_SESSION['role']=="murid"){
+				session_unset();
+				session_destroy();
+			}
+		?>
       </div>
     </div>
 	<footer class="text-center">

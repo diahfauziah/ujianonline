@@ -294,10 +294,14 @@
     <!-- Navbar -->
     <?php include("koneksi.php");
       $id = $_GET['id'];
-      $query = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
-      //$soal = mysqli_fetch_array($query);
       $query3 = mysqli_query($link, "SELECT * FROM `info_ujian` WHERE `id_ujian`='$id' ");
       $ujian = mysqli_fetch_array($query3);
+	  
+	  if ($ujian['acak_soal']){
+		$query = mysqli_query($link, "SELECT * FROM (SELECT * FROM soal WHERE id_ujian='$id' ORDER BY rand() LIMIT 200) T1 ORDER BY stage_id");
+	  } else {
+		$query = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ORDER BY nomor_soal");
+	  }
     ?>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -321,6 +325,9 @@
 
     <!--  <div class="circle">10</div> -->
       <div class="col-md-offset-1 col-md-10">
+	  <form id="form" method="post" action="hasil.php">
+		<input type="hidden" id="IDujian" name="IDujian" value="<?php echo $id; ?>" />
+		<input type="hidden" id="waktu" name="waktu" />
         <div id="kotakSoal" class="col-md-10">
           Waktu ujian tersisa: <b><span id="time"></span></b>
       <!--    <a class="pull-right" href="#" id="hide"><u>Hide daftar soal</u></a> -->
@@ -354,40 +361,54 @@
 			  echo			'" style="display:none; float:left">';
 			  echo             $soal['pertanyaan'];
 			  echo			'</textarea>';
-        if($soal['kategori_pertanyaan']==2){
+			  
+			  if($soal['kategori_pertanyaan']==2){
                 echo '<div style="margin-left:0px; display:inline-block">';
                   echo 'Jawaban:';
-                  echo '<input class="form-control" style="width:100%">';
+                  echo '<input class="form-control" style="width:100%" id="jawaban-';
+				  echo $soal['id_soal'];
+				  echo '" name="jawaban-';
+				  echo $soal['id_soal'];
+				  echo '"/>';
                 echo '</div>';
               }
               if($soal['kategori_pertanyaan']==3){
                 echo '<div style="margin-left:0px;">';
                   echo 'Jawaban:';
-                  echo '<textarea class="form-control" style="width:100%" rows="3"></textarea>';
+                  echo '<textarea id="jawaban-';
+				  echo $soal['id_soal'];
+				  echo '" name="jawaban-';
+				  echo $soal['id_soal'];
+				  echo '" class="form-control" style="width:100%" rows="3"></textarea>';
                 echo '</div>';
               }
               if($soal['kategori_pertanyaan']==4){
                 echo '<ul class="list-group">';
                  echo '<div class="row col-md-12">';
-                  echo '<li class="list-group-item opsijawaban col-md-6" style="float:left;">';
-                    echo '<div style="text-align:center">Benar</div>';
+                  echo '<li class="list-group-item opsijawaban col-md-6" data-idsoal="';
+				  echo $soal['id_soal'];
+				  echo '" style="float:left;">';
+                    echo '<div style="text-align:center" class="opsiGanda">Benar</div>';
                   echo '</li>';
-                  echo '<li class="list-group-item opsijawaban col-md-6" style="float:left">';
-                    echo '<div style="text-align:center">Salah</div>';
+                  echo '<li class="list-group-item opsijawaban col-md-6" data-idsoal="';
+				  echo $soal['id_soal'];
+				  echo '" style="float:left">';
+                    echo '<div style="text-align:center" class="opsiGanda">Salah</div>';
                   echo '</li>';
                   echo '</div>';
                   echo '</ul>';
+				echo '<input type="hidden" id="jawaban-';
+			    echo $soal['id_soal'];
+			    echo '" name="jawaban-';
+			    echo $soal['id_soal'];
+			    echo '"/>';
               }
-
         
               echo         '</div>';
               echo       '</div>';
               echo     '</div>';
 
-              
-              
               echo     '<div class="row">';
-
               echo     '<button type="button" class="button button1 pull-right btntandai" style="margin-top:8px; margin-right:17px; padding: 4px 18px; outline:none;" data-id="';
               echo     $j;
               echo     '" id="tandai';
@@ -402,33 +423,39 @@
 
               echo     '</div>';
               
-
-              echo    '<ul class="list-group" style="margin-top:10px;">';
-              $id_soal = $soal['id_soal'];
-              $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
-              $huruf = array("A","B","C","D","E");
-              $i = 0;
-                while($pilihan = mysqli_fetch_array($query2)){
-                  echo '<div class="row">';
-                  echo '<li class="list-group-item opsijawaban" style="float:left">';
-                  echo   '<div class="row">';
-                  echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-                  //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
-                  echo        '<div class="numberCircle">';
-                  echo         $huruf[$i];
-                  echo        '</div>'; 
-                  echo     '</div>';
-                  echo     '<div style="width:90%;  margin-left:-20px;" class="col-md-9">';
-                  echo       '<div class="opsiGanda">'.$pilihan['opsi_jawaban'].'</div>';
-                  echo     '</div>';
-                  echo    '</div>';
-                  echo '</li>';
-                  echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#4ABDAC; margin-left:5px; cursor:pointer;"></i>';
-                  echo '</div>';
-                  $i++;
-                }
-              echo    '</ul>';
-
+			  if($soal['kategori_pertanyaan']==1||$soal['kategori_pertanyaan']==5||$soal['kategori_pertanyaan']==6||$soal['kategori_pertanyaan']==7){
+				  echo    '<ul class="list-group" style="margin-top:10px;">';
+				  $id_soal = $soal['id_soal'];
+				  $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+				  $huruf = array("A","B","C","D","E","F","G","H","I");
+				  $i = 0;
+					while($pilihan = mysqli_fetch_array($query2)){
+					  echo '<div class="row">';
+					  echo '<li class="list-group-item opsijawaban" data-idsoal="';
+					  echo $soal['id_soal'];
+					  echo '" style="float:left">';
+					  echo   '<div class="row">';
+					  echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+					  //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
+					  echo        '<div class="numberCircle">';
+					  echo         $huruf[$i];
+					  echo        '</div>'; 
+					  echo     '</div>';
+					  echo     '<div style="width:90%;  margin-left:-20px;" class="col-md-9">';
+					  echo       '<div class="opsiGanda">'.$pilihan['opsi_jawaban'].'</div>';
+					  echo     '</div>';
+					  echo    '</div>';
+					  echo '</li>';
+					  echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#4ABDAC; margin-left:5px; cursor:pointer;"></i>';
+					  echo '</div>';
+					  $i++;
+					}
+				  echo '<input type="hidden" id="jawaban-';
+				  echo $soal['id_soal'];
+				  echo '" name="jawaban-';
+				  echo $soal['id_soal'];
+				  echo '"/>';
+			  }
               
               echo    '</div>';
               echo   '</div>';
@@ -445,41 +472,78 @@
           Daftar soal
           <div class="panel panel-default" style="width:190px;margin-bottom:5px;" id="nomorSoal">
             <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
-               <p style="text-decoration:underline;margin-bottom:0px;">Fisika</p> 
-              <div class="form-group">
-                <?php 
-                  $query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");
-                  $arraynomor = mysqli_fetch_array($query4);
-                  $nomormax = (int)$arraynomor[0];
-                  
-                  $i = 1;
-                  while($i <= $nomormax){
-                    echo '<a href="#" class="button button3 nomor" data-nomor="';
-                    echo $i;
-                    echo '" style="margin-right:5px; text-decoration:none;">';
-                    echo $i;
-                    echo '</a>';
-                    $i++;
-                  }               
-                ?>
-              </div>
-               <p style="text-decoration:underline;margin-bottom:0px;">Kimia</p> 
-              <div class="form-group">
-                 <?php 
-                  while($i <= 10){
-                    echo '<a href="#" class="button button3 nomor" data-nomor="';
-                    echo $i;
-                    echo '" style="margin-right:5px; text-decoration:none;">';
-                    echo $i;
-                    echo '</a>';
-                    $i++;
-                  } ?>
-              </div> 
+			  <?php
+				$query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");
+                $arraynomor = mysqli_fetch_array($query4);
+                $nomormax = (int)$arraynomor[0];
+				
+				$querystage = mysqli_query($link, "SELECT DISTINCT stage_id FROM `soal` WHERE `id_ujian`='$id' ORDER BY stage_id ASC");
+				
+				if ($ujian['acak_soal']){
+					mysqli_data_seek($query,0);
+				
+					$daftarst = mysqli_fetch_array($query);
+					
+					$i = 1;
+					while ($stage = mysqli_fetch_array($querystage)){
+						if ($daftarst['stage_id']!=1){
+							echo '<p style="text-decoration:underline;margin-bottom:0px;">';
+							$idst = $daftarst['stage_id'];
+							$qqs = mysqli_query($link, "select * from stage where id_stage='$idst'");
+							$qqsr = mysqli_fetch_array($qqs);
+							echo $qqsr['nama_stage'];
+							echo '</p>';
+						}
+						echo '<div class="form-group">';
+						while ($daftarst['stage_id']==$stage['stage_id']){
+							echo '<a href="#" class="button button3 nomor" data-nomor="';
+							echo $i;
+							echo '" style="margin-right:5px; text-decoration:none;">';
+							echo $i;
+							echo '</a>';
+							$i++;
+							
+							$daftarst = mysqli_fetch_array($query);
+						}
+						echo '</div>';
+					}
+				} else {
+					$querynorm = mysqli_query($link, "SELECT * FROM (SELECT * FROM soal WHERE id_ujian='$id' ORDER BY nomor_soal LIMIT 200) T1 ORDER BY stage_id");
+					
+					$daftarst = mysqli_fetch_array($querynorm);
+					
+					while ($stage = mysqli_fetch_array($querystage)){
+						if ($daftarst['stage_id']!=1){
+							echo '<p style="text-decoration:underline;margin-bottom:0px;">';
+							$idst = $daftarst['stage_id'];
+							$qqs = mysqli_query($link, "select * from stage where id_stage='$idst'");
+							$qqsr = mysqli_fetch_array($qqs);
+							echo $qqsr['nama_stage'];
+							echo '</p>';
+						}
+						echo '<div class="form-group">';
+						while ($daftarst['stage_id']==$stage['stage_id']){
+							echo '<a href="#" class="button button3 nomor" data-nomor="';
+							echo $daftarst['nomor_soal'];
+							echo '" style="margin-right:5px; text-decoration:none;">';
+							echo $daftarst['nomor_soal'];
+							echo '</a>';
+							$i++;
+							
+							$daftarst = mysqli_fetch_array($querynorm);
+						}
+						echo '</div>';
+					}
+				}
+				
+			  ?>
+			
               <div class="row" style="padding-left:15px;">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p></div>
             </div>
           </div>
-          <a href="hasil.php" class="button button4 col-md-12" style="width:190px;text-decoration:none;" >Kumpulkan</a>
+          <button type="submit" class="button button4 col-md-12" style="width:190px;text-decoration:none;" >Kumpulkan</a>
         </div>
+		</form>
       </div>
     </div>
 	<footer class="text-center">
@@ -747,8 +811,13 @@
             }
             $(this).siblings('i.fa.coret').css({"display":"none"});
           }
+		  
+		  $idsoal = $(this).attr("data-idsoal");
+		  $jwbn = $(this).find(".opsiGanda").html();
+		  $setj = "input[name='jawaban-"+$idsoal+"']";
+		  $($setj).val($jwbn);
         });
-
+		
         $(".coret").click(function(){
           $(this).toggleClass("fa-times-circle fa-times-circle-o");
           if($(this).closest('.row').find('.list-group-item').find('.opsiGanda').hasClass("tercoret")){
@@ -758,21 +827,6 @@
           }
         });
         
-        /* Pilih opsi jawaban: lingkaran dipiilih */
-        $(".setjawaban").click(function(){
-              $(".opsijawaban").removeClass("selected");
-              $(this).closest(".opsijawaban").addClass("selected");
-              $(".setjawaban").removeClass("fa fa-circle-thin");
-              $(".setjawaban").addClass("fa fa-circle-thin");
-              $(".setjawaban").css({"color":"#4ABDAC"})
-              $(this).removeClass("fa fa-circle-thin");
-              $(this).addClass("fa fa-circle");
-              $(this).css({"color" : "#4ABDAC"});
-
-              $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
-              $($ini).css({"background-color":"#4ABDAC", "color":"#ffffff", "border-color":"#4ABDAC"}); 
-        });
-
         /* Menandai soal */
         $(".btntandai").click(function(){
             $nomorini = ".nomor[data-nomor="+$soal_sekarang+"]";
@@ -799,7 +853,7 @@
                   $($nomorini).addClass("hasTandai");
               }
         });
-		
+				
 		/* Mengatur ulang soal */
 		$(".btnreset").click(function(){
 			$initext = "textarea#soal"+$soal_sekarang;
@@ -808,11 +862,6 @@
 			$($inieditor).froalaEditor("undo.reset");
 			$($inieditor).froalaEditor("html.set", $data);
 		});
-
-        $(".btnreset").click(function(){
-            $soal = $(this).attr("data-soal");
-
-        });
 
         /* Navigasi daftar soal */
         $(".nomor").click(function(){
@@ -846,19 +895,24 @@
         /* Timer */
         function startTimer(duration, display) {
             var timer = duration, hours, minutes, seconds;
+			var secs = 0;
             setInterval(function () {
                 hours = parseInt(timer / 3600, 10);
                 minutes = parseInt(timer % 3600 / 60, 10)
                 seconds = parseInt(timer % 60, 10);
+				
+				secs = secs + 1;
 
                 hours = hours < 10 ? "0" + hours : hours;
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 display.text(hours + ":" + minutes + ":" + seconds);
+				
+				$("input[name='waktu'").val(secs);
 
                 if (--timer < 0) {
-                    timer = duration;
+                    $("#form").submit();
                 }
             }, 1000);
         }
