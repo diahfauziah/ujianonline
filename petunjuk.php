@@ -118,10 +118,10 @@
           margin: auto;
       }
       .carousel-indicators li {
-        border-color: #818181;
+        border-color: #b4e3dc;
       }
       .carousel-indicators .active {
-        background-color: #818181;
+        background-color: #b4e3dc;
       }
     </style>
   </head>
@@ -169,25 +169,33 @@
         <a href="index_siswa.php?id=<?php echo $id ?>" type="button" class="button button1 pull-right" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
         <a href="#" style="pull-right" id="panduan">Panduan Ujian</a>
         <br />
-        <div id="isiPanduan" class="collapse">
-          <img src="image/blok.png" style="border:1px solid #ddd; border-radius:4px; padding:5px; margin:auto;">
-        </div>
         <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:20px;" data-interval="0">
           <!-- Indicators -->
           <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
           </ol>
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
             <div class="item active">
-              <img src="image/blok.png" alt="Chania" width="100%">
+              <img src="image/1a.png" alt="Chania" width="100%">
             </div>
 
             <div class="item">
-              <img src="image/popup.png" alt="Chania" width="100%">
+              <img src="image/2coret.png" alt="Chania" width="100%">
             </div>
+
+            <div class="item">
+              <img src="image/3highlight.png" alt="Chania" width="100%">
+            </div>
+
+            <div class="item">
+              <img src="image/4hapusformat.png" alt="Chania" width="100%">
+            </div>
+
           </div>
 
           <!-- Left and right controls -->
