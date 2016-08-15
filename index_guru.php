@@ -204,10 +204,31 @@
       .modal-body {
         padding: 10px;
       }
-      .alert-success {
-        color: #4abdac;
-        background-color: #ecf8f6;
-        border-color: #ecf8f6;
+      
+      /* The alert message box */
+      .alert {
+          padding: 20px;
+          background-color: #b4e3dc; /* Red */
+          color: white;
+          margin-bottom: 15px;
+          border-color: #b4e3dc;
+      }
+
+      /* The close button */
+      .closebtn {
+          margin-left: 15px;
+          color: #ffffff;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+      }
+
+      /* When moving the mouse over the close button */
+      .closebtn:hover {
+          color: black;
       }
       .footer {
           background-color: #F4F4F4;
@@ -358,7 +379,7 @@
           {
 			if (($_SESSION['statuspesan'] == "sukses")){
 				echo '<div class="alert alert-success">';
-				echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+				echo   '<a href="#" class="closebtn" data-dismiss="alert" aria-label="close">&times;</a>';
 				echo   '<strong>Berhasil!</strong> ';
 				echo   $_SESSION['pesan'];
 				echo '</div>';

@@ -379,7 +379,7 @@
 				  echo $soal['id_soal'];
 				  echo '" name="jawaban-';
 				  echo $soal['id_soal'];
-				  echo '" class="form-control" style="width:100%" rows="3"></textarea>';
+				  echo '" class="form-control textessay" style="width:100%" rows="3"></textarea>';
                 echo '</div>';
               }
               if($soal['kategori_pertanyaan']==4){
@@ -423,7 +423,7 @@
 
               echo     '</div>';
               
-			  if($soal['kategori_pertanyaan']==1||$soal['kategori_pertanyaan']==5||$soal['kategori_pertanyaan']==6||$soal['kategori_pertanyaan']==7){
+			  if($soal['kategori_pertanyaan']==1||$soal['kategori_pertanyaan']==6||$soal['kategori_pertanyaan']==7){
 				  echo    '<ul class="list-group" style="margin-top:10px;">';
 				  $id_soal = $soal['id_soal'];
 				  $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
@@ -456,6 +456,35 @@
 				  echo $soal['id_soal'];
 				  echo '"/>';
 			  }
+        if($soal['kategori_pertanyaan']==5){
+          echo    '<ul class="list-group" style="margin-top:10px;">';
+          $id_soal = $soal['id_soal'];
+          $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+          $i = 0;
+          while($pilihan = mysqli_fetch_array($query2)){
+            echo '<div class="row">';
+            echo '<li class="list-group-item opsijawaban" data-idsoal="';
+            echo $soal['id_soal'];
+            echo '" style="float:left">';
+            echo   '<div class="row">';
+            echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+            echo       '<i class="fa fa-square-o fa-2x setjawaban" style="color:#4ABDAC"></i>';
+            echo     '</div>';
+            echo     '<div style="width:90%;  margin-left:-20px;" class="col-md-9">';
+            echo       '<div class="opsiGanda">'.$pilihan['opsi_jawaban'].'</div>';
+            echo     '</div>';
+            echo    '</div>';
+            echo '</li>';
+            echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#4ABDAC; margin-left:5px; cursor:pointer;"></i>';
+            echo '</div>';
+            $i++;
+          }
+          echo '<input type="hidden" id="jawaban-';
+          echo $soal['id_soal'];
+          echo '" name="jawaban-';
+          echo $soal['id_soal'];
+          echo '"/>';
+        }
               
               echo    '</div>';
               echo   '</div>';
@@ -843,6 +872,17 @@
                     $($nomorini).addClass("hasAnswer"); 
                     $($nomorini).css({"color":"#ffffff"}); 
                   }
+                  if($($kotakini).find("input").val()!=""){
+                    $($nomorini).addClass("hasAnswer");
+                    $($nomorini).css({"color":"#ffffff"});  
+                  }
+                  if($($kotakini).find(".textessay").val()!=""){
+                    $($nomorini).addClass("hasAnswer");
+                    $($nomorini).css({"color":"#ffffff"});  
+                  }else{
+                    $($nomorini).removeClass("hasAnswer");
+                    $($nomorini).css({"color":"#000000"}); 
+                  }
               }
               else{
                 // menandai
@@ -862,6 +902,28 @@
 			$($inieditor).froalaEditor("undo.reset");
 			$($inieditor).froalaEditor("html.set", $data);
 		});
+
+        $("input").blur(function(){
+          $nomor = ".nomor[data-nomor="+$soal_sekarang+"]";
+          if($(this).val() != ""){
+            $($nomor).addClass("hasAnswer");
+            $($nomor).css({"color":"#ffffff"});
+          }else{
+            $($nomor).removeClass("hasAnswer");
+            $($nomor).css({"color":"#000000"});
+          }
+        });
+
+        $(".textessay").blur(function(){
+          $nomortxt = ".nomor[data-nomor="+$soal_sekarang+"]";
+          if($(this).val() != ""){
+            $($nomortxt).addClass("hasAnswer");
+            $($nomortxt).css({"color":"#ffffff"});
+          }else{
+            $($nomortxt).removeClass("hasAnswer");
+            $($nomortxt).css({"color":"#000000"});
+          }
+        });
 
         /* Navigasi daftar soal */
         $(".nomor").click(function(){

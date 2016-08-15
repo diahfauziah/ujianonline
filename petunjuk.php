@@ -111,9 +111,18 @@
         font-size: 18px;
         width: 80px;
         height: 80px;
-
       }
-
+      .carousel-inner > .item > img,
+      .carousel-inner > .item > a > img {
+          width: 70%;
+          margin: auto;
+      }
+      .carousel-indicators li {
+        border-color: #818181;
+      }
+      .carousel-indicators .active {
+        background-color: #818181;
+      }
     </style>
   </head>
   <body>
@@ -163,6 +172,35 @@
         <div id="isiPanduan" class="collapse">
           <img src="image/blok.png" style="border:1px solid #ddd; border-radius:4px; padding:5px; margin:auto;">
         </div>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:20px;" data-interval="0">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="image/blok.png" alt="Chania" width="100%">
+            </div>
+
+            <div class="item">
+              <img src="image/popup.png" alt="Chania" width="100%">
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
       </div>
     </div>
 	<footer class="text-center">
