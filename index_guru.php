@@ -19,6 +19,11 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	
+	<!-- clipboard js -->
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/tooltips.js"></script>
+	
     <script type="text/javascript">
       $(function(){
         $('[data-toggle="tooltip"]').tooltip();
@@ -489,7 +494,9 @@
                  </div>
                  <div class="modal-body">
                     <a href="#" id="modalshare" style="text-decoration: underline;"></a>
-                    <button class="button button1 pull-right">Copy</button>
+                    <button id="btn-tool" class="btn button button1 pull-right btn-copy-clip" data-clipboard-target="#modalshare">
+						<img width="13" src="image/clippy.svg" alt="Copy to clipboard"> Copy
+					</button>
                   </div>
                   <div class="modal-footer"></div>
                </div>
@@ -521,5 +528,18 @@
       $("#p1").html(x);
       $("#simpan").attr("href", "hapus_ujian.php?id="+y);
     });
+  });
+  
+  $(function(){
+	var clipboard = new Clipboard('.btn-copy-clip');
+
+	clipboard.on('success', function(e) {
+		e.clearSelection();
+		showTooltip(e.trigger,'Disalin!');
+	});
+
+	clipboard.on('error', function(e) {
+		showTooltip(e.trigger,fallbackMessage(e.action));
+	}); 
   });
 </script>

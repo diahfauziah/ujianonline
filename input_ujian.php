@@ -51,10 +51,10 @@
 		$_SESSION['matapelajaran'] = "0";
 		$_SESSION['kelas'] = "0";
 		$_SESSION['pesan'] = "Ujian $judul berhasil dibuat <i class='fa fa-check-circle'></i>";
-		header('location:index_guru.php');
+		header('location:tambah_soal.php?id='.$idujian);
 	} else {
 		$_SESSION['statuspesan'] = "gagal";
 		$_SESSION['pesan'] = "Ujian $judul gagal dibuat";
-		header('location:index_guru.php');
+		header('location:new_ujian.php');
 	}
 ?>

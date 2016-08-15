@@ -664,10 +664,10 @@
 		$('#Petunjuk').froalaEditor({
 		  toolbarButtons: ['insertImage', 'undo', 'redo', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'formatOL', 'formatUL', 'align','remove'],
 		  placeholderText: 'Ketik untuk menambahkan petunjuk',
-       charCounterCount: false,
+          charCounterCount: false,
 		  spellcheck: false
 		}); 
-    $('span.fr-placeholder').css({"height":"35px"});
+        //$('span.fr-placeholder').css({"height":"35px"});
 	  });
 	  
 	  $(document).ready(function() {
