@@ -118,10 +118,14 @@
           margin: auto;
       }
       .carousel-indicators li {
-        border-color: #b4e3dc;
+        border-color: #777;
       }
       .carousel-indicators .active {
-        background-color: #b4e3dc;
+        background-color: #777;
+      }
+      .carousel-control.left, .carousel-control.right {
+        background-image: linear-gradient(to right,rgb(248, 248, 248) 0,rgba(0,0,0,.0001) 100%);
+        color: #777;
       }
     </style>
   </head>
@@ -169,7 +173,7 @@
         <a href="index_siswa.php?id=<?php echo $id ?>" type="button" class="button button1 pull-right" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
         <a href="#" style="pull-right" id="panduan">Panduan Ujian</a>
         <br />
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:20px;" data-interval="0">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:20px; border:1px solid #ddd;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" data-interval="0">
           <!-- Indicators -->
           <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
