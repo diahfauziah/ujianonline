@@ -848,20 +848,24 @@
             }
             $(this).siblings('i.fa.coret').css({"display":"none"});
           }
-    		  $idsoal = $(this).attr("data-idsoal");
-    		  $jwbn = $(this).find(".opsiGanda").html();
-    		  $setj = "input[name='jawaban-"+$idsoal+"']";
-    		  $($setj).val($jwbn);
+		  $idsoal = $(this).attr("data-idsoal");
+		  $jwbn = $(this).find(".opsiGanda").html();
+		  $setj = "input[name='jawaban-"+$idsoal+"']";
+		  if($(".opsijawaban").hasClass("selected").toString()=="true" && $($ini).hasClass("tercatat").toString()=="true"){
+			$($setj).val($jwbn);
+		  } else {
+			$($setj).removeAttr("value");
+		  }
         });
 
         $(".opsicheckbox").click(function(){
+		  $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
           if($(this).hasClass("selected")){
             //$(this).closest('ul').find('li.list-group-item').removeClass("selected");
             $(this).closest('li.list-group-item').removeClass("selected");
             $(this).closest('li.list-group-item').find("i").removeClass("fa-check-square-o").addClass("fa-square-o");
             $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
 
-            $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
             if(!$(this).closest('ul').find('li.list-group-item').hasClass("selected")){
               $($ini).removeClass("hasAnswer");
               $($ini).css({"color":"#000000"});
@@ -893,7 +897,6 @@
             $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
             $(this).find('.numberCircle').css({"background":"#b4e3dc", "color":"#fff", "border-color":"#fff"});
 
-            $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
             $($ini).addClass("hasAnswer");
             $($ini).css({"color":"#ffffff"});
 
@@ -913,9 +916,13 @@
             $(this).siblings('i.fa.coret').css({"display":"none"});
           }
           $idsoal = $(this).attr("data-idsoal");
-          $jwbn = $(this).find(".opsiGanda").html();
           $setj = "input[name='jawaban-"+$idsoal+"']";
-          $($setj).val($jwbn);
+		  if($(".opsicheckbox").hasClass("selected").toString()=="true" && $($ini).hasClass("tercatat").toString()=="true"){
+			$jwbn = $(this).find(".opsiGanda").html();
+			$($setj).val($jwbn);
+		  } else {
+			$($setj).removeAttr("value");
+		  }
         });
 		
         $(".coret").click(function(){

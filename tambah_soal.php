@@ -506,15 +506,17 @@
                           </div>
                           <div style="margin-left: 0px;">  
                             <div class="col-md-12" style="width:96%">
-                              <form class="form-horizontal col-md-12" action="input_soal.php?id=<?php echo $id ?>" method="post">
+                              <form class="form-horizontal col-md-12" action="input_soal_pilihanganda.php?id=<?php echo $id ?>" method="post">
+							    <input type="hidden" id="idujian" name="idujian" value="<?php echo $id; ?>" />
+								<input type="hidden" id="jawabanbenar" name="jawabanbenar" />
                                 <div class="form-group">
                                    <label class="form-control-label">Pertanyaan</label>
-                                   <textarea id="edit1" name="edit1" class="form-control" rows="3">
+                                   <textarea id="pertanyaan1" name="pertanyaan1" class="form-control" rows="3">
                                    </textarea>
                                 </div>
                                 <p style="margin-left:-10px; font-size:12px; color:#f7b733; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
                                  <?php 
-                                    $huruf = array("A","B","C","D","E");
+                                    $huruf = array("A","B","C","D","E","F","G","H");
                                     $i = 0; 
                                     while($i<4){
                                       echo '<div class="form-group" style="margin-bottom:10px">';
@@ -567,15 +569,15 @@
                                   <strong class="col-md-1">Poin:</strong>
                                   <div class="col-md-3">
                                     <label style="width:60px;" class="form-control-label">Benar </label>
-                                    <input type="text" class="form-control" style="width:32%">
+                                    <input type="number" id="poinbenar" name="poinbenar" class="form-control" style="width:32%">
                                   </div>
                                   <div class="col-md-3">
                                     <label style="width:60px;" class="form-control-label">Salah</label>
-                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                    <input type="number" id="poinsalah" name="poinsalah" class="form-control" style="width:32%" value="0"> 
                                   </div>
                                   <div class="col-md-3">
                                     <label style="width:60px;" class="form-control-label">Kosong</label>
-                                    <input type="text" class="form-control" style="width:32%" value="0"> 
+                                    <input type="number" id="poinkosong" name="poinkosong" class="form-control" style="width:32%" value="0"> 
                                   </div>
                                   <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" >
                                 </div>
@@ -1038,6 +1040,11 @@
 
     <!-- Initialize the editor. -->
     <script>
+		$(document).ready(function(){
+			$('html, body').animate({
+				scrollTop: $("#formTambahSoal").offset().top
+			}, 2000);
+		});
         $(function() {
             $.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
             $.FroalaEditor.RegisterCommand('clear', {
