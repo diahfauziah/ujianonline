@@ -234,6 +234,26 @@
                 <strong>Tidak berhasil</strong> memasukkan ujian baru.
               </div> -->
             <form id="form" class="form-horizontal" action="input_ujian.php" method="post">
+			<?php 
+			  if(!empty($_SESSION['statuspesan']))
+			  {
+				if (($_SESSION['statuspesan'] == "sukses")){
+					echo '<div class="alert alert-success">';
+					echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+					echo   '<strong>Berhasil!</strong> ';
+					echo   $_SESSION['pesan'];
+					echo '</div>';
+					$_SESSION['statuspesan'] = "";
+				} else if ($_SESSION["statuspesan"]=="gagal") {
+					echo '<div class="alert alert-danger">';
+					echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+					echo   '<strong>Gagal!</strong>';
+					echo   $_SESSION['pesan'];
+					echo '</div>';
+					$_SESSION['statuspesan'] = "";
+				}
+			  }
+			?>
               <div class="form-group">
                 <label class="col-md-3">Judul</label>
                 <div class="col-md-9">

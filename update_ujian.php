@@ -38,7 +38,7 @@
 				
 				$idujian = $_GET['id'];
 				
-				$update = "UPDATE info_ujian SET judul_ujian='$judul', url_ujian='$url', lama_ujian='$waktuujian', acak_soal='$acaksoal', mata_pelajaran='$kategoriujian', id_kelas='$kategorikelas', perlu_login='$perlulogin', petunjuk='$petunjuk' WHERE id_ujian='$idujian'";
+				$update = "UPDATE info_ujian SET judul_ujian='$judul', lama_ujian='$waktuujian', acak_soal='$acaksoal', mata_pelajaran='$kategoriujian', id_kelas='$kategorikelas', perlu_login='$perlulogin', petunjuk='$petunjuk', modified_date=NOW() WHERE id_ujian='$idujian'";
 				
 				$update_query = mysqli_query($link, $update);
 				

@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Home | Ujian Online</title>
+    <title>Tambah Soal Ujian | Ujian Online</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -350,23 +350,61 @@
                 </div>
                 <div class="form-group">
                   <label class="col-md-2" style="text-align:right; padding-right:0px;">Waktu:</label>
-                  <div class="col-md-3" style="text-align:left"><?php echo $ujian['lama_ujian']; ?></div>
+                  <div class="col-md-3" style="text-align:left"><?php echo $ujian['lama_ujian']; ?> menit</div>
                   <label class="col-md-offset-1 col-md-2" style="text-align:right; padding-right:0px;">Jumlah soal:</label>
                   <div class="col-md-3" style="text-align:left"><?php echo $ujian['total_soal']; ?></div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-2" style="text-align:right; padding-right:0px;">Perlu login:</label>
-                  <div class="col-md-3" style="text-align:left">Ya</div>
+                  <div class="col-md-3" style="text-align:left">
+				    <?php
+					  if ($ujian['perlu_login']){
+						  echo "Ya";
+					  } else {
+						  echo "Tidak";
+					  }
+					?>
+				  </div>
                   <label class="col-md-offset-1 col-md-2" style="text-align:right; padding-right:0px;">Acak soal:</label>
-                  <div class="col-md-3" style="text-align:left">Ya</div>
+                  <div class="col-md-3" style="text-align:left">
+				    <?php
+					  if ($ujian['acak_soal']){
+						  echo "Ya";
+					  } else {
+						  echo "Tidak";
+					  }
+					?>
+				  </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-2" style="text-align:right; padding-right:0px;">Kategori:</label>
-                    <div class="col-md-10" style="text-align:left">MTK XII IPA</div>
+                    <div class="col-md-10" style="text-align:left">
+					  <?php
+					    $idm = $ujian['mata_pelajaran'];
+						$querynamamapel = "select * from mata_pelajaran where id_kategori=$idm";
+						$qnm = mysqli_query($link, $querynamamapel);
+						$namamp = mysqli_fetch_array($qnm);
+						echo $namamp['nama'];
+						echo " - ";
+						$idk = $ujian['id_kelas'];
+						$querynmk = "select * from kelas where id_kelas=$idk";
+						$qnk = mysqli_query($link, $querynmk);
+						$namak = mysqli_fetch_array($qnk);
+						echo $namak['nama'];
+					  ?>
+					</div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-2" style="text-align:right; padding-right:0px;">Petunjuk:</label>
-                  <div class="col-md-10" style="text-align:left" rows="3">-</div>
+                  <div class="col-md-10" style="text-align:left" rows="3">
+					<?php
+					  if ($ujian['petunjuk']!=null){
+						echo $ujian['petunjuk'];
+					  } else {
+						echo "-";
+					  }
+					?>
+				  </div>
                 </div>
               </form>
             </div>
@@ -952,10 +990,10 @@
             <button class="button button1 pull-right" style="font-size:13px;"><i class="fa fa-plus"></i> Tambah soal</button>
           </div>
         </div> 
-      </div>
-    </div>  
-
-    <!-- Include jQuery. -->
+    </div>
+  </body>
+    
+	<!-- Include jQuery. -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/tooltipsy.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -1127,5 +1165,4 @@
             //$(".soaltersimpan").last().append($("#formTambahSoal"));
           });
     </script>
-  </body>
 </html>
