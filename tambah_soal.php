@@ -1130,7 +1130,7 @@
 
         $(function(){
             $(".numberCircle").click(function(){
-              $(".fa-check-circle").css({"color":"#f8f8f8"});
+              $(".fa-check-circle").css({"color":"#ffffff"});
               $(".numberCircle").css({"background":"#fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
               $(this).css({"background":"#b4e3dc", "color":"#fff", "border-color":"#e7e7e7"});
               $(this).closest('.row').find(".fa-check-circle").css({"color":"#b4e3dc"});
