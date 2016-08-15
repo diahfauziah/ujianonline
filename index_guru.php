@@ -458,7 +458,14 @@
                 echo  '<td><a href="#" class="lihat_tampilan" data-id='.$data['id_ujian'].' data-toggle="tooltip" data-placement="top" title="Lihat tampilan siswa" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>';
                 echo  '<td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" data-id='.$data['url_ujian'].' title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>';
                 echo  '<td><a href="laporan_ujian.php?id='.$data['id_ujian'].'" data-toggle="tooltip" data-placement="top" title="Tampilkan laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>';
-                echo  '<td>'. $data['modified_date'] .'</td>';
+                
+                 $yrdata = strtotime($data['modified_date']);
+                 $bulan = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+                echo  '<td>';
+                //echo date('j F Y G:i', $yrdata);
+
+                echo date('j', $yrdata)." ".$bulan[date('n', $yrdata)]." ".date('Y', $yrdata).", ".date('G:i', $yrdata);
+                echo '</td>';
                 echo '</tr>';      
               }
             ?>
@@ -479,7 +486,7 @@
                           <!-- <a href="#" class="button button2 col-md-6" data-dismiss="modal" style="text-decoration:none;">Batalkan</a>
                           <a href="#" class="button button1 col-md-6" id="simpan" style="text-decoration:none;">Hapus Ujian</a> -->
                           <a  href="kategori.php" class="button button1" id="simpan" style="text-decoration:none;">Hapus Ujian</a>
-                          <button class="btn btn-default" data-dismiss="modal" style="border-width:2px;">Batalkan</button>
+                          <button class="button button1" data-dismiss="modal" style="border-width:2px; background-color:#e7e7e7; border-color:#e7e7e7; color:#777">Batalkan</button>
                         </div>
                       </div>
                     </div>
@@ -494,7 +501,7 @@
                  </div>
                  <div class="modal-body">
                     <a href="#" id="modalshare" style="text-decoration: underline;"></a>
-                    <button id="btn-tool" class="btn button button1 pull-right btn-copy-clip" data-clipboard-target="#modalshare">
+                    <button id="btn-tool" class="btn button button1 pull-right btn-copy-clip" data-clipboard-target="#modalshare" style="background-color:#e7e7e7; border-color:#e7e7e7; color:#000000">
 						<img width="13" src="image/clippy.svg" alt="Copy to clipboard"> Copy
 					</button>
                   </div>
@@ -528,6 +535,9 @@
       $("#p1").html(x);
       $("#simpan").attr("href", "hapus_ujian.php?id="+y);
     });
+    $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert-success").slideUp(500);
+});
   });
   
   $(function(){

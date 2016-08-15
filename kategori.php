@@ -123,6 +123,7 @@
         min-height: 50px;
         overflow: hidden;
       }
+
       .btn-primary, .btn-primary:active, .btn-primary:focus {
         background-color: #4ABDAC;  
         color: #ffffff;
@@ -190,14 +191,12 @@
         border-radius: 4px;
       }
       .button1, .button1:link, .button1:visited {
-        background-color: #4ABDAC;
-        color: #ffffff;
-        border: 2px solid #4ABDAC;
+        background-color: #e7e7e7;
+        color: #777;
+        border: 2px solid #e7e7e7;
       }
       .button1:hover {
-        background-color: #ffffff;
-        color: #4ABDAC;
-        border: 2px solid #4ABDAC;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
       
       th {
@@ -374,7 +373,7 @@
                     <div class="col-md-10 bhoechie-tab" style="background-color:#ffffff;">
                         <!-- flight section -->
                         <div class="bhoechie-tab-content active" id="tab1" style="background-color:#ffffff">
-                            <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Mata Pelajaran</a>
+                            <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none; font-size:13px; border-radius:15px;"><span class="glyphicon glyphicon-plus"></span> Tambah Mata Pelajaran</a>
                             <?php 
 							  if(!empty($_SESSION['statuspesan']))
 							  {
@@ -431,7 +430,7 @@
                         </div>
                         <!-- train section -->
                         <div class="bhoechie-tab-content" id="tab2" style="background-color:#ffffff">
-                          <a href="#" class="button button1" data-toggle="modal" data-target="#modalKelas" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambah Kelas</a>
+                          <a href="#" class="button button1" data-toggle="modal" data-target="#modalKelas" style="margin-bottom:10px; text-decoration:none; font-size:13px; border-radius:15px;"><span class="glyphicon glyphicon-plus"></span> Tambah Kelas</a>
 						  <?php 
 						  if(!empty($_SESSION['statuspesan']))
 						  {
