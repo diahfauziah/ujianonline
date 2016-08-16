@@ -140,7 +140,7 @@
                                     <label style="width:60px;" class="form-control-label">Kosong</label>
                                     <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:50%" value="0"> 
                                   </div>
-                                  <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button2" />
+                                  <button id="simpansoal1" type="reset" onclick="savesoal(this);"  style="text-decoration:none" class="button button2" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
                                 </div>
                               </form>
                             </div>

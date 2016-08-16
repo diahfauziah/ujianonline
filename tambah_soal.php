@@ -1360,6 +1360,31 @@
 			xmlhttp.send();
 		};
 		
+		function changesave(){
+			var xmlhttp = new XMLHttpRequest();
+			var str = $("#simpaninfo").attr("data-ujian");
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("kolominformasi").innerHTML = xmlhttp.responseText;
+				}
+			};
+			xmlhttp.open("GET", "_saveinformasiditambahsoal.php?id=" + str, true);
+			xmlhttp.send();
+		};
+		
+		function savesoal(elem){
+			var xmlhttp = new XMLHttpRequest();
+			var str = $(elem).attr("data-ujian");
+			var elm = "soaltersimpan-"+str;
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById(elm).innerHTML = xmlhttp.responseText;
+				}
+			};
+			xmlhttp.open("GET", "_savesoalditambahsoal.php?id=" + str, true);
+			xmlhttp.send();
+		};
+		
 		function editsoal(elem){
 			var xmlhttp = new XMLHttpRequest();
 			var str = $(elem).attr("data-ujian");
