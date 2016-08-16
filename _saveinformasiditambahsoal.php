@@ -9,7 +9,7 @@
             <div class="panel-body">
               <div class="row">
                 <h5 style="text-align:center" class="col-md-offset-1 col-md-10"><b>Informasi Ujian</b></h5>
-                <button class="button button1" id="editinformasi" data-ujian="<?php echo $id; ?>" class="col-md-1"><i class="fa fa-pencil"></i></button>
+                <button class="button button1" id="editinformasi" onclick="changeedit();" data-ujian="<?php echo $id; ?>" class="col-md-1"><i class="fa fa-pencil"></i></button>
               </div>
               <hr />
               <form class="form-horizontal">
