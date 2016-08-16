@@ -331,12 +331,12 @@
         <div class="row">
           <h2 style="margin-left:25px; color:#4abdac; margin-top:0px; margin-bottom:10px; text-align:center; font-family:'didact gothic', sans-serif"><a href="http://localhost/ujianonline/view_ujian.php?id=<?php echo $judul['id_ujian'] ?>"><?php echo $judul['judul_ujian'] ?></a></h2>
         </div>
-        <div id="soal">
-          <div class="panel panel-default col-md-offset-1 col-md-10" style="margin-top:20px; id="informasiujian" background-color:#ffffff;">
+        <div id="kolominformasi">
+          <div class="panel panel-default col-md-offset-1 col-md-10" style="margin-top:20px;" id="informasiujian">
             <div class="panel-body">
               <div class="row">
                 <h5 style="text-align:center" class="col-md-offset-1 col-md-10"><b>Informasi Ujian</b></h5>
-                <button class="button button1" class="col-md-1"><i class="fa fa-pencil"></i></button>
+                <button class="button button1" id="editinformasi" data-ujian="<?php echo $id; ?>" class="col-md-1"><i class="fa fa-pencil"></i></button>
               </div>
               <hr />
               <form class="form-horizontal">
@@ -409,6 +409,7 @@
               </form>
             </div>
           </div>
+		  </div>
           <div class="col-md-offset-1 col-md-10" style="margin-top:10px;">
             <button class="button button1 pull-right btntambahsoal" style="font-size:13px;"><i class="fa fa-plus"></i> Tambah soal</button>
           </div>
@@ -1129,7 +1130,36 @@
               $(this).closest('.row').find(".fa-check-circle").css({"color":"#b4e3dc"});
             });
         });
-
+		
+		$("#editinformasi").click(function(){
+			var xmlhttp = new XMLHttpRequest();
+			var str = $(this).attr("data-ujian");
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("kolominformasi").innerHTML = xmlhttp.responseText;
+					$('#Petunjuk').froalaEditor({
+					  toolbarButtons: ['insertImage', 'undo', 'redo', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'formatOL', 'formatUL', 'align','remove'],
+					  placeholderText: 'Ketik untuk menambahkan petunjuk',
+					  charCounterCount: false,
+					  spellcheck: false
+					}); 
+				}
+			};
+			xmlhttp.open("GET", "_editinformasiditambahsoal.php?id=" + str, true);
+			xmlhttp.send();
+		});
+		
+		function changesave(){
+			var xmlhttp = new XMLHttpRequest();
+			var str = $("#simpaninfo").attr("data-ujian");
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("kolominformasi").innerHTML = xmlhttp.responseText;
+				}
+			};
+			xmlhttp.open("GET", "_saveinformasiditambahsoal.php?id=" + str, true);
+			xmlhttp.send();
+		};
 
         $('.hashtip').tooltipsy({
               offset: [0, -10],
