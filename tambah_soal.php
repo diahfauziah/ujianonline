@@ -481,9 +481,15 @@
                           echo '</ul>';
                           echo '<div class="panel-footer">';
                           echo '<div class="row">';
-                          echo   '<div class="col-md-3">Poin Benar: 10</div>';
-                          echo   '<div class="col-md-3">Poin Salah: 0</div>';
-                          echo   '<div class="col-md-3">Poin Kosong: 0</div>';
+                          echo   '<div class="col-md-3">Poin Benar: ';
+						  echo     $soal['poin_benar'];
+						  echo   '</div>';
+                          echo   '<div class="col-md-3">Poin Salah: ';
+						  echo     $soal['poin_salah'];
+						  echo   '</div>';
+                          echo   '<div class="col-md-3">Poin Kosong: ';
+						  echo     $soal['poin_kosong'];
+						  echo   '</div>';
                           echo '</div>';
                         
                           echo  '<div class="form-group row" style="margin-top:10px;">';
@@ -1221,6 +1227,12 @@
 		
 		$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
 			$(".alert-success").slideUp(500);
+		});
+		
+		$(".btntambahsoal").click(function(){
+			$('html, body').animate({
+				scrollTop: $("#formTambahSoal").offset().top
+			}, 2000);
 		});
 		
         $(function() {
