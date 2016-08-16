@@ -9,7 +9,7 @@
             <div class="panel-body">
               <div class="row">
                 <h5 style="text-align:center" class="col-md-offset-2 col-md-8"><b>Informasi Ujian</b></h5>
-                <button class="button button1" id="simpaninfo" onclick="changesave();" data-ujian="<?php echo $id; ?>" class="col-md-1"><i class="fa fa-pencil"></i> Simpan</button>
+                <button class="button button1" id="simpaninfo" onclick="changesave();" data-ujian="<?php echo $id; ?>" class="col-md-1">Simpan</button>
               </div>
               <hr />
               <form id="form" class="form-horizontal" action="save_editinformasi.php?id=<?php echo $id; ?>" method="post">
@@ -19,11 +19,11 @@
 					<input type="text" class="form-control" id="Judul" name="Judul" value="<?php echo $ujian['judul_ujian'] ?>">
 				  </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom:5px;">
                   <label class="col-md-2" style="text-align:right; padding-right:0px;">URL:</label>
                     <div class="col-md-10" style="text-align:left"><?php echo $ujian['url_ujian']; ?></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom:5px;">
                   <label class="col-md-2" style="text-align:right; padding-right:0px;">Waktu:</label>
                   <div class="col-md-3">
 					<input type="number" class="form-control" id="Waktu" name="Waktu" value="<?php echo $ujian['lama_ujian'] ?>">
@@ -31,7 +31,7 @@
                   <label class="col-md-offset-1 col-md-2" style="text-align:right; padding-right:0px;">Jumlah soal:</label>
                   <div class="col-md-3" style="text-align:left"><?php echo $ujian['total_soal']; ?></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom:5px;">
                   <label class="col-md-2" style="text-align:right; padding-right:0px;">Perlu login:</label>
                   <div class="col-md-3" style="text-align:left">
 				    <?php if($ujian['perlu_login']==1){
@@ -63,7 +63,7 @@
 					  ?>
 				  </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom:5px;">
                   <label class="col-md-2" style="text-align:right; padding-right:0px;">Kategori:</label>
                     
 					  <div class="col-md-3">
@@ -86,7 +86,7 @@
 						?>
 						</select>
 					  </div>
-					  <div class="col-md-3">
+					  <div class="col-md-2" style="margin-left:-20px;">
 						<select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
 						  <?php
 						  if ($_SESSION['kategori_guru']=="SMA"){
@@ -112,7 +112,7 @@
 					   </div>
 					
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom:5px;">
                   <label class="col-md-2" style="text-align:right; padding-right:0px;">Petunjuk:</label>
                   <div class="col-md-10" style="text-align:left" rows="3">
 					<textarea id="Petunjuk" name="Petunjuk" class="form-control" rows="15">
