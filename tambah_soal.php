@@ -414,7 +414,29 @@
             </div>
           </div>
 		  </div>
-          <div class="col-md-offset-1 col-md-10" style="margin-top:10px;">
+		<div class="col-md-offset-1 col-md-10" style="margin-top:10px">
+			  <?php 
+			  if(!empty($_SESSION['statuspesan']))
+			  {
+				if (($_SESSION['statuspesan'] == "sukses")){
+					echo '<div class="alert alert-success">';
+					echo   '<a href="#" class="closebtn" data-dismiss="alert" aria-label="close">&times;</a>';
+					echo   '<strong>Berhasil!</strong> ';
+					echo   $_SESSION['pesan'];
+					echo '</div>';
+					$_SESSION['statuspesan'] = "";
+				} else if ($_SESSION["statuspesan"]=="gagal") {
+					echo '<div class="alert alert-danger">';
+					echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+					echo   '<strong>Gagal!</strong>';
+					echo   $_SESSION['pesan'];
+					echo '</div>';
+					$_SESSION['statuspesan'] = "";
+				}
+			  }
+			?>
+		</div>
+          <div class="col-md-offset-1 col-md-10" style="margin-top:-10px;">
             <button class="button button1 pull-right btntambahsoal" style="font-size:13px;"><i class="fa fa-plus"></i> Tambah soal</button>
           </div>
           <?php 
@@ -1142,9 +1164,6 @@
               </div>
             </div>
           </div>
-          <div class="col-md-offset-1 col-md-10" style="margin-top:10px;">
-            <button class="button button1 pull-right" style="font-size:13px;"><i class="fa fa-plus"></i> Tambah soal</button>
-          </div>
         </div> 
     </div>
   </body>
@@ -1195,10 +1214,13 @@
     <!-- Initialize the editor. -->
     <script>
 		$(document).ready(function(){
-			$('html, body').animate({
-				scrollTop: $("#formTambahSoal").offset().top
-			}, 2000);
+			$("#formTambahSoal").css({"display":"none"});
 		});
+		
+		$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+			$(".alert-success").slideUp(500);
+		});
+		
         $(function() {
             $.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
             $.FroalaEditor.RegisterCommand('clear', {
@@ -1328,6 +1350,13 @@
               $(this).closest('.row').find(".fa-check-circle").css({"color":"#b4e3dc", "transition-duration":"0.5s"});
 			       $("input[name='jawabanbenar1'").val($(this).closest(".row").find(".fr-element").html());
             });
+			
+			$(".btntambahsoal").click(function(){
+				$("#formTambahSoal").css({"display":"inline-block"});
+				$('html, body').animate({
+					scrollTop: $("#formTambahSoal").offset().top
+				}, 2000);
+			});
         });
 		
 		function changeedit(){
@@ -1472,9 +1501,6 @@
                   'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
                   'text-shadow': 'none'
               }
-          });
-          $('.btntambahsoal').click(function(){
-            //$(".soaltersimpan").last().append($("#formTambahSoal"));
           });
     </script>
 </html>

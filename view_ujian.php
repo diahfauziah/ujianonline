@@ -410,6 +410,28 @@
             </div>
           </div>
 		  </div>
+		  <div class="col-md-offset-1 col-md-10" style="margin-top:10px">
+			  <?php 
+			  if(!empty($_SESSION['statuspesan']))
+			  {
+				if (($_SESSION['statuspesan'] == "sukses")){
+					echo '<div class="alert alert-success">';
+					echo   '<a href="#" class="closebtn" data-dismiss="alert" aria-label="close">&times;</a>';
+					echo   '<strong>Berhasil!</strong> ';
+					echo   $_SESSION['pesan'];
+					echo '</div>';
+					$_SESSION['statuspesan'] = "";
+				} else if ($_SESSION["statuspesan"]=="gagal") {
+					echo '<div class="alert alert-danger">';
+					echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+					echo   '<strong>Gagal!</strong>';
+					echo   $_SESSION['pesan'];
+					echo '</div>';
+					$_SESSION['statuspesan'] = "";
+				}
+			  }
+			?>
+		</div>
           <div class="col-md-offset-1 col-md-10" style="margin-top:10px;">
             <button class="button button1 pull-right btntambahsoal" style="font-size:13px;"><i class="fa fa-plus"></i> Tambah soal</button>
           </div>
@@ -1064,6 +1086,21 @@
 
     <!-- Initialize the editor. -->
     <script>
+		$(document).ready(function(){
+			$("#formTambahSoal").css({"display":"none"});
+		});
+		
+		$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+			$(".alert-success").slideUp(500);
+		});
+		
+		$(".btntambahsoal").click(function(){
+			$("#formTambahSoal").css({"display":"inline-block"});
+			$('html, body').animate({
+				scrollTop: $("#formTambahSoal").offset().top
+			}, 2000);
+		});
+		
         $(function() {
             $.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
             $.FroalaEditor.RegisterCommand('clear', {
