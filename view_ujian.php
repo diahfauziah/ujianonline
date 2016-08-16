@@ -419,6 +419,9 @@
             $query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
             
             while ($soal = mysqli_fetch_array($query1)){
+            echo '<div id="soaltersimpan-';
+			echo $soal['id_soal'];
+			echo '">';
             echo '<div class="panel panel-default col-md-offset-1 col-md-10 soaltersimpan" style="margin-top:10px; background-color:#ffffff; border:0px;">';
             echo '<div class="panel-body">';
             echo     '<div class="row">';
@@ -459,7 +462,9 @@
                         
                           echo  '<div class="form-group row" style="margin-top:10px;">';
                           echo    '<div class="col-md-6"></div>';
-                          echo    '<a href="edit_soal.html" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none"><span class="glyphicon glyphicon-pencil"></span> Edit</a>';
+                          echo    '<button id="editsoal" onclick="editsoal(this);" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none" data-ujian="';
+						  echo $soal['id_soal'];
+						  echo '"><span class="glyphicon glyphicon-pencil"></span> Edit</button>';
                           echo    '<button class="button button2 col-md-2" data-toggle="modal" data-target="#modalHapus" style="font-size:14px; margin-left:10px;"><span class="glyphicon glyphicon-trash"></span> Hapus</button>';
                           echo   '</div>';
                           echo '</div>';
@@ -468,6 +473,7 @@
                echo '</div>';
               echo '</div>';
            echo '</div>';
+		   echo '</div>';
            };
          ?>
           <div class="panel panel-default col-md-offset-1 col-md-10" id="formTambahSoal" style="margin-top:10px; background-color:#ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" hidden>
@@ -1184,6 +1190,77 @@
 				}
 			};
 			xmlhttp.open("GET", "_saveinformasiditambahsoal.php?id=" + str, true);
+			xmlhttp.send();
+		};
+		
+		function savesoal(elem){
+			var xmlhttp = new XMLHttpRequest();
+			var str = $(elem).attr("data-ujian");
+			var elm = "soaltersimpan-"+str;
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById(elm).innerHTML = xmlhttp.responseText;
+				}
+			};
+			xmlhttp.open("GET", "_savesoalditambahsoal.php?id=" + str, true);
+			xmlhttp.send();
+		};
+		
+		function editsoal(elem){
+			var xmlhttp = new XMLHttpRequest();
+			var str = $(elem).attr("data-ujian");
+			var elm = "soaltersimpan-"+str;
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById(elm).innerHTML = xmlhttp.responseText;
+					$pilganda1 = "";
+					for (var i = 0; i < 5; i++){
+						$pilganda1 = $pilganda1 + "textarea#opsiGanda1-"+i;
+						if (i<4){
+							$pilganda1 = $pilganda1 + ", ";
+						}
+					}
+					
+					$(function(){
+					  $($pilganda1).froalaEditor({
+						toolbarInline: true,
+						charCounterCount: false,
+						toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'undo', 'redo', 'insertImage', 'paragraphFormat', 'formatOL', 'formatUL', '-', 'align', 'indent', 'outdent'],
+						toolbarVisibleWithoutSelection: true,
+						placeholderText: 'Ketik jawaban',
+						spellcheck:false
+					  });
+					});
+					
+					$(function(){
+					  $('div#opsiGanda2, textarea#jawaban3').froalaEditor({
+						toolbarInline: true,
+						charCounterCount: false,
+						toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'undo', 'redo', 'insertImage', 'paragraphFormat', 'formatOL', 'formatUL', '-', 'align', 'indent', 'outdent'],
+						toolbarVisibleWithoutSelection: true,
+						placeholderText: 'Ketik jawaban',
+						spellcheck:false
+					  });
+					});
+
+					$('#pertanyaan1, #pertanyaan2, #pertanyaan3, #pertanyaan4, #pertanyaan5, #pertanyaan7, textarea#pernyataan6, textarea#alasan6').froalaEditor({
+					  toolbarButtons: ['insertImage', 'undo', 'redo', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'formatUL', 'formatOL', 'align', 'remove'],
+					  placeholderText: 'Ketik pertanyaan',
+					  charCounterCount:false,
+					  spellcheck: false
+					});
+					$('div.opsi').froalaEditor({
+					  toolbarInline: true,
+					  charCounterCount: false,
+					  toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'undo', 'redo', 'align', 'insertImage'],
+					  placeholderText: 'Ketik jawaban',
+					  spellcheck:false
+					});
+						 $('.selector').froalaEditor('commands.show');
+				   $('span.fr-placeholder').css({"height":"35px"});
+				}
+			};
+			xmlhttp.open("GET", "_editsoalditambahsoal.php?id=" + str, true);
 			xmlhttp.send();
 		};
 
