@@ -251,7 +251,7 @@
             $ujian = mysqli_fetch_array($query);
       ?>
       <div class="content">
-        <h2 style="margin: 14px; margin-bottom: 5px; color:rgba(186, 182, 182, 1); font-family: 'Didact Gothic', sans-serif; text-align:center;">Laporan Ujian <a href="#"><?php echo $ujian['judul_ujian'] ?></a></h2>
+        <h2 style="margin: 14px; margin-bottom: 5px; color:rgba(186, 182, 182, 1); font-family: 'Didact Gothic', sans-serif; text-align:center;">Laporan Ujian <a href="http://localhost/ujianonline/view_ujian.php?id=<?php echo $ujian['id_ujian']?>"><?php echo $ujian['judul_ujian'] ?></a></h2>
          <div class="col-md-offset-2 col-md-8">
           <div class="row">
              <ol class="breadcrumb" style="margin-left:0px">

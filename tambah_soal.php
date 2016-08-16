@@ -180,7 +180,7 @@
         border: 1px solid #4ABDAC;
         border-radius: 0px;
       }
-      .button1:hover, .button2:hover {
+      .button1:hover, .button2:hover, a.button:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
       a:link, a:visited {
@@ -188,6 +188,9 @@
       }
       a:hover {
         text-decoration: underline;
+      }
+      a.button {
+        text-decoration: none;
       }
 
       .button2, .button2:link, .button2:visited {
@@ -471,7 +474,7 @@
            echo '</div>';
            };
          ?>
-          <div class="panel panel-default col-md-offset-1 col-md-10" id="formTambahSoal" style="margin-top:10px; background-color:#ffffff;">
+          <div class="panel panel-default col-md-offset-1 col-md-10" id="formTambahSoal" style="margin-top:10px; background-color:#ffffff;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
             <div class="panel-body">
               <div class="row" style="margin-left:5px;">
                 <ul class="nav nav-pills">
@@ -525,7 +528,7 @@
                                       echo '<div class="form-group" style="margin-bottom:10px">';
                                       echo   '<div class="row">';
                                             echo '<div style="float:left" style="width:15px">';
-                                            echo '<i class="fa fa-check-circle fa-2x checklist" style="color:#ffffff"></i>';
+                                            echo '<i class="fa fa-check-circle fa-2x checklist" style="color:#ffffff;"></i>';
                                             echo '</div>';
                                             echo '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
                                               //echo '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>';
@@ -589,7 +592,7 @@
 									  ?>
 								    </select>
 								  </div>
-								  <a class="button">Tambah Kelompok Soal</a>
+								  <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
 								</div>
                                 <div class="form-group form-inline" style="margin-bottom:10px;">
                                   <strong class="col-md-1">Poin:</strong>
@@ -646,7 +649,7 @@
 									  ?>
 								    </select>
 								  </div>
-								  <a class="button">Tambah Kelompok Soal</a>
+								  <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
 								</div>
                                 <div class="form-group form-inline" style="margin-bottom:10px;">
                                   <strong class="col-md-1">Poin:</strong>
@@ -705,7 +708,7 @@
 									  ?>
 								    </select>
 								  </div>
-								  <a class="button">Tambah Kelompok Soal</a>
+								  <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
 								</div>
                                 <div class="form-group form-inline" style="margin-bottom:10px;">
                                   <strong class="col-md-1">Poin:</strong>
@@ -874,7 +877,7 @@
 									  ?>
 								    </select>
 								  </div>
-								  <a class="button">Tambah Kelompok Soal</a>
+								  <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
 								</div>
                                 <div class="form-group form-inline" style="margin-bottom:10px;">
                                   <strong class="col-md-1">Poin:</strong>
@@ -953,7 +956,7 @@
 									  ?>
 								    </select>
 								  </div>
-								  <a class="button">Tambah Kelompok Soal</a>
+								  <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
 								</div>
                                 <div class="form-group form-inline" style="margin-bottom:10px;">
                                   <strong class="col-md-1">Poin:</strong>
@@ -1029,7 +1032,7 @@
 									  ?>
 								    </select>
 								  </div>
-								  <a class="button">Tambah Kelompok Soal</a>
+								  <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
 								</div>
                                 <div class="form-group form-inline" style="margin-bottom:10px;">
                                   <strong class="col-md-1">Poin:</strong>
@@ -1106,7 +1109,7 @@
 									  ?>
 								    </select>
 								  </div>
-								  <a class="button">Tambah Kelompok Soal</a>
+								  <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
 								</div>
                                 <div class="form-group form-inline" style="margin-bottom:10px;">
                                   <strong class="col-md-1">Poin:</strong>
@@ -1316,8 +1319,8 @@
               $(".fa-check-circle").css({"color":"#ffffff"});
               $(".numberCircle").css({"background":"#fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
               $(this).css({"background":"#b4e3dc", "color":"#fff", "border-color":"#e7e7e7"});
-              $(this).closest('.row').find(".fa-check-circle").css({"color":"#b4e3dc"});
-			  $("input[name='jawabanbenar1'").val($(this).closest(".row").find(".fr-element").html());
+              $(this).closest('.row').find(".fa-check-circle").css({"color":"#b4e3dc", "transition-duration":"0.5s"});
+			       $("input[name='jawabanbenar1'").val($(this).closest(".row").find(".fr-element").html());
             });
         });
 		

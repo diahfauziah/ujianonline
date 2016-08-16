@@ -470,7 +470,7 @@
            echo '</div>';
            };
          ?>
-          <div class="panel panel-default col-md-offset-1 col-md-10" id="formTambahSoal" style="margin-top:10px; background-color:#ffffff;">
+          <div class="panel panel-default col-md-offset-1 col-md-10" id="formTambahSoal" style="margin-top:10px; background-color:#ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" hidden>
             <div class="panel-body">
               <div class="row" style="margin-left:5px;">
                 <ul class="nav nav-pills">
@@ -564,6 +564,25 @@
                                 <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
                                   <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#e7e7e7; border:0px; color:#777; border:1px solid #ddd; border-radius:20px; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
                                 </div>
+                                <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px;">
+                  <div class="col-md-6">
+                    <label style="width:122px;" class="form-control-label">Kelompok Soal </label>
+                    <select class="form-control" id="stage1" name="stage1" >
+                    <option value="1">Tanpa Kelompok Soal</option>
+                    <?php
+                      $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
+                    while ($stg = mysqli_fetch_array($querystg)){
+                      echo '<option value="';
+                      echo $stg['id_stage'];
+                      echo '">';
+                      echo $stg['nama_stage'];
+                      echo '</option>';
+                    }
+                    ?>
+                    </select>
+                  </div>
+                  <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; text-decoration:none; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+                </div>
                                 <div class="form-group form-inline" style="margin-bottom:10px;">
                                   <strong class="col-md-1">Poin:</strong>
                                   <div class="col-md-3">
@@ -987,9 +1006,9 @@
               </div>
             </div>
           </div>
-          <div class="col-md-offset-1 col-md-10" style="margin-top:10px;">
+          <!-- <div class="col-md-offset-1 col-md-10" style="margin-top:10px;">
             <button class="button button1 pull-right" style="font-size:13px;"><i class="fa fa-plus"></i> Tambah soal</button>
-          </div>
+          </div> -->
         </div> 
     </div>
   </body>
@@ -1106,6 +1125,13 @@
     			});
         });
         $(function(){
+            $('.btntambahsoal').click(function(){
+              $("#formTambahSoal").removeAttr("hidden");
+              $('html, body').animate({
+              scrollTop: $("#formTambahSoal").offset().top
+            }, 2000);  
+            })
+            
             $(".setjawaban").click(function(){
               $(".setjawaban").removeClass("fa fa-circle-thin");
               $(".setjawaban").css({"color":"#dadada"})

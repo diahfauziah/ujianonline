@@ -28,7 +28,7 @@
       body {
         font:400 15px Lato, sans-serif;
         line-height: 1.8;
-        /*color: #818181;*/
+        background-color: #f8f8f8;
       } 
       .btn {
         transition-duration: 0.4s;
@@ -104,13 +104,11 @@
         background-color: #F7b733;  
         color: #ffffff;
         border-color: #F7b733; 
-        border-width: 2px;
+        border-radius:0px;
       }
       .btn-simpan:hover {
-        background-color: #ffffff;
-        border-color: #F7b733;
-        color: #F7b733;
-        border-width: 2px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: #ffffff;
       }
       .breadcrumb a {
         color: rgba(109, 116, 122, 1);
@@ -129,8 +127,9 @@
         text-align: left;
       }
       .panel {
-        border-width: 1px;
+        border:0px;
       }
+      .form-control{ border-radius: 0px;}
     </style>
   </head>
   <body>

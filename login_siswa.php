@@ -28,7 +28,7 @@
       body {
         font:400 14px Lato, sans-serif;
         line-height: 1.8;
-        /*color: #818181;*/
+        background-color: #f8f8f8;
       } 
       .btn {
         transition-duration: 0.4s;
@@ -62,7 +62,7 @@
         overflow: visible;
       }
       label {
-        color: #818181;
+        color: #777;
       }
       .panel {
         margin-top: 10px;
@@ -115,12 +115,11 @@
         color: #ffffff;
         border-color: #4ABDAC; 
         border-width: 2px;
+        border-radius: 0px;
       }
       .btn-simpan:hover {
-        background-color: #ffffff;
-        border-color: #4ABDAC;
-        color: #4ABDAC;
-        border-width: 2px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: #ffffff;
       }
       .breadcrumb a {
         color: rgba(109, 116, 122, 1);
@@ -139,8 +138,9 @@
         text-align: left;
       }
       .panel {
-        border-width: 1px;
+        border:0px;
       }
+      .form-control{ border-radius: 0px;}
     </style>
   </head>
   <body>
@@ -148,10 +148,10 @@
     <!-- Container -->
     <div class="container">
         <div class="col-md-offset-4 col-md-4" style="margin-top:50px; margin-bottom:30px;">
-          <h2 style="text-align:center; font-family:'didact gothic', sans-serif; color:#f7b733; margin-bottom:30px;">Ujian Online</h2>
+          <h2 style="text-align:center; color:#f7b733; margin-bottom:30px;">Ujian Online</h2>
           <div class="panel panel-default" id="panelSoal">
             <div class="panel-body">
-              <h4 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Login Siswa</h4>
+              <h4 style="text-align:center; color:#4ABDAC;">Login Siswa</h4>
               <hr>
             <form id="form" method="post" class="form-horizontal" action="login_siswaval.php">
 			  <?php 
