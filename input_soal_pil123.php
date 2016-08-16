@@ -58,6 +58,8 @@
 	$query = "INSERT INTO `pilihan_jawaban`(`id_soal`, `opsi_jawaban`) VALUES ('$idsoal', 'Benar semua')";
 
 	$insert_query2 = mysqli_query($link, $query);
+	
+	$updatetotalsoal = mysqli_query($link, "UPDATE info_ujian SET total_soal='$nomor_soal', modified_date=NOW() WHERE id_ujian='$id_ujian'");
 
 	if($insert_query2){
 		$_SESSION['statuspesan'] = "sukses";

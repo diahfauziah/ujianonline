@@ -67,6 +67,8 @@
 			}
 		}
 	}
+	
+	$updatetotalsoal = mysqli_query($link, "UPDATE info_ujian SET total_soal='$nomor_soal', modified_date=NOW() WHERE id_ujian='$id_ujian'");
 
 	if($insert_query2){
 		$_SESSION['statuspesan'] = "sukses";

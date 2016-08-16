@@ -1214,7 +1214,9 @@
     <!-- Initialize the editor. -->
     <script>
 		$(document).ready(function(){
-			$("#formTambahSoal").css({"display":"none"});
+			$('html, body').animate({
+				scrollTop: $("#formTambahSoal").offset().top
+			}, 2000);
 		});
 		
 		$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
@@ -1351,12 +1353,6 @@
 			       $("input[name='jawabanbenar1'").val($(this).closest(".row").find(".fr-element").html());
             });
 			
-			$(".btntambahsoal").click(function(){
-				$("#formTambahSoal").css({"display":"inline-block"});
-				$('html, body').animate({
-					scrollTop: $("#formTambahSoal").offset().top
-				}, 2000);
-			});
         });
 		
 		function changeedit(){
