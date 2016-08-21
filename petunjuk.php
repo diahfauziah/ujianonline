@@ -47,8 +47,8 @@
         font-size: 12px !important;
         border-radius: 0;
         /*background-color: #ecf8f6;*/
-        background-color: #ebebeb;
-        border-color: #ccc;
+        background-color: #ffffff;
+        border-color: #dadada;
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {

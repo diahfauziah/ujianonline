@@ -81,21 +81,23 @@
         font:400 14px Lato, sans-serif;
         line-height: 1.8;
         background-color: #f8f8f8;
-        /*color: #818181;*/
+        /* color: #929292; */
       } 
       .navbar {
         margin-bottom: 0;
         z-index: 9999;
         font-size: 12px !important;
         border-radius: 0;
-        /*background-color: #ecf8f6;*/
-        /* background-color: #e7e7e7; */
-        border-bottom-width: 1px;
-        border-bottom-color: #e7e7e7;
+        /* border-bottom-width: 1px; */
+        /* border-bottom-color: #e1edef; */
+        background-color: #ffffff;
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #4ABDAC !important;
+        color: #30cbe8 !important;
+      }
+      .navbar-default {
+          border-color: #e1edef;
       }
       .container {
         padding: 20px 20px;
@@ -130,7 +132,7 @@
       }
       
       .nomor-belum-diisi {
-        background-color:#f8f8f8; color:#000000; border-color:#f8f8f8;
+        background-color:#f9fbfc; color:#000000; border-color:#f9fbfc;
       }
 
       /* shadow */
@@ -139,7 +141,7 @@
       }
 
       .button {
-        background-color: #4ABDAC;
+        background-color: #30cbe8;
         border: none;
         color: #ffffff;
         padding: 6px 12px;
@@ -153,57 +155,71 @@
         cursor: pointer;
         border-radius: 4px;
       }
-      .button1, .button1:link, .button1:visited {
-        background-color: #F7B733;
+      .button1:link, .button1:visited {
+        background-color: #ffbf30;
         color: #ffffff;
-        border: 1px solid #F7B733;
+        border: 1px solid #ffbf30;
       }
-      .btnreset, .btnreset:link, .btnreset:visited{
-        background-color:#f8f8f8;
-        color:#777; 
-        border: 1px solid #e7e7e7; 
+      .button1, .btnreset, .btnreset:link, .btnreset:visited{
+        background-color:#f9fbfc;
+        color:#929292; 
+        border: 1px solid #e1edef; 
       }
+
       .btncoret, .btncoret:link, .btncoret:visited {
         background-color:#ffffff;
-        color:#4ABDAC; 
-        border: 1px solid #e7e7e7;  
+        color:#30cbe8; 
+        border: 1px solid #e1edef;  
       }
 
       .button1:hover, .btnreset:hover {
      /*   background-color: #ffffff;
-        color: #F7B733;
-        border: 1px solid #F7B733; */
+        color: #ffbf30;
+        border: 1px solid #ffbf30; */
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
       .button2, .button2:link, .button2:visited {
-        background-color: #f8f8f8;
-        color: #4ABDAC;
-        border: 1px solid #4ABDAC;
+        background-color: #ffbf30;
+        color: #ffffff;
+        border: 1px solid #f8f8f8;
         font-size: 14px;
       }
       .button2:hover, .kumpulkan, .btncoret:hover {
-        background-color: #4ABDAC;
+        background-color: #ffb000;
         color: #ffffff;
-        border: 1px solid #4ABDAC;
+        border: 1px solid #f8f8f8;
       }
+
       .button4, .button4:link, .button4:visited {
-        background-color: #4ABDAC;
-        color: #ffffff;
+        background-color: #adadad;
+        color: #fff;
         border-radius: 0px;
         font-size: 14px;
+        border: 1px solid #dadada;
       }
       .button4:hover{
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background-color: #929292;
       }
       .button3 {
         background-color: #f8f8f8;
         border-color: #f8f8f8;
         color: #000000;
         font-size: 13px;
+        border: 1px solid #e1edef;
       }
-
+      .buttonprev, .buttonprev:visited {
+        background-color: #adadad;
+        color: #fff;
+        border: 1px solid #f8f8f8;
+        font-size: 14px;
+      }
+      .buttonprev:hover {
+        color: #fff;
+        background-color: #929292;
+      }
       .panel {
-        border-color: #ffffff;
+        border-color: #e1edef;
+        border-bottom-color: #ffffff;
       }
       .circle {
         width: 30px;
@@ -212,18 +228,18 @@
         font-size: 14px;
         color: #ffffff;
         text-align: center;
-        background: #4ABDAC;
+        background: #30cbe8;
         line-height: 28px;
-        border: 1px solid #4ABDAC;
+        border: 1px solid #30cbe8;
       }
       .tandai {
-        background-color : #F7B733;
+        background-color : #ffbf30;
         color : #ffffff;
-        border-color: #F7B733;
+        border-color: #ffbf30;
       }
       li.selected:hover, li.selected {
-        background-color : #b4e3dc;
-        box-shadow: 0 1px #b4e3dc;
+        background-color : #87e2f3;
+        box-shadow: 0 1px #87e2f3;
         
       }
       .list-group-item:hover {
@@ -232,14 +248,14 @@
       }
 
       .hasAnswer {
-        background-color : #b4e3dc;
+        background-color : #87e2f3;
         color : #ffffff;
-        border-color : #b4e3dc;
+        border-color : #87e2f3;
       }
       
       .disabled, .disabled:hover, .disabled:visited, .disabled:focus{
         cursor: not-allowed;
-        background-color: #f8f8f8;
+        background-color: #f9fbfc;
         color: #dadada;
         border: 1px solid #dadada;
         font-size: 14px;
@@ -251,9 +267,9 @@
           height: 32px;
           padding: 5px;
           
-          background: #f8f8f8;
-          border: 2px solid #e7e7e7;
-          color: #4ABDAC;
+          background: #f9fbfc;
+          border: 2px solid #e1edef;
+          color: #30cbe8;
           text-align: center;
           
           font: 15px Arial, sans-serif;
@@ -265,26 +281,26 @@
           height: 32px;
           padding: 5px;
           
-          background: #4ABDAC;
-          border: 1px solid #4ABDAC;
+          background: #30cbe8;
+          border: 1px solid #30cbe8;
           color: #fff;
           text-align: center;
           
           font: 15px Arial, sans-serif; 
       }
       .opsijawaban {
-        border: 1px solid #e7e7e7;
+        border: 1px solid #e1edef;
         border-radius: 4px;
         margin-bottom: 5px;
-        box-shadow: 0 1px #e7e7e7;
+        box-shadow: 0 1px #e1edef;
         width: 91%;
         margin-left: 25px;
       }
       .opsicheckbox {
-        border: 1px solid #e7e7e7;
+        border: 1px solid #e1edef;
         border-radius: 4px;
         margin-bottom: 5px;
-        box-shadow: 0 1px #e7e7e7;
+        box-shadow: 0 1px #e1edef;
         width: 91%;
         margin-left: 25px;
       }
@@ -319,7 +335,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #4ABDAC;"><?php echo $ujian['judul_ujian'] ?></a>
+          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #30cbe8;"><?php echo $ujian['judul_ujian'] ?></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right" style="padding-right: 160px;">
@@ -359,6 +375,7 @@
               echo       '</div>';
               echo       '<div style="margin-left: 0px;">';
               echo         '<div class="col-md-12" style="width:96%">';
+              
               echo           '<div id="soal';
 			  echo 			  $j;
 			  echo 			 '" rows="3">';
@@ -411,6 +428,7 @@
 			    echo $soal['id_soal'];
 			    echo '"/>';
               }
+              
         
               echo         '</div>';
               echo       '</div>';
@@ -431,7 +449,7 @@
 
               echo     '</div>';
               
-			  if($soal['kategori_pertanyaan']==1||$soal['kategori_pertanyaan']==6||$soal['kategori_pertanyaan']==7){
+			  if($soal['kategori_pertanyaan']==1||$soal['kategori_pertanyaan']==7){
 				  echo    '<ul class="list-group" style="margin-top:10px;">';
 				  $id_soal = $soal['id_soal'];
 				  $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
@@ -444,7 +462,7 @@
 					  echo '" style="float:left">';
 					  echo   '<div class="row">';
 					  echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-					  //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
+					  //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#30cbe8"></i>';
 					  echo        '<div class="numberCircle">';
 					  echo         $huruf[$i];
 					  echo        '</div>'; 
@@ -454,7 +472,7 @@
 					  echo     '</div>';
 					  echo    '</div>';
 					  echo '</li>';
-					  echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#4ABDAC; margin-left:5px; cursor:pointer;"></i>';
+					  echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#929292; margin-left:5px; cursor:pointer;"></i>';
 					  echo '</div>';
 					  $i++;
 					}
@@ -476,14 +494,14 @@
             echo '" style="float:left">';
             echo   '<div class="row">';
             echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-            echo       '<i class="fa fa-square-o fa-lg setjawaban" style="color:#4ABDAC"></i>';
+            echo       '<i class="fa fa-square-o fa-lg setjawaban" style="color:#30cbe8"></i>';
             echo     '</div>';
             echo     '<div style="width:90%;  margin-left:-20px;" class="col-md-9">';
             echo       '<div class="opsiGanda">'.$pilihan['opsi_jawaban'].'</div>';
             echo     '</div>';
             echo    '</div>';
             echo '</li>';
-            //echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#4ABDAC; margin-left:5px; cursor:pointer;"></i>';
+            //echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#30cbe8; margin-left:5px; cursor:pointer;"></i>';
             echo '</div>';
             $i++;
           }
@@ -501,7 +519,7 @@
           ?>
           </div>
           <div class="form-group">
-            <a href="#" type="button" id="btnprev" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none"><span class="glyphicon glyphicon-chevron-left"></span> Soal sebelumnya</a>
+            <a href="#" type="button" id="btnprev" class="button buttonprev col-md-6" style="border-radius:0px; text-decoration:none"><span class="glyphicon glyphicon-chevron-left"></span> Soal sebelumnya</a>
             <a href="#" type="button" id="btnnext" class="button button2 col-md-6" style="border-radius:0px; text-decoration:none">Soal berikutnya <span class="glyphicon glyphicon-chevron-right"></span></a>
           </div>  
         </div>
@@ -578,7 +596,7 @@
               <div class="row" style="padding-left:15px;">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p></div>
             </div>
           </div>
-          <button type="submit" class="button button4 col-md-12" style="width:190px;text-decoration:none;" >Kumpulkan</a>
+          <button type="submit" class="button button4 col-md-12" id="btnkumpulkan" style="width:190px;text-decoration:none;" >Kumpulkan</a>
         </div>
 		</form>
       </div>
@@ -735,18 +753,22 @@
           }          
           
           if(($soal_sekarang)==1){
-            $("#btnprev").removeClass("button2");
+            $("#btnprev").removeClass("buttonprev");
             $("#btnprev").addClass("disabled");
           }else{
             $("#btnprev").removeClass("disabled");
-            $("#btnprev").addClass("button2");
+            $("#btnprev").addClass("buttonprev");
           }
 
           if(($soal_sekarang =='<?php echo $nomormax ?>')){
             $(this).removeClass("button2");
             $(this).addClass("disabled");
-          } 
-
+            $("#btnkumpulkan").removeClass("button4");
+            $("#btnkumpulkan").addClass("button2");
+          }else{
+            $("#btnkumpulkan").removeClass("button2");
+            $("#btnkumpulkan").addClass("button4");
+          }
         });
 
         if(($soal_sekarang) == '<?php echo $nomormax ?>'){
@@ -773,32 +795,42 @@
           }
           
           if(($soal_sekarang)==1){
-            $(this).removeClass("button2");
+            $(this).removeClass("buttonprev");
             $(this).addClass("disabled");
           }else{
             $(this).removeClass("disabled");
-            $(this).addClass("button2");
+            $(this).addClass("buttonprev");
           }
           if($("#btnnext").hasClass("disabled")){
             $("#btnnext").removeClass("disabled");
             $("#btnnext").addClass("button2");
           }
+
+          if(($soal_sekarang =='<?php echo $nomormax ?>')){
+            $("#btnkumpulkan").removeClass("button4");
+            $("#btnkumpulkan").addClass("button2");
+          }else{
+            $("#btnkumpulkan").removeClass("button2");
+            $("#btnkumpulkan").addClass("button4");
+          }
+
         });
 
         /* disabled button prev saat baru diload */
         if(($soal_sekarang)==1){
-          $("#btnprev").removeClass("button2");
+          $("#btnprev").removeClass("buttonprev");
           $("#btnprev").addClass("disabled");
         }else{
           $("#btnprev").removeClass("disabled");
-          $("#btnprev").addClass("button2");
+          $("#btnprev").addClass("buttonprev");
         };
 
         /* Pilih opsi jawaban */
         $(".opsijawaban").click(function(){
           if($(this).hasClass("selected")){
             $(this).closest('ul').find('li.list-group-item').removeClass("selected");
-            $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
+            $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#30cbe8", "border-color":"#e1edef"});
+            $(this).css({"color":"#000000"});
 
             $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
             $($ini).removeClass("hasAnswer");
@@ -823,11 +855,13 @@
 
           }else{
             $(this).closest('ul').find('li.list-group-item').removeClass("selected");
+            $(this).closest('ul').find('li.list-group-item').css({"color":"#000000"});
             $(this).addClass("selected");
             $(this).closest('ul').find('i.fa.coret').css({"display":"inline-block"});
 
-            $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
-            $(this).find('.numberCircle').css({"background":"#b4e3dc", "color":"#fff", "border-color":"#fff"});
+            $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#30cbe8", "border-color":"#e1edef"});
+            $(this).css({"color":"#fff"});
+            $(this).find('.numberCircle').css({"background":"#87e2f3", "color":"#fff", "border-color":"#fff"});
 
             $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
             $($ini).addClass("hasAnswer");
@@ -864,7 +898,7 @@
             //$(this).closest('ul').find('li.list-group-item').removeClass("selected");
             $(this).closest('li.list-group-item').removeClass("selected");
             $(this).closest('li.list-group-item').find("i").removeClass("fa-check-square-o").addClass("fa-square-o");
-            $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
+            $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#30cbe8", "border-color":"#e1edef"});
 
             if(!$(this).closest('ul').find('li.list-group-item').hasClass("selected")){
               $($ini).removeClass("hasAnswer");
@@ -894,8 +928,8 @@
             $(this).closest('ul').find('i.fa.coret').css({"display":"inline-block"});
             $(this).closest('li.list-group-item').find("i").removeClass("fa-square-o").addClass("fa-check-square-o");
 
-            $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
-            $(this).find('.numberCircle').css({"background":"#b4e3dc", "color":"#fff", "border-color":"#fff"});
+            $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#30cbe8", "border-color":"#e1edef"});
+            $(this).find('.numberCircle').css({"background":"#87e2f3", "color":"#fff", "border-color":"#fff"});
 
             $($ini).addClass("hasAnswer");
             $($ini).css({"color":"#ffffff"});
@@ -943,6 +977,7 @@
             if ($($ini).html() == '<i class="fa fa-bookmark-o"></i> Batal Tandai'){
                 // membatalkan:
                   $($ini).html('<i class="fa fa-bookmark"></i> Tandai Soal');
+                  $($ini).css({"color":"#929292", "background-color":"#f9fbfc", "border-color":"#dadada"});
                   $($nomorini).removeClass("tandai");
                   $($nomorini).removeClass("hasTandai");
                   $($nomorini).css({"color":"#000000"});
@@ -950,21 +985,11 @@
                     $($nomorini).addClass("hasAnswer"); 
                     $($nomorini).css({"color":"#ffffff"}); 
                   }
-                  /*if($($kotakini).find("input").val()!=""){
-                    $($nomorini).addClass("hasAnswer");
-                    $($nomorini).css({"color":"#ffffff"});  
-                  }
-                  if($($kotakini).find(".textessay").val()!=""){
-                    $($nomorini).addClass("hasAnswer");
-                    $($nomorini).css({"color":"#ffffff"});  
-                  }else{
-                    $($nomorini).removeClass("hasAnswer");
-                    $($nomorini).css({"color":"#000000"}); 
-                  }*/
               }
               else{
                 // menandai
                   $($ini).html('<i class="fa fa-bookmark-o"></i> Batal Tandai');
+                  $($ini).css({"color":"#fff", "background-color":"#ffbf30", "border-color":"#ffbf30"});
                   $($nomorini).css({"color":"#ffffff"});
                   $($nomorini).removeClass("hasAnswer");
                   $($nomorini).addClass("tandai");
@@ -1043,19 +1068,23 @@
           $(this).addClass("nomor-sekarang");
 
           if(($soal_sekarang)==1){
-            $("#btnprev").removeClass("button2");
+            $("#btnprev").removeClass("buttonprev");
             $("#btnprev").addClass("disabled");
           }else{
             $("#btnprev").removeClass("disabled");
-            $("#btnprev").addClass("button2");
+            $("#btnprev").addClass("buttonprev");
           };
 
           if(($soal_sekarang =='<?php echo $nomormax ?>')){
             $("#btnnext").removeClass("button2");
             $("#btnnext").addClass("disabled");
+            $("#btnkumpulkan").removeClass("button4");
+            $("#btnkumpulkan").addClass("button2");
           }else{
             $("#btnnext").removeClass("disabled");
             $("#btnnext").addClass("button2");
+            $("#btnkumpulkan").removeClass("button2");
+            $("#btnkumpulkan").addClass("button4");
           }
         });
 
