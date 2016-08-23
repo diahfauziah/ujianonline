@@ -1222,7 +1222,7 @@
 		$(document).ready(function(){
 			$('html, body').animate({
 				scrollTop: $("#formTambahSoal").offset().top
-			}, 2000);
+			}, 50);
 		});
 		
 		$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
@@ -1232,7 +1232,7 @@
 		$(".btntambahsoal").click(function(){
 			$('html, body').animate({
 				scrollTop: $("#formTambahSoal").offset().top
-			}, 2000);
+			}, 50);
 		});
 		
         $(function() {
