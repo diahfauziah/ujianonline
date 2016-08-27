@@ -70,11 +70,11 @@
         border-radius: 0;
         border-bottom-color: #e7e7e7;
         border-bottom-width: 1px;
-        /*background-color: #4ABDAC; */
+        /*background-color: #30cbe8; */
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #4ABDAC !important;
+        color: #30cbe8 !important;
       }
       .container {
           padding-right: 15px;
@@ -95,11 +95,11 @@
         background-color: yellow;
       }
       span.label:hover {
-     /*   background-color: #F7B733; */
+     /*   background-color: #ffbf30; */
         
       }
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #4ABDAC !important;
+        color: #30cbe8 !important;
       }
       
       #teksSoal {
@@ -122,7 +122,7 @@
       }
       .breadcrumb a {
         /* color: rgba(109, 116, 122, 1); */
-        color: #4ABDAC;
+        color: #30cbe8;
       }
       .breadcrumb a:hover {
         /* color: rgba(42, 100, 150, 1); */
@@ -136,31 +136,31 @@
         content: " > ";
       }
       .btn-primary, .btn-primary:active, .btn-primary:focus {
-        background-color: #4ABDAC;  
+        background-color: #30cbe8;  
         color: #ffffff;
-        border-color: #4ABDAC; 
+        border-color: #30cbe8; 
       }
 
       .btn-primary:hover {
         background-color: #ffffff;
-        border-color: #4ABDAC;
-        color: #4ABDAC;
+        border-color: #30cbe8;
+        color: #30cbe8;
         border-width: 2px;
       }
       .btn-simpan, .btn-simpan:active, .btn-simpan:focus {
-        background-color: #F7B733;  
+        background-color: #ffbf30;  
         color: #ffffff;
-        border-color: #F7B733; 
+        border-color: #ffbf30; 
       }
 
       .btn-simpan:hover {
         background-color: #ffffff;
-        border-color: #F7B733;
-        color: #F7B733;
+        border-color: #ffbf30;
+        color: #ffbf30;
         border-width: 2px;
       }
       .button {
-        background-color: #4ABDAC;
+        background-color: #30cbe8;
         border: none;
         color: #ffffff;
         padding: 6px 12px;
@@ -175,26 +175,26 @@
         border-radius: 4px;
       }
       .button1, .button1:link, .button1:visited {
-        background-color: #4ABDAC;
+        background-color: #30cbe8;
         color: #ffffff;
-        border: 1px solid #4ABDAC;
+        border: 1px solid #30cbe8;
         border-radius: 0px;
       }
       .button1:hover, .button2:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
       a:link, a:visited {
-        color: #4ABDAC;
+        color: #30cbe8;
       }
       a:hover {
         text-decoration: underline;
       }
 
       .button2, .button2:link, .button2:visited {
-        background-color: #F7B733;
+        background-color: #ffbf30;
         color: #ffffff;
-        border-color: #F7B733;
-        border: 1px solid #F7B733;
+        border-color: #ffbf30;
+        border: 1px solid #ffbf30;
         border-radius: 0px;
       }
 
@@ -209,7 +209,7 @@
       }
 
       a[data-toggle="pill"]:link, a[data-toggle="pill"]:visited {
-        color: #4ABDAC;
+        color: #30cbe8;
 
       }
 
@@ -222,10 +222,10 @@
       }
       .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
         color: #ffffff;
-        background-color: #F7B733;
+        background-color: #ffbf30;
       }
       .nav-pills >li > a:hover, .nav-pills > li, .nav-pills > li {
-        color: #F7B733;
+        color: #ffbf30;
       }
       .tooltip{ 
         position:relative;
@@ -243,7 +243,7 @@
           
           background: #ffffff;
           border: 2px solid #e7e7e7;
-          color: #4ABDAC;
+          color: #30cbe8;
           text-align: center;
           
           font: 15px Arial, sans-serif;
@@ -329,7 +329,7 @@
       ?>
       <div class="content">
         <div class="row">
-          <h2 style="margin-left:25px; color:#4abdac; margin-top:0px; margin-bottom:10px; text-align:center; font-family:'didact gothic', sans-serif"><a href="http://localhost/ujianonline/view_ujian.php?id=<?php echo $judul['id_ujian'] ?>"><?php echo $judul['judul_ujian'] ?></a></h2>
+          <h2 style="margin-left:25px; color:#30cbe8; margin-top:0px; margin-bottom:10px; text-align:center; font-family:'didact gothic', sans-serif"><a href="http://localhost/ujianonline/view_ujian.php?id=<?php echo $judul['id_ujian'] ?>"><?php echo $judul['judul_ujian'] ?></a></h2>
         </div>
         <div id="kolominformasi">
           <div class="panel panel-default col-md-offset-1 col-md-10" style="margin-top:20px;" id="informasiujian">
@@ -463,7 +463,7 @@
                         while($pilihan = mysqli_fetch_array($query2)){
                           echo '<li class="list-group-item opsijawaban">';
                           echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-                        //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
+                        //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#30cbe8"></i>';
                           echo        '<div class="numberCircle">';
                           echo         $huruf[$i];
                           echo        '</div>'; 
@@ -550,7 +550,7 @@
                                    <textarea id="pertanyaan1" name="pertanyaan1" class="form-control" rows="3">
                                    </textarea>
                                 </div>
-                                <p style="margin-left:-10px; font-size:12px; color:#f7b733; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
+                                <p style="margin-left:-10px; font-size:12px; color:#ffbf30; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
                                  <?php 
                                     $huruf = array("A","B","C","D","E","F","G","H");
                                     $i = 0; 
@@ -1099,7 +1099,7 @@
                                    <label class="form-control-label">Pertanyaan</label>
                                    <textarea id="pertanyaan4" name="pertanyaan4" class="form-control" row="3"></textarea>
                                 </div>
-                                <p style="margin-left:-10px; font-size:12px; color:#f7b733; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
+                                <p style="margin-left:-10px; font-size:12px; color:#ffbf30; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
                                 <div class="form-group" style="margin-bottom:10px; margin-top:10px;">
                                   <div class="row">
                                     <div style="float:left" style="width:15px">
@@ -1346,7 +1346,7 @@
         $(function(){
             $(".numberCircle").click(function(){
               $(".fa-check-circle").css({"color":"#ffffff"});
-              $(".numberCircle").css({"background":"#fff","color":"#4ABDAC", "border-color":"#e7e7e7"});
+              $(".numberCircle").css({"background":"#fff","color":"#30cbe8", "border-color":"#e7e7e7"});
               $(this).css({"background":"#b4e3dc", "color":"#fff", "border-color":"#e7e7e7"});
               $(this).closest('.row').find(".fa-check-circle").css({"color":"#b4e3dc"});
             });
@@ -1476,7 +1476,7 @@
                   'color': '#000000',
                   'background-color': '#ffffff',
                   'border-radius': '4px',
-                  'border': '0px solid #F7B733',
+                  'border': '0px solid #ffbf30',
                   '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
                   '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
                   'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',

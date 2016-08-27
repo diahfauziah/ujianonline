@@ -44,12 +44,12 @@
         border-bottom-width: 1px;
         font-size: 12px !important;
         border-radius: 0;
-        /*background-color: #4ABDAC; */
+        /*background-color: #30cbe8; */
         border-bottom-color: #e7e7e7;
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #4ABDAC !important;
+        color: #30cbe8 !important;
       }
       .navbar-nav li:hover {
         background-color:#e7e7e7;
@@ -126,34 +126,34 @@
         overflow: hidden;
       }
       .btn-primary, .btn-primary:active, .btn-primary:focus {
-        background-color: #4ABDAC;  
+        background-color: #30cbe8;  
         color: #ffffff;
-        border-color: #4ABDAC; 
+        border-color: #30cbe8; 
         border-width: 2px;
       }
       .btn-primary:hover {
         background-color: #ffffff;
-        border-color: #4ABDAC;
-        color: #4ABDAC;
+        border-color: #30cbe8;
+        color: #30cbe8;
         border-width: 2px;
       }
       .btn-simpan, .btn-simpan:active, .btn-simpan:focus {
-        background-color: #F7b733;  
+        background-color: #ffbf30;  
         color: #ffffff;
-        border-color: #F7b733; 
+        border-color: #ffbf30; 
         border-width: 2px;
       }
       .btn-simpan:hover {
         background-color: #ffffff;
-        border-color: #F7b733;
-        color: #F7b733;
+        border-color: #ffbf30;
+        color: #ffbf30;
         border-width: 2px;
       }
       .breadcrumb a {
         color: rgba(109, 116, 122, 1);
       }
       .breadcrumb a:hover {
-        color: #4ABDAC;
+        color: #30cbe8;
       }
       .breadcrumb > .active {
         color: rgba(186, 182, 182, 1);
@@ -177,7 +177,7 @@
         border-radius: 0px;
       }
       a:link {
-        color: #4ABDAC;
+        color: #30cbe8;
       }
       a:hover {
         text-decoration: underline;
@@ -227,7 +227,7 @@
       <div class="col-md-offset-3 col-md-6">
           <div class="panel panel-default" id="panelSoal" style="margin-top: 10px;">
             <div class="panel-body">
-              <h3 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Buat Ujian Baru</h3>
+              <h3 style="text-align:center; color:#30cbe8; font-family:'didact gothic', sans-serif;">Buat Ujian Baru</h3>
               <hr>
               <!-- <div class="alert alert-danger">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

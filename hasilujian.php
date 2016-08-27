@@ -46,12 +46,12 @@
         font-size: 12px !important;
         border-radius: 0;
         /*background-color: #ecf8f6;*/
-        background-color: #ebebeb;
+        background-color: #ffffff;
         border-color: #ccc;
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #4ABDAC !important;
+        color: #30cbe8 !important;
       }
       .container {
         padding: 20px 20px;
@@ -62,7 +62,7 @@
       }
 
       .button {
-        background-color: #4ABDAC;
+        background-color: #30cbe8;
         border: none;
         color: #ffffff;
         padding: 6px 12px;
@@ -87,14 +87,14 @@
       }
       .button2, .button2:link, .button2:visited {
         background-color: #f8f8f8;
-        color: #4ABDAC;
-        border: 1px solid #4ABDAC;
+        color: #30cbe8;
+        border: 1px solid #30cbe8;
         font-size: 14px;
       }
       .button2:hover {
-        background-color: #4ABDAC;
+        background-color: #30cbe8;
         color: #ffffff;
-        border: 1px solid #4ABDAC;
+        border: 1px solid #30cbe8;
       }
       .panel {
         border-color: #ffffff;
@@ -133,7 +133,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #4ABDAC;"><?php echo $ujian['judul_ujian'] ?></a>
+          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #30cbe8;"><?php echo $ujian['judul_ujian'] ?></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right" style="padding-right: 160px;">
@@ -169,7 +169,7 @@
 				</div>
 				<div class="form-group">
 					<label class="col-md-5" style="text-align:right; padding-right:0px;">Nilai:</label>
-					<div class="col-md-7" style="text-align:left; font-size:50px; margin-top:-20px; color:#4abdac;"><?php echo $_SESSION['Nilai']; ?></div>
+					<div class="col-md-7" style="text-align:left; font-size:50px; margin-top:-20px; color:#30cbe8;"><?php echo $_SESSION['Nilai']; ?></div>
 				</div>
 			</form>
           </div>

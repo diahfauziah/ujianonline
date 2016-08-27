@@ -40,19 +40,19 @@
         background-color: #f8f8f8;
         /*color: #818181;*/
       } 
+
       .navbar {
         margin-bottom: 0;
         z-index: 9999;
-        border: 0; 
         font-size: 12px !important;
         border-radius: 0;
         /*background-color: #ecf8f6;*/
+        border:0px;
         background-color: #ffffff;
-        border-color: #dadada;
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #4ABDAC !important;
+        color: #30cbe8 !important;
       }
       .container {
         padding: 20px 20px;
@@ -60,10 +60,11 @@
       
       .panel {
         margin-top: 5px;
+        border-color: #ffffff;
       }
 
       .button {
-        background-color: #4ABDAC;
+        background-color: #30cbe8;
         border: none;
         color: #ffffff;
         padding: 6px 12px;
@@ -71,7 +72,7 @@
         text-decoration: none;
         display: inline-block;;
         font-weight: 400;
-        font-size: 12px;
+        font-size: 15px;
         line-height: 1.42857143;
         transition-duration: 0.4s;
         cursor: pointer;
@@ -81,25 +82,23 @@
         background-color: #F7B733;
         color: #ffffff;
         border: 1px solid #F7B733;
-        font-size: 13px;
+        font-size: 15px;
       }
       .button1:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
       .button2, .button2:link, .button2:visited {
         background-color: #f8f8f8;
-        color: #4ABDAC;
-        border: 1px solid #4ABDAC;
-        font-size: 14px;
+        color: #30cbe8;
+        border: 1px solid #30cbe8;
+        font-size: 15px;
       }
       .button2:hover {
-        background-color: #4ABDAC;
+        background-color: #30cbe8;
         color: #ffffff;
-        border: 1px solid #4ABDAC;
+        border: 1px solid #30cbe8;
       }
-      .panel {
-        border-color: #ffffff;
-      }
+      
       .imagecontainer {
         position: relative;
       }
@@ -124,8 +123,15 @@
         background-color: #777;
       }
       .carousel-control.left, .carousel-control.right {
-        background-image: linear-gradient(to right,rgb(248, 248, 248) 0,rgba(0,0,0,.0001) 100%);
+        background-image: none;
+        background-color: #ffffff;
         color: #777;
+      }
+      a:hover{
+        text-decoration: none;
+      }
+      .form-group {
+        margin-bottom: 0px;
       }
     </style>
   </head>
@@ -144,7 +150,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #4ABDAC;"><?php echo $ujian['judul_ujian'] ?></a>
+          <a class="navbar-brand" href="#myPage" style="padding-left: 230px; color: #30cbe8;"><?php echo $ujian['judul_ujian'] ?></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right" style="padding-right: 160px;">
@@ -157,62 +163,108 @@
     <div class="container">
     <!--  <div class="circle">10</div> -->
       <div class="col-md-offset-1 col-md-10">
-        <div class="panel panel-default">
+        <div class="row">
+          <div class="panel panel-default col-md-offset-1 col-md-10">
+            <div class="panel-body">
+              <h5 style="text-align:center"><b>Informasi Ujian</b></h5>
+              <hr>
+              <form class="form-horizontal">
+                  <div class="form-group">
+                    <label class="col-md-2" style="text-align:right; padding-right:0px;">Judul:</label>
+                      <div class="col-md-10" style="text-align:left"><?php echo $ujian['judul_ujian']; ?></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-2" style="text-align:right; padding-right:0px;">Waktu:</label>
+                    <div class="col-md-3" style="text-align:left"><?php echo $ujian['lama_ujian']; ?> menit</div>
+                    <label class="col-md-offset-1 col-md-2" style="text-align:right; padding-right:0px;">Jumlah soal:</label>
+                    <div class="col-md-3" style="text-align:left"><?php echo $ujian['total_soal']; ?></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-2" style="text-align:right; padding-right:0px;">Kategori:</label>
+                      <div class="col-md-10" style="text-align:left">
+                        <?php
+                          $idm = $ujian['mata_pelajaran'];
+                        $querynamamapel = "select * from mata_pelajaran where id_kategori=$idm";
+                        $qnm = mysqli_query($link, $querynamamapel);
+                        $namamp = mysqli_fetch_array($qnm);
+                        echo $namamp['nama'];
+                        echo " - ";
+                        $idk = $ujian['id_kelas'];
+                        $querynmk = "select * from kelas where id_kelas=$idk";
+                        $qnk = mysqli_query($link, $querynmk);
+                        $namak = mysqli_fetch_array($qnk);
+                        echo $namak['nama'];
+                        ?>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-2" style="text-align:right; padding-right:0px;">Petunjuk:</label>
+                    <div class="col-md-10" style="text-align:left" rows="3">
+                      <?php
+                        if ($ujian['petunjuk']!=null){
+                        echo $ujian['petunjuk'];
+                        } else {
+                        echo "-";
+                        }
+                      ?>
+                    </div>
+                  </div>
+                </form>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom:10px;">
+          <div class="col-md-offset-1 col-md-10">
+            <a href="index_siswa.php?id=<?php echo $id ?>" type="button" class="button button1 col-md-offset-9 col-md-3" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="row">
+        <div class="panel panel-default col-md-offset-1 col-md-10">
           <div class="panel-body">
-            <h5>Petunjuk</h5>
-            <hr>
-			<?php 
-				if ($ujian['petunjuk']){
-					echo $ujian['petunjuk'];
-				} else {
-					echo 'Tidak ada petunjuk ujian';
-				}
-			?>
+            <h5 href="#" style="text-align:center" id="panduan"><b>Panduan Ujian</b></h5>
+            <hr />
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:0px" data-interval="0">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <img src="image/1a.png" alt="Chania" width="100%">
+                </div>
+
+                <div class="item">
+                  <img src="image/2coret.png" alt="Chania" width="100%">
+                </div>
+
+                <div class="item">
+                  <img src="image/3highlight.png" alt="Chania" width="100%">
+                </div>
+
+                <div class="item">
+                  <img src="image/4hapusformat.png" alt="Chania" width="100%">
+                </div>
+
+              </div>
+
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
           </div>
         </div>
-        <a href="index_siswa.php?id=<?php echo $id ?>" type="button" class="button button1 pull-right" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
-        <a href="#" style="pull-right" id="panduan">Panduan Ujian</a>
-        <br />
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:20px; border:1px solid #ddd;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" data-interval="0">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-          </ol>
-
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img src="image/1a.png" alt="Chania" width="100%">
-            </div>
-
-            <div class="item">
-              <img src="image/2coret.png" alt="Chania" width="100%">
-            </div>
-
-            <div class="item">
-              <img src="image/3highlight.png" alt="Chania" width="100%">
-            </div>
-
-            <div class="item">
-              <img src="image/4hapusformat.png" alt="Chania" width="100%">
-            </div>
-
-          </div>
-
-          <!-- Left and right controls -->
-          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
         </div>
-
       </div>
     </div>
 	<footer class="text-center">
