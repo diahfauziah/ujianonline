@@ -1191,7 +1191,10 @@
                       $nomormax = (int)$arraynomor[0];
                       $soal = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ORDER BY nomor_soal");
                       $querystage = mysqli_query($link, "SELECT DISTINCT stage_id FROM `soal` WHERE `id_ujian`='$id' ORDER BY stage_id ASC");
-                    
+                      
+					  if ($ujian['total_soal']==0){
+						echo 'belum ada soal';
+					  } else {
                       if ($ujian['acak_soal']){
                         mysqli_data_seek($soal,0);
                       
@@ -1246,12 +1249,13 @@
                         }
                         echo '</div>';
                       }
-                    }
+					  }
+					  }
                     
                     ?>
-                  
+                      <!--
                       <div class="row" style="padding-left:15px;">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p>
-                      </div>
+                      </div> -->
                   </div>
               </div>
               <button class="button button1 btntambahsoal" style="border-radius:20px; font-size:13px;" id="btntambah"><i class="fa fa-plus"></i> Tambah soal</button>
