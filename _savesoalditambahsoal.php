@@ -7,7 +7,7 @@
             echo '<div id="soaltersimpan-';
 			echo $soal['id_soal'];
 			echo '">';
-            echo '<div class="panel panel-default col-md-offset-1 col-md-10 soaltersimpan" style="margin-top:10px; background-color:#ffffff; border:0px;">';
+            echo '<div class="panel panel-default soaltersimpan" style="margin-top:10px; background-color:#ffffff; border:0px;">';
             echo '<div class="panel-body">';
             echo     '<div class="row">';
             echo       '<div style="margin-left:10px; width:15px; float:left;">';

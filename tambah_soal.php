@@ -189,8 +189,8 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
       .button3 {
-        background-color: #fff;
-        border-color: #fff;
+        background-color: #ffffff;
+        border-color: #ffffff;
         color: #000000;
         font-size: 13px;
         border: 1px solid #e1edef;
@@ -635,7 +635,7 @@
                                     </div>
                                     <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
                                   </div>
-                                  <div class="form-group form-inline" style="margin-bottom:10px;">
+                                  <div class="form-group form-inline" style="margin-bottom:10px; font-size:14px">
                                     <strong class="col-md-1">Poin:</strong>
                                     <div class="col-md-3">
                                       <label style="width:60px;" class="form-control-label">Benar </label>

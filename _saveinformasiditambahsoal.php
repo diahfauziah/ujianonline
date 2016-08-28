@@ -5,7 +5,7 @@
 	$query = mysqli_query($link, "SELECT * FROM `info_ujian` WHERE `id_ujian`='$id' ");
     $ujian = mysqli_fetch_array($query);
 ?>
-		  <div class="panel panel-default col-md-offset-1 col-md-10" style="margin-top:20px;" id="informasiujian">
+		  <div class="panel panel-default" style="margin-top:20px;" id="informasiujian">
             <div class="panel-body">
               <div class="row">
                 <h5 style="text-align:center" class="col-md-offset-1 col-md-10"><b>Informasi Ujian</b></h5>
