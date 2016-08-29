@@ -149,40 +149,42 @@
                                 <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
                                   <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#e7e7e7; border:0px; color:#777; border:1px solid #ddd; border-radius:20px; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
                                 </div>
-								<div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px;">
-								  <div class="col-md-6">
-								    <label style="width:122px;" class="form-control-label">Kelompok Soal </label>
-								    <select class="form-control" id="stage1" name="stage1" >
-									  <option value="1">Tanpa Kelompok Soal</option>
-									  <?php
-									    $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
-										while ($stg = mysqli_fetch_array($querystg)){
-											echo '<option value="';
-											echo $stg['id_stage'];
-											echo '">';
-											echo $stg['nama_stage'];
-											echo '</option>';
-										}
-									  ?>
-								    </select>
-								  </div>
-								  <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
-								</div>
-                                <div class="form-group form-inline" style="margin-bottom:10px;">
-                                  <strong class="col-md-1">Poin:</strong>
-                                  <div class="col-md-3">
-                                    <label style="width:60px;" class="form-control-label">Benar </label>
-                                    <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:50%" value="<?php echo $soal['poin_benar'];?>">
-                                  </div>
-                                  <div class="col-md-3">
-                                    <label style="width:60px;" class="form-control-label">Salah</label>
-                                    <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:50%" value="<?php echo $soal['poin_salah'];?>"> 
-                                  </div>
-                                  <div class="col-md-3">
-                                    <label style="width:60px;" class="form-control-label">Kosong</label>
-                                    <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:50%" value="<?php echo $soal['poin_kosong'];?>"> 
-                                  </div>
-                                  <button id="simpansoal1" type="reset" onclick="savesoal(this);"  style="text-decoration:none" class="button button2" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
+                                <div class="panel-footer" style="border:0px">
+                                    <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">
+                                      <div class="col-md-6">
+                                        <label style="width:122px;" class="">Kelompok Soal </label>
+                                        <select class="form-control" id="stage1" name="stage1" >
+                                          <option value="1">Tanpa Kelompok Soal</option>
+                                          <?php
+                                            $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
+                                            while ($stg = mysqli_fetch_array($querystg)){
+                                              echo '<option value="';
+                                              echo $stg['id_stage'];
+                                              echo '">';
+                                              echo $stg['nama_stage'];
+                                              echo '</option>';
+                                            }
+                                          ?>
+                                        </select>
+                                      </div>
+                                      <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+                                    </div>
+                                    <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
+                                      <div class="col-md-3">
+                                        <label style="width:80px;" style="font-size:13px">Poin Benar </label>
+                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%" value="<?php echo $soal['poin_benar'];?>">
+                                      </div>
+                                      <div class="col-md-3">
+                                        <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
+                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="<?php echo $soal['poin_salah'];?>"> 
+                                      </div>
+                                      <div class="col-md-3">
+                                        <label style="width:85px;" class="form-control-label">Poin Kosong</label>
+                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="<?php echo $soal['poin_kosong'];?>"> 
+                                      </div>
+                                      <button id="simpansoal1" type="reset" onclick="savesoal(this);"  style="text-decoration:none; margin-left:5px" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Batal</button>
+                                      <button id="simpansoal1" type="reset" onclick="savesoal(this);"  style="text-decoration:none; margin-left:5px" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
+                                    </div>
                                 </div>
                               </form>
                             </div>

@@ -40,7 +40,7 @@
                           echo '</ul>';
                           echo '<div class="panel-footer">';
                           echo '<div class="row">';
-                          echo   '<div class="col-md-3">Poin Benar: 10</div>';
+                          echo   '<div class="col-md-3">Poin Benar: <strong>10</strong></div>';
                           echo   '<div class="col-md-3">Poin Salah: 0</div>';
                           echo   '<div class="col-md-3">Poin Kosong: 0</div>';
                           echo '</div>';

@@ -354,19 +354,18 @@
             $arraynomor = mysqli_fetch_array($query4);
             $nomormax = (int)$arraynomor[0];
             $nomor = $nomormax + 1;
-            $query3 = mysqli_query($link, "SELECT * FROM info_ujian where id_ujian='$id' ");
-            $judul = mysqli_fetch_array($query3);
+            
             $query = mysqli_query($link, "SELECT * FROM `info_ujian` WHERE `id_ujian`='$id' ");
             $ujian = mysqli_fetch_array($query);
       ?>
       <div class="content">
         <div class="row">
-          <h2 style="margin-left:25px; color:#30cbe8; margin-top:0px; margin-bottom:10px; text-align:center; font-family:'didact gothic', sans-serif"><?php echo $judul['judul_ujian'] ?></h2>
+          <h2 style="margin-left:25px; color:#30cbe8; margin-top:0px; margin-bottom:10px; text-align:center; font-family:'didact gothic', sans-serif"><?php echo $ujian['judul_ujian'] ?></h2>
         </div>
         <div class="row">
           <div class="col-md-10">
             <div id="kolominformasi">
-              <div class="panel panel-default" style="margin-top:20px;" id="informasiujian">
+              <div class="panel panel-default" style="margin-top:20px; background-color:#ffffff" id="informasiujian">
                 <div class="panel-body">
                   <div class="row">
                     <h5 style="text-align:center" class="col-md-offset-1 col-md-10"><b>Informasi Ujian</b></h5>
@@ -418,13 +417,16 @@
                           $querynamamapel = "select * from mata_pelajaran where id_kategori=$idm";
                           $qnm = mysqli_query($link, $querynamamapel);
                           $namamp = mysqli_fetch_array($qnm);
-                        echo $namamp['nama'];
-                        echo " - ";
+
+                          echo $namamp['nama'];
+                          echo " - ";
+
                           $idk = $ujian['id_kelas'];
                           $querynmk = "select * from kelas where id_kelas=$idk";
                           $qnk = mysqli_query($link, $querynmk);
                           $namak = mysqli_fetch_array($qnk);
-                        echo $namak['nama'];
+
+                          echo $namak['nama'];
                       ?>
                      </div>
                     </div>
@@ -444,14 +446,16 @@
                 </div>
               </div>
             </div>
+            <div id="kotakSoal">
             <?php 
               include('koneksi.php'); 
               $id = $_GET['id'];
-              $query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
-                
+               $query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ");
+              
+              
               while ($soal = mysqli_fetch_array($query1)){
                 echo '<div id="soaltersimpan-';
-                echo $soal['id_soal'];
+                echo $soal['nomor_soal'];
                 echo '">';
                 echo '<div class="panel panel-default soaltersimpan" style="margin-top:10px; background-color:#ffffff; border:1px solid #e7e7e7;">';
                 echo '<div class="panel-body">';
@@ -468,14 +472,12 @@
                   $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
                   $huruf = array("A","B","C","D","E");
                   $i = 0;
+                  $jawaban_benar = $soal['jawaban_benar'];
                 echo    '<ul class="list-group" style="margin-top:10px;">';
-                  while($pilihan = mysqli_fetch_array($query2)){
+                            while($pilihan = mysqli_fetch_array($query2)){
                               echo '<li class="list-group-item opsijawaban">';
                               echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-                            //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#30cbe8"></i>';
-                              echo        '<div class="numberCircle">';
-                              echo         $huruf[$i];
-                              echo        '</div>'; 
+                              echo        '<div class="numberCircle">'.$huruf[$i].'</div>'; 
                               echo     '</div>';
                               echo     '<div style="width:85%;  margin-left:-20px;">';
                               echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
@@ -486,22 +488,20 @@
                               echo '</ul>';
                               echo '<div class="panel-footer">';
                               echo '<div class="row">';
-                              echo   '<div class="col-md-3" style="font-size:14px">Poin Benar: ';
-                              echo     '<b>';
-                              echo     $soal['poin_benar'];
-                              echo     '</b>';
-                              echo   '</div>';
-                              echo   '<div class="col-md-3" style="font-size:14px">Poin Salah: ';
-                              echo     $soal['poin_salah'];
-                              echo   '</div>';
-                              echo   '<div class="col-md-3" style="font-size:14px">Poin Kosong: ';
-                              echo     $soal['poin_kosong'];
-                              echo   '</div>';
+                              echo   '<div class="col-md-3" style="font-size:14px">Poin Benar: <b>'.$soal['poin_benar'].'</b></div>';
+                              echo   '<div class="col-md-3" style="font-size:14px">Poin Salah: '.$soal['poin_salah'].'</div>';
+                              echo   '<div class="col-md-3" style="font-size:14px">Poin Kosong: '.$soal['poin_kosong'].'</div>';
                               echo '</div>';
                             
                               echo  '<div class="form-group row" style="margin-top:10px;">';
-                              echo    '<div class="col-md-6"></div>';
-                              echo    '<button id="editsoal" onclick="editsoal(this);" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none" data-ujian="';
+                              echo    '<div class="col-md-6">';
+                                
+                                $stage = $soal['stage_id'];
+                                $querypilstage = mysqli_query($link, "SELECT * FROM `stage` WHERE `id_stage`='$stage' ");
+                                $stagesoal = mysqli_fetch_array($querypilstage);
+                                
+                                echo   'Kelompok soal: '.$stagesoal['nama_stage'].'</div>';
+                                echo   '<button id="editsoal" onclick="editsoal(this);" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none" data-ujian="';
                                   echo $soal['id_soal'];
                                   echo '"><span class="glyphicon glyphicon-pencil"></span> Edit</button>';
                               echo    '<button class="button button2 col-md-2" data-toggle="modal" data-target="#modalHapus" style="font-size:14px; margin-left:10px;"><span class="glyphicon glyphicon-trash"></span> Hapus</button>';
@@ -515,6 +515,7 @@
                   echo '</div>';
               };
             ?>
+            </div>
             <div class="panel panel-default" id="formTambahSoal" style="margin-top:10px; background-color:#ffffff;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
               <div class="panel-body">
                 <div class="row" style="margin-left:5px;">
@@ -863,7 +864,7 @@
                             </div>
                             <div style="margin-left: 0px;">  
                               <div class="col-md-12" style="width:96%">
-                                <form class="form-horizontal col-md-12" action="input_soal_sebab.php?id<?php echo$id; ?>" method="post">
+                                <form class="form-horizontal col-md-12" action="input_soal_sebab.php?id=<?php echo $id; ?>" method="post">
                                   <input type="hidden" id="from" name="from" value="tambahsoal" />
                                   <input type="hidden" id="jawabanbenar6" name="jawabanbenar6" />
                                   <input type="hidden" id="pertanyaan6" name="pertanyaan6" />
@@ -910,13 +911,13 @@
                                       <option value="1">Tanpa Kelompok Soal</option>
                                       <?php
                                         $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
-                                      while ($stg = mysqli_fetch_array($querystg)){
-                                        echo '<option value="';
-                                        echo $stg['id_stage'];
-                                        echo '">';
-                                        echo $stg['nama_stage'];
-                                        echo '</option>';
-                                      }
+                                          while ($stg = mysqli_fetch_array($querystg)){
+                                            echo '<option value="';
+                                            echo $stg['id_stage'];
+                                            echo '">';
+                                            echo $stg['nama_stage'];
+                                            echo '</option>';
+                                          }
                                       ?>
                                       </select>
                                     </div>
@@ -1183,19 +1184,20 @@
           <div class="col-md-2" style="margin-top:10px; padding-left:0px">
             <div id="daftarsoal" style="position:fixed">
               Daftar soal
+              <div id="console"></div>
               <div class="panel panel-default" style="width:233px;margin-bottom:5px;" id="nomorSoal">
                   <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
                     <?php
                       $query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");
                       $arraynomor = mysqli_fetch_array($query4);
                       $nomormax = (int)$arraynomor[0];
-                      $soal = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ORDER BY nomor_soal");
+                      $soal = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_ujian`='$id' ORDER BY stage_id");
                       $querystage = mysqli_query($link, "SELECT DISTINCT stage_id FROM `soal` WHERE `id_ujian`='$id' ORDER BY stage_id ASC");
-                      
-					  if ($ujian['total_soal']==0){
-						echo 'belum ada soal';
-					  } else {
-                      if ($ujian['acak_soal']){
+                                
+          					  if ($ujian['total_soal']==0){
+          						echo 'belum ada soal';
+          					  } else {
+                      if ($ujian['acak_soal']==0){
                         mysqli_data_seek($soal,0);
                       
                         $daftarst = mysqli_fetch_array($soal);
@@ -1223,33 +1225,33 @@
                           echo '</div>';
                         } 
                       } else {
-                      $querynorm = mysqli_query($link, "SELECT * FROM (SELECT * FROM soal WHERE id_ujian='$id' ORDER BY nomor_soal LIMIT 200) T1 ORDER BY stage_id");
-                      
-                      $daftarst = mysqli_fetch_array($querynorm);
-                      
-                      while ($stage = mysqli_fetch_array($querystage)){
-                        if ($daftarst['stage_id']!=1){
-                          echo '<p style="text-decoration:underline;margin-bottom:0px;">';
-                          $idst = $daftarst['stage_id'];
-                          $qqs = mysqli_query($link, "select * from stage where id_stage='$idst'");
-                          $qqsr = mysqli_fetch_array($qqs);
-                          echo $qqsr['nama_stage'];
-                          echo '</p>';
+                        $querynorm = mysqli_query($link, "SELECT * FROM (SELECT * FROM soal WHERE id_ujian='$id' ORDER BY nomor_soal LIMIT 200) T1 ORDER BY stage_id");
+                        
+                        $daftarst = mysqli_fetch_array($querynorm);
+                        
+                        while ($stage = mysqli_fetch_array($querystage)){
+                          if ($daftarst['stage_id']!=1){
+                            echo '<p style="text-decoration:underline;margin-bottom:0px;">';
+                            $idst = $daftarst['stage_id'];
+                            $qqs = mysqli_query($link, "select * from stage where id_stage='$idst'");
+                            $qqsr = mysqli_fetch_array($qqs);
+                            echo $qqsr['nama_stage'];
+                            echo '</p>';
+                          }
+                          echo '<div class="form-group">';
+                          while ($daftarst['stage_id']==$stage['stage_id']){
+                            echo '<a href="#" class="button button3 nomor" data-nomor="';
+                            echo $daftarst['nomor_soal'];
+                            echo '" style="margin-right:5px; text-decoration:none;">';
+                            echo $daftarst['nomor_soal'];
+                            echo '</a>';
+                            $i++;
+                            
+                            $daftarst = mysqli_fetch_array($querynorm);
+                          }
+                          echo '</div>';
                         }
-                        echo '<div class="form-group">';
-                        while ($daftarst['stage_id']==$stage['stage_id']){
-                          echo '<a href="#" class="button button3 nomor" data-nomor="';
-                          echo $daftarst['nomor_soal'];
-                          echo '" style="margin-right:5px; text-decoration:none;">';
-                          echo $daftarst['nomor_soal'];
-                          echo '</a>';
-                          $i++;
-                          
-                          $daftarst = mysqli_fetch_array($querynorm);
-                        }
-                        echo '</div>';
-                      }
-					  }
+					            }
 					  }
                     
                     ?>
@@ -1331,7 +1333,7 @@
 		$(document).ready(function(){
 			$('html, body').animate({
 				scrollTop: $("#formTambahSoal").offset().top
-			}, 50);
+			}, 10);
 		});
 		
 		$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
@@ -1341,9 +1343,17 @@
 		$(".btntambahsoal").click(function(){
 			$('html, body').animate({
 				scrollTop: $("#formTambahSoal").offset().top
-			}, 50);
+			}, 1000);
 		});
 		
+    $('.nomor').click(function(){
+      $soaldipilih = "#soaltersimpan-"+$(this).attr('data-nomor');
+      $('html, body').animate({
+        scrollTop: $($soaldipilih).offset().top
+      }, 1000);
+      $('.nomor').css({"background-color":"#ffffff", "color":"#30cbe8"});
+      $(this).css({"background-color":"#30cbe8", "color":"#ffffff"});
+    });
         $(function() {
             $.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
             $.FroalaEditor.RegisterCommand('clear', {
@@ -1588,6 +1598,31 @@
 			xmlhttp.open("GET", "_editsoalditambahsoal.php?id=" + str, true);
 			xmlhttp.send();
 		};
+
+   $(window).scroll(function() {
+        if (checkVisible($('#soaltersimpan-30'))) {
+            var a = $('#soaltersimpan-30').offset();
+            var b = $(window).height();
+            var c = $(window).scrollTop();
+            var d = $('#soaltersimpan-30').height();
+            $('#console').text("visible" + a.top + "," + b + "," + c + "," + d);
+        } else {
+            $('#console').text("not visible");
+        }
+    });
+    function checkVisible( elm, eval ) {
+      eval = eval || "visible";
+      var vpH = $(window).height(), // Viewport Height
+          st = $(window).scrollTop(), // Scroll Top
+          y = $(elm).offset().top,
+          elementHeight = $(elm).height();
+      
+      if (eval == "visible") return (((y >= (st - elementHeight)) && (y + elementHeight) <= (vpH + st)));
+      if (eval == "above") return ((y < (vpH + st)));
+    }
+    
+
+
 
         $('.hashtip').tooltipsy({
               offset: [0, 10],
