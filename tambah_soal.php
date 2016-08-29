@@ -454,8 +454,8 @@
               
               
               while ($soal = mysqli_fetch_array($query1)){
-                echo '<div id="soaltersimpan-';
-                echo $soal['nomor_soal'];
+                echo '<div class="toFindSoal" id="soaltersimpan-';
+                echo $soal['id_soal'];
                 echo '">';
                 echo '<div class="panel panel-default soaltersimpan" style="margin-top:10px; background-color:#ffffff; border:1px solid #e7e7e7;">';
                 echo '<div class="panel-body">';
@@ -1241,7 +1241,7 @@
                           echo '<div class="form-group">';
                           while ($daftarst['stage_id']==$stage['stage_id']){
                             echo '<a href="#" class="button button3 nomor" data-nomor="';
-                            echo $daftarst['nomor_soal'];
+                            echo $daftarst['id_soal'];
                             echo '" style="margin-right:5px; text-decoration:none;">';
                             echo $daftarst['nomor_soal'];
                             echo '</a>';
@@ -1600,25 +1600,40 @@
 		};
 
    $(window).scroll(function() {
-        if (checkVisible($('#soaltersimpan-30'))) {
-            var a = $('#soaltersimpan-30').offset();
-            var b = $(window).height();
-            var c = $(window).scrollTop();
-            var d = $('#soaltersimpan-30').height();
-            $('#console').text("visible" + a.top + "," + b + "," + c + "," + d);
-        } else {
-            $('#console').text("not visible");
+	    $elm = [];
+		<?php 
+		  mysqli_data_seek($query1, 0);
+		  $idxi = 0;
+		  while ($soal = mysqli_fetch_array($query1)){ ?>
+			$elm[<?php echo $idxi;?>] = "<?php echo $soal['id_soal']?>";
+		  <?php
+			$idxi++;
+		  }
+		?>
+		$there = 0;
+		for (var k=0; k < <?php echo $nomormax; ?>;k++){
+			$elmnya = "#soaltersimpan-"+$elm[k];
+			if (checkVisible($($elmnya))) {
+				$there = 1;
+				$('.nomor').css({"background-color":"#ffffff", "color":"#30cbe8"});
+				$ini = "a[data-nomor="+$elm[k]+"]";
+				$($ini).css({"background-color":"#30cbe8", "color":"#ffffff"});
+			}
         }
+		if (!$there) {
+			$('.nomor').css({"background-color":"#ffffff", "color":"#30cbe8"});
+		}
     });
+	
     function checkVisible( elm, eval ) {
       eval = eval || "visible";
-      var vpH = $(window).height(), // Viewport Height
+      var vpH = $(window).height()/2, // Viewport Height
           st = $(window).scrollTop(), // Scroll Top
           y = $(elm).offset().top,
           elementHeight = $(elm).height();
       
-      if (eval == "visible") return (((y >= (st - elementHeight)) && (y + elementHeight) <= (vpH + st)));
-      if (eval == "above") return ((y < (vpH + st)));
+      if (eval == "visible") return ((st + vpH > y)&&(st + vpH < y + elementHeight));
+      //if (eval == "above") return ((y < (vpH + st)));
     }
     
 
