@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	$_SESSION['statuspesan'] = "";
 	if ($_SESSION['role']!="guru"){
 		header('location:login.php');
 	}
@@ -469,23 +470,49 @@
                 echo        '<div class="col-md-12" style="width:96%">';
                 echo          $soal['pertanyaan'];
                   $id_soal = $soal['id_soal'];
-                  $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
                   $huruf = array("A","B","C","D","E");
                   $i = 0;
                   $jawaban_benar = $soal['jawaban_benar'];
-                echo    '<ul class="list-group" style="margin-top:10px;">';
-                            while($pilihan = mysqli_fetch_array($query2)){
-                              echo '<li class="list-group-item opsijawaban">';
-                              echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-                              echo        '<div class="numberCircle">'.$huruf[$i].'</div>'; 
-                              echo     '</div>';
-                              echo     '<div style="width:85%;  margin-left:-20px;">';
-                              echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
-                              echo     '</div>';
-                              echo '</li>';
-                              $i++;
-                            }
-                              echo '</ul>';
+				  
+				  // pilihan ganda
+				  if ($soal['kategori_pertanyaan']==1||$soal['kategori_pertanyaan']==6||$soal['kategori_pertanyaan']==7){
+					echo '<ul class="list-group" style="margin-top:10px;">';
+					$query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+					while($pilihan = mysqli_fetch_array($query2)){
+					  echo '<li class="list-group-item opsijawaban">';
+					  echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+					  echo        '<div class="numberCircle"';
+					  if ($jawaban_benar==$pilihan['opsi_jawaban']){
+						  echo 'style="background:#b4e3dc;color:#fff;border-color:#e7e7e7;"';
+					  }
+					  echo 		  '>'.$huruf[$i].'</div>'; 
+					  echo     '</div>';
+					  echo     '<div style="width:85%;  margin-left:-20px;">';
+					  echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
+					  echo     '</div>';
+					  echo '</li>';
+					  $i++;
+					}
+					  echo '</ul>';
+				  }
+				  
+				  // isian dan essai
+				  if ($soal['kategori_pertanyaan']==2||$soal['kategori_pertanyaan']==3){
+					echo '<u>';
+					echo $jawaban_benar;
+					echo '</u>';
+				  }
+				  
+				  // benar salah
+				  if ($soal['kategori_pertanyaan']==4){
+					  
+				  }
+				  
+				  // checkbox
+				  if ($soal['kategori_pertanyaan']==5){
+					
+				  }
+				  							
                               echo '<div class="panel-footer">';
                               echo '<div class="row">';
                               echo   '<div class="col-md-3" style="font-size:14px">Poin Benar: <b>'.$soal['poin_benar'].'</b></div>';
@@ -1636,7 +1663,72 @@
       //if (eval == "above") return ((y < (vpH + st)));
     }
     
+			$(".opsicheckbox").click(function(){
+    		  $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
+              if($(this).hasClass("selected")){
+                //$(this).closest('ul').find('li.list-group-item').removeClass("selected");
+                $(this).closest('li.list-group-item').removeClass("selected");
+                $(this).closest('li.list-group-item').find("i").removeClass("fa-check-square-o").addClass("fa-square-o");
+                $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#30cbe8", "border-color":"#e1edef"});
 
+                if(!$(this).closest('ul').find('li.list-group-item').hasClass("selected")){
+                  $($ini).removeClass("hasAnswer");
+                  $($ini).css({"color":"#000000"});
+
+                  $x = $("#soalterjawab").text();
+                  $soalterjawab = parseInt($x);
+                  $soalterjawab = $soalterjawab - 1;
+                  if($soalterjawab <= 0){
+                    $soalterjawab = 0;
+                  }
+                  $("#soalterjawab").text($soalterjawab);
+                  $($ini).removeClass("tercatat");
+                }else{
+                  $($ini).css({"color":"#ffffff"});
+                }
+                
+                if($($ini).hasClass("hasTandai").toString() == "true" && !$(this).closest('ul').find('li.list-group-item').hasClass('selected')){
+                  $($ini).css({"color":"#ffffff"});              
+                }
+
+                $(this).siblings('i.fa.coret').css({"display":"inline-block"});
+
+              }else{
+                //$(this).closest('ul').find('li.list-group-item').removeClass("selected");
+                $(this).addClass("selected");
+                $(this).closest('ul').find('i.fa.coret').css({"display":"inline-block"});
+                $(this).closest('li.list-group-item').find("i").removeClass("fa-square-o").addClass("fa-check-square-o");
+
+                $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#30cbe8", "border-color":"#e1edef"});
+                $(this).find('.numberCircle').css({"background":"#87e2f3", "color":"#fff", "border-color":"#fff"});
+
+                $($ini).addClass("hasAnswer");
+                $($ini).css({"color":"#ffffff"});
+
+
+                $tomboltandai = "#tandai"+$soal_sekarang;
+                if($($ini).hasClass("hasTandai").toString() == "true"){
+                  $($tomboltandai).html('<i class="fa fa-bookmark"></i> Tandai Soal');
+                }
+                
+                if($(".opsicheckbox").hasClass("selected").toString()=="true" && $($ini).hasClass("tercatat").toString()=="false"){
+                  $x = $("#soalterjawab").text();
+                  $soalterjawab = parseInt($x);
+                  $soalterjawab = $soalterjawab + 1;
+                  $("#soalterjawab").text($soalterjawab);
+                  $($ini).addClass("tercatat");
+                }
+                $(this).siblings('i.fa.coret').css({"display":"none"});
+              }
+              $idsoal = $(this).attr("data-idsoal");
+              $setj = "input[name='jawaban-"+$idsoal+"']";
+    		  if($(".opsicheckbox").hasClass("selected").toString()=="true" && $($ini).hasClass("tercatat").toString()=="true"){
+    			$jwbn = $(this).find(".opsiGanda").html();
+    			$($setj).val($jwbn);
+    		  } else {
+    			$($setj).removeAttr("value");
+    		  }
+			});
 
 
         $('.hashtip').tooltipsy({
