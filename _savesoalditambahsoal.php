@@ -18,7 +18,6 @@
             echo       '<div style="margin-left:0px;">';
             echo        '<div class="col-md-12" style="width:96%">';
             echo          $soal['pertanyaan'];
-                          
 			$id_soal = $soal['id_soal'];
                   $huruf = array("A","B","C","D","E");
                   $i = 0;
@@ -79,7 +78,6 @@
                   }
               echo '</ul>';
 				  }
-						  
                           echo '<div class="panel-footer">';
                           echo '<div class="row">';
                           echo   '<div class="col-md-3">Poin Benar: <strong>10</strong></div>';

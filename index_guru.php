@@ -393,8 +393,8 @@
       				echo   '<strong>Gagal!</strong>';
       				echo   $_SESSION['pesan'];
       				echo '</div>';
-      				$_SESSION['statuspesan'] = "";
       			}
+            $_SESSION['statuspesan'] = "";
           }
         ?>
 

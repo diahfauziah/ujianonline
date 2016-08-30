@@ -190,7 +190,7 @@
                                         <label style="width:85px;" class="form-control-label">Poin Kosong</label>
                                         <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="<?php echo $soal['poin_kosong'];?>"> 
                                       </div>
-                                      <button id="simpansoal1" type="reset" onclick="savesoal(this);"  style="text-decoration:none; margin-left:5px" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Batal</button>
+                                      <button id="simpansoal1" type="reset" onclick="savesoal(this);"  style="text-decoration:none; margin-left:5px;" class="button button4" data-ujian="<?php echo $soal['id_soal']; ?>">Batal</button>
                                       <button id="simpansoal1" type="reset" onclick="savesoal(this);"  style="text-decoration:none; margin-left:5px" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
                                     </div>
                                 </div>
