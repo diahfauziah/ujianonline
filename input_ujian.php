@@ -52,7 +52,7 @@
 		$_SESSION['kelas'] = "0";
 		$_SESSION['pesan'] = "Ujian $judul berhasil dibuat <i class='fa fa-check-circle'></i>";
 		$_SESSION['statusbuatujian'] = "1";
-		header('location:tambah_soal.php?id='.$idujian);
+		header('location:tambah_soal.php?tab=1&id='.$idujian);
 	} else {
 		$_SESSION['statuspesan'] = "gagal";
 		$_SESSION['pesan'] = "Ujian $judul gagal dibuat";
