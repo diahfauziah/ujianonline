@@ -265,6 +265,21 @@
           font: 15px Arial, sans-serif;
           cursor: pointer;
       }
+      .numberJawaban {
+          border-radius: 50%;
+
+          width: 32px;
+          height: 32px;
+          padding: 5px;
+          
+          background: #ffffff;
+          border: 2px solid #e7e7e7;
+          color: #30cbe8;
+          text-align: center;
+          
+          font: 15px Arial, sans-serif;
+          cursor: pointer;
+      }
       .numberCircle:hover {
         background-color: #e7e7e7;
       }
@@ -474,29 +489,29 @@
 				  
 				  // pilihan ganda
 				  if ($soal['kategori_pertanyaan']==1||$soal['kategori_pertanyaan']==4||$soal['kategori_pertanyaan']==6||$soal['kategori_pertanyaan']==7){
-					echo '<ul class="list-group" style="margin-top:10px;">';
-					$query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
-					while($pilihan = mysqli_fetch_array($query2)){
-					  echo '<li class="list-group-item opsijawaban">';
-					  echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-					  echo        '<div class="numberCircle"';
-					  if ($jawaban_benar==$pilihan['opsi_jawaban']){
-						  echo 'style="background:#b4e3dc;color:#fff;border-color:#e7e7e7;"';
-					  }
-					  echo 		  '>'.$huruf[$i].'</div>'; 
-					  echo     '</div>';
-					  echo     '<div style="width:85%;  margin-left:-20px;">';
-					  echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
-					  echo     '</div>';
-					  echo '</li>';
-					  $i++;
-					}
+  					echo '<ul class="list-group" style="margin-top:10px;">';
+  					$query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+  					while($pilihan = mysqli_fetch_array($query2)){
+  					  echo '<li class="list-group-item opsijawaban">';
+  					  echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+  					  echo        '<div class="numberJawaban"';
+  					  if ($jawaban_benar==$pilihan['opsi_jawaban']){
+  						  echo 'style="background:#b4e3dc;color:#fff;border-color:#e7e7e7;"';
+  					  }
+  					  echo 		  '>'.$huruf[$i].'</div>'; 
+  					  echo     '</div>';
+  					  echo     '<div style="width:85%;  margin-left:-20px;">';
+  					  echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
+  					  echo     '</div>';
+  					  echo '</li>';
+  					  $i++;
+  					}
 					  echo '</ul>';
 				  }
 				  
 				  // isian dan essai
 				  if ($soal['kategori_pertanyaan']==2||$soal['kategori_pertanyaan']==3){
-					echo 'Jawaban: ';
+					echo '&nbsp Jawaban: ';
 					echo $jawaban_benar;
 					
 				  }
