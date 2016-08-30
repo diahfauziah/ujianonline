@@ -40,7 +40,7 @@
 			$updateinfo = mysqli_query($link, "UPDATE info_ujian SET total_soal='$no', modified_date=NOW() WHERE id_ujian='$idujian'");
 			
 			$_SESSION['statuspesan'] = "sukses";
-			$_SESSION['pesan'] = "Soal berhasil dihapus";
+			$_SESSION['pesan'] = "Soal berhasil dihapus <i class='fa fa-trash-o'></i>";
 			header('location:tambah_soal.php?tab=1&id='.$idujian);	
 			
 		} else {
@@ -53,7 +53,7 @@
 	} else if (isset($_GET['idujian'])) {
 		$id = $_GET['idujian'];
 		$_SESSION['statuspesan'] = "gagal";
-		$_SESSION['pesan'] = "Soal tidak berhasil dihapus";
+		$_SESSION['pesan'] = "Soal tidak berhasil dihapus ";
 		//header('location:tambah_soal.php?id='.$id);
 	}
 ?>
