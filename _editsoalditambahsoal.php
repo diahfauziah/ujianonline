@@ -62,18 +62,26 @@
 								  if ($soal['kategori_pertanyaan']==1){
 									$querypiljwb = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id'");
                                     $huruf = array("A","B","C","D","E","F","G","H");
+									$jawaban_benar = $soal['jawaban_benar'];
                                     $i = 0; 
                                     while($piljwb = mysqli_fetch_array($querypiljwb)){
                                       echo '<div class="form-group" style="margin-bottom:10px">';
                                       echo   '<div class="row">';
                                             echo '<div style="float:left" style="width:15px">';
-                                            echo '<i class="fa fa-check-circle fa-2x checklist" style="color:#ffffff;"></i>';
+                                            echo '<i class="fa fa-check-circle fa-2x checklist"';
+											if ($jawaban_benar==$piljwb['opsi_jawaban']){
+											  echo 'style="color: rgb(180, 227, 220);"></i>';
+										    } else {
+											  echo 'style="color:#ffffff;"></i>';	
+											}
                                             echo '</div>';
                                             echo '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
                                               //echo '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>';
-                                              echo '<div class="numberCircle">';
-                                              echo $huruf[$i];
-                                              echo  '</div>';
+                                              echo        '<div class="numberCircle"';
+											  if ($jawaban_benar==$piljwb['opsi_jawaban']){
+												  echo 'style="background:#b4e3dc;color:#fff;border-color:#e7e7e7;"';
+											  }
+											  echo 		  '>'.$huruf[$i].'</div>'; 
                                             echo '</div>';
                                             echo '<div style="width:85%;  margin-left:-20px;" class="col-md-9">';
                                               echo '<div style="border:1px solid #ddd; padding:5px; background-color:#ffffff">';
