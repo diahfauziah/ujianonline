@@ -314,7 +314,6 @@
         text-decoration: line-through;
       }
       
-      
     </style>
   </head>
   <body>

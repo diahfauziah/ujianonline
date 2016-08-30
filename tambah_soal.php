@@ -303,12 +303,17 @@
         /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
       }
       .list-group-item {
-        padding: 6px 12px;
-        border-radius: 4px;
+          padding-top: 5px;
+          padding-bottom: 5px;
       }
+
       .opsijawaban {
-        margin-bottom: 5px;
-        box-shadow: 0 1px #e1edef;
+          border: 1px solid #e1edef;
+          border-radius: 4px;
+          margin-bottom: 5px;
+          box-shadow: 0 1px #e1edef;
+          width: 91%;
+          margin-left: 25px;
       }
        .nomor {
         margin-bottom: 5px; width: 40px; height: 32px; font-size:13px;
@@ -321,6 +326,14 @@
       /* shadow */
       .nomor-sekarang {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .opsicheckbox {
+          border: 1px solid #e1edef;
+          border-radius: 4px;
+          margin-bottom: 5px;
+          box-shadow: 0 1px #e1edef;
+          width: 91%;
+          margin-left: 25px;
       }
       
     </style>
@@ -518,8 +531,29 @@
 				  
 				  // checkbox
 				  if ($soal['kategori_pertanyaan']==5){
-					
+              echo    '<ul class="list-group" style="margin-top:10px;">';
+              $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+              while($pilihan = mysqli_fetch_array($query2)){
+                    echo '<div class="row" style="margin-bottom:5px;">';
+                    echo '<li class="list-group-item opsicheckbox" data-idsoal="';
+                    echo $soal['id_soal'];
+                    echo '" style="float:left">';
+                    echo   '<div class="row">';
+                    echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+                    echo       '<i class="fa fa-square-o fa-lg setjawaban" style="color:#30cbe8"></i>';
+                    echo     '</div>';
+                    echo     '<div style="width:90%;  margin-left:-20px;" class="col-md-9">';
+                    echo       '<div class="opsiGanda">'.$pilihan['opsi_jawaban'].'</div>';
+                    echo     '</div>';
+                    echo    '</div>';
+                    echo '</li>';
+                    //echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#30cbe8; margin-left:5px; cursor:pointer;"></i>';
+                    echo '</div>';
+                    $i++;
+                  }
+              echo '</ul>';
 				  }
+
 				  							
                               echo '<div class="panel-footer">';
                               echo '<div class="row">';
@@ -1695,72 +1729,7 @@
       //if (eval == "above") return ((y < (vpH + st)));
     }
     
-			$(".opsicheckbox").click(function(){
-    		  $ini = ".nomor[data-nomor="+$soal_sekarang+"]";
-              if($(this).hasClass("selected")){
-                //$(this).closest('ul').find('li.list-group-item').removeClass("selected");
-                $(this).closest('li.list-group-item').removeClass("selected");
-                $(this).closest('li.list-group-item').find("i").removeClass("fa-check-square-o").addClass("fa-square-o");
-                $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#30cbe8", "border-color":"#e1edef"});
-
-                if(!$(this).closest('ul').find('li.list-group-item').hasClass("selected")){
-                  $($ini).removeClass("hasAnswer");
-                  $($ini).css({"color":"#000000"});
-
-                  $x = $("#soalterjawab").text();
-                  $soalterjawab = parseInt($x);
-                  $soalterjawab = $soalterjawab - 1;
-                  if($soalterjawab <= 0){
-                    $soalterjawab = 0;
-                  }
-                  $("#soalterjawab").text($soalterjawab);
-                  $($ini).removeClass("tercatat");
-                }else{
-                  $($ini).css({"color":"#ffffff"});
-                }
-                
-                if($($ini).hasClass("hasTandai").toString() == "true" && !$(this).closest('ul').find('li.list-group-item').hasClass('selected')){
-                  $($ini).css({"color":"#ffffff"});              
-                }
-
-                $(this).siblings('i.fa.coret').css({"display":"inline-block"});
-
-              }else{
-                //$(this).closest('ul').find('li.list-group-item').removeClass("selected");
-                $(this).addClass("selected");
-                $(this).closest('ul').find('i.fa.coret').css({"display":"inline-block"});
-                $(this).closest('li.list-group-item').find("i").removeClass("fa-square-o").addClass("fa-check-square-o");
-
-                $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#30cbe8", "border-color":"#e1edef"});
-                $(this).find('.numberCircle').css({"background":"#87e2f3", "color":"#fff", "border-color":"#fff"});
-
-                $($ini).addClass("hasAnswer");
-                $($ini).css({"color":"#ffffff"});
-
-
-                $tomboltandai = "#tandai"+$soal_sekarang;
-                if($($ini).hasClass("hasTandai").toString() == "true"){
-                  $($tomboltandai).html('<i class="fa fa-bookmark"></i> Tandai Soal');
-                }
-                
-                if($(".opsicheckbox").hasClass("selected").toString()=="true" && $($ini).hasClass("tercatat").toString()=="false"){
-                  $x = $("#soalterjawab").text();
-                  $soalterjawab = parseInt($x);
-                  $soalterjawab = $soalterjawab + 1;
-                  $("#soalterjawab").text($soalterjawab);
-                  $($ini).addClass("tercatat");
-                }
-                $(this).siblings('i.fa.coret').css({"display":"none"});
-              }
-              $idsoal = $(this).attr("data-idsoal");
-              $setj = "input[name='jawaban-"+$idsoal+"']";
-    		  if($(".opsicheckbox").hasClass("selected").toString()=="true" && $($ini).hasClass("tercatat").toString()=="true"){
-    			$jwbn = $(this).find(".opsiGanda").html();
-    			$($setj).val($jwbn);
-    		  } else {
-    			$($setj).removeAttr("value");
-    		  }
-			});
+			
 
 
         $('.hashtip').tooltipsy({

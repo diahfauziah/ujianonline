@@ -39,11 +39,11 @@
 
 	$idsoal = $insert_query1[0];
 	
-	$query = "INSERT INTO `pilihan_jawaban`(`id_soal`, `opsi_jawaban`) VALUES ('$idsoal', 'Benar')";
+	$query = "INSERT INTO `pilihan_jawaban`(`id_soal`, `opsi_jawaban`) VALUES ('$idsoal', '<p>Benar</p>')";
 
 	$insert_query2 = mysqli_query($link, $query);
 	
-	$query = "INSERT INTO `pilihan_jawaban`(`id_soal`, `opsi_jawaban`) VALUES ('$idsoal', 'Salah')";
+	$query = "INSERT INTO `pilihan_jawaban`(`id_soal`, `opsi_jawaban`) VALUES ('$idsoal', '<p>Salah</p>')";
 
 	$insert_query2 = mysqli_query($link, $query);
 	
