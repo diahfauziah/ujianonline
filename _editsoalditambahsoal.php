@@ -1,6 +1,6 @@
 <?php
 	include('koneksi.php'); 
-    $id = $_GET['id'];
+  $id = $_GET['id'];
 	$query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_soal`='$id' ");
 	$soal = mysqli_fetch_array($query1);
 	$nomor = $soal['nomor_soal'];

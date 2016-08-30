@@ -505,7 +505,8 @@
   					echo '<ul class="list-group" style="margin-top:10px;">';
   					$query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
   					while($pilihan = mysqli_fetch_array($query2)){
-  					  echo '<li class="list-group-item opsijawaban">';
+              echo '<div class="row">';
+  					  echo '<li class="list-group-item opsijawaban" style="margin-bottom:5px;">';
   					  echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
   					  echo        '<div class="numberJawaban"';
   					  if ($jawaban_benar==$pilihan['opsi_jawaban']){
@@ -517,6 +518,7 @@
   					  echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
   					  echo     '</div>';
   					  echo '</li>';
+              echo '</div>';
   					  $i++;
   					}
 					  echo '</ul>';
