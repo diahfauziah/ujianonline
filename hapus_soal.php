@@ -41,7 +41,7 @@
 			
 			$_SESSION['statuspesan'] = "sukses";
 			$_SESSION['pesan'] = "Soal berhasil dihapus";
-			header('location:tambah_soal.php?id='.$idujian);	
+			header('location:tambah_soal.php?tab=1&id='.$idujian);	
 			
 		} else {
 			$id = $_GET['idujian'];

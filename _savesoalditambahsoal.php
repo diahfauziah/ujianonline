@@ -27,7 +27,7 @@
                           echo '<li class="list-group-item opsijawaban">';
                           echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
                         //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
-                          echo        '<div class="numberCircle">';
+                          echo        '<div class="numberJawaban">';
                           echo         $huruf[$i];
                           echo        '</div>'; 
                           echo     '</div>';
