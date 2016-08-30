@@ -4,6 +4,11 @@
 	if ($_SESSION['role']!="guru"){
 		header('location:login.php');
 	}
+	if (isset($_GET['tab'])) {
+		$statusfrom = $_GET['tab'];
+	} else {
+		$statusfrom = 0;
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -1418,28 +1423,38 @@
     <script>
 		$idujiani = <?php echo $id; ?>;
 		$(document).ready(function(){
+			$stat = <?php echo $statusfrom; ?>;
+			if ($stat){
+				$(document).ready(function(){
+					$("#formTambahSoal").css({"display":"none"});
+				});
+			} else {
+				$('html, body').animate({
+					scrollTop: $("#formTambahSoal").offset().top
+				}, 10);
+			}
+		});
+		
+		$(".btntambahsoal").click(function(){
+			$("#formTambahSoal").css({"display":"inline-block"});
 			$('html, body').animate({
 				scrollTop: $("#formTambahSoal").offset().top
-			}, 10);
+			}, 2000);
 		});
 		
 		$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
 			$(".alert-success").slideUp(500);
 		});
 		
-		$(".btntambahsoal").click(function(){
-			$('html, body').animate({
-				scrollTop: $("#formTambahSoal").offset().top
-			}, 1000);
-		});
 		$(".hapus").click(function(){
-      var y = "";
-      var x = "";
-      y = $(this).closest('.toFindSoal').attr('data-nomor');
-      x = $(this).closest('.toFindSoal').attr('data-id');
-      $("#p2").html(y);
-      $("#simpan2").attr("href", "hapus_soal.php?idsoal="+x+"&idujian="+$idujiani);
-    });
+		  var y = "";
+		  var x = "";
+		  y = $(this).closest('.toFindSoal').attr('data-nomor');
+		  x = $(this).closest('.toFindSoal').attr('data-id');
+		  $("#p2").html(y);
+		  $("#simpan2").attr("href", "hapus_soal.php?idsoal="+x+"&idujian="+$idujiani);
+		});
+		
     $('.nomor').click(function(){
       $soaldipilih = "#soaltersimpan-"+$(this).attr('data-nomor');
       $('html, body').animate({
