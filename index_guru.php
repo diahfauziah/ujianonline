@@ -433,7 +433,7 @@
                   echo '<tr class="table-row">';
                   echo '<td style="text-align: left;">';
                   echo   '<div class="judul">';
-                  echo     '<a class="link-judul" href="view_ujian.php?id='.$data['id_ujian'].'"">'. $data['judul_ujian'] .'</a><br>';
+                  echo     '<a class="link-judul" href="tambah_soal.php?tab=1&id='.$data['id_ujian'].'"">'. $data['judul_ujian'] .'</a><br>';
                   echo   '</div>';
                   echo   '<div style="font-size: 12px; color:#aba8a8;" class="link2">';
                   echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.php?id='.$data['id_ujian'].'">Tambah Soal</a>';
