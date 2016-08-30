@@ -455,9 +455,7 @@
               
               
               while ($soal = mysqli_fetch_array($query1)){
-                echo '<div class="toFindSoal" id="soaltersimpan-';
-                echo $soal['id_soal'];
-                echo '">';
+                echo '<div class="toFindSoal" id="soaltersimpan-'.$soal['id_soal'].'" data-id="'.$soal['id_soal'].'" data-nomor="'.$soal['nomor_soal'].'">';
                 echo '<div class="panel panel-default soaltersimpan" style="margin-top:10px; background-color:#ffffff; border:1px solid #e7e7e7;">';
                 echo '<div class="panel-body">';
                 echo     '<div class="row">';
@@ -475,7 +473,7 @@
                   $jawaban_benar = $soal['jawaban_benar'];
 				  
 				  // pilihan ganda
-				  if ($soal['kategori_pertanyaan']==1||$soal['kategori_pertanyaan']==6||$soal['kategori_pertanyaan']==7){
+				  if ($soal['kategori_pertanyaan']==1||$soal['kategori_pertanyaan']==4||$soal['kategori_pertanyaan']==6||$soal['kategori_pertanyaan']==7){
 					echo '<ul class="list-group" style="margin-top:10px;">';
 					$query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
 					while($pilihan = mysqli_fetch_array($query2)){
@@ -498,14 +496,9 @@
 				  
 				  // isian dan essai
 				  if ($soal['kategori_pertanyaan']==2||$soal['kategori_pertanyaan']==3){
-					echo '<u>';
+					echo 'Jawaban: ';
 					echo $jawaban_benar;
-					echo '</u>';
-				  }
-				  
-				  // benar salah
-				  if ($soal['kategori_pertanyaan']==4){
-					  
+					
 				  }
 				  
 				  // checkbox
@@ -531,7 +524,7 @@
                                 echo   '<button id="editsoal" onclick="editsoal(this);" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none" data-ujian="';
                                   echo $soal['id_soal'];
                                   echo '"><span class="glyphicon glyphicon-pencil"></span> Edit</button>';
-                              echo    '<button class="button button2 col-md-2" data-toggle="modal" data-target="#modalHapus" style="font-size:14px; margin-left:10px;"><span class="glyphicon glyphicon-trash"></span> Hapus</button>';
+                              echo    '<button class="button button2 col-md-2 hapus" data-toggle="modal" data-target="#modalHapus" style="font-size:14px; margin-left:10px;"><span class="glyphicon glyphicon-trash"></span> Hapus</button>';
                               echo   '</div>';
                               echo '</div>';
                         echo '</div>';
@@ -1311,6 +1304,23 @@
             </div>
           </div>
         </div>
+        <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+                <h4 class="modal-title" id="modalHapusLabel">Hapus Soal</h4>
+              </div>
+              <div class="modal-body">
+                <p style="padding-left:20px; margin-bottom:0px">Apakah anda ingin menghapus soal nomor <b id="p2"></b>?</p>
+              </div>
+              <div class="modal-footer">
+                <a  href="kategori.php" class="button button1" id="simpan" style="text-decoration:none;">Hapus Soal</a>
+                <button class="button button1" data-dismiss="modal" style="border-width:2px; background-color:#e7e7e7; border-color:#e7e7e7; color:#777">Batalkan</button>
+              </div>
+            </div>
+          </div>
+        </div>
   </body>
     
 	<!-- Include jQuery. -->
@@ -1372,7 +1382,14 @@
 				scrollTop: $("#formTambahSoal").offset().top
 			}, 1000);
 		});
-		
+		$(".hapus").click(function(){
+      var y = "";
+      var x = "";
+      y = $(this).closest('.toFindSoal').attr('data-nomor');
+      x = $(this).closest('.toFindSoal').attr('data-id');
+      $("#p2").html(y);
+      $("#simpan").attr("href", "hapus_ujian.php?id="+x);
+    });
     $('.nomor').click(function(){
       $soaldipilih = "#soaltersimpan-"+$(this).attr('data-nomor');
       $('html, body').animate({
