@@ -77,7 +77,7 @@
                                             echo '</div>';
                                             echo '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
                                               //echo '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>';
-                                              echo        '<div class="numberCircle"';
+                                              echo        '<div onclick="numberCClick(this)" class="numberCircle"';
 											  if ($jawaban_benar==$piljwb['opsi_jawaban']){
 												  echo 'style="background:#b4e3dc;color:#fff;border-color:#e7e7e7;"';
 											  }

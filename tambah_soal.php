@@ -1669,6 +1669,14 @@
 			
         });
 		
+		function numberCClick(elm){
+			$(".fa-check-circle").css({"color":"#ffffff"});
+		    $(".numberCircle").css({"background":"#fff","color":"#30cbe8", "border-color":"#e7e7e7"});
+		    $(elm).css({"background":"#b4e3dc", "color":"#fff", "border-color":"#e7e7e7"});
+		    $(elm).closest('.row').find(".fa-check-circle").css({"color":"#b4e3dc", "transition-duration":"0.5s"});
+			$("input[name='jawabanbenar1'").val($(elm).closest(".row").find(".fr-element").html());
+		};
+		
 		function changeedit(){
 			var xmlhttp = new XMLHttpRequest();
 			var str = $("#editinformasi").attr("data-ujian");
