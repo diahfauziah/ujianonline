@@ -1330,7 +1330,7 @@
                 <p style="padding-left:20px; margin-bottom:0px">Apakah anda ingin menghapus soal nomor <b id="p2"></b>?</p>
               </div>
               <div class="modal-footer">
-                <a  href="kategori.php" class="button button1" id="simpan" style="text-decoration:none;">Hapus Soal</a>
+                <a  href="" class="button button1" id="simpan2" style="text-decoration:none;">Hapus Soal</a>
                 <button class="button button1" data-dismiss="modal" style="border-width:2px; background-color:#e7e7e7; border-color:#e7e7e7; color:#777">Batalkan</button>
               </div>
             </div>
@@ -1382,6 +1382,7 @@
 
     <!-- Initialize the editor. -->
     <script>
+		$idujiani = <?php echo $id; ?>;
 		$(document).ready(function(){
 			$('html, body').animate({
 				scrollTop: $("#formTambahSoal").offset().top
@@ -1403,7 +1404,7 @@
       y = $(this).closest('.toFindSoal').attr('data-nomor');
       x = $(this).closest('.toFindSoal').attr('data-id');
       $("#p2").html(y);
-      $("#simpan").attr("href", "hapus_ujian.php?id="+x);
+      $("#simpan2").attr("href", "hapus_soal.php?idsoal="+x+"&idujian="+$idujiani);
     });
     $('.nomor').click(function(){
       $soaldipilih = "#soaltersimpan-"+$(this).attr('data-nomor');
