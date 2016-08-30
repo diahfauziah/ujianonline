@@ -9,30 +9,30 @@
         <div class="panel panel-default" id="formTambahSoal" style="margin-top:10px; background-color:#ffffff;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
             <div class="panel-body">
               <div class="row" style="margin-left:5px;">
-                <ul class="nav nav-pills">
+                <ul class="nav nav-tabs">
                             <li <?php if ($soal['kategori_pertanyaan']==1) echo 'class="active"'; ?>>
-                              <a data-toggle="pill" class="hashtip" href="#formPilihanGanda" title="<u><b>Contoh</b></u><br>Apa Ibukota Provinsi Jawa Barat?<br><i class='fa fa-circle-thin'></i></span> Jakarta<br><i class='fa fa-circle'></i> Bandung<br><i class='fa fa-circle-thin'></i> Surabaya<br><i class='fa fa-circle-thin'></i> Bogor<br>">Pilihan ganda</a>
+                              <a data-toggle="tab" class="hashtip" href="#formPilihanGanda" title="<u><b>Contoh</b></u><br>Apa Ibukota Provinsi Jawa Barat?<br><i class='fa fa-circle-thin'></i></span> Jakarta<br><i class='fa fa-circle'></i> Bandung<br><i class='fa fa-circle-thin'></i> Surabaya<br><i class='fa fa-circle-thin'></i> Bogor<br>">Pilihan ganda</a>
                             </li>
                             <li <?php if ($soal['kategori_pertanyaan']==2) echo 'class="active"'; ?>>
-                              <a data-toggle="pill" href="#formIsian" class="hashtip" title="<u><b>Contoh</b></u><br>Ibukota Provinsi Jawa Barat yaitu <input type=text class='form-control'>">Isian singkat</a>
+                              <a data-toggle="tab" href="#formIsian" class="hashtip" title="<u><b>Contoh</b></u><br>Ibukota Provinsi Jawa Barat yaitu <input type=text class='form-control'>">Isian singkat</a>
                             </li>
                             <li <?php if ($soal['kategori_pertanyaan']==3) echo 'class="active"'; ?>>
-                              <a data-toggle="pill" href="#formEssay" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Essay</a>
+                              <a data-toggle="tab" href="#formEssay" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Essay</a>
                             </li>
                            <!-- <li>
-                              <a data-toggle="pill" href="#formPencocokan" class="hashtip" title="<u><b>Contoh</b></u><br>Cocokkan provinsi dan ibukota provinsi yang sesuai!<br> Jawa Barat <span class='glyphicon glyphicon-resize-horizontal'></span> Bandung <br> Jawa Timur <span class='glyphicon glyphicon-resize-horizontal'></span> Surabaya">Pencocokan</a>
+                              <a data-toggle="tab" href="#formPencocokan" class="hashtip" title="<u><b>Contoh</b></u><br>Cocokkan provinsi dan ibukota provinsi yang sesuai!<br> Jawa Barat <span class='glyphicon glyphicon-resize-horizontal'></span> Bandung <br> Jawa Timur <span class='glyphicon glyphicon-resize-horizontal'></span> Surabaya">Pencocokan</a>
                             </li> -->
                             <li <?php if ($soal['kategori_pertanyaan']==4) echo 'class="active"'; ?>>
-                              <a data-toggle="pill" href="#formBenarSalah" class="hashtip" title="<u><b>Contoh</b></u><br>Bandung adalah Ibukota Provinsi Jawa Barat<br><span class='glyphicon glyphicon-record'></span> Benar<br><span class='glyphicon glyphicon-record'></span> Salah">Benar/Salah</a>
+                              <a data-toggle="tab" href="#formBenarSalah" class="hashtip" title="<u><b>Contoh</b></u><br>Bandung adalah Ibukota Provinsi Jawa Barat<br><span class='glyphicon glyphicon-record'></span> Benar<br><span class='glyphicon glyphicon-record'></span> Salah">Benar/Salah</a>
                             </li>
                             <li <?php if ($soal['kategori_pertanyaan']==5) echo 'class="active"'; ?>>
-                              <a data-toggle="pill" href="#formCheckbox" class="hashtip" title="<u><b>Contoh</b></u><br>Manakah yang berada di Provinsi Jawa Barat?<br> <span class='glyphicon glyphicon-unchecked'></span> Jakarta<br><span class='glyphicon glyphicon-check'></span> Bandung<br><span class='glyphicon glyphicon-check'></span> Depok<br><span class='glyphicon glyphicon-unchecked'></span> Banten">Checkbox</a>
+                              <a data-toggle="tab" href="#formCheckbox" class="hashtip" title="<u><b>Contoh</b></u><br>Manakah yang berada di Provinsi Jawa Barat?<br> <span class='glyphicon glyphicon-unchecked'></span> Jakarta<br><span class='glyphicon glyphicon-check'></span> Bandung<br><span class='glyphicon glyphicon-check'></span> Depok<br><span class='glyphicon glyphicon-unchecked'></span> Banten">Checkbox</a>
                             </li>
                             <li <?php if ($soal['kategori_pertanyaan']==6) echo 'class="active"'; ?>>
-                              <a data-toggle="pill" href="#formSebabAkibat" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Sebab - akibat</a>
+                              <a data-toggle="tab" href="#formSebabAkibat" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Sebab - akibat</a>
                             </li>
                             <li <?php if ($soal['kategori_pertanyaan']==7) echo 'class="active"'; ?>>
-                              <a data-toggle="pill" href="#formPilihan123" class="hashtip" title="">Pilihan 1,2,3,4</a>
+                              <a data-toggle="tab" href="#formPilihan123" class="hashtip" title="">Pilihan 1,2,3,4</a>
                             </li>
                 </ul>
                 <div class="tab-content" style="margin-top:10px;">
@@ -167,25 +167,25 @@
                                           ?>
                                         </select>
                                       </div>
-                                      <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+                                      <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
                                     </div>
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
                                         <label style="width:80px;" style="font-size:13px">Poin Benar </label>
-                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%" value="<?php echo $soal['poin_benar'];?>">
+                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%">
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
-                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="<?php echo $soal['poin_salah'];?>"> 
+                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="0"> 
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:85px;" class="form-control-label">Poin Kosong</label>
-                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="<?php echo $soal['poin_kosong'];?>"> 
+                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
                                       </div>
-                                      <button id="simpansoal1" type="reset" onclick="savesoal(this);"  style="text-decoration:none; margin-left:5px;" class="button button4" data-ujian="<?php echo $soal['id_soal']; ?>">Batal</button>
-                                      <button id="simpansoal1" type="reset" onclick="savesoal(this);"  style="text-decoration:none; margin-left:5px" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
+                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
+                                      <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
                                     </div>
-                                </div>
+                                  </div>
                               </form>
                             </div>
                           </div>
@@ -691,7 +691,7 @@
                                 <div class="form-group" style="margin-bottom:10px; margin-top:10px;">
                                   <div class="row">
                                     <div style="float:left" style="width:15px">
-                                        <i class="fa fa-check-circle fa-lg" style="color:#f8f8f8"></i>
+                                        <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
                                       </div>
                                       <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
                                         <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
@@ -702,7 +702,7 @@
                                 <div class="form-group" style="margin-bottom:10px; margin-top:10px;">
                                   <div class="row">
                                     <div style="float:left" style="width:15px">
-                                        <i class="fa fa-check-circle fa-lg" style="color:#f8f8f8"></i>
+                                        <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
                                       </div>
                                       <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
                                         <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>

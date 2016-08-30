@@ -485,24 +485,22 @@
                 </div>
               </div>
             </div>
-             <?php 
-          if(!empty($_SESSION['statuspesan'])){
-            if (($_SESSION['statuspesan'] == "sukses")){
-              echo '<div class="alert alert-success">';
-              echo   '<a href="#" class="closebtn" data-dismiss="alert" aria-label="close">&times;</a>';
-              echo   '<strong>Berhasil!</strong> ';
-              echo   $_SESSION['pesan'];
-              echo '</div>';
-              $_SESSION['statuspesan'] = "";
-            } else if ($_SESSION["statuspesan"]=="gagal") {
-              echo '<div class="alert alert-danger">';
-              echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-              echo   '<strong>Gagal!</strong>';
-              echo   $_SESSION['pesan'];
-              echo '</div>';
-            }
-          }
-        ?>
+              <?php 
+                if(!empty($_SESSION['statuspesan'])){
+                  if (($_SESSION['statuspesan'] == "sukses")){
+                    echo '<div class="alert alert-success" style="margin-top:10px;">';
+                    echo   '<strong>Berhasil!</strong> ';
+                    echo   $_SESSION['pesan'];
+                    echo '</div>';
+                    $_SESSION['statuspesan'] = "";
+                  } else if ($_SESSION["statuspesan"]=="gagal") {
+                    echo '<div class="alert alert-danger" style="margin-top:10px;">';
+                    echo   '<strong>Gagal!</strong>';
+                    echo   $_SESSION['pesan'];
+                    echo '</div>';
+                  }
+                }
+              ?>
             <div id="kotakSoal">
             <?php 
               include('koneksi.php'); 
@@ -620,30 +618,30 @@
             <div class="panel panel-default" id="formTambahSoal" style="margin-top:10px; background-color:#ffffff;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
               <div class="panel-body">
                 <div class="row" style="margin-left:5px;">
-                  <ul class="nav nav-pills">
+                  <ul class="nav nav-tabs">
                               <li class="active">
-                                <a data-toggle="pill" class="hashtip" href="#formPilihanGanda" title="<u><b>Contoh</b></u><br>Apa Ibukota Provinsi Jawa Barat?<br><i class='fa fa-circle-thin'></i></span> Jakarta<br><i class='fa fa-circle'></i> Bandung<br><i class='fa fa-circle-thin'></i> Surabaya<br><i class='fa fa-circle-thin'></i> Bogor<br>">Pilihan ganda</a>
+                                <a data-toggle="tab" class="hashtip" href="#formPilihanGanda" title="<u><b>Contoh</b></u><br>Apa Ibukota Provinsi Jawa Barat?<br><i class='fa fa-circle-thin'></i></span> Jakarta<br><i class='fa fa-circle'></i> Bandung<br><i class='fa fa-circle-thin'></i> Surabaya<br><i class='fa fa-circle-thin'></i> Bogor<br>">Pilihan ganda</a>
                               </li>
                               <li>
-                                <a data-toggle="pill" href="#formIsian" class="hashtip" title="<u><b>Contoh</b></u><br>Ibukota Provinsi Jawa Barat yaitu <input type=text class='form-control'>">Isian singkat</a>
+                                <a data-toggle="tab" href="#formIsian" class="hashtip" title="<u><b>Contoh</b></u><br>Ibukota Provinsi Jawa Barat yaitu <input type=text class='form-control'>">Isian singkat</a>
                               </li>
                               <li>
-                                <a data-toggle="pill" href="#formEssay" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Essay</a>
+                                <a data-toggle="tab" href="#formEssay" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Essay</a>
                               </li>
                              <!-- <li>
                                 <a data-toggle="pill" href="#formPencocokan" class="hashtip" title="<u><b>Contoh</b></u><br>Cocokkan provinsi dan ibukota provinsi yang sesuai!<br> Jawa Barat <span class='glyphicon glyphicon-resize-horizontal'></span> Bandung <br> Jawa Timur <span class='glyphicon glyphicon-resize-horizontal'></span> Surabaya">Pencocokan</a>
                               </li> -->
                               <li>
-                                <a data-toggle="pill" href="#formBenarSalah" class="hashtip" title="<u><b>Contoh</b></u><br>Bandung adalah Ibukota Provinsi Jawa Barat<br><span class='glyphicon glyphicon-record'></span> Benar<br><span class='glyphicon glyphicon-record'></span> Salah">Benar/Salah</a>
+                                <a data-toggle="tab" href="#formBenarSalah" class="hashtip" title="<u><b>Contoh</b></u><br>Bandung adalah Ibukota Provinsi Jawa Barat<br><span class='glyphicon glyphicon-record'></span> Benar<br><span class='glyphicon glyphicon-record'></span> Salah">Benar/Salah</a>
                               </li>
                               <li>
-                                <a data-toggle="pill" href="#formCheckbox" class="hashtip" title="<u><b>Contoh</b></u><br>Manakah yang berada di Provinsi Jawa Barat?<br> <span class='glyphicon glyphicon-unchecked'></span> Jakarta<br><span class='glyphicon glyphicon-check'></span> Bandung<br><span class='glyphicon glyphicon-check'></span> Depok<br><span class='glyphicon glyphicon-unchecked'></span> Banten">Checkbox</a>
+                                <a data-toggle="tab" href="#formCheckbox" class="hashtip" title="<u><b>Contoh</b></u><br>Manakah yang berada di Provinsi Jawa Barat?<br> <span class='glyphicon glyphicon-unchecked'></span> Jakarta<br><span class='glyphicon glyphicon-check'></span> Bandung<br><span class='glyphicon glyphicon-check'></span> Depok<br><span class='glyphicon glyphicon-unchecked'></span> Banten">Checkbox</a>
                               </li>
                               <li>
-                                <a data-toggle="pill" href="#formSebabAkibat" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Sebab - akibat</a>
+                                <a data-toggle="tab" href="#formSebabAkibat" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Sebab - akibat</a>
                               </li>
                               <li>
-                                <a data-toggle="pill" href="#formPilihan123" class="hashtip" title="">Pilihan 1,2,3,4</a>
+                                <a data-toggle="tab" href="#formPilihan123" class="hashtip" title="">Pilihan 1,2,3,4</a>
                               </li>
                   </ul>
                   <div class="tab-content" style="margin-top:10px;">
@@ -838,40 +836,42 @@
                                       <textarea id="jawaban3" name="jawaban3" class="form-control" row="3" placeholder="Ketik jawaban"></textarea>
                                     </div>
                                   </div>
-                                  <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px;">
-                                    <div class="col-md-6">
-                                      <label style="width:122px;" class="form-control-label">Kelompok Soal </label>
-                                      <select class="form-control" id="stage3" name="stage3" >
-                                      <option value="1">Tanpa Kelompok Soal</option>
-                                      <?php
-                                        $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
-                                      while ($stg = mysqli_fetch_array($querystg)){
-                                        echo '<option value="';
-                                        echo $stg['id_stage'];
-                                        echo '">';
-                                        echo $stg['nama_stage'];
-                                        echo '</option>';
-                                      }
-                                      ?>
-                                      </select>
+                                  <div class="panel-footer" style="border:0px">
+                                    <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">
+                                      <div class="col-md-6">
+                                        <label style="width:122px;" class="">Kelompok Soal </label>
+                                        <select class="form-control" id="stage1" name="stage1" >
+                                          <option value="1">Tanpa Kelompok Soal</option>
+                                          <?php
+                                            $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
+                                            while ($stg = mysqli_fetch_array($querystg)){
+                                              echo '<option value="';
+                                              echo $stg['id_stage'];
+                                              echo '">';
+                                              echo $stg['nama_stage'];
+                                              echo '</option>';
+                                            }
+                                          ?>
+                                        </select>
+                                      </div>
+                                      <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
                                     </div>
-                                    <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
-                                  </div>
-                                  <div class="form-group form-inline" style="margin-bottom:10px;">
-                                    <strong class="col-md-1">Poin:</strong>
-                                    <div class="col-md-3">
-                                      <label style="width:65px;" class="form-control-label">Benar </label>
-                                      <input type="number" id="poinbenar3" name="poinbenar3" class="form-control" style="width:50%">
+                                    <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
+                                      <div class="col-md-3">
+                                        <label style="width:80px;" style="font-size:13px">Poin Benar </label>
+                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%">
+                                      </div>
+                                      <div class="col-md-3">
+                                        <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
+                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="0"> 
+                                      </div>
+                                      <div class="col-md-3">
+                                        <label style="width:85px;" class="form-control-label">Poin Kosong</label>
+                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
+                                      </div>
+                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
+                                      <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
                                     </div>
-                                    <div class="col-md-3">
-                                      <label style="width:65px;" class="form-control-label">Salah</label>
-                                      <input type="number" id="poinsalah3" name="poinsalah3" class="form-control" style="width:50%" value="0"> 
-                                    </div>
-                                    <div class="col-md-3">
-                                      <label style="width:65px;" class="form-control-label">Kosong</label>
-                                      <input type="number" id="poinkosong3" name="poinkosong3" class="form-control" style="width:50%" value="0"> 
-                                    </div>
-                                    <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button1" >
                                   </div>
                                 </form> 
                               </div>
@@ -1007,40 +1007,42 @@
                                       <label class="col-xs-12 col-md-12"><input type="radio" name="jawabansebab" value="Pernyataan dan alasan salah">Pernyataan dan alasan salah</label>
                                     </div>    
                                   </div>
-                                  <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px;">
-                                    <div class="col-md-6">
-                                      <label style="width:122px;" class="form-control-label">Kelompok Soal </label>
-                                      <select class="form-control" id="stage6" name="stage6" >
-                                      <option value="1">Tanpa Kelompok Soal</option>
-                                      <?php
-                                        $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
-                                          while ($stg = mysqli_fetch_array($querystg)){
-                                            echo '<option value="';
-                                            echo $stg['id_stage'];
-                                            echo '">';
-                                            echo $stg['nama_stage'];
-                                            echo '</option>';
-                                          }
-                                      ?>
-                                      </select>
+                                  <div class="panel-footer" style="border:0px">
+                                    <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">
+                                      <div class="col-md-6">
+                                        <label style="width:122px;" class="">Kelompok Soal </label>
+                                        <select class="form-control" id="stage1" name="stage1" >
+                                          <option value="1">Tanpa Kelompok Soal</option>
+                                          <?php
+                                            $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
+                                            while ($stg = mysqli_fetch_array($querystg)){
+                                              echo '<option value="';
+                                              echo $stg['id_stage'];
+                                              echo '">';
+                                              echo $stg['nama_stage'];
+                                              echo '</option>';
+                                            }
+                                          ?>
+                                        </select>
+                                      </div>
+                                      <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
                                     </div>
-                                    <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
-                                  </div>
-                                  <div class="form-group form-inline" style="margin-bottom:10px;">
-                                    <strong class="col-md-1">Poin:</strong>
-                                    <div class="col-md-3">
-                                      <label style="width:60px;" class="form-control-label">Benar </label>
-                                      <input type="text" id="poinbenar6" name="poinbenar6" class="form-control" style="width:50%">
+                                    <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
+                                      <div class="col-md-3">
+                                        <label style="width:80px;" style="font-size:13px">Poin Benar </label>
+                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%">
+                                      </div>
+                                      <div class="col-md-3">
+                                        <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
+                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="0"> 
+                                      </div>
+                                      <div class="col-md-3">
+                                        <label style="width:85px;" class="form-control-label">Poin Kosong</label>
+                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
+                                      </div>
+                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
+                                      <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
                                     </div>
-                                    <div class="col-md-3">
-                                      <label style="width:60px;" class="form-control-label">Salah</label>
-                                      <input type="text" id="poinsalah6" name="poinsalah6" class="form-control" style="width:50%" value="0"> 
-                                    </div>
-                                    <div class="col-md-3">
-                                      <label style="width:60px;" class="form-control-label">Kosong</label>
-                                      <input type="text" id="poinkosong6" name="poinkosong6" class="form-control" style="width:50%" value="0"> 
-                                    </div>
-                                    <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button1" >
                                   </div>
                                 </form>
                               </div>
@@ -1086,40 +1088,42 @@
                                       <label class="col-xs-12 col-md-12"><input type="radio" name="jawaban123" value="Benar semua">Benar semua</label>
                                     </div>    
                                   </div>
-                                  <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px;">
-                                    <div class="col-md-6">
-                                      <label style="width:122px;" class="form-control-label">Kelompok Soal </label>
-                                      <select class="form-control" id="stage7" name="stage7" >
-                                      <option value="1">Tanpa Kelompok Soal</option>
-                                      <?php
-                                        $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
-                                      while ($stg = mysqli_fetch_array($querystg)){
-                                        echo '<option value="';
-                                        echo $stg['id_stage'];
-                                        echo '">';
-                                        echo $stg['nama_stage'];
-                                        echo '</option>';
-                                      }
-                                      ?>
-                                      </select>
+                                  <div class="panel-footer" style="border:0px">
+                                    <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">
+                                      <div class="col-md-6">
+                                        <label style="width:122px;" class="">Kelompok Soal </label>
+                                        <select class="form-control" id="stage1" name="stage1" >
+                                          <option value="1">Tanpa Kelompok Soal</option>
+                                          <?php
+                                            $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
+                                            while ($stg = mysqli_fetch_array($querystg)){
+                                              echo '<option value="';
+                                              echo $stg['id_stage'];
+                                              echo '">';
+                                              echo $stg['nama_stage'];
+                                              echo '</option>';
+                                            }
+                                          ?>
+                                        </select>
+                                      </div>
+                                      <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
                                     </div>
-                                    <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"<i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
-                                  </div>
-                                  <div class="form-group form-inline" style="margin-bottom:10px;">
-                                    <strong class="col-md-1">Poin:</strong>
-                                    <div class="col-md-3">
-                                      <label style="width:60px;" class="form-control-label">Benar </label>
-                                      <input type="text" id="poinbenar7" name="poinbenar7" class="form-control" style="width:50%">
+                                    <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
+                                      <div class="col-md-3">
+                                        <label style="width:80px;" style="font-size:13px">Poin Benar </label>
+                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%">
+                                      </div>
+                                      <div class="col-md-3">
+                                        <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
+                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="0"> 
+                                      </div>
+                                      <div class="col-md-3">
+                                        <label style="width:85px;" class="form-control-label">Poin Kosong</label>
+                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
+                                      </div>
+                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
+                                      <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
                                     </div>
-                                    <div class="col-md-3">
-                                      <label style="width:60px;" class="form-control-label">Salah</label>
-                                      <input type="text" id="poinsalah7" name="poinsalah7" class="form-control" style="width:50%" value="0"> 
-                                    </div>
-                                    <div class="col-md-3">
-                                      <label style="width:60px;" class="form-control-label">Kosong</label>
-                                      <input type="text" id="poinkosong7" name="poinkosong7" class="form-control" style="width:50%" value="0"> 
-                                    </div>
-                                    <input type="submit" name="submit" value="Simpan" style="text-decoration:none" class="button button1" >
                                   </div>
                                 </form>
                               </div>
@@ -1161,25 +1165,6 @@
                                   </div>
                                   <div class="form-group" style="margin-bottom: 10px;">
                                     <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#e7e7e7; border:0px; color:#777; border:1px solid #ddd; border-radius:20px; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
-                                  </div>
-                                  <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px;">
-                                    <div class="col-md-6">
-                                      <label style="width:122px;" class="form-control-label">Kelompok Soal </label>
-                                      <select class="form-control" id="stage5" name="stage5" >
-                                      <option value="1">Tanpa Kelompok Soal</option>
-                                      <?php
-                                        $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
-                                      while ($stg = mysqli_fetch_array($querystg)){
-                                        echo '<option value="';
-                                        echo $stg['id_stage'];
-                                        echo '">';
-                                        echo $stg['nama_stage'];
-                                        echo '</option>';
-                                      }
-                                      ?>
-                                      </select>
-                                    </div>
-                                    <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
                                   </div>
                                   <div class="panel-footer" style="border:0px">
                                     <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">
@@ -1515,8 +1500,8 @@
       }, 2000);
     });
 		
-		$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
-			$(".alert-success").slideUp(500);
+		$(".alert").fadeTo(2000, 500).slideUp(500, function(){
+			$(".alert").slideUp(1000);
 		});
 		
 		$(".hapus").click(function(){
