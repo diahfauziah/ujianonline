@@ -511,7 +511,7 @@
 				  
 				  // isian dan essai
 				  if ($soal['kategori_pertanyaan']==2||$soal['kategori_pertanyaan']==3){
-					echo '&nbsp Jawaban: ';
+					echo '&nbsp; Jawaban: ';
 					echo $jawaban_benar;
 					
 				  }
