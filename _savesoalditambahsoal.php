@@ -18,26 +18,68 @@
             echo       '<div style="margin-left:0px;">';
             echo        '<div class="col-md-12" style="width:96%">';
             echo          $soal['pertanyaan'];
-                          $id_soal = $soal['id_soal'];
-                          $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
-                          $huruf = array("A","B","C","D","E");
-                          $i = 0;
-                      echo    '<ul class="list-group" style="margin-top:10px;">';
-                        while($pilihan = mysqli_fetch_array($query2)){
-                          echo '<li class="list-group-item opsijawaban">';
-                          echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-                        //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#4ABDAC"></i>';
-                          echo        '<div class="numberCircle">';
-                          echo         $huruf[$i];
-                          echo        '</div>'; 
-                          echo     '</div>';
-                          echo     '<div style="width:85%;  margin-left:-20px;">';
-                          echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
-                          echo     '</div>';
-                          echo '</li>';
-                          $i++;
-                        }
-                          echo '</ul>';
+                          
+			$id_soal = $soal['id_soal'];
+                  $huruf = array("A","B","C","D","E");
+                  $i = 0;
+                  $jawaban_benar = $soal['jawaban_benar'];
+				  
+				  // pilihan ganda
+				  if ($soal['kategori_pertanyaan']==1||$soal['kategori_pertanyaan']==4||$soal['kategori_pertanyaan']==6||$soal['kategori_pertanyaan']==7){
+  					echo '<ul class="list-group" style="margin-top:10px;">';
+  					$query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+  					while($pilihan = mysqli_fetch_array($query2)){
+              echo '<div class="row">';
+  					  echo '<li class="list-group-item opsijawaban" style="margin-bottom:5px;">';
+  					  echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+  					  echo        '<div class="numberJawaban"';
+  					  if ($jawaban_benar==$pilihan['opsi_jawaban']){
+  						  echo 'style="background:#b4e3dc;color:#fff;border-color:#e7e7e7;"';
+  					  }
+  					  echo 		  '>'.$huruf[$i].'</div>'; 
+  					  echo     '</div>';
+  					  echo     '<div style="width:85%;  margin-left:-20px;">';
+  					  echo       '<div id="opsiGanda1">'.$pilihan['opsi_jawaban'].'</div>';
+  					  echo     '</div>';
+  					  echo '</li>';
+              echo '</div>';
+  					  $i++;
+  					}
+					  echo '</ul>';
+				  }
+				  
+				  // isian dan essai
+				  if ($soal['kategori_pertanyaan']==2||$soal['kategori_pertanyaan']==3){
+					echo '&nbsp; Jawaban: ';
+					echo $jawaban_benar;
+					
+				  }
+				  
+				  // checkbox
+				  if ($soal['kategori_pertanyaan']==5){
+              echo    '<ul class="list-group" style="margin-top:10px;">';
+              $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
+              while($pilihan = mysqli_fetch_array($query2)){
+                    echo '<div class="row" style="margin-bottom:5px;">';
+                    echo '<li class="list-group-item opsicheckbox" data-idsoal="';
+                    echo $soal['id_soal'];
+                    echo '" style="float:left">';
+                    echo   '<div class="row">';
+                    echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
+                    echo       '<i class="fa fa-square-o fa-lg setjawaban" style="color:#30cbe8"></i>';
+                    echo     '</div>';
+                    echo     '<div style="width:90%;  margin-left:-20px;" class="col-md-9">';
+                    echo       '<div class="opsiGanda">'.$pilihan['opsi_jawaban'].'</div>';
+                    echo     '</div>';
+                    echo    '</div>';
+                    echo '</li>';
+                    //echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#30cbe8; margin-left:5px; cursor:pointer;"></i>';
+                    echo '</div>';
+                    $i++;
+                  }
+              echo '</ul>';
+				  }
+						  
                           echo '<div class="panel-footer">';
                           echo '<div class="row">';
                           echo   '<div class="col-md-3">Poin Benar: <strong>10</strong></div>';
