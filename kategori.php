@@ -417,7 +417,7 @@
         							  echo '<tr>';
         							  echo   '<td class="kategori">';
         							  echo   $data1['nama'];
-        							  echo   '<td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#" data-toggle="modal" data-target="#modalEditKategori" data-id="'.$data1['id_kategori'].'">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapusKategori">Hapus</a></div></td>';
+        							  echo   '<td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#" data-toggle="modal" data-target="#modalEditKategori" data-id="'.$data1['id_kategori'].'">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapusKategori" data-id="'.$data1['id_kategori'].'">Hapus</a></div></td>';
         							  echo '</tr>';
         							}
                     ?>
@@ -476,7 +476,7 @@
       								while($data3 = mysqli_fetch_array($kel2)){
       								  echo '<tr>
       								         <td class="kelas">'.$data3['nama'].'</td>
-      								         <td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#" data-toggle="modal" data-target="#modalEditKelas" data-id="'.$data3['id_kelas'].'">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapusKelas">Hapus</a></div></td>
+      								         <td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#" data-toggle="modal" data-target="#modalEditKelas" data-id="'.$data3['id_kelas'].'">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapusKelas" data-id="'.$data3['id_kelas'].'">Hapus</a></div></td>
       								      </tr>';
       								}
 							      ?>
@@ -518,16 +518,19 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalEditKategoriLabel">Edit Mata Pelajaran</h4>
           </div>
-          <div class="modal-body">
-            <div class="form-group col-md-12">
-              <label class="form-control-label col-md-3">Nama</label>
-              <input type="text" id="namaeditmapel" name="namamapel" class="form-control col-md-9" style="width:70%" value="tes">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <a href="#" class="button button1" id="simpan1" style="text-decoration:none;">Simpan</a>
-            <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
-          </div>
+		  <form id="form1" action="editmapel.php" method="post" class="form form-inline"> 
+			  <div class="modal-body">
+				<div class="form-group col-md-12">
+				  <label class="form-control-label col-md-3">Nama</label>
+				  <input type="text" id="namaeditmapel" name="namaeditmapel" class="form-control col-md-9" style="width:70%" value="tes">
+				</div>
+				<input type="hidden" id="idmapel" name="idmapel" />
+			  </div>
+			  <div class="modal-footer">
+				<button type="submit" class="button button1" id="simpan1" style="text-decoration:none;">Perbarui</a>
+				<button type="reset" class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
+			  </div>
+		  </form>
         </div>
       </div>
     </div>
@@ -538,13 +541,14 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalTambahKategoriLabel">Mata Pelajaran Baru</h4>
           </div>
-          <form id="form1" action="newmapel.php" method="post" class="form form-inline"> 
+          <form id="form1" action="hapusmapel.php" method="post" class="form form-inline"> 
             <div class="modal-body">
             Apakah Anda ingin menghapus <b id="namahapusmapel"></b> ?
             </div>
+			<input type="hidden" id="idmapelhapus" name="idmapelhapus" />
             <div class="modal-footer">
-              <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
-              <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
+              <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Hapus</button>
+              <button type="reset" class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
             </div>
           </form>
         </div>
@@ -580,16 +584,17 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalEditKelasLabel">Kelas Baru</h4>
           </div>
-          <form id="form2" action="newkelas.php" method="post" class="form form-inline"> 
+          <form id="form2" action="editkelas.php" method="post" class="form form-inline"> 
           <div class="modal-body">
               <div class="form-group col-md-12">
                 <label class="form-control-label col-md-3">Nama Kelas</label>
                 <input type="text" id="namaeditkelas" name="namaeditkelas" class="form-control col-md-9" style="width:70%">
               </div>
+			  <input type="hidden" id="idkelasedit" name="idkelasedit" />
           </div>
           <div class="modal-footer">
-            <button class="button button1" id="simpan2" style="text-decoration:none;">Simpan</button>
-            <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
+            <button type="submit" class="button button1" id="simpan2" style="text-decoration:none;">Perbarui</button>
+            <button type="reset" class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
           </div>
           </form>
         </div>
@@ -602,12 +607,13 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalKelasLabel">Kelas Baru</h4>
           </div>
-          <form id="form1" action="newmapel.php" method="post" class="form form-inline"> 
+          <form id="form1" action="hapuskelas.php" method="post" class="form form-inline"> 
             <div class="modal-body">
             Apakah Anda ingin menghapus <b id="namahapuskelas"></b> ?
             </div>
+			<input type="hidden" id="idkelashapus" name="idkelashapus" />
             <div class="modal-footer">
-              <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
+              <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Hapus</button>
               <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
             </div>
           </form>
@@ -637,24 +643,28 @@
       var x = $(this).attr('data-id');
       var y = $(this).closest('tr').find('td.kelas').text();
       $('input#namaeditkelas').val(y);
-      $('#simpan2').attr("href","http://localhost/ujianonline/update_kategori.php?id="+x);
+      $('input#idkelasedit').val(x);
     });
 
     $('a[data-target="#modalHapusKelas"]').click(function(){
+	  var x = $(this).attr('data-id');
       var y = $(this).closest('tr').find('td.kelas').text();
       $('#namahapuskelas').text(y);
+	  $('input#idkelashapus').val(x);
     });
 
     $('a[data-target="#modalEditKategori"]').click(function(){
       var x = $(this).attr('data-id');
       var y = $(this).closest('tr').find('td.kategori').text();
       $('input#namaeditmapel').val(y);
-      $('#simpan1').attr("href","http://localhost/ujianonline/update_kategori.php?id="+x);
+	  $('input#idmapel').val(x);
     });
 
     $('a[data-target="#modalHapusKategori"]').click(function(){
       var y = $(this).closest('tr').find('td.kategori').text();
+	  var x = $(this).attr('data-id');
       $('#namahapusmapel').text(y);
+	  $('input#idmapelhapus').val(x);
     });
     
   </script>
