@@ -510,7 +510,7 @@
               
               
               while ($soal = mysqli_fetch_array($query1)){
-				$soaltersimp = $soal['id_soal'];
+				        $soaltersimp = $soal['id_soal'];
                 echo '<div class="toFindSoal" id="soaltersimpan-'.$soal['id_soal'].'" data-id="'.$soal['id_soal'].'" data-nomor="'.$soal['nomor_soal'].'">';
                 echo '<div class="panel panel-default soaltersimpan" style="margin-top:10px; background-color:#ffffff; border:1px solid #e7e7e7;">';
                 echo '<div class="panel-body">';

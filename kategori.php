@@ -45,13 +45,13 @@
         
         font-size: 12px !important;
         border-radius: 0;
-        /*background-color: #4ABDAC; */
+        /*background-color: #30cbe8; */
         border-bottom-color: #e7e7e7; 
         border-width: 1px;
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #4ABDAC !important;
+        color: #30cbe8 !important;
       }
 
       /*.menu li {
@@ -125,34 +125,34 @@
       }
 
       .btn-primary, .btn-primary:active, .btn-primary:focus {
-        background-color: #4ABDAC;  
+        background-color: #30cbe8;  
         color: #ffffff;
-        border-color: #4ABDAC; 
+        border-color: #30cbe8; 
         border-width: 2px;
       }
       .btn-primary:hover {
         background-color: #ffffff;
-        border-color: #4ABDAC;
-        color: #4ABDAC;
+        border-color: #30cbe8;
+        color: #30cbe8;
         border-width: 2px;
       }
       .btn-simpan, .btn-simpan:active, .btn-simpan:focus {
-        background-color: #F7b733;  
+        background-color: #ffbf30;  
         color: #ffffff;
-        border-color: #F7b733; 
+        border-color: #ffbf30; 
         border-width: 2px;
       }
       .btn-simpan:hover {
         background-color: #ffffff;
-        border-color: #F7b733;
-        color: #F7b733;
+        border-color: #ffbf30;
+        color: #ffbf30;
         border-width: 2px;
       }
       .breadcrumb a {
         color: rgba(109, 116, 122, 1);
       }
       .breadcrumb a:hover {
-        color: #4ABDAC;
+        color: #30cbe8;
       }
       .breadcrumb > .active {
         color: rgba(186, 182, 182, 1);
@@ -208,12 +208,12 @@
       
       th {
         color: #ffffff;
-        background-color: #F7B733;
+        background-color: #ffbf30;
         text-decoration: none;
         font-family: 'Didact Gothic', sans-serif;
       }
       .alert-success {
-        color: #4abdac;
+        color: #30cbe8;
         background-color: #ecf8f6;
         border-color: #ecf8f6;
       }
@@ -229,7 +229,7 @@
         color: #818181;
       }
       .link2 a:hover {
-        color: #4ABDAC;
+        color: #30cbe8;
       }
     
       /*  bhoechie tab */
@@ -262,7 +262,7 @@
       }
       div.bhoechie-tab-menu div.list-group>a .glyphicon,
       div.bhoechie-tab-menu div.list-group>a .fa {
-        color: #F7b733;
+        color: #ffbf30;
       }
       div.bhoechie-tab-menu div.list-group>a:first-child{
         border-top-right-radius: 0;
@@ -275,8 +275,8 @@
       div.bhoechie-tab-menu div.list-group>a.active,
       div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
       div.bhoechie-tab-menu div.list-group>a.active .fa{
-        background-color: #F7b733;
-        background-image: #F7b733;
+        background-color: #ffbf30;
+        background-image: #ffbf30;
         color: #ffffff;
       }
       div.bhoechie-tab-menu div.list-group>a.active:after{
@@ -288,7 +288,7 @@
         border-left: 0;
         border-bottom: 13px solid transparent;
         border-top: 13px solid transparent;
-        border-left: 10px solid #F7b733;
+        border-left: 10px solid #ffbf30;
       }
 
       div.bhoechie-tab-content{
@@ -306,16 +306,16 @@
       }
       a.list-group-item:hover {
         background-color: #ffffff;
-        color: #F7b733;
+        color: #ffbf30;
         border-bottom-color: #e7e7e7;
       }
       a.list-group-item {
-        color: #F7b733;
+        color: #ffbf30;
       }
       .list-group-item:visited, .list-group-item {
         background-color: #f8f8f8;
         border-color: #f8f8f8;
-        color: #F7b733;
+        color: #ffbf30;
         border-bottom-color: #e7e7e7;
       }
     </style>
@@ -362,7 +362,7 @@
     <!-- Container -->
     <div class="container">
       <div class="content">
-        <h2 style="color:#4ABDAC; font-family: 'Didact Gothic', sans-serif;">Kategori</h2>
+        <h2 style="color:#30cbe8; font-family: 'Didact Gothic', sans-serif;">Kategori</h2>
         <p style="font-size:12px; margin-top:10px; color:#818181">Tambah/ubah <b>mata pelajaran</b> dan <b>kelas</b> yang tersedia</p>
         <br>
         <div class="row">
@@ -562,6 +562,9 @@
         $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
         $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
         });
+    });
+    $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+      $(".alert").slideUp(500);
     });
   </script>
 </html>

@@ -56,13 +56,13 @@
         /*z-index: 9999; */
         font-size: 12px !important;
         border-radius: 0;
-        /*background-color: #4ABDAC; */
+        /*background-color: #30cbe8; */
         border-bottom-color: #e7e7e7;
         border-bottom-width: 1px;
       } 
 
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #4ABDAC !important;
+        color: #30cbe8 !important;
       }
       
       .container {
@@ -115,7 +115,7 @@
         font-size: 12px;
       }
       .breadcrumb a {
-        color: #4ABDAC;
+        color: #30cbe8;
       }
       .breadcrumb a:hover {
         text-decoration: underline;
@@ -128,16 +128,16 @@
         content: " > ";
       }
       .table a:hover  {
-        color: #4ABDAC;
+        color: #30cbe8;
       }
 
       .table span {
         /*color: #000000;*/
-        color: #4ABDAC;
+        color: #30cbe8;
       }
 
       .table span:hover{
-        /*color: #4ABDAC;*/
+        /*color: #30cbe8;*/
         color: #818181;
       }
 
@@ -149,15 +149,15 @@
       }
 
       .btn-custom, .btn-custom:active, .btn-custom:focus {
-        background-color: #4ABDAC;  
+        background-color: #30cbe8;  
         color: #ffffff;
-        border-color: #4ABDAC; 
+        border-color: #30cbe8; 
       }
 
       .btn-custom:hover {
         background-color: #ffffff;
-        border-color: #4ABDAC;
-        color: #4ABDAC;
+        border-color: #30cbe8;
+        color: #30cbe8;
         border-width: 2px;
       }
 
@@ -174,11 +174,11 @@
 
       .judul a:link, a:visited {
         /*color: #2a2a2a;*/
-        color: #4ABDAC;
+        color: #30cbe8;
       }
 
       .judul a:hover{
-        /*color: #4ABDAC;*/
+        /*color: #30cbe8;*/
         color: #2a2a2a;
       }
 
@@ -195,11 +195,11 @@
       }
       th {
         color: #ffffff;
-        background-color: #F7B733;
+        background-color: #ffbf30;
         text-decoration: none;
       }
       a:link {
-        color: #4ABDAC;
+        color: #30cbe8;
       }
       a:hover{
         text-decoration: underline;
@@ -262,22 +262,23 @@
          </div>
          <div class="col-md-offset-2 col-md-8">
          <div class="panel panel-default">
-            <table class="table table-hover" style="margin-top:0px;">
-            <thead>
-              <tr>
-                <th>Tanggal Akses</th>
-                <th>Nama Peserta</th>
-                <th>Skor</th>
-                <th>Total waktu</th>
-              </tr>
-            </thead>
-            <tbody>
+            
               <?php include('koneksi.php'); 
                 $id = $_GET['id'];
                 $query = mysqli_query($link, "SELECT * FROM `laporan_ujian_guru` WHERE `id_ujian`='$id' ");
                 if(empty(mysqli_fetch_array($query))){
-                      echo   '<div style="text-align:center; background-color:#f8f8f8; color:#777; padding-top:10px; padding-bottom:10px">tidak ada data untuk ditampilkan</div>';
+                      echo   '<tr><div style="text-align:center; color:#777; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada peserta yang mengikuti ujian ini</div></tr>';
                 }else{
+                  echo '<table class="table table-hover" style="margin-top:0px;">
+                    <thead>
+                      <tr>
+                        <th>Tanggal Akses</th>
+                        <th>Nama Peserta</th>
+                        <th>Skor</th>
+                        <th>Total waktu</th>
+                      </tr>
+                    </thead>
+                  <tbody>';
                   while($laporan = mysqli_fetch_array($query)){
                     echo '<tr>';
                     echo  '<td>'. $laporan["tanggal_akses"] .'</td>';
@@ -286,10 +287,11 @@
                     echo  '<td>'. $laporan["total_waktu"] .'</td>';
                     echo '</tr>';
                   };
+                  echo '</tbody>
+                </table>';
                 }
               ?>
-            </tbody>
-         </table>
+              
          
          </div>
         </div>
