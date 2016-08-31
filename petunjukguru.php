@@ -162,6 +162,7 @@
     
     <div class="container">
     <!--  <div class="circle">10</div> -->
+    <a href="index_guru.php" class="button button2 pull-left" style="margin-left:-60px; position:fixed"><i class="fa fa-chevron-left"></i> Kembali ke Beranda</a>
       <div class="col-md-offset-1 col-md-10">
         <div class="row">
           <div class="panel panel-default col-md-offset-1 col-md-10">
@@ -215,7 +216,7 @@
         </div>
         <div class="row" style="margin-bottom:10px;">
           <div class="col-md-offset-1 col-md-10">
-            <a href="index_siswa.php?id=<?php echo $id ?>" type="button" class="button button1 col-md-offset-9 col-md-3" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
+            <a href="index_siswaguru.php?id=<?php echo $id ?>" type="button" class="button button1 col-md-offset-9 col-md-3" style="border-radius:0px; text-decoration:none;">Mulai Ujian <i class="fa fa-long-arrow-right"></i></a>
           </div>
         </div>
         <div class="row">
@@ -282,4 +283,4 @@
       });
     </script>
   </body>
-</html>
+</html> 

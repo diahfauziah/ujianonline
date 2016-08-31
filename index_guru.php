@@ -515,7 +515,7 @@
     });
     $(".lihat_tampilan").click(function(){
       x = $(this).attr("data-id");
-      $(this).attr("href","http://localhost/ujianonline/petunjuk.php?id="+x);
+      $(this).attr("href","http://localhost/ujianonline/petunjukguru.php?id="+x);
     });
     $(".hapus").click(function(){
       var x = "";

@@ -204,6 +204,7 @@
 	<!-- jquery validation -->
 	<script src="js/jquery.validate.min.js"></script>
 	<script>
+    
 		jQuery(document).ready(function(){
 			var $form = $('#form');
 

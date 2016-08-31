@@ -212,11 +212,6 @@
         text-decoration: none;
         font-family: 'Didact Gothic', sans-serif;
       }
-      .alert-success {
-        color: #30cbe8;
-        background-color: #ecf8f6;
-        border-color: #ecf8f6;
-      }
       footer {
         position:absolute;
         bottom:0;
@@ -325,7 +320,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-default">
       <div class="container">
-	  <?php include("koneksi.php"); ?>
+	    <?php include("koneksi.php"); ?>
         <div class="topheader">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -334,27 +329,27 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#myPage">Ujian Online</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav menu">
-            <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <form class="navbar-form" role="search">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav menu">
+              <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
+              <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <form class="navbar-form" role="search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
                 </div>
-              </div>
-            </form>
-            </li>
-            <li><a href="#"> <?php echo $_SESSION["nama"]; ?> </a></li>
-            <li><a href="logout.php"><u>Keluar</u></a></li>
-          </ul>
-        </div>
+              </form>
+              </li>
+              <li><a href="#"> <?php echo $_SESSION["nama"]; ?> </a></li>
+              <li><a href="logout.php"><u>Keluar</u></a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
@@ -366,139 +361,130 @@
         <p style="font-size:12px; margin-top:10px; color:#818181">Tambah/ubah <b>mata pelajaran</b> dan <b>kelas</b> yang tersedia</p>
         <br>
         <div class="row">
-                <div class="col-md-offset-2 col-md-10 bhoechie-tab-container">
-                    <div class="col-md-2 bhoechie-tab-menu">
+          <div class="col-md-offset-2 col-md-10 bhoechie-tab-container">
+            <div class="col-md-2 bhoechie-tab-menu">
                       <div class="list-group">
-                        <a href="#tab1" data-toggle="tab" class="list-group-item active text-center">
-                          Mata Pelajaran
-                        </a>
-                        <a href="#tab2" data-toggle="tab" class="list-group-item text-center">
-                          Kelas
-                        </a>
+                        <a href="#tab1" data-toggle="tab" class="list-group-item active text-center">Mata Pelajaran</a>
+                        <a href="#tab2" data-toggle="tab" class="list-group-item text-center">Kelas</a>
                       </div>
-                    </div>
-                    <div class="col-md-10 bhoechie-tab" style="background-color:#ffffff;">
-                        <!-- flight section -->
-                        <div class="bhoechie-tab-content active" id="tab1" style="background-color:#ffffff">
-                            <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none; font-size:13px; border-radius:15px;"><span class="glyphicon glyphicon-plus"></span> Tambah Mata Pelajaran</a>
-                            <?php 
-							  if(!empty($_SESSION['statuspesan']))
-							  {
-								if (($_SESSION['statuspesan'] == "sukses")){
-									echo '<div class="alert alert-success">';
-									echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-									echo   '<strong>Berhasil!</strong> ';
-									echo   $_SESSION['pesan'];
-									echo '</div>';
-									$_SESSION['statuspesan'] = "";
-								} else if ($_SESSION["statuspesan"]=="gagal") {
-									echo '<div class="alert alert-danger">';
-									echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-									echo   '<strong>Gagal!</strong>';
-									echo   $_SESSION['pesan'];
-									echo '</div>';
-									$_SESSION['statuspesan'] = "";
-								}
-							  }
-							?>
-                            <table class="table table-hover">
-                              <thead>
-                                <tr>
-                                  <th>Nama Mata Pelajaran</th>
-                                  <th></th>
-                                </tr>
-                              </thead>
-                              <tbody style="background-color:#ffffff">
-							  <?php
-							    $dibuat = $_SESSION['userid'];
-								$mp1 = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1");
-								
-								while($data = mysqli_fetch_array($mp1)){
-								  echo '<tr>';
-								  echo   '<td>';
-								  echo   $data['nama'];
-								  echo   '<td></td>';
-								  echo '</tr>';
-								}
-								
-								$mp2 = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
-								
-								while($data1 = mysqli_fetch_array($mp2)){
-								  echo '<tr>';
-								  echo   '<td>';
-								  echo   $data1['nama'];
-								  echo   '<td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>';
-								  echo '</tr>';
-								}
-								
+            </div>
+            <div class="col-md-10 bhoechie-tab" style="background-color:#ffffff;">
+              <div class="bhoechie-tab-content active" id="tab1" style="background-color:#ffffff">
+                <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none; outline:none; font-size:13px; border-radius:15px;"><span class="glyphicon glyphicon-plus"></span> Tambah Mata Pelajaran</a>
+                <?php 
+            							  if(!empty($_SESSION['statuspesan']))
+            							  {
+              								if (($_SESSION['statuspesan'] == "sukses")){
+              									echo '<div class="alert alert-success">';
+              									echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+              									echo   '<strong>Berhasil!</strong> ';
+              									echo   $_SESSION['pesan'];
+              									echo '</div>';
+              									$_SESSION['statuspesan'] = "";
+              								} else if ($_SESSION["statuspesan"]=="gagal") {
+              									echo '<div class="alert alert-danger">';
+              									echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+              									echo   '<strong>Gagal!</strong>';
+              									echo   $_SESSION['pesan'];
+              									echo '</div>';
+              									$_SESSION['statuspesan'] = "";
+              								}
+          							    }
 							  ?>
-                              </tbody>
-                            </table>
-                        </div>
-                        <!-- train section -->
-                        <div class="bhoechie-tab-content" id="tab2" style="background-color:#ffffff">
-                          <a href="#" class="button button1" data-toggle="modal" data-target="#modalKelas" style="margin-bottom:10px; text-decoration:none; font-size:13px; border-radius:15px;"><span class="glyphicon glyphicon-plus"></span> Tambah Kelas</a>
-						  <?php 
-						  if(!empty($_SESSION['statuspesan']))
-						  {
-							if (($_SESSION['statuspesan'] == "sukses")){
-								echo '<div class="alert alert-success">';
-								echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-								echo   '<strong>Berhasil!</strong> ';
-								echo   $_SESSION['pesan'];
-								echo '</div>';
-								$_SESSION['statuspesan'] = "";
-							} else if ($_SESSION["statuspesan"]=="gagal") {
-								echo '<div class="alert alert-danger">';
-								echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-								echo   '<strong>Gagal!</strong>';
-								echo   $_SESSION['pesan'];
-								echo '</div>';
-								$_SESSION['statuspesan'] = "";
-							}
-						  }
-						?>
-                          <table class="table table-hover">
-                            <thead>
-                              <tr>
-                                <th>Kelas</th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody style="background-color:#ffffff">
-                              <?php
-							    $dibuat = $_SESSION['userid'];
-								if ($_SESSION['kategori_guru']=="SMA"){
-								  $querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and `dibuat_oleh`=1";
-							    } else {
-								  $querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and `dibuat_oleh`=1";
-							    } 
-								$kel1 = mysqli_query($link, $querykelas);
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Nama Mata Pelajaran</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody style="background-color:#ffffff">
+    							  <?php
+    							    $dibuat = $_SESSION['userid'];
+    								  $mp1 = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1");
+    								
+      								while($data = mysqli_fetch_array($mp1)){
+      								  echo '<tr>';
+      								  echo   '<td>';
+      								  echo   $data['nama'];
+      								  echo   '<td></td>';
+      								  echo '</tr>';
+      								}
+    								
+    								  $mp2 = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
+    								
+        							while($data1 = mysqli_fetch_array($mp2)){
+        							  echo '<tr>';
+        							  echo   '<td class="kategori">';
+        							  echo   $data1['nama'];
+        							  echo   '<td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#" data-toggle="modal" data-target="#modalEditKategori" data-id="'.$data1['id_kategori'].'">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapusKategori">Hapus</a></div></td>';
+        							  echo '</tr>';
+        							}
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- train section -->
+              <div class="bhoechie-tab-content" id="tab2" style="background-color:#ffffff">
+                <a href="#" class="button button1" data-toggle="modal" data-target="#modalKelas" style="margin-bottom:10px; text-decoration:none; font-size:13px; border-radius:15px;"><span class="glyphicon glyphicon-plus"></span> Tambah Kelas</a>
+  						  <?php 
+    						  if(!empty($_SESSION['statuspesan']))
+    						  {
+      							if (($_SESSION['statuspesan'] == "sukses")){
+      								echo '<div class="alert alert-success">';
+      								echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+      								echo   '<strong>Berhasil!</strong> ';
+      								echo   $_SESSION['pesan'];
+      								echo '</div>';
+      								$_SESSION['statuspesan'] = "";
+      							} else if ($_SESSION["statuspesan"]=="gagal") {
+      								echo '<div class="alert alert-danger">';
+      								echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+      								echo   '<strong>Gagal!</strong>';
+      								echo   $_SESSION['pesan'];
+      								echo '</div>';
+      								$_SESSION['statuspesan'] = "";
+      							}
+  						    }
+  						  ?>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Kelas</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody style="background-color:#ffffff">
+                    <?php
+							        $dibuat = $_SESSION['userid'];
+      								if ($_SESSION['kategori_guru']=="SMA"){
+      								  $querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and `dibuat_oleh`=1";
+      							    } else {
+      								  $querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and `dibuat_oleh`=1";
+      							    } 
+      								$kel1 = mysqli_query($link, $querykelas);
+      								while($data2 = mysqli_fetch_array($kel1)){
+      								  echo '<tr>';
+      								  echo   '<td class="kelas">';
+      								  echo   $data2['nama'];
+      								  echo   '<td></td>';
+      								  echo '</tr>';
+      								}
 								
-								while($data2 = mysqli_fetch_array($kel1)){
-								  echo '<tr>';
-								  echo   '<td>';
-								  echo   $data2['nama'];
-								  echo   '<td></td>';
-								  echo '</tr>';
-								}
-								
-								$kel2 = mysqli_query($link, "SELECT * FROM `kelas` WHERE `dibuat_oleh`=$dibuat");
-								
-								while($data3 = mysqli_fetch_array($kel2)){
-								  echo '<tr>';
-								  echo   '<td>';
-								  echo   $data3['nama'];
-								  echo   '<td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#">Edit</a> | <a href="#">Hapus</a></div></td>';
-								  echo '</tr>';
-								}
-								
-							  ?>
-                            </tbody>
-                          </table>
-                        </div>
-                    </div>
-                </div>
+								      $kel2 = mysqli_query($link, "SELECT * FROM `kelas` WHERE `dibuat_oleh`=$dibuat");
+      								while($data3 = mysqli_fetch_array($kel2)){
+      								  echo '<tr>
+      								         <td class="kelas">'.$data3['nama'].'</td>
+      								         <td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#" data-toggle="modal" data-target="#modalEditKelas" data-id="'.$data3['id_kelas'].'">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapusKelas">Hapus</a></div></td>
+      								      </tr>';
+      								}
+							      ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -510,18 +496,57 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalTambahKategoriLabel">Mata Pelajaran Baru</h4>
           </div>
+          <form id="form1" action="newmapel.php" method="post" class="form form-inline"> 
+            <div class="modal-body">
+                <div class="form-group col-md-12">
+                  <label class="form-control-label col-md-3">Nama</label>
+                  <input type="text" id="namamapel" name="namamapel" class="form-control col-md-9" style="width:70%">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
+              <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalEditKategori" tabindex="-1" role="dialog" aria-labelledby="modalEditKategoriLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+            <h4 class="modal-title" id="modalEditKategoriLabel">Edit Mata Pelajaran</h4>
+          </div>
           <div class="modal-body">
-            <form id="form1" action="newmapel.php" method="post" class="form form-inline"> 
-              <div class="form-group col-md-12">
-                <label class="form-control-label col-md-3">Nama</label>
-                <input type="text" id="namamapel" name="namamapel" class="form-control col-md-9" style="width:70%">
-              </div>
+            <div class="form-group col-md-12">
+              <label class="form-control-label col-md-3">Nama</label>
+              <input type="text" id="namaeditmapel" name="namamapel" class="form-control col-md-9" style="width:70%" value="tes">
+            </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
+            <a href="#" class="button button1" id="simpan1" style="text-decoration:none;">Simpan</a>
             <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
-			</form>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalHapusKategori" tabindex="-1" role="dialog" aria-labelledby="modalTambahKategoriLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+            <h4 class="modal-title" id="modalTambahKategoriLabel">Mata Pelajaran Baru</h4>
+          </div>
+          <form id="form1" action="newmapel.php" method="post" class="form form-inline"> 
+            <div class="modal-body">
+            Apakah Anda ingin menghapus <b id="namahapusmapel"></b> ?
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
+              <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -533,18 +558,59 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalKelasLabel">Kelas Baru</h4>
           </div>
+          <form id="form4" action="newkelas.php" method="post" class="form form-inline"> 
+            <div class="modal-body">
+                <div class="form-group col-md-12">
+                  <label class="form-control-label col-md-3">Nama Kelas</label>
+                  <input type="text" id="namakelas" name="namakelas" class="form-control col-md-9" style="width:70%">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
+              <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalEditKelas" tabindex="-1" role="dialog" aria-labelledby="modalEditKelasLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+            <h4 class="modal-title" id="modalEditKelasLabel">Kelas Baru</h4>
+          </div>
+          <form id="form2" action="newkelas.php" method="post" class="form form-inline"> 
           <div class="modal-body">
-            <form id="form2" action="newkelas.php" method="post" class="form form-inline"> 
               <div class="form-group col-md-12">
                 <label class="form-control-label col-md-3">Nama Kelas</label>
-                <input type="text" id="namakelas" name="namakelas" class="form-control col-md-9" style="width:70%">
+                <input type="text" id="namaeditkelas" name="namaeditkelas" class="form-control col-md-9" style="width:70%">
               </div>
           </div>
           <div class="modal-footer">
-            <button class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
+            <button class="button button1" id="simpan2" style="text-decoration:none;">Simpan</button>
             <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
-			</form>
           </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalHapusKelas" tabindex="-1" role="dialog" aria-labelledby="modalKelas">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+            <h4 class="modal-title" id="modalKelasLabel">Kelas Baru</h4>
+          </div>
+          <form id="form1" action="newmapel.php" method="post" class="form form-inline"> 
+            <div class="modal-body">
+            Apakah Anda ingin menghapus <b id="namahapuskelas"></b> ?
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
+              <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -566,5 +632,30 @@
     $(".alert").fadeTo(2000, 500).slideUp(500, function(){
       $(".alert").slideUp(500);
     });
+
+    $('a[data-target="#modalEditKelas"]').click(function(){
+      var x = $(this).attr('data-id');
+      var y = $(this).closest('tr').find('td.kelas').text();
+      $('input#namaeditkelas').val(y);
+      $('#simpan2').attr("href","http://localhost/ujianonline/update_kategori.php?id="+x);
+    });
+
+    $('a[data-target="#modalHapusKelas"]').click(function(){
+      var y = $(this).closest('tr').find('td.kelas').text();
+      $('#namahapuskelas').text(y);
+    });
+
+    $('a[data-target="#modalEditKategori"]').click(function(){
+      var x = $(this).attr('data-id');
+      var y = $(this).closest('tr').find('td.kategori').text();
+      $('input#namaeditmapel').val(y);
+      $('#simpan1').attr("href","http://localhost/ujianonline/update_kategori.php?id="+x);
+    });
+
+    $('a[data-target="#modalHapusKategori"]').click(function(){
+      var y = $(this).closest('tr').find('td.kategori').text();
+      $('#namahapusmapel').text(y);
+    });
+    
   </script>
 </html>

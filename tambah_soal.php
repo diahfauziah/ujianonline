@@ -1313,7 +1313,7 @@
           </div>
           <div class="col-md-2" style="margin-top:10px; padding-left:0px">
             <div id="daftarsoal" style="position:fixed">
-              Daftar soal
+              Daftar soal <?php echo $ujian['judul_ujian'] ?> 
               <div id="console"></div>
               <div class="panel panel-default" style="width:233px;margin-bottom:5px;" id="nomorSoal">
                   <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
@@ -1325,7 +1325,7 @@
                       $querystage = mysqli_query($link, "SELECT DISTINCT stage_id FROM `soal` WHERE `id_ujian`='$id' ORDER BY stage_id ASC");
                                 
           					  if ($ujian['total_soal']==0){
-          						echo 'belum ada soal';
+          						echo 'Belum ada soal';
           					  } else {
                       if ($ujian['acak_soal']==0){
                         mysqli_data_seek($soal,0);
