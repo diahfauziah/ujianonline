@@ -210,15 +210,6 @@
         padding: 10px;
       }
       
-      /* The alert message box */
-      .alert {
-          padding: 20px;
-          background-color: #b4e3dc; /* Red */
-          color: white;
-          margin-bottom: 15px;
-          border-color: #b4e3dc;
-      }
-
       /* The close button */
       .closebtn {
           margin-left: 15px;

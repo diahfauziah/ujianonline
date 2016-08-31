@@ -111,7 +111,7 @@
       }
       div.bhoechie-tab-menu div.list-group>a .glyphicon,
       div.bhoechie-tab-menu div.list-group>a .fa {
-        color: #F7b733;
+        color: #ffbf30;
       }
       div.bhoechie-tab-menu div.list-group>a:first-child{
         border-top-right-radius: 0;
@@ -124,8 +124,8 @@
       div.bhoechie-tab-menu div.list-group>a.active,
       div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
       div.bhoechie-tab-menu div.list-group>a.active .fa{
-        background-color: #F7b733;
-        background-image: #F7b733;
+        background-color: #ffbf30;
+        background-image: #ffbf30;
         color: #ffffff;
       }
       div.bhoechie-tab-menu div.list-group>a.active:after{
@@ -137,7 +137,7 @@
         border-left: 0;
         border-bottom: 13px solid transparent;
         border-top: 13px solid transparent;
-        border-left: 10px solid #F7b733;
+        border-left: 10px solid #ffbf30;
       }
 
       div.bhoechie-tab-content{
@@ -159,13 +159,13 @@
         /*z-index: 9999; */
         font-size: 12px !important;
         border-radius: 0;
-        /*background-color: #4ABDAC; */
+        /*background-color: #30cbe8; */
         border-bottom-width: 1px;
         border-bottom-color: #e7e7e7;
 
       } 
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #4ABDAC !important;
+        color: #30cbe8 !important;
       }
       
       .container {
@@ -192,7 +192,7 @@
         padding-right: 10px;
       }
       .button {
-        background-color: #4ABDAC;
+        background-color: #30cbe8;
         border: none;
         color: #ffffff;
         padding: 6px 12px;
@@ -206,9 +206,9 @@
         cursor: pointer;
       }
       .button2, .button2:link, .button2:visited{
-        background-color: #F7b733;
+        background-color: #ffbf30;
         color: #ffffff;
-        border: 2px solid #F7b733;
+        border: 2px solid #ffbf30;
       }
       .button2:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -229,7 +229,7 @@
         font-size: 12px;
       }
       .breadcrumb a, .breadcrumb a:visited {
-        color: #4ABDAC;
+        color: #30cbe8;
       }
       .breadcrumb a:hover {
         /* color: rgba(42, 100, 150, 1); */
@@ -243,16 +243,16 @@
         content: " > ";
       }
       .table a:hover  {
-        color: #4ABDAC;
+        color: #30cbe8;
       }
 
       .table span {
         /*color: #000000;*/
-        color: #4ABDAC;
+        color: #30cbe8;
       }
 
       .table span:hover{
-        /*color: #4ABDAC;*/
+        /*color: #30cbe8;*/
         color: #818181;
       }
 
@@ -276,11 +276,11 @@
 
       .judul a:link, a:visited {
         /*color: #2a2a2a;*/
-        color: #4ABDAC;
+        color: #30cbe8;
       }
 
       .judul a:hover{
-        /*color: #4ABDAC;*/
+        /*color: #30cbe8;*/
         color: #2a2a2a;
       }
 
@@ -296,14 +296,14 @@
         overflow: auto;
       }
       .btn-simpan, .btn-simpan:active, .btn-simpan:focus {
-        background-color: #F7b733;  
+        background-color: #ffbf30;  
         color: #ffffff;
-        border-color: #F7b733; 
+        border-color: #ffbf30; 
       }
       .btn-simpan:hover {
         background-color: #ffffff;
-        border-color: #F7b733;
-        color: #F7b733;
+        border-color: #ffbf30;
+        color: #ffbf30;
         border-width: 2px;
       }
       .panel {
@@ -314,15 +314,15 @@
       }
       a.list-group-item:hover {
         background-color: #ffffff;
-        color: #F7b733;
+        color: #ffbf30;
       }
       a.list-group-item {
-        color: #F7b733;
+        color: #ffbf30;
       }
       .list-group-item:visited, .list-group-item {
         background-color: #f8f8f8;
         border-color: #f8f8f8;
-        color: #F7b733;
+        color: #ffbf30;
         border-bottom-color: #e7e7e7;
       }
       .form-control {
@@ -393,7 +393,7 @@
           $query = mysqli_query($link, "SELECT * FROM info_ujian WHERE id_ujian=".$id);
           $ujian = mysqli_fetch_array($query);
       ?>
-      <h2 style="margin: 14px; margin-bottom: 0px; color:#4ABDAC; font-family:'didact gothic', sans-serif">Edit Ujian <?php echo $ujian['judul_ujian'] ?></h2>
+      <h2 style="margin: 14px; margin-bottom: 0px; color:#30cbe8; font-family:'didact gothic', sans-serif">Edit Ujian <?php echo $ujian['judul_ujian'] ?></h2>
       <div class="row">
           <div class="col-xs-6 col-md-9">
              <ol class="breadcrumb">
@@ -660,6 +660,7 @@
 		  }
 		});
 
+    
 
 		$('#Petunjuk').froalaEditor({
 		  toolbarButtons: ['insertImage', 'undo', 'redo', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'formatOL', 'formatUL', 'align','remove'],
@@ -667,7 +668,7 @@
           charCounterCount: false,
 		  spellcheck: false
 		}); 
-        //$('span.fr-placeholder').css({"height":"35px"});
+        $('span.fr-placeholder').css({"height":"35px"});
 	  });
 	  
 	  $(document).ready(function() {
