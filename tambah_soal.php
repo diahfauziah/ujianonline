@@ -749,7 +749,7 @@
                                         <label style="width:85px;" class="form-control-label">Poin Kosong</label>
                                         <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
                                       </div>
-                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
+                                      <input type="reset" name="reset1" onclick="hideTambahSoal()" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
                                       <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
                                     </div>
                                   </div>
@@ -779,7 +779,7 @@
                                     <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
-                                        <select class="form-control" id="stage1" name="stage1" >
+                                        <select class="form-control" id="stage2" name="stage2" >
                                           <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
@@ -798,17 +798,17 @@
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
                                         <label style="width:80px;" style="font-size:13px">Poin Benar </label>
-                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%">
+                                        <input type="number" id="poinbenar2" name="poinbenar2" class="form-control" style="width:40%">
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
-                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinsalah2" name="poinsalah2" class="form-control" style="width:40%" value="0"> 
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:85px;" class="form-control-label">Poin Kosong</label>
-                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinkosong2" name="poinkosong2" class="form-control" style="width:40%" value="0"> 
                                       </div>
-                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
+                                      <input type="reset" name="reset2" onclick="hideTambahSoal()" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
                                       <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
                                     </div>
                                   </div>
@@ -840,7 +840,7 @@
                                     <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
-                                        <select class="form-control" id="stage1" name="stage1" >
+                                        <select class="form-control" id="stage3" name="stage3" >
                                           <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
@@ -859,17 +859,17 @@
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
                                         <label style="width:80px;" style="font-size:13px">Poin Benar </label>
-                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%">
+                                        <input type="number" id="poinbenar3" name="poinbenar3" class="form-control" style="width:40%">
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
-                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinsalah3" name="poinsalah3" class="form-control" style="width:40%" value="0"> 
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:85px;" class="form-control-label">Poin Kosong</label>
-                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinkosong3" name="poinkosong3" class="form-control" style="width:40%" value="0"> 
                                       </div>
-                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
+                                      <input type="reset" name="reset3" onclick="hideTambahSoal()" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
                                       <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
                                     </div>
                                   </div>
@@ -1011,7 +1011,7 @@
                                     <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
-                                        <select class="form-control" id="stage1" name="stage1" >
+                                        <select class="form-control" id="stage6" name="stage6" >
                                           <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
@@ -1030,17 +1030,17 @@
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
                                         <label style="width:80px;" style="font-size:13px">Poin Benar </label>
-                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%">
+                                        <input type="number" id="poinbenar6" name="poinbenar6" class="form-control" style="width:40%">
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
-                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinsalah6" name="poinsalah6" class="form-control" style="width:40%" value="0"> 
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:85px;" class="form-control-label">Poin Kosong</label>
-                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinkosong6" name="poinkosong6" class="form-control" style="width:40%" value="0"> 
                                       </div>
-                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
+                                      <input type="reset" name="reset6" onclick="hideTambahSoal()" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
                                       <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
                                     </div>
                                   </div>
@@ -1092,7 +1092,7 @@
                                     <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
-                                        <select class="form-control" id="stage1" name="stage1" >
+                                        <select class="form-control" id="stage7" name="stage7" >
                                           <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
@@ -1111,17 +1111,17 @@
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
                                         <label style="width:80px;" style="font-size:13px">Poin Benar </label>
-                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%">
+                                        <input type="number" id="poinbenar7" name="poinbenar7" class="form-control" style="width:40%">
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
-                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinsalah7" name="poinsalah7" class="form-control" style="width:40%" value="0"> 
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:85px;" class="form-control-label">Poin Kosong</label>
-                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinkosong7" name="poinkosong7" class="form-control" style="width:40%" value="0"> 
                                       </div>
-                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
+                                      <input type="reset" name="reset7" onclick="hideTambahSoal()" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
                                       <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
                                     </div>
                                   </div>
@@ -1170,7 +1170,7 @@
                                     <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
-                                        <select class="form-control" id="stage1" name="stage1" >
+                                        <select class="form-control" id="stage5" name="stage5" >
                                           <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
@@ -1189,17 +1189,17 @@
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
                                         <label style="width:80px;" style="font-size:13px">Poin Benar </label>
-                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%">
+                                        <input type="number" id="poinbenar5" name="poinbenar5" class="form-control" style="width:40%">
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
-                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinsalah5" name="poinsalah5" class="form-control" style="width:40%" value="0"> 
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:85px;" class="form-control-label">Poin Kosong</label>
-                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinkosong5" name="poinkosong5" class="form-control" style="width:40%" value="0"> 
                                       </div>
-                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
+                                      <input type="reset" name="reset5" onclick="hideTambahSoal()" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
                                       <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
                                     </div>
                                   </div>
@@ -1249,7 +1249,7 @@
                                     <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
-                                        <select class="form-control" id="stage1" name="stage1" >
+                                        <select class="form-control" id="stage4" name="stage4" >
                                           <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
@@ -1268,17 +1268,17 @@
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
                                         <label style="width:80px;" style="font-size:13px">Poin Benar </label>
-                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%">
+                                        <input type="number" id="poinbenar4" name="poinbenar4" class="form-control" style="width:40%">
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
-                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinsalah4" name="poinsalah4" class="form-control" style="width:40%" value="0"> 
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:85px;" class="form-control-label">Poin Kosong</label>
-                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinkosong4" name="poinkosong4" class="form-control" style="width:40%" value="0"> 
                                       </div>
-                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
+                                      <input type="reset" name="reset4" onclick="hideTambahSoal()" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
                                       <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
                                     </div>
                                   </div>
@@ -1473,7 +1473,7 @@
 			} else {
 				$stats = "<?php echo $_SESSION['statuspesan']; $_SESSION['statuspesan']=""; ?>";
 				if ($stats=="sukses"){
-					$inianim = "#soaltersimpan-<?php echo $soaltersimp; ?>";
+					$inianim = "#soaltersimpan-<?php if (isset($soaltersimp)) echo $soaltersimp; else echo ""; ?>";
 					$('html, body').animate({
 						scrollTop: $($inianim).offset().top
 					}, 100);
@@ -1499,6 +1499,10 @@
         scrollTop: $("#formPilihanGanda").offset().top
       }, 2000);
     });
+		
+		function hideTambahSoal(){
+			$('#formTambahSoal').css({"display":"none"});
+		}
 		
 		$(".alert").fadeTo(2000, 500).slideUp(500, function(){
 			$(".alert").slideUp(1000);
