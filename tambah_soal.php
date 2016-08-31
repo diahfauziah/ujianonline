@@ -562,6 +562,8 @@
 				  // checkbox
 				  if ($soal['kategori_pertanyaan']==5){
               echo    '<ul class="list-group" style="margin-top:10px;">';
+			  $jwbcb = $soal['jawaban_benar'];
+			  $arrjwb = explode("|", $jwbcb);
               $query2 = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id_soal' ");
               while($pilihan = mysqli_fetch_array($query2)){
                     echo '<div class="row" style="margin-bottom:5px;">';
@@ -570,7 +572,24 @@
                     echo '" style="float:left">';
                     echo   '<div class="row">';
                     echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
-                    echo       '<i class="fa fa-square-o fa-lg" style="color:#30cbe8"></i>';
+                    echo       '<i class="fa ';
+					
+					$therecb = 0;
+					$kj = 0;
+					while (isset($arrjwb[$kj])&&!$therecb){
+						if ($arrjwb[$kj]==$pilihan['opsi_jawaban']){
+							$therecb = 1;
+						}
+						$kj++;
+					}
+					
+					if ($therecb){
+						echo 'fa-check-square-o ';
+					} else {
+						echo 'fa-square-o ';
+					}
+					
+ 				    echo       'fa-lg" style="color:#30cbe8"></i>';
                     echo     '</div>';
                     echo     '<div style="width:90%;  margin-left:-20px;" class="col-md-9">';
                     echo       '<div class="opsiGanda">'.$pilihan['opsi_jawaban'].'</div>';
