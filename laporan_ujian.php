@@ -266,7 +266,7 @@
               <?php include('koneksi.php'); 
                 $id = $_GET['id'];
                 $query = mysqli_query($link, "SELECT * FROM `laporan_ujian_guru` WHERE `id_ujian`='$id' ");
-                if(empty(mysqli_fetch_array($query))){
+                if(empty($query)){
                       echo   '<tr><div style="text-align:center; color:#777; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada peserta yang mengikuti ujian ini</div></tr>';
                 }else{
                   echo '<table class="table table-hover" style="margin-top:0px;">
