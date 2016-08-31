@@ -275,22 +275,22 @@
               <?php include('koneksi.php'); 
                 $id = $_GET['id'];
                 $query = mysqli_query($link, "SELECT * FROM `laporan_ujian_guru` WHERE `id_ujian`='$id' ");
-                while($laporan = mysqli_fetch_array($query)){
-                  echo '<tr>';
-                  echo  '<td>'. $laporan["tanggal_akses"] .'</td>';
-                  echo  '<td>'. $laporan["nama_peserta"] .'</td>';
-                  echo  '<td>'. $laporan["nilai"] .'</td>';
-                  echo  '<td>'. $laporan["total_waktu"] .'</td>';
-                  echo '</tr>';
-                };
+                if(empty(mysqli_fetch_array($query))){
+                      echo   '<div style="text-align:center; background-color:#f8f8f8; color:#777; padding-top:10px; padding-bottom:10px">tidak ada data untuk ditampilkan</div>';
+                }else{
+                  while($laporan = mysqli_fetch_array($query)){
+                    echo '<tr>';
+                    echo  '<td>'. $laporan["tanggal_akses"] .'</td>';
+                    echo  '<td>'. $laporan["nama_peserta"] .'</td>';
+                    echo  '<td>'. $laporan["nilai"] .'</td>';
+                    echo  '<td>'. $laporan["total_waktu"] .'</td>';
+                    echo '</tr>';
+                  };
+                }
               ?>
             </tbody>
          </table>
-         <?php 
-            if(empty(mysqli_fetch_array($query))){
-                  echo   '<div style="text-align:center; background-color:#f8f8f8; color:#777; padding-top:10px; padding-bottom:10px">tidak ada data untuk ditampilkan</div>';
-            }
-         ?>
+         
          </div>
         </div>
       </div>

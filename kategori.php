@@ -176,7 +176,7 @@
         overflow: auto;
       }
       .button {
-        background-color: #4ABDAC;
+        background-color: #30cbe8;
         border: none;
         color: #ffffff;
         padding: 6px 12px;
@@ -191,11 +191,18 @@
         border-radius: 4px;
       }
       .button1, .button1:link, .button1:visited {
+        background-color: #30cbe8;
+        color: #ffffff;
+        border: 1px solid #30cbe8;
+        border-radius: 0px;
+      }
+      .button4, .button4:link, .button4:visited {
         background-color: #e7e7e7;
         color: #777;
-        border: 2px solid #e7e7e7;
+        border: 1px solid #e7e7e7;
+        border-radius: 0px;
       }
-      .button1:hover {
+      .button1:hover, .button2:hover, a.button:hover, .button4:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
       
@@ -512,7 +519,7 @@
           </div>
           <div class="modal-footer">
             <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
-            <button class="btn btn-default" data-dismiss="modal" style="border-width:2px;">Batal</button>
+            <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
 			</form>
           </div>
         </div>
@@ -535,7 +542,7 @@
           </div>
           <div class="modal-footer">
             <button class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
-            <button class="btn btn-default" data-dismiss="modal" style="border-width:2px;">Batal</button>
+            <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
 			</form>
           </div>
         </div>

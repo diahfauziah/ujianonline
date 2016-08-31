@@ -135,7 +135,7 @@
 								  }
                                 ?> 
                                 
-								<!--
+								
                                 <div class="form-group opsiGandaE" style="margin-bottom:10px" hidden>
                                   <div class="row">
                                       <div style="float:left" style="width:15px">
@@ -153,9 +153,9 @@
                                         <i class="fa fa-trash"></i>
                                       </div>
                                   </div>
-                                </div> -->
+                                </div> 
                                 <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
-                                  <button class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#e7e7e7; border:0px; color:#777; border:1px solid #ddd; border-radius:20px; outline:none;"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</button>
+                                  <a href="#" class="button button1 tambahopsi" type="button" style="margin-left:20px; font-size:13px; background-color:#e7e7e7; border:0px; color:#777; border:1px solid #ddd; border-radius:20px; outline:none; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Tambahkan opsi</a>
                                 </div>
                                 <div class="panel-footer" style="border:0px">
                                     <div class="form-group form-inline" style="margin-top: 10px;margin-bottom: 15px; font-size:13px;">

@@ -364,7 +364,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav menu">
             <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-            <li><a href="index_guru.php"><span class="glyphicon glyphicon-tag" style="font-size:13px"></span> Kategori</a></li>
+            <li><a href="kategori.php"><span class="glyphicon glyphicon-tag" style="font-size:13px"></span> Kategori</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -1616,6 +1616,9 @@
             $('.tambahopsi').click(function(){
               $('.opsiGandaE').removeAttr("hidden");
             });
+        });
+        $('.tambahopsi').click(function(){
+          $(this).closest('form').find('.opsiGandaE').removeAttr("hidden");
         });
 		
 		$(function(){

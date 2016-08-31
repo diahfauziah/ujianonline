@@ -51,9 +51,7 @@
       .navbar-nav li a:hover, .navbar-nav li.active a {
         color: #30cbe8 !important;
       }
-      .navbar-nav li:hover {
-        background-color:#e7e7e7;
-      }
+     
       /*.menu li {
         background-color: #e7e7e7;
       } */
