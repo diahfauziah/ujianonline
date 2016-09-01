@@ -46,6 +46,29 @@
         line-height: 1.8;
         background-color: #f2f2f2; 
       } 
+	  html,body {
+			margin:0;
+			padding:0;
+			height:100%;
+		}
+		#wrapper {
+			min-height:100%;
+			position:relative;
+		}
+		#header {
+			
+		}
+		#content1 {
+		}
+		#footer {
+			background:#f8f8f8;
+			width:100%;
+			height:50px;
+			position:absolute;
+			bottom:0;
+			left:0;
+			text-align:center;	
+		}
       .btn {
         transition-duration: 0.4s;
         cursor: pointer;
@@ -248,44 +271,48 @@
     </style>
   </head>
   <body>
+	<div id="wrapper">
     <!-- Navbar -->
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="topheader">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <!-- <a class="navbar-brand" href="#myPage" style="padding-left:120px;">Ujian Online</a> -->
-            <a class="navbar-brand" href="#myPage">Ujian Online</a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav menu">
-              <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-              <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
-            </ul>
-            <!-- <ul class="nav navbar-nav navbar-right" style="padding-right:90px;"> -->
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <form class="navbar-form" role="search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <div class="input-group-btn">
-                      <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                  </div>
-                </form>
-              </li>
-              <li><a href="#"> <?php echo $_SESSION["nama"]; ?> </a></li>
-              <li><a href="logout.php"><u>Keluar</u></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <div class="container">
+	<div id="header">
+		<nav class="navbar navbar-default">
+		  <div class="container">
+			<div class="topheader">
+			  <div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+				<!-- <a class="navbar-brand" href="#myPage" style="padding-left:120px;">Ujian Online</a> -->
+				<a class="navbar-brand" href="#myPage">Ujian Online</a>
+			  </div>
+			  <div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav menu">
+				  <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
+				  <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
+				</ul>
+				<!-- <ul class="nav navbar-nav navbar-right" style="padding-right:90px;"> -->
+				<ul class="nav navbar-nav navbar-right">
+				  <li>
+					<form class="navbar-form" role="search">
+					  <div class="input-group">
+						<input type="text" class="form-control" placeholder="Search">
+						<div class="input-group-btn">
+						  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+						</div>
+					  </div>
+					</form>
+				  </li>
+				  <li><a href="#"> <?php echo $_SESSION["nama"]; ?> </a></li>
+				  <li><a href="logout.php"><u>Keluar</u></a></li>
+				</ul>
+			  </div>
+			</div>
+		  </div>
+		</nav>
+	</div>
+    <div id="content1">
+	<div class="container">
 	  <?php include("koneksi.php"); ?>
       <div class="content">
         <h2 style="margin-bottom: 30px; color:#30cbe8; font-family: 'Roboto Slab', serif;">Daftar Ujian</h2>
@@ -458,6 +485,11 @@
             ?>
           </tbody>
         </table>
+		<br />
+        <?php $numrow = mysqli_num_rows($query);
+                if($numrow==0){
+                  echo   '<tr><div style="text-align:center; color:#777; margin-top:-20px; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada ujian yang dibuat.</div></tr>';
+          } ?>
 
         <!-- Modal Hapus -->
         <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusLabel">
@@ -500,10 +532,10 @@
       </div>
     </div>
 
-  	<footer class="text-center">
+  	</div>
+	<div id="footer">
   	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
-    </footer>
-
+	</div>
   </body>
 </html>
 <script type="text/javascript">

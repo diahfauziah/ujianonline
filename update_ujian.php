@@ -44,7 +44,7 @@
 				
 				if ($update_query){
 					$_SESSION['statuspesan'] = "sukses";
-					$_SESSION['pesan'] = " Ujian $judul berhasil diperbaharui";
+					$_SESSION['pesan'] = " Ujian $judul berhasil diperbaharui <i class='fa fa-check-circle'></i>";
 					header('location:index_guru.php');
 				} else {
 					$_SESSION['statuspesan'] = "gagal";
