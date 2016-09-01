@@ -4,16 +4,25 @@
 		include("koneksi.php");
 		$id = $_POST['idkelashapus'];
 		
-		$delete = mysqli_query($link, "DELETE FROM `kelas` WHERE `id_kelas`=$id");
+		$check = mysqli_query($link, "SELECT * FROM info_ujian WHERE id_kelas='$id'");
+		$numrow = mysqli_num_rows($check);
 		
-		if ($delete){
-			$_SESSION['statuspesan'] = "sukses";
-			$_SESSION['pesan'] = "Kelas berhasil dihapus <i class='fa fa-trash-o'></i>";
-			header('location:kategori.php');
+		if ($numrow == 0){
+			$delete = mysqli_query($link, "DELETE FROM `kelas` WHERE `id_kelas`=$id");
+		
+			if ($delete){
+				$_SESSION['statuspesan'] = "sukses";
+				$_SESSION['pesan'] = " Kelas berhasil dihapus <i class='fa fa-trash-o'></i>";
+				header('location:kategori.php');
+			} else {
+				$_SESSION['statuspesan'] = "gagal";
+				$_SESSION['pesan'] = " Kelas tidak berhasil dihapus";
+				header('location:kategori.php');
+			}
 		} else {
 			$_SESSION['statuspesan'] = "gagal";
-			$_SESSION['pesan'] = "Kelas tidak berhasil dihapus";
+			$_SESSION['pesan'] = " Kelas tidak berhasil dihapus karena terkait ujian tertentu";
 			header('location:kategori.php');
-		}
+		}		
 	}
 ?>

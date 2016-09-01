@@ -10,11 +10,11 @@
 		
 		if ($query){
 			$_SESSION['statuspesan'] = "sukses";
-			$_SESSION['pesan'] = "Mata Pelajaran $mapel berhasil dibuat";
+			$_SESSION['pesan'] = " Mata Pelajaran $mapel berhasil dibuat";
 			header('location:kategori.php');
 		} else {
 			$_SESSION['statuspesan'] = "gagal";
-			$_SESSION['pesan'] = "Mata Pelajaran $mapel tidak berhasil dibuat";
+			$_SESSION['pesan'] = " Mata Pelajaran $mapel tidak berhasil dibuat";
 			header('location:kategori.php');
 		}
 	}
