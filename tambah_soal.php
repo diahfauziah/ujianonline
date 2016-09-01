@@ -399,7 +399,7 @@
       ?>
       <div class="content">
         <div class="row">
-          <h2 style="margin-left:25px; color:#30cbe8; margin-top:0px; margin-bottom:10px; text-align:center; font-family:'didact gothic', sans-serif"><?php echo $ujian['judul_ujian'] ?></h2>
+          <h2 style="margin-left:25px; color:#30cbe8; margin-top:0px; margin-bottom:10px; text-align:center; font-family:'Roboto Slab', serif"><?php echo $ujian['judul_ujian'] ?></h2>
         </div>
         <div class="row">
           <div class="col-md-10">

@@ -225,7 +225,7 @@
       <div class="col-md-offset-3 col-md-6">
           <div class="panel panel-default" id="panelSoal" style="margin-top: 10px;">
             <div class="panel-body">
-              <h3 style="text-align:center; color:#30cbe8; font-family:'didact gothic', sans-serif;">Buat Ujian Baru</h3>
+              <h3 style="text-align:center; color:#30cbe8; font-family:'Roboto Slab', serif;">Buat Ujian Baru</h3>
               <hr>
               <!-- <div class="alert alert-danger">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

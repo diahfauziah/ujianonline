@@ -288,7 +288,7 @@
     <div class="container">
 	  <?php include("koneksi.php"); ?>
       <div class="content">
-        <h2 style="margin-bottom: 30px; color:#30cbe8; font-family: 'Didact Gothic', sans-serif;">Daftar Ujian</h2>
+        <h2 style="margin-bottom: 30px; color:#30cbe8; font-family: 'Roboto Slab', serif;">Daftar Ujian</h2>
         <div class="row">
           <div class="col-md-9">
             <form id="form1" action="index_guru.php" method="post" class="form-inline" role="form">

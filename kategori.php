@@ -357,7 +357,7 @@
     <!-- Container -->
     <div class="container">
       <div class="content">
-        <h2 style="color:#30cbe8; font-family: 'Didact Gothic', sans-serif;">Kategori</h2>
+        <h2 style="color:#30cbe8; font-family: 'Roboto Slab', serif;">Kategori</h2>
         <p style="font-size:12px; margin-top:10px; color:#818181">Tambah/ubah <b>mata pelajaran</b> dan <b>kelas</b> yang tersedia</p>
         <br>
         <div class="row">
@@ -635,8 +635,8 @@
         $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
         });
     });
-    $(".alert").fadeTo(2000, 500).slideUp(500, function(){
-      $(".alert").slideUp(500);
+    $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+      $(".alert-success").slideUp(500);
     });
 
     $('a[data-target="#modalEditKelas"]').click(function(){
