@@ -740,7 +740,8 @@
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
                                         <select class="form-control" id="stage1" name="stage1" >
-                                          <option value="1">Tanpa Kelompok Soal</option>
+                                          <div id="stagepil1">
+										  <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
                                             while ($stg = mysqli_fetch_array($querystg)){
@@ -751,6 +752,7 @@
                                               echo '</option>';
                                             }
                                           ?>
+										  </div>
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
@@ -799,7 +801,8 @@
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
                                         <select class="form-control" id="stage2" name="stage2" >
-                                          <option value="1">Tanpa Kelompok Soal</option>
+                                          <div id="stagepil2">
+										  <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
                                             while ($stg = mysqli_fetch_array($querystg)){
@@ -810,6 +813,7 @@
                                               echo '</option>';
                                             }
                                           ?>
+										  </div>
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
@@ -860,7 +864,8 @@
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
                                         <select class="form-control" id="stage3" name="stage3" >
-                                          <option value="1">Tanpa Kelompok Soal</option>
+                                          <div id="stagepil3">
+										  <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
                                             while ($stg = mysqli_fetch_array($querystg)){
@@ -871,6 +876,7 @@
                                               echo '</option>';
                                             }
                                           ?>
+										  </div>
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
@@ -1031,7 +1037,8 @@
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
                                         <select class="form-control" id="stage6" name="stage6" >
-                                          <option value="1">Tanpa Kelompok Soal</option>
+                                          <div id="stagepil6">
+										  <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
                                             while ($stg = mysqli_fetch_array($querystg)){
@@ -1042,6 +1049,7 @@
                                               echo '</option>';
                                             }
                                           ?>
+										  </div>
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
@@ -1112,7 +1120,8 @@
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
                                         <select class="form-control" id="stage7" name="stage7" >
-                                          <option value="1">Tanpa Kelompok Soal</option>
+                                          <div id="stagepil7">
+										  <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
                                             while ($stg = mysqli_fetch_array($querystg)){
@@ -1123,6 +1132,7 @@
                                               echo '</option>';
                                             }
                                           ?>
+										  </div>
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
@@ -1190,7 +1200,8 @@
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
                                         <select class="form-control" id="stage5" name="stage5" >
-                                          <option value="1">Tanpa Kelompok Soal</option>
+                                          <div id="stagepil5">
+										  <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
                                             while ($stg = mysqli_fetch_array($querystg)){
@@ -1201,6 +1212,7 @@
                                               echo '</option>';
                                             }
                                           ?>
+										  </div>
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
@@ -1269,7 +1281,8 @@
                                       <div class="col-md-6">
                                         <label style="width:122px;" class="">Kelompok Soal </label>
                                         <select class="form-control" id="stage4" name="stage4" >
-                                          <option value="1">Tanpa Kelompok Soal</option>
+                                          <div id="stagepil4">
+										  <option value="1">Tanpa Kelompok Soal</option>
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
                                             while ($stg = mysqli_fetch_array($querystg)){
@@ -1280,6 +1293,7 @@
                                               echo '</option>';
                                             }
                                           ?>
+										  </div>
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
@@ -1405,15 +1419,13 @@
                 <h4 class="modal-title" id="modalHapusLabel">Tambah Kelompok Soal</h4>
               </div>
               <div class="modal-body">
-                <form id="form1" action="newmapel.php" method="post" class="form form-inline"> 
                   <div class="form-group col-md-12">
                     <label class="form-control-label col-md-3">Nama</label>
-                    <input type="text" id="namamapel" name="namamapel" class="form-control col-md-9" style="width:70%">
+                    <input type="text" id="namastage" name="namastage" class="form-control col-md-9" style="width:70%">
                   </div>
-                </form>
               </div>
               <div class="modal-footer">
-                <a  href="kategori.php" class="button button1" id="simpan" style="text-decoration:none;">Simpan</a>
+                <button onclick="addstage()" class="button button1" data-dismiss="modal" id="simpan" style="text-decoration:none;">Simpan</a>
                 <button class="button button1" data-dismiss="modal" style="border-width:2px; background-color:#e7e7e7; border-color:#e7e7e7; color:#777">Batalkan</button>
               </div>
             </div>
@@ -1742,6 +1754,39 @@
 			xmlhttp.open("GET", "_savesoalditambahsoal.php?id=" + str, true);
 			xmlhttp.send();
 		};
+		
+		function addstage(){
+			var xmlhttp = new XMLHttpRequest();
+			var str = $('input[name="namastage"]').val();
+			var st1 = "stage1";
+			var st2 = "stage2";
+			var st3 = "stage3";
+			var st4 = "stage4";
+			var st5 = "stage5";
+			var st6 = "stage6";
+			var st7 = "stage7";
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById(st1).innerHTML = xmlhttp.responseText;
+					document.getElementById(st2).innerHTML = xmlhttp.responseText;
+					document.getElementById(st3).innerHTML = xmlhttp.responseText;
+					document.getElementById(st4).innerHTML = xmlhttp.responseText;
+					document.getElementById(st5).innerHTML = xmlhttp.responseText;
+					document.getElementById(st6).innerHTML = xmlhttp.responseText;
+					document.getElementById(st7).innerHTML = xmlhttp.responseText;
+				}
+			};
+			xmlhttp.open("GET", "_addstage.php?name=" + str, true);
+			xmlhttp.send();
+			$('input[name="namastage"]').val("");
+		};
+		
+		$('input[name="namastage"]').keydown(function(e){
+			  if (e.keyCode == 13){
+				  addstage();
+				  $('#modalStage').modal('hide');
+			  }
+		  });
 		
 		function editsoal(elem){
 			var xmlhttp = new XMLHttpRequest();
