@@ -21,6 +21,34 @@
     <script src="js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <script src="js/bootstrap-tagsinput.min.js"></script>
+	
+	<!-- Froala -->
+      <!-- Include Font Awesome. -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Include Editor style. -->
+    <link href="froala/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
+    <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Include Code Mirror style -->
+    <link rel="stylesheet" href="css/codemirror.min.css">
+	
+	<!-- Include Editor Plugins style. -->
+    <link rel="stylesheet" href="froala/css/plugins/char_counter.css">
+    <link rel="stylesheet" href="froala/css/plugins/code_view.css">
+    <link rel="stylesheet" href="froala/css/plugins/colors.css">
+    <link rel="stylesheet" href="froala/css/plugins/emoticons.css">
+    <link rel="stylesheet" href="froala/css/plugins/file.css">
+    <link rel="stylesheet" href="froala/css/plugins/fullscreen.css">
+    <link rel="stylesheet" href="froala/css/plugins/image.css">
+    <link rel="stylesheet" href="froala/css/plugins/image_manager.css">
+    <link rel="stylesheet" href="froala/css/plugins/line_breaker.css">
+    <link rel="stylesheet" href="froala/css/plugins/quick_insert.css">
+    <link rel="stylesheet" href="froala/css/plugins/table.css">
+    <link rel="stylesheet" href="froala/css/plugins/video.css">
+    <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
+    <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+	
     <script type="text/javascript">
       $(function(){
         $('[data-toggle="tooltip"]').tooltip();
@@ -377,7 +405,6 @@
     <script type="text/javascript" src="froala/js/plugins/lists.min.js"></script>
     <script type="text/javascript" src="froala/js/plugins/paragraph_format.min.js"></script>
     <script type="text/javascript" src="froala/js/plugins/paragraph_style.min.js"></script>
-    <script type="text/javascript" src="froala/js/plugins/quick_insert.min.js"></script>
     <script type="text/javascript" src="froala/js/plugins/quote.min.js"></script>
     <script type="text/javascript" src="froala/js/plugins/table.min.js"></script>
     <script type="text/javascript" src="froala/js/plugins/save.min.js"></script>
