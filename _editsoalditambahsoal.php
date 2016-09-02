@@ -1,9 +1,11 @@
 <?php
+	session_start();
 	include('koneksi.php'); 
-  $id = $_GET['id'];
+    $id = $_GET['id'];
 	$query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_soal`='$id' ");
 	$soal = mysqli_fetch_array($query1);
 	$nomor = $soal['nomor_soal'];
+	$userid = $_SESSION['userid'];
 ?>
 
         <div class="panel panel-default" id="formTambahSoal-edit" style="margin-top:10px; background-color:#ffffff;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
