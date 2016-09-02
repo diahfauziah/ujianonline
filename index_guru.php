@@ -320,8 +320,8 @@
           <div class="col-md-9">
             <form id="form1" action="index_guru.php" method="post" class="form-inline" role="form">
               <div class="form-group">
-                <label class="col-md-2" style="color:#ffbf30;">Kategori</label>
-                <div class="col-md-4">
+                <label class="control-label col-md-2" style="color:#ffbf30;" for="kategori">Kategori</label>
+                <div class="col-md-6">
 				          <select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control">
           					<?php
           					  $dibuat = $_SESSION['userid'];
@@ -353,7 +353,7 @@
           					?>
                   </select>
                 </div>
-                <div class="col-md-offset-1 col-md-3" style="margin-left:30px">
+                <div class="col-md-offset-1 col-md-3" style="margin-left:0px;">
                   <select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control">
                     <?php
           					  if ($_SESSION['kategori_guru']=="SMA"){

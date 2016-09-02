@@ -332,6 +332,15 @@
                   </select>
                  </div>
               </div>
+			  <div class="form-group" style="margin-top:-10px">
+				<label class="control-label col-md-3" for="modal"></label>
+				<div class="col-md-5">
+					<a href="#"><i class="fa fa-plus"></i> <u>Tambah materi baru</u></a>
+				</div>
+				<div class="col-md-4">
+					<a href="#"><i class="fa fa-plus"></i> <u>Kelas baru</u></a>
+				</div>
+			  </div>
               <div class="form-group">
                 <label class="control-label col-md-3" for="AcakSoal">Acak soal</label>
                 <div class="col-md-9">
