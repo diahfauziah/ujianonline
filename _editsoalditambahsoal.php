@@ -57,7 +57,7 @@
 								   ?>
                                    </textarea>
                                 </div>
-                                <p style="margin-left:-10px; font-size:12px; color:#f7b733; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
+                                <p style="margin-left:-10px; font-size:14px; color:#f7b733; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
                                  <?php 
 								  if ($soal['kategori_pertanyaan']==1){
 									$querypiljwb = mysqli_query($link, "SELECT * FROM `pilihan_jawaban` WHERE `id_soal`='$id'");

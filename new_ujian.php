@@ -225,7 +225,7 @@
       <div class="col-md-offset-3 col-md-6">
           <div class="panel panel-default" id="panelSoal" style="margin-top: 10px;">
             <div class="panel-body">
-              <h3 style="text-align:center; color:#30cbe8; font-family:'Roboto Slab', serif;">Buat Ujian Baru</h3>
+              <h3 style="text-align:center; color:#30cbe8; font-family:'Georgia', serif;">Buat Ujian Baru</h3>
               <hr>
               <!-- <div class="alert alert-danger">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -253,7 +253,7 @@
 			  }
 			?>
               <div class="form-group">
-                <label class="col-md-3">Judul</label>
+                <label class="control-label col-md-3" for="Judul">Judul</label>
                 <div class="col-md-9">
                   <input type="text" class="form-control" id="Judul" name="Judul">
                 </div>
@@ -267,7 +267,7 @@
               </div>
 			  -->
               <div class="form-group">
-                <label class="col-md-3">Waktu</label>
+                <label class="control-label col-md-3" for="Waktu">Waktu</label>
                 <div class="col-md-4">
                   <input type="number" class="form-control" id="Waktu" name="Waktu">
                 </div>
@@ -276,7 +276,7 @@
                  </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3">Kategori</label>
+                <label class="control-label col-md-3" for="KategoriUjian">Kategori</label>
                 <div class="col-md-5">
                   <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
                     <option value="">Pilih Materi</option>
@@ -317,7 +317,7 @@
                  </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3">Acak soal</label>
+                <label class="control-label col-md-3" for="AcakSoal">Acak soal</label>
                 <div class="col-md-9">
                    <select class="form-control" id="AcakSoal" name="AcakSoal">
                     <option value="1">Ya</option>
@@ -326,7 +326,7 @@
                  </div>
               </div>
                <div class="form-group">
-                  <label class="col-md-3">Peserta perlu login</label>
+                  <label class="control-label col-md-3" for="PerluLogin">Peserta perlu login</label>
                   <div class="col-md-9">
                     <select class="form-control" id="PerluLogin" name="PerluLogin">
                       <option value="1">Ya</option>

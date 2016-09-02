@@ -393,7 +393,7 @@
           $query = mysqli_query($link, "SELECT * FROM info_ujian WHERE id_ujian=".$id);
           $ujian = mysqli_fetch_array($query);
       ?>
-      <h2 style="margin: 14px; margin-bottom: 0px; color:#30cbe8; font-family:'Roboto Slab', serif">Edit Ujian <?php echo $ujian['judul_ujian'] ?></h2>
+      <h2 style="margin: 14px; margin-bottom: 0px; color:#30cbe8; font-family:'Georgia', serif">Edit Ujian <?php echo $ujian['judul_ujian'] ?></h2>
       <div class="row">
           <div class="col-xs-6 col-md-9">
              <ol class="breadcrumb">
@@ -451,7 +451,7 @@
 					<select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
 					  <?php
 					  $dibuat = $_SESSION['userid'];
-					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1 or `dibuat_oleh`=$dibuat");
+					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
 					  
 					  while($kate = mysqli_fetch_array($kat)){
 						echo '<option value="';
