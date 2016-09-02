@@ -358,19 +358,19 @@
     <div class="container">
       <div class="content">
         <h2 style="color:#30cbe8; font-family: 'Roboto Slab', serif;">Kategori</h2>
-        <p style="font-size:12px; margin-top:10px; color:#818181">Tambah/ubah <b>mata pelajaran</b> dan <b>kelas</b> yang tersedia</p>
+        <p style="font-size:12px; margin-top:10px; color:#818181">Tambah/ubah <b>materi</b> dan <b>kelas</b> yang tersedia</p>
         <br>
         <div class="row">
           <div class="col-md-offset-2 col-md-10 bhoechie-tab-container">
             <div class="col-md-2 bhoechie-tab-menu">
                       <div class="list-group">
-                        <a href="#tab1" data-toggle="tab" class="list-group-item active text-center">Mata Pelajaran</a>
+                        <a href="#tab1" data-toggle="tab" class="list-group-item active text-center">Materi</a>
                         <a href="#tab2" data-toggle="tab" class="list-group-item text-center">Kelas</a>
                       </div>
             </div>
             <div class="col-md-10 bhoechie-tab" style="background-color:#ffffff;">
               <div class="bhoechie-tab-content active" id="tab1" style="background-color:#ffffff">
-                <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none; outline:none; font-size:13px; border-radius:15px;"><span class="glyphicon glyphicon-plus"></span> Tambah Mata Pelajaran</a>
+                <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none; outline:none; font-size:13px; border-radius:15px;"><span class="glyphicon glyphicon-plus"></span> Tambah Materi</a>
                 <?php 
             							  if(!empty($_SESSION['statuspesan']))
             							  {
@@ -394,23 +394,22 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>Nama Mata Pelajaran</th>
+                      <th>Daftar Materi</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody style="background-color:#ffffff">
     							  <?php
     							    $dibuat = $_SESSION['userid'];
-    								  $mp1 = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1");
-    								
-      								while($data = mysqli_fetch_array($mp1)){
-      								  echo '<tr>';
-      								  echo   '<td>';
-      								  echo   $data['nama'];
-      								  echo   '<td></td>';
-      								  echo '</tr>';
-      								}
-    								
+    								/*  $mp1 = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1");
+										  while($data = mysqli_fetch_array($mp1)){
+										  echo '<tr>';
+										  echo   '<td>';
+										  echo   $data['nama'];
+										  echo   '<td></td>';
+										  echo '</tr>'; }
+      								} */
+										
     								  $mp2 = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
     								
         							while($data1 = mysqli_fetch_array($mp2)){
@@ -423,6 +422,11 @@
                     ?>
                   </tbody>
                 </table>
+				<?php $numrow = mysqli_num_rows($mp2);
+					if($numrow==0){
+					  echo   '<tr><div style="text-align:center; color:#777; margin-top:-20px; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada materi yang ditambahkan.</div></tr>';
+					} ?>
+				<br />
               </div>
 
               <!-- train section -->
@@ -451,14 +455,14 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>Kelas</th>
+                      <th>Daftar Kelas</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody style="background-color:#ffffff">
                     <?php
 							        $dibuat = $_SESSION['userid'];
-      								if ($_SESSION['kategori_guru']=="SMA"){
+      								/*if ($_SESSION['kategori_guru']=="SMA"){
       								  $querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and `dibuat_oleh`=1";
       							    } else {
       								  $querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and `dibuat_oleh`=1";
@@ -470,7 +474,7 @@
       								  echo   $data2['nama'];
       								  echo   '<td></td>';
       								  echo '</tr>';
-      								}
+      								} */
 								
 								      $kel2 = mysqli_query($link, "SELECT * FROM `kelas` WHERE `dibuat_oleh`=$dibuat");
       								while($data3 = mysqli_fetch_array($kel2)){
@@ -482,6 +486,11 @@
 							      ?>
                   </tbody>
                 </table>
+				<?php $numrow = mysqli_num_rows($kel2);
+					if($numrow==0){
+					  echo   '<tr><div style="text-align:center; color:#777; margin-top:-20px; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada kelas yang ditambahkan.</div></tr>';
+				} ?>
+				<br />
               </div>
             </div>
           </div>
@@ -494,7 +503,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-            <h4 class="modal-title" id="modalTambahKategoriLabel">Mata Pelajaran Baru</h4>
+            <h4 class="modal-title" id="modalTambahKategoriLabel">Materi Baru</h4>
           </div>
           <form id="form1" action="newmapel.php" method="post" class="form form-inline"> 
             <div class="modal-body">
@@ -516,7 +525,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-            <h4 class="modal-title" id="modalEditKategoriLabel">Edit Mata Pelajaran</h4>
+            <h4 class="modal-title" id="modalEditKategoriLabel">Edit Materi</h4>
           </div>
 		  <form id="form1" action="editmapel.php" method="post" class="form form-inline"> 
 			  <div class="modal-body">
@@ -527,7 +536,7 @@
 				<input type="hidden" id="idmapel" name="idmapel" />
 			  </div>
 			  <div class="modal-footer">
-				<button type="submit" class="button button1" id="simpan1" style="text-decoration:none;">Perbarui</a>
+				<button type="submit" class="button button1" id="simpan1" style="text-decoration:none; margin-right:5px">Perbarui</a>
 				<button type="reset" class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
 			  </div>
 		  </form>
@@ -539,7 +548,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-            <h4 class="modal-title" id="modalTambahKategoriLabel">Mata Pelajaran Baru</h4>
+            <h4 class="modal-title" id="modalTambahKategoriLabel">Hapus Materi</h4>
           </div>
           <form id="form1" action="hapusmapel.php" method="post" class="form form-inline"> 
             <div class="modal-body">

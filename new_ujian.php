@@ -279,10 +279,10 @@
                 <label class="col-md-3">Kategori</label>
                 <div class="col-md-5">
                   <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
-                    <option value="">Pilih Mata Pelajaran</option>
+                    <option value="">Pilih Materi</option>
 					<?php
 					  $dibuat = $_SESSION['userid'];
-					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1 or `dibuat_oleh`=$dibuat");
+					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
 					  
 					  while($kate = mysqli_fetch_array($kat)){
 						echo '<option value="';
@@ -299,9 +299,9 @@
                     <option value="">Pilih Kelas</option>
                     <?php
 					  if ($_SESSION['kategori_guru']=="SMA"){
-						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
+						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=$dibuat)";
 					  } else {
-						$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
+						$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=$dibuat)";
 					  }
 					  $kel = mysqli_query($link, $querykelas);
 					  

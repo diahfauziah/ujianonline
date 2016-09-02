@@ -399,7 +399,7 @@
       ?>
       <div class="content">
         <div class="row">
-          <h2 style="margin-left:25px; color:#30cbe8; margin-top:0px; margin-bottom:10px; text-align:center; font-family:'Roboto Slab', serif"><?php echo $ujian['judul_ujian'] ?></h2>
+          <h2 style="margin-left:25px; color:#30cbe8; margin-top:0px; margin-bottom:10px; text-align:center; font-family:'Georgia', serif"><?php echo $ujian['judul_ujian'] ?></h2>
         </div>
         <div class="row">
           <div class="col-md-10">
@@ -680,7 +680,7 @@
                                      <textarea id="pertanyaan1" name="pertanyaan1" class="form-control" rows="3">
                                      </textarea>
                                   </div>
-                                  <p style="margin-left:-10px; font-size:12px; color:#ffbf30; margin-top:10px;">Klik lingkaran untuk menetapkan jawaban yang benar</p>
+                                  <p style="margin-left:-10px; font-size:14px; color:#ffbf30; margin-top:10px;">Klik huruf didalam lingkaran untuk menetapkan jawaban yang benar</p>
                                    <?php 
                                       $huruf = array("A","B","C","D","E","F","G","H");
                                       $i = 0; 

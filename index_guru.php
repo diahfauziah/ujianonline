@@ -315,7 +315,7 @@
 	<div class="container">
 	  <?php include("koneksi.php"); ?>
       <div class="content">
-        <h2 style="margin-bottom: 30px; color:#30cbe8; font-family: 'Roboto Slab', serif;">Daftar Ujian</h2>
+        <h2 style="margin-bottom: 30px; color:#30cbe8; font-family: 'Georgia', serif;">Daftar Ujian</h2>
         <div class="row">
           <div class="col-md-9">
             <form id="form1" action="index_guru.php" method="post" class="form-inline" role="form">
@@ -325,7 +325,7 @@
 				          <select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control">
           					<?php
           					  $dibuat = $_SESSION['userid'];
-          					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=1 or `dibuat_oleh`=$dibuat");
+          					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
           					  
           					  if (isset($_POST['kategori'])){
           						$_SESSION['matapelajaran'] = $_POST['kategori'];
@@ -335,7 +335,7 @@
           					  if ($_SESSION['matapelajaran']=="0"){
           						  echo "selected";
           					  }
-          					  echo '>All (Mata Pelajaran)</option>';
+          					  echo '>All (Materi)</option>';
           					  
           					  
           					  while($kate = mysqli_fetch_array($kat)){
@@ -357,7 +357,7 @@
                   <select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control">
                     <?php
           					  if ($_SESSION['kategori_guru']=="SMA"){
-          						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
+          						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=$dibuat)";
           					  } else {
           						$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
           					  }
@@ -432,7 +432,7 @@
           <tbody>
             <?php
       			  if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']=="0"){
-      				  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat order by modified_date desc";
+      				  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat order by modified_date asc";
       			  } else if ($_SESSION['matapelajaran']!="0" && $_SESSION['kelas']=="0") {
         				$idmapel = $_SESSION['matapelajaran'];
         				$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and mata_pelajaran=$idmapel order by modified_date desc";
@@ -488,7 +488,7 @@
 		<br />
         <?php $numrow = mysqli_num_rows($query);
                 if($numrow==0){
-                  echo   '<tr><div style="text-align:center; color:#777; margin-top:-20px; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada ujian yang dibuat.</div></tr>';
+                  echo   '<tr><div style="text-align:center; color:#777; margin-top:-50px; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada ujian yang dibuat.</div></tr>';
           } ?>
 
         <!-- Modal Hapus -->
