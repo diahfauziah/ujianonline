@@ -231,7 +231,7 @@
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>Tidak berhasil</strong> memasukkan ujian baru.
               </div> -->
-            <form id="form" class="form-horizontal" action="input_ujian.php" method="post">
+            <form id="form" autocomplete="off" class="form-horizontal" action="input_ujian.php" method="post">
 			<?php 
 			  if(!empty($_SESSION['statuspesan']))
 			  {

@@ -505,7 +505,7 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalTambahKategoriLabel">Materi Baru</h4>
           </div>
-          <form id="form1" action="newmapel.php" method="post" class="form form-inline"> 
+          <form id="form1" autocomplete="off" action="newmapel.php" method="post" class="form form-inline"> 
             <div class="modal-body">
                 <div class="form-group col-md-12">
                   <label class="form-control-label col-md-3">Nama</label>
@@ -527,7 +527,7 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalEditKategoriLabel">Edit Materi</h4>
           </div>
-		  <form id="form1" action="editmapel.php" method="post" class="form form-inline"> 
+		  <form id="form1" autocomplete="off" action="editmapel.php" method="post" class="form form-inline"> 
 			  <div class="modal-body">
 				<div class="form-group col-md-12">
 				  <label class="form-control-label col-md-3">Nama</label>
@@ -550,7 +550,7 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalTambahKategoriLabel">Hapus Materi</h4>
           </div>
-          <form id="form1" action="hapusmapel.php" method="post" class="form form-inline"> 
+          <form id="form1" autocomplete="off" action="hapusmapel.php" method="post" class="form form-inline"> 
             <div class="modal-body">
             Apakah Anda ingin menghapus <b id="namahapusmapel"></b> ?
             </div>
@@ -571,7 +571,7 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalKelasLabel">Kelas Baru</h4>
           </div>
-          <form id="form4" action="newkelas.php" method="post" class="form form-inline"> 
+          <form id="form4" autocomplete="off" action="newkelas.php" method="post" class="form form-inline"> 
             <div class="modal-body">
                 <div class="form-group col-md-12">
                   <label class="form-control-label col-md-3">Nama Kelas</label>
@@ -593,7 +593,7 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalEditKelasLabel">Kelas Baru</h4>
           </div>
-          <form id="form2" action="editkelas.php" method="post" class="form form-inline"> 
+          <form id="form2" autocomplete="off" action="editkelas.php" method="post" class="form form-inline"> 
           <div class="modal-body">
               <div class="form-group col-md-12">
                 <label class="form-control-label col-md-3">Nama Kelas</label>
@@ -616,7 +616,7 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalKelasLabel">Kelas Baru</h4>
           </div>
-          <form id="form1" action="hapuskelas.php" method="post" class="form form-inline"> 
+          <form id="form1" autocomplete="off" action="hapuskelas.php" method="post" class="form form-inline"> 
             <div class="modal-body">
             Apakah Anda ingin menghapus <b id="namahapuskelas"></b> ?
             </div>

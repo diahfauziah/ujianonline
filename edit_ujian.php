@@ -404,7 +404,7 @@
       </div>
       <div class="row">
         
-          <form id="form" action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal" method="post">
+          <form id="form" autocomplete="off" action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal" method="post">
             <div class="col-md-8">
 				<div class="form-group">
 				  <label for="Judul" class="col-md-4 control-label">Judul</label>

@@ -153,7 +153,7 @@
             <div class="panel-body">
               <h4 style="text-align:center; color:#30cbe8; font-family:'didact gothic', sans-serif;">Login Guru</h4>
               <hr>
-            <form id="form" method="post" class="form-horizontal" action="loginval.php">
+            <form id="form" method="post" autocomplete="off" class="form-horizontal" action="loginval.php">
 			  <?php 
 				if (isset($_SESSION["statuspesan"])){
 				  if ($_SESSION["statuspesan"]=="gagal"){

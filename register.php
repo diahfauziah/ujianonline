@@ -141,7 +141,7 @@
             <div class="panel-body">
               <h4 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Register Guru</h4>
               <hr>
-            <form id="form" action="registerval.php" method="post" class="form-horizontal">
+            <form id="form" autocomplete="off" action="registerval.php" method="post" class="form-horizontal">
               <div class="form-group">
                 <label class="col-md-4">Nama</label>
                 <div class="col-md-8">

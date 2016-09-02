@@ -153,7 +153,7 @@
             <div class="panel-body">
               <h4 style="text-align:center; color:#30cbe8;">Login Siswa</h4>
               <hr>
-            <form id="form" method="post" class="form-horizontal" action="login_siswaval.php">
+            <form id="form" method="post" autocomplete="off" class="form-horizontal" action="login_siswaval.php">
 			  <?php 
 				if (isset($_SESSION["statuspesan"])){
 				  if ($_SESSION["statuspesan"]=="gagal"){

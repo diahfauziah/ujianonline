@@ -64,18 +64,10 @@
 	if($insert_query2){
 		$_SESSION['statuspesan'] = "sukses";
 		$_SESSION['pesan'] = "Soal baru berhasil dimasukkan";
-		if ($from=="tambahsoal"){
-			header('location:tambah_soal.php?id='.$id);
-		} else if ($from=="viewujian") {
-			header('location:view_ujian.php?id='.$id);
-		}
+		header('location:tambah_soal.php?tab=1&id='.$id);
 	} else {
 		$_SESSION['statuspesan'] = "gagal";
 		$_SESSION['pesan'] = "Soal baru tidak berhasil dimasukkan";
-		if ($from=="tambahsoal"){
-			header('location:tambah_soal.php?id='.$id);
-		} else if ($from=="viewujian") {
-			header('location:view_ujian.php?id='.$id);
-		}
+		header('location:tambah_soal.php?tab=1&id='.$id);
 	}
 ?>
