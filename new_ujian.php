@@ -222,15 +222,11 @@
     <!-- Container -->
     <div class="container">
 	<?php include("koneksi.php"); ?>
-      <div class="col-md-offset-3 col-md-6">
+      <div class="col-md-offset-2 col-md-8">
           <div class="panel panel-default" id="panelSoal" style="margin-top: 10px;">
             <div class="panel-body">
               <h3 style="text-align:center; color:#30cbe8; font-family:'Georgia', serif;">Buat Ujian Baru</h3>
-              <hr>
-              <!-- <div class="alert alert-danger">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Tidak berhasil</strong> memasukkan ujian baru.
-              </div> -->
+              <hr />
             <form id="form" autocomplete="off" class="form-horizontal" action="input_ujian.php" method="post">
 			<?php 
 			  if(!empty($_SESSION['statuspesan']))
@@ -258,14 +254,6 @@
                   <input type="text" class="form-control" id="Judul" name="Judul">
                 </div>
               </div>
-			  <!--
-              <div class="form-group">
-                <label class="col-md-3">URL</label>
-                <div class="col-md-9">
-                  <a href="#" id="URL">http://localhost/ujianonline/ujian.php?id=</a>
-                </div>  
-              </div>
-			  -->
               <div class="form-group">
                 <label class="control-label col-md-3" for="Waktu">Waktu</label>
                 <div class="col-md-4">
@@ -334,6 +322,13 @@
                     </select>
                   </div>
                 </div> 
+				<div class="form-group">
+                  <label class="control-label col-md-3" for="Petunjuk">Petunjuk</label>
+                  <div class="col-md-9">
+                    <textarea id="Petunjuk" name="Petunjuk" class="form-control" rows="15">
+					</textarea>
+                  </div>
+                </div> 
               <div class="form-group">
                 <div class="col-md-offset-3 col md-9" style="padding-left:15px;">
               <!--    <a href="index_guru.php" type="button" class="btn btn-simpan" > Simpan</a> -->
@@ -348,6 +343,46 @@
     <footer class="text-center">
 	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
     </footer>
+	
+	<!-- Include jQuery. -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/tooltipsy.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-tagsinput.min.js"></script>
+
+    <!-- Include JS files. -->
+    <script type="text/javascript" src="froala/js/froala_editor.min.js"></script>
+
+    <!-- Include Code Mirror. -->
+    <script type="text/javascript" src="js/codemirror.min.js"></script>
+    <script type="text/javascript" src="js/xml.min.js"></script>
+
+    <!-- Include Plugins. -->
+    <script type="text/javascript" src="froala/js/plugins/align.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/char_counter.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/code_beautifier.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/code_view.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/colors.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/emoticons.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/entities.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/file.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/font_family.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/font_size.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/fullscreen.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/image.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/image_manager.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/inline_style.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/line_breaker.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/link.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/lists.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/paragraph_format.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/paragraph_style.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/quick_insert.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/quote.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/table.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/save.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/url.min.js"></script>
+    <script type="text/javascript" src="froala/js/plugins/video.min.js"></script>
 	
 	<!-- jquery validation -->
 	<script src="js/jquery.validate.min.js"></script>
@@ -403,6 +438,62 @@
                 }
             });
 		});
+	</script>
+	
+	<script type="text/javascript">
+	  $(function(){
+		$.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
+		$.FroalaEditor.RegisterCommand('clear', {
+		  title: 'Reset',
+		  focus: false,
+		  undo: true,
+		  refreshAfterCallback: true,
+		  callback: function () {
+			this.html.set('');
+			this.events.focus();
+		  }
+		});
+
+		$.FroalaEditor.DefineIcon('highlight', {NAME: 'pencil'});
+		$.FroalaEditor.RegisterCommand('highlight', {
+		  title: 'Highlight',
+		  focus: true,
+		  undo: true,
+		  refreshAfterCallback: true,
+		  callback: function(e){
+			if (this.colors.background=='#ffff00'){
+			  this.colors.background('#ffffff');
+			  this.events.focus();
+			} else {
+			  this.toggleClass("fr-active", this.format.applyStyle("background-color", "#ffff00;"));
+			  this.events.focus();
+			}
+		  }
+		});
+
+    
+
+		$('#Petunjuk').froalaEditor({
+		  toolbarButtons: ['insertImage', 'undo', 'redo', 'bold', 'italic', 'underline', 'subscript', 'superscript', 'formatOL', 'formatUL', 'align','remove'],
+		  placeholderText: 'Ketik untuk menambahkan petunjuk',
+          charCounterCount: false,
+		  spellcheck: false
+		}); 
+        $('span.fr-placeholder').css({"height":"35px"});
+	  });
+	  
+	  $(document).ready(function() {
+		$("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+			e.preventDefault();
+			$(this).siblings('a.active').removeClass("active");
+			$(this).addClass("active");
+			var index = $(this).index();
+			$("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+			$("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+		});
+	});
+
+	  
 	</script>
   </body>
 </html>
