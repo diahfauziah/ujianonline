@@ -628,6 +628,8 @@
 		if (e.keyCode == 13){
 			addmapel();
 			$('#modalTambahKategori').modal('hide');
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();
 		}
 	});
 	
@@ -635,6 +637,8 @@
 		if (e.keyCode == 13){
 			addkelas();
 			$('#modalKelas').modal('hide');
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();
 		}
 	});
 	  
