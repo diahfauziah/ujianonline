@@ -29,11 +29,15 @@
 		if(isset($_POST["PerluLogin"])){
 			$perlulogin = $_POST['PerluLogin'];
 		}
+		
+		if(isset($_POST["Petunjuk"])){
+			$petunjuk = $_POST["Petunjuk"];
+		}
 	}
 	
 	$dibuat = $_SESSION['userid'];
 	
-	$insert1 = "INSERT INTO `info_ujian`(`mata_pelajaran`, `id_kelas`, `lama_ujian`, `judul_ujian`, `total_soal`, `acak_soal`, `petunjuk`, `perlu_login`, `dibuat_oleh`) VALUES ('$kategoriujian', '$kategorikelas', '$waktuujian', '$judul', '0', '$acaksoal', NULL, '$perlulogin', '$dibuat')";
+	$insert1 = "INSERT INTO `info_ujian`(`mata_pelajaran`, `id_kelas`, `lama_ujian`, `judul_ujian`, `total_soal`, `acak_soal`, `petunjuk`, `perlu_login`, `dibuat_oleh`) VALUES ('$kategoriujian', '$kategorikelas', '$waktuujian', '$judul', '0', '$acaksoal', '$petunjuk', '$perlulogin', '$dibuat')";
 	
 	$insert_query = mysqli_query($link, $insert1);
 	
