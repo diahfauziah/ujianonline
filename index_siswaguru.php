@@ -656,6 +656,11 @@
 
     <!-- Include Language file if we want to use it. -->
     <script type="text/javascript" src="froala/js/languages/ro.js"></script>
+	<script languages="javascript">
+		document.addEventListener("contextmenu", function(e){
+			e.preventDefault();
+		}, false);
+	</script>
     <script>
       /* Froala Editor */
         $(function() {

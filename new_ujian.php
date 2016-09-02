@@ -413,18 +413,16 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalTambahKategoriLabel">Materi Baru</h4>
           </div>
-          <form id="form1" autocomplete="off" action="newmapel.php" method="post" class="form form-inline"> 
             <div class="modal-body">
                 <div class="form-group col-md-12">
                   <label class="form-control-label col-md-3">Nama</label>
-                  <input type="text" id="namamapel" name="namamapel" class="form-control col-md-9" style="width:70%">
+                  <input type="text" autocomplete="off" id="namamapel" name="namamapel" class="form-control col-md-9" style="width:70%">
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
+              <button onclick="addmapel()" class="button button1" data-dismiss="modal" id="simpan" style="text-decoration:none;">Simpan</button>
               <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
             </div>
-          </form>
         </div>
       </div>
     </div>
@@ -435,18 +433,16 @@
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
             <h4 class="modal-title" id="modalKelasLabel">Kelas Baru</h4>
           </div>
-          <form id="form4" autocomplete="off" action="newkelas.php" method="post" class="form form-inline"> 
             <div class="modal-body">
                 <div class="form-group col-md-12">
                   <label class="form-control-label col-md-3">Nama Kelas</label>
-                  <input type="text" id="namakelas" name="namakelas" class="form-control col-md-9" style="width:70%">
+                  <input type="text" id="namakelas" autocomplete="off" name="namakelas" class="form-control col-md-9" style="width:70%">
                 </div>
             </div>
             <div class="modal-footer">
-              <button class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
+              <button onclick="addkelas()" class="button button1" id="simpan" data-dismiss="modal" style="text-decoration:none;">Simpan</button>
               <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
             </div>
-          </form>
         </div>
       </div>
     </div>
@@ -601,7 +597,46 @@
 			$("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
 		});
 	});
-
+	
+	function addmapel(){
+		var xmlhttp = new XMLHttpRequest();
+		var str = $('input[name="namamapel"]').val();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("KategoriUjian").innerHTML = xmlhttp.responseText;
+			}
+		};
+		xmlhttp.open("GET", "_addmapel.php?name=" + str, true);
+		xmlhttp.send();
+		$('input[name="namamapel"]').val("");
+	};
+	
+	function addkelas(){
+		var xmlhttp = new XMLHttpRequest();
+		var str = $('input[name="namakelas"]').val();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("KategoriKelas").innerHTML = xmlhttp.responseText;
+			}
+		};
+		xmlhttp.open("GET", "_addkelas.php?name=" + str, true);
+		xmlhttp.send();
+		$('input[name="namakelas"]').val("");
+	};
+	
+	$('input[name="namamapel"]').keydown(function(e){
+		if (e.keyCode == 13){
+			addmapel();
+			$('#modalTambahKategori').modal('hide');
+		}
+	});
+	
+	$('input[name="namakelas"]').keydown(function(e){
+		if (e.keyCode == 13){
+			addkelas();
+			$('#modalKelas').modal('hide');
+		}
+	});
 	  
 	</script>
   </body>
