@@ -202,11 +202,34 @@
       .form-control {
         border-radius: 0px;
       }
-      a:link {
+      a:link, a:visited {
         color: #30cbe8;
       }
       a:hover {
         text-decoration: underline;
+      }
+	  .modal-dialog {
+        height: 80% !important;
+        padding-top:10%;
+      }
+      .modal-body {
+        height: 80%;
+        overflow: auto;
+      }
+	  .button1, .button1:link, .button1:visited {
+        background-color: #30cbe8;
+        color: #ffffff;
+        border: 1px solid #30cbe8;
+        border-radius: 0px;
+      }
+      .button4, .button4:link, .button4:visited {
+        background-color: #e7e7e7;
+        color: #777;
+        border: 1px solid #e7e7e7;
+        border-radius: 0px;
+      }
+      .button1:hover, .button2:hover, a.button:hover, .button4:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
     </style>
   </head>
@@ -284,10 +307,16 @@
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3" for="Waktu">Waktu</label>
-                <div class="col-md-4">
+                <div class="col-md-2">
                   <input type="number" class="form-control" id="Waktu" name="Waktu">
                 </div>
-                <div class="col-md-5">
+                <!-- <div class="col-md-1" style="margin-left:-15px">
+                   Jam
+                 </div>
+				 <div class="col-md-2">
+                  <input type="number" class="form-control" id="Jam" name="Jam">
+                </div> -->
+                <div class="col-md-1" style="margin-left:-15px">
                    Menit
                  </div>
               </div>
@@ -335,10 +364,10 @@
 			  <div class="form-group" style="margin-top:-10px">
 				<label class="control-label col-md-3" for="modal"></label>
 				<div class="col-md-5">
-					<a href="#"><i class="fa fa-plus"></i> <u>Tambah materi baru</u></a>
+					<a href="#" data-toggle="modal" data-target="#modalTambahKategori" style="outline:none;"><i class="fa fa-plus"></i> <u>Tambah materi baru</u></a>
 				</div>
 				<div class="col-md-4">
-					<a href="#"><i class="fa fa-plus"></i> <u>Kelas baru</u></a>
+					<a href="#" data-toggle="modal" data-target="#modalKelas" style="outline:none;"><i class="fa fa-plus"></i> <u>Kelas baru</u></a>
 				</div>
 			  </div>
               <div class="form-group">
@@ -375,6 +404,50 @@
            </form>
           </div>
           </div>
+      </div>
+    </div>
+	<div class="modal fade" id="modalTambahKategori" tabindex="-1" role="dialog" aria-labelledby="modalTambahKategoriLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+            <h4 class="modal-title" id="modalTambahKategoriLabel">Materi Baru</h4>
+          </div>
+          <form id="form1" autocomplete="off" action="newmapel.php" method="post" class="form form-inline"> 
+            <div class="modal-body">
+                <div class="form-group col-md-12">
+                  <label class="form-control-label col-md-3">Nama</label>
+                  <input type="text" id="namamapel" name="namamapel" class="form-control col-md-9" style="width:70%">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
+              <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+	<div class="modal fade" id="modalKelas" tabindex="-1" role="dialog" aria-labelledby="modalKelas">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+            <h4 class="modal-title" id="modalKelasLabel">Kelas Baru</h4>
+          </div>
+          <form id="form4" autocomplete="off" action="newkelas.php" method="post" class="form form-inline"> 
+            <div class="modal-body">
+                <div class="form-group col-md-12">
+                  <label class="form-control-label col-md-3">Nama Kelas</label>
+                  <input type="text" id="namakelas" name="namakelas" class="form-control col-md-9" style="width:70%">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button class="button button1" id="simpan" style="text-decoration:none;">Simpan</button>
+              <button class="button button4" data-dismiss="modal" style="border-width:2px;">Batal</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
     <footer class="text-center">

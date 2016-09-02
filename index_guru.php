@@ -319,14 +319,28 @@
         <div class="row">
           <div class="col-md-9">
             <form id="form1" action="index_guru.php" method="post" class="form-inline" role="form">
+			<?php 
+				$dibuat = $_SESSION['userid'];
+          		$kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
+				$numrows = mysqli_num_rows($kat);
+				if($numrows==0){ ?>
+					<div class="form-group">
+					<label class="control-label" style="color:#ffbf30;margin-right:10px;" for="kategori">Kategori</label>
+				    <select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control" disabled>
+						<option>All (Materi)</option>
+					</select>
+					</div>
+				  <div class="form-group">
+					<select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control" disabled>
+						<option>All (Kelas)</option>
+					 </select>
+				  </div>
+				<?php  } else {
+			?>
               <div class="form-group">
-                <label class="control-label col-md-2" style="color:#ffbf30;" for="kategori">Kategori</label>
-                <div class="col-md-6">
-				          <select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control">
+                <label class="control-label" style="color:#ffbf30;margin-right:10px;" for="kategori">Kategori</label>
+				    <select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control">
           					<?php
-          					  $dibuat = $_SESSION['userid'];
-          					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
-          					  
           					  if (isset($_POST['kategori'])){
           						$_SESSION['matapelajaran'] = $_POST['kategori'];
           					  }
@@ -352,9 +366,9 @@
           					  
           					?>
                   </select>
-                </div>
-                <div class="col-md-offset-1 col-md-3" style="margin-left:0px;">
-                  <select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control">
+              </div>
+			  <div class="form-group">
+				<select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control">
                     <?php
           					  if ($_SESSION['kategori_guru']=="SMA"){
           						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=$dibuat)";
@@ -387,8 +401,8 @@
           					  }
           					?>
                   </select>
-                </div>
-              </div>
+			  </div>
+				<?php } ?>
             </form>
           </div>
           <div class="col-md-3">
