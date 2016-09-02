@@ -359,7 +359,7 @@
           					  if ($_SESSION['kategori_guru']=="SMA"){
           						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=$dibuat)";
           					  } else {
-          						$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=1 or `dibuat_oleh`=$dibuat)";
+          						$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=$dibuat)";
           					  }
           					  $kel = mysqli_query($link, $querykelas);
           					  
@@ -421,7 +421,7 @@
             <tr>
               <th style="text-align: left;">Judul</th>
               <th>Total Soal</th>
-              <th>Mata Pelajaran</th>
+              <th>Materi</th>
               <th>Kelas</th>
               <th>Tampilan ujian</th>
               <th>Link ujian</th>
