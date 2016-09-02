@@ -6,7 +6,7 @@
 	$nomor = $soal['nomor_soal'];
 ?>
 
-        <div class="panel panel-default" id="formTambahSoal" style="margin-top:10px; background-color:#ffffff;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div class="panel panel-default" id="formTambahSoal-edit" style="margin-top:10px; background-color:#ffffff;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
             <div class="panel-body">
               <div class="row" style="margin-left:5px;">
                 <ul class="nav nav-tabs">
@@ -190,8 +190,8 @@
                                         <label style="width:85px;" class="form-control-label">Poin Kosong</label>
                                         <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
                                       </div>
-                                      <input type="submit" name="submit" value="Batal" style="text-decoration:none; margin-right:5px;" class="button button4" />
-                                      <input type="submit" name="submit" value="Simpan" style="text-decoration:none; margin-left:5px;" class="button button1" />
+                                      <button id="simpansoal1" type="reset" onclick="savesoal(this);" style="text-decoration:none; margin-right:5px;" class="button button4" data-ujian="<?php echo $soal['id_soal']; ?>" >Batal</button>
+                                      <button id="simpansoal1" type="reset" onclick="savesoal(this);" name="submit" style="text-decoration:none; margin-left:5px;" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
                                     </div>
                                   </div>
                               </form>
@@ -258,7 +258,8 @@
                                     <label style="width:60px;" class="form-control-label">Kosong</label>
                                     <input type="number" id="poinkosong2" name="poinkosong2" class="form-control" style="width:50%" value="<?php echo $soal['poin_kosong'];?>"> 
                                   </div>
-                                  <button id="simpansoal2" type="reset" onclick="savesoal(this);"  style="text-decoration:none" class="button button2" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
+                                  <button id="simpansoal2" type="reset" onclick="savesoal(this);" style="text-decoration:none; margin-right:5px;" class="button button4" data-ujian="<?php echo $soal['id_soal']; ?>" >Batal</button>
+								  <button id="simpansoal2" type="reset" onclick="savesoal(this);" name="submit" style="text-decoration:none; margin-left:5px;" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
                                 </div>
                               </form> 
                             </div>
@@ -327,7 +328,8 @@
                                     <label style="width:65px;" class="form-control-label">Kosong</label>
                                     <input type="number" id="poinkosong3" name="poinkosong3" class="form-control" style="width:50%" value="<?php echo $soal['poin_kosong'];?>"> 
                                   </div>
-                                  <button id="simpansoal3" type="reset" onclick="savesoal(this);"  style="text-decoration:none" class="button button2" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
+                                  <button id="simpansoal" type="reset" onclick="savesoal(this);" style="text-decoration:none; margin-right:5px;" class="button button4" data-ujian="<?php echo $soal['id_soal']; ?>" >Batal</button>
+								  <button id="simpansoal3" type="reset" onclick="savesoal(this);" name="submit" style="text-decoration:none; margin-left:5px;" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
                                 </div>
                               </form> 
                             </div>
@@ -500,7 +502,8 @@
                                     <label style="width:60px;" class="form-control-label">Kosong</label>
                                     <input type="text" id="poinkosong6" name="poinkosong6" class="form-control" style="width:50%" value="<?php echo $soal['poin_kosong'];?>"> 
                                   </div>
-                                  <button id="simpansoal6" type="reset" onclick="savesoal(this);"  style="text-decoration:none" class="button button2" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
+                                  <button id="simpansoal6" type="reset" onclick="savesoal(this);" style="text-decoration:none; margin-right:5px;" class="button button4" data-ujian="<?php echo $soal['id_soal']; ?>" >Batal</button>
+								  <button id="simpansoal6" type="reset" onclick="savesoal(this);" name="submit" style="text-decoration:none; margin-left:5px;" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
                                 </div>
                               </form>
                             </div>
@@ -584,7 +587,8 @@
                                     <label style="width:60px;" class="form-control-label">Kosong</label>
                                     <input type="text" id="poinkosong7" name="poinkosong7" class="form-control" style="width:50%" value="<?php echo $soal['poin_kosong'];?>"> 
                                   </div>
-                                  <button id="simpansoal7" type="reset" onclick="savesoal(this);"  style="text-decoration:none" class="button button2" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
+                                  <button id="simpansoal7" type="reset" onclick="savesoal(this);" style="text-decoration:none; margin-right:5px;" class="button button4" data-ujian="<?php echo $soal['id_soal']; ?>" >Batal</button>
+								  <button id="simpansoal7" type="reset" onclick="savesoal(this);" name="submit" style="text-decoration:none; margin-left:5px;" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
                                 </div>
                               </form>
                             </div>
@@ -669,7 +673,8 @@
                                     <label style="width:60px;" class="form-control-label">Kosong</label>
                                     <input type="text" id="poinkosong5" name="poinkosong5" class="form-control" style="width:32%" value="<?php echo $soal['poin_kosong'];?>"> 
                                   </div>
-                                  <button id="simpansoal5" type="reset" onclick="savesoal(this);"  style="text-decoration:none" class="button button2" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
+                                  <button id="simpansoal5" type="reset" onclick="savesoal(this);" style="text-decoration:none; margin-right:5px;" class="button button4" data-ujian="<?php echo $soal['id_soal']; ?>" >Batal</button>
+								  <button id="simpansoal5" type="reset" onclick="savesoal(this);" name="submit" style="text-decoration:none; margin-left:5px;" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
                                 </div>
                               </form>
                             </div>
@@ -751,7 +756,8 @@
                                     <label style="width:60px;" class="form-control-label">Kosong</label>
                                     <input type="text" id="poinkosong4" name="poinkosong4" class="form-control" style="width:50%" value="<?php echo $soal['poin_kosong'];?>"> 
                                   </div>
-                                  <button id="simpansoal4" type="reset" onclick="savesoal(this);"  style="text-decoration:none" class="button button2" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
+                                  <button id="simpansoal4 type="reset" onclick="savesoal(this);" style="text-decoration:none; margin-right:5px;" class="button button4" data-ujian="<?php echo $soal['id_soal']; ?>" >Batal</button>
+								  <button id="simpansoal4" type="reset" onclick="savesoal(this);" name="submit" style="text-decoration:none; margin-left:5px;" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
                                 </div>
                               </form>
                             </div>
