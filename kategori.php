@@ -191,9 +191,9 @@
         border-radius: 4px;
       }
       .button1, .button1:link, .button1:visited {
-        background-color: #30cbe8;
+        background-color: #ffbf30;
         color: #ffffff;
-        border: 1px solid #30cbe8;
+        border: 1px solid #ffbf30;
         border-radius: 0px;
       }
       .button4, .button4:link, .button4:visited {
@@ -208,7 +208,7 @@
       
       th {
         color: #ffffff;
-        background-color: #ffbf30;
+        background-color: #30cbe8;
         text-decoration: none;
         font-family: 'Didact Gothic', sans-serif;
       }
@@ -357,7 +357,7 @@
     <!-- Container -->
     <div class="container">
       <div class="content">
-        <h2 style="color:#30cbe8; font-family: 'Roboto Slab', serif;">Kategori</h2>
+        <h2 style="color:#30cbe8; font-family: 'Georgia', serif;">Kategori</h2>
         <p style="font-size:12px; margin-top:10px; color:#818181">Tambah/ubah <b>materi</b> dan <b>kelas</b> yang tersedia</p>
         <br>
         <div class="row">

@@ -218,7 +218,7 @@
       }
       th {
         color: #ffffff;
-        background-color: #ffbf30;
+        background-color: #30cbe8;
         text-decoration: none;
       }
       a:link {
@@ -227,7 +227,30 @@
       a:hover{
         text-decoration: underline;
       }
-	  
+	  .button {
+        background-color: #30cbe8;
+        border: none;
+        color: #ffffff;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.42857143;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .button1, .button1:link, .button1:visited, .col-md-3 a:link, .col-md-3 a:visited, .col-md-3 a:active {
+        background-color: #ffbf30;
+        color: #ffffff;
+        border: 1px solid #ffbf30;
+        border-radius: 0px;
+      }
+      .button1:hover, .col-md-3 a:hover, .button2:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
 
     </style>
   </head>
@@ -279,48 +302,55 @@
       ?>
       <div class="content">
         <h2 style="margin: 14px; margin-bottom: 5px; color:rgba(186, 182, 182, 1); font-family: 'Georgia', serif; text-align:center;">Laporan Ujian <a href="http://localhost/ujianonline/tambah_soal.php?tab=1&id=<?php echo $ujian['id_ujian']?>"><?php echo $ujian['judul_ujian'] ?></a></h2>
-         <div class="col-md-offset-2 col-md-8">
-         <div class="panel panel-default">
-            
-              <?php include('koneksi.php'); 
-                $id = $_GET['id'];
-                $query = mysqli_query($link, "SELECT * FROM `laporan_ujian_guru` WHERE `id_ujian`='$id' ");
-				$numrow = mysqli_num_rows($query);
-                  echo '<table class="table table-hover" style="margin-top:0px;">
-                    <thead>
-                      <tr>
-                        <th>Tanggal Akses</th>
-                        <th>Nama Peserta</th>
-                        <th>Skor</th>
-                        <th>Total waktu</th>
-                      </tr>
-                    </thead>
-                  <tbody>';
-                  while($laporan = mysqli_fetch_array($query)){
-                    echo '<tr>';
-					$yrdata = strtotime($laporan['tanggal_akses']);
-                    $bulan = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
-                    echo  '<td>'. date('j', $yrdata)." ".$bulan[date('n', $yrdata)]." ".date('Y', $yrdata).", ".date('G:i', $yrdata) .'</td>';
-                    echo  '<td>'. $laporan["nama_peserta"] .'</td>';
-                    echo  '<td>'. $laporan["nilai"] .'</td>';
-						$jam = intval($laporan["total_waktu"] / 3600, 10);
-						$menit = intval(($laporan["total_waktu"] % 3600) / 60, 10);
-						$detik = intval($laporan["total_waktu"] % 60, 10);
-						$tampilwaktu = "$jam jam  $menit menit $detik detik";
-                    echo  '<td>'. $tampilwaktu .'</td>';
-                    echo '</tr>';
-                  };
-                  echo '</tbody>
-                </table>';
-				?> 
-				<?php 
-				if($numrow==0){
-                      echo   '<tr><div style="text-align:center; color:#777; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada peserta yang mengikuti ujian ini</div></tr>';
-                }
-              ?>
-         </div>
-        </div>
-      </div>
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8">
+				<button class="button button1 pull-right" style="border-radius:20px; font-size:13px"><i class="fa fa-download"></i> Download sbg Excel</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8">
+			 <div class="panel panel-default">
+				
+				  <?php include('koneksi.php'); 
+					$id = $_GET['id'];
+					$query = mysqli_query($link, "SELECT * FROM `laporan_ujian_guru` WHERE `id_ujian`='$id' ");
+					$numrow = mysqli_num_rows($query);
+					  echo '<table class="table table-hover" style="margin-top:0px;">
+						<thead>
+						  <tr>
+							<th>Tanggal Akses</th>
+							<th>Nama Peserta</th>
+							<th>Skor</th>
+							<th>Total waktu</th>
+						  </tr>
+						</thead>
+					  <tbody>';
+					  while($laporan = mysqli_fetch_array($query)){
+						echo '<tr>';
+						$yrdata = strtotime($laporan['tanggal_akses']);
+						$bulan = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+						echo  '<td>'. date('j', $yrdata)." ".$bulan[date('n', $yrdata)]." ".date('Y', $yrdata).", ".date('G:i', $yrdata) .'</td>';
+						echo  '<td>'. $laporan["nama_peserta"] .'</td>';
+						echo  '<td>'. $laporan["nilai"] .'</td>';
+							$jam = intval($laporan["total_waktu"] / 3600, 10);
+							$menit = intval(($laporan["total_waktu"] % 3600) / 60, 10);
+							$detik = intval($laporan["total_waktu"] % 60, 10);
+							$tampilwaktu = "$jam jam  $menit menit $detik detik";
+						echo  '<td>'. $tampilwaktu .'</td>';
+						echo '</tr>';
+					  };
+					  echo '</tbody>
+					</table>';
+					?> 
+					<?php 
+					if($numrow==0){
+						  echo   '<tr><div style="text-align:center; color:#777; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada peserta yang mengikuti ujian ini</div></tr>';
+					}
+				  ?>
+			 </div>
+			</div>
+		</div>
+	  </div>
   </div>
     </div>
 	<div id="footer">
