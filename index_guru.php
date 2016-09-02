@@ -545,6 +545,9 @@
       $("#modalshare").text(x);
       $("#modalshare").attr("href", x);
     });
+	$("#modalshare").click(function(e){
+		e.preventDefault();
+	});
     $(".lihat_tampilan").click(function(){
       x = $(this).attr("data-id");
       $(this).attr("href","http://localhost/ujianonline/petunjukguru.php?id="+x);
