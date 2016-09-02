@@ -123,7 +123,7 @@
       }
       th {
         color: #ffffff;
-        background-color: #ffbf30;
+        background-color: #30cbe8;
         text-decoration: none;
         font-family: 'Didact Gothic', sans-serif;
       }
@@ -149,12 +149,12 @@
 
       .table span {
         /*color: #000000;*/
-        color: #30cbe8;
+        color: #ffbf30;
       }
 
       .table span:hover{
         /*color: #30cbe8;*/
-        color: #ffbf30;
+		font-size:18px;
       }
 
       table {
@@ -187,9 +187,9 @@
         border-radius: 4px;
       }
       .button1, .button1:link, .button1:visited, .col-md-3 a:link, .col-md-3 a:visited, .col-md-3 a:active {
-        background-color: #30cbe8;
+        background-color: #ffbf30;
         color: #ffffff;
-        border: 1px solid #30cbe8;
+        border: 1px solid #ffbf30;
         border-radius: 0px;
       }
       .button1:hover, .col-md-3 a:hover, .button2:hover {
@@ -325,7 +325,7 @@
 				$numrows = mysqli_num_rows($kat);
 				if($numrows==0){ ?>
 					<div class="form-group">
-					<label class="control-label" style="color:#ffbf30;margin-right:10px;" for="kategori">Kategori</label>
+					<label class="control-label" style="margin-right:10px;" for="kategori">Kategori</label>
 				    <select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control" disabled>
 						<option>All (Materi)</option>
 					</select>

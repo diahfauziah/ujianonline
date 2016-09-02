@@ -1257,7 +1257,7 @@
                                   <div class="form-group" style="margin-bottom:10px; margin-top:10px;">
                                     <div class="row">
                                       <div style="float:left" style="width:15px">
-                                          <i class="fa fa-check-circle fa-lg" style="color:#f8f8f8"></i>
+                                          <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
                                         </div>
                                         <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
                                           <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
@@ -1268,7 +1268,7 @@
                                   <div class="form-group" style="margin-bottom:10px; margin-top:10px;">
                                     <div class="row">
                                       <div style="float:left" style="width:15px">
-                                          <i class="fa fa-check-circle fa-lg" style="color:#f8f8f8"></i>
+                                          <i class="fa fa-check-circle fa-lg" style="color:#ffffff"></i>
                                         </div>
                                         <div style="margin-left:15px; width:50px; float:left; padding-right:10px;">
                                           <i class="fa fa-circle-thin fa-2x setjawaban" style="color:#dadada"></i>
@@ -1404,7 +1404,8 @@
                       </div> -->
                   </div>
               </div>
-              <button class="button button1 btntambahsoal" style="border-radius:20px; font-size:13px;" id="btntambah"><i class="fa fa-plus"></i> Tambah soal</button>
+              <button class="button button1 btntambahsoal" style="border-radius:20px; font-size:13px; outline:none" id="btntambah"><i class="fa fa-plus"></i> Tambah soal</button>
+			  <a href="petunjukguru.php?id=<?php echo $id ?>" class="button button1" style="border-radius:20px; font-size:13px; outline:none"><span class="glyphicon glyphicon-eye-open"></span> Lihat ujian</a>
             </div>
           </div>  
         </div>
@@ -1688,6 +1689,7 @@
               $(this).css({"background":"#b4e3dc", "color":"#fff", "border-color":"#e7e7e7"});
               $(this).closest('.row').find(".fa-check-circle").css({"color":"#b4e3dc", "transition-duration":"0.5s"});
 			       $("input[name='jawabanbenar1'").val($(this).closest(".row").find(".fr-element").html());
+			  
             });
 			
         });
