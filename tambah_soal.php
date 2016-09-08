@@ -1549,6 +1549,15 @@
 		  $("#simpan2").attr("href", "hapus_soal.php?idsoal="+x+"&idujian="+$idujiani);
 		});
 		
+		function hapusSoalnya(elm){
+		  var y = "";
+		  var x = "";
+		  y = $(elm).closest('.toFindSoal').attr('data-nomor');
+		  x = $(elm).closest('.toFindSoal').attr('data-id');
+		  $("#p2").html(y);
+		  $("#simpan2").attr("href", "hapus_soal.php?idsoal="+x+"&idujian="+$idujiani);
+		};
+		
     $('.nomor').click(function(){
       $soaldipilih = "#soaltersimpan-"+$(this).attr('data-nomor');
       $('html, body').animate({
@@ -1754,6 +1763,26 @@
 				}
 			};
 			xmlhttp.open("GET", "_savesoalditambahsoal.php?id=" + str, true);
+			xmlhttp.send();
+		};
+		
+		function savesoalPG(elem){
+			var xmlhttp = new XMLHttpRequest();
+			var id = $(elem).attr("data-ujian");
+			var pertanyaan = $('#pertanyaan1').closest('.form-group').find('.fr-element').html();
+			var stage = $('#stage1').val();
+			var jwbbenar = $('input[name="jawabanbenar1"]').val();
+			var poinbnr = $('input[name="poinbenar1"]').val();
+			var poinslh = $('input[name="poinsalah1"]').val();
+			var poinksg = $('input[name="poinkosong1"]').val();
+			var elm = "soaltersimpan-"+id;
+			var strsave = "id="+id+"&pertanyaan="+pertanyaan+"&stage="+stage+"&jwbbenar="+jwbbenar+"&poinbnr="+poinbnr+"&poinslh="+poinslh+"&poinksg="+poinksg;
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById(elm).innerHTML = xmlhttp.responseText;
+				}
+			};
+			xmlhttp.open("GET", "_savesoalditambahsoal.php?kat=1&" + strsave, true);
 			xmlhttp.send();
 		};
 		

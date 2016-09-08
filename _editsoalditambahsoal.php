@@ -47,7 +47,7 @@
                             <div class="col-md-12" style="width:96%">
                               <form class="form-horizontal col-md-12" action="input_soal_pilihanganda.php?id=<?php echo $id ?>" method="post">
 							    <input type="hidden" id="idujian1" name="idujian1" value="<?php echo $id; ?>" />
-								<input type="hidden" id="jawabanbenar1" name="jawabanbenar1" />
+								<input type="hidden" id="jawabanbenar1" name="jawabanbenar1" value="<?php if ($soal['kategori_pertanyaan']==1) echo $soal['jawaban_benar']; ?>"/>
 								<input type="hidden" id="from1" name="from1" value="tambahsoal" />
                                 <div class="form-group">
                                    <label class="form-control-label">Pertanyaan</label>
@@ -170,7 +170,9 @@
                                             while ($stg = mysqli_fetch_array($querystg)){
                                               echo '<option value="';
                                               echo $stg['id_stage'];
-                                              echo '">';
+                                              echo '" ';
+											  if ($soal['stage_id']==$stg['id_stage']) echo "selected";
+											  echo '>';
                                               echo $stg['nama_stage'];
                                               echo '</option>';
                                             }
@@ -182,18 +184,18 @@
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
                                         <label style="width:80px;" style="font-size:13px">Poin Benar </label>
-                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%">
+                                        <input type="number" id="poinbenar1" name="poinbenar1" class="form-control" style="width:40%" value="<?php if ($soal['kategori_pertanyaan']==1) echo $soal['poin_benar']; ?>">
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:80px;" class="form-control-label" style="font-size:13px">Poin Salah</label>
-                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinsalah1" name="poinsalah1" class="form-control" style="width:40%" value="<?php if ($soal['kategori_pertanyaan']==1) echo $soal['poin_salah']; ?>"> 
                                       </div>
                                       <div class="col-md-3">
                                         <label style="width:85px;" class="form-control-label">Poin Kosong</label>
-                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="0"> 
+                                        <input type="number" id="poinkosong1" name="poinkosong1" class="form-control" style="width:40%" value="<?php if ($soal['kategori_pertanyaan']==1) echo $soal['poin_kosong']; ?>"> 
                                       </div>
                                       <button id="simpansoal1" type="reset" onclick="savesoal(this);" style="text-decoration:none; margin-right:5px;" class="button button4" data-ujian="<?php echo $soal['id_soal']; ?>" >Batal</button>
-                                      <button id="simpansoal1" type="reset" onclick="savesoal(this);" name="submit" style="text-decoration:none; margin-left:5px;" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
+                                      <a type="button" id="simpansoal1" onclick="savesoalPG(this);" name="submit" style="text-decoration:none; margin-left:5px;" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</a>
                                     </div>
                                   </div>
                               </form>
@@ -261,7 +263,7 @@
                                         <input type="number" id="poinkosong1" name="poinkosong2" class="form-control" style="width:40%" value="0"> 
                                       </div>
                                       <button id="simpansoal2" type="reset" onclick="savesoal(this);" style="text-decoration:none; margin-right:5px;" class="button button4" data-ujian="<?php echo $soal['id_soal']; ?>" >Batal</button>
-                                      <button id="simpansoal2" type="reset" onclick="savesoal(this);" name="submit" style="text-decoration:none; margin-left:5px;" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
+                                      <button id="simpansoal2" type="reset" onclick="savesoalPG(this);" name="submit" style="text-decoration:none; margin-left:5px;" class="button button1" data-ujian="<?php echo $soal['id_soal']; ?>">Simpan</button>
                                     </div>
                                   </div>
                               </form> 

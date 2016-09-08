@@ -1,6 +1,16 @@
 <?php 
 	include('koneksi.php'); 
     $id = $_GET['id'];
+	if (isset($_GET['kat'])){
+		$pertanyaan = $_GET['pertanyaan'];
+		$stage = $_GET['stage'];
+		$jwbbnr = $_GET['jwbbenar'];
+		$poinbnr = $_GET['poinbnr'];
+		$poinslh = $_GET['poinslh'];
+		$poinksg = $_GET['poinksg'];
+		
+		$update = mysqli_query($link, "UPDATE soal SET pertanyaan='$pertanyaan', stage_id='$stage', jawaban_benar='$jwbbnr', poin_benar='$poinbnr', poin_kosong='$poinksg', poin_salah='$poinslh' WHERE id_soal='$id'");
+	}
 	$query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_soal`='$id' ");
 
 		while ($soal = mysqli_fetch_array($query1)){
@@ -79,20 +89,26 @@
               echo '</ul>';
 				  }
                           echo '<div class="panel-footer">';
-                          echo '<div class="row">';
-                          echo   '<div class="col-md-3">Poin Benar: <strong>10</strong></div>';
-                          echo   '<div class="col-md-3">Poin Salah: 0</div>';
-                          echo   '<div class="col-md-3">Poin Kosong: 0</div>';
-                          echo '</div>';
-                        
-                          echo  '<div class="form-group row" style="margin-top:10px;">';
-                          echo    '<div class="col-md-6"></div>';
-                          echo    '<button id="editsoal" onclick="editsoal(this);" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none" data-ujian="';
-						  echo $soal['id_soal'];
-						  echo '"><span class="glyphicon glyphicon-pencil"></span> Edit</button>';
-                          echo    '<button class="button button2 col-md-2" data-toggle="modal" data-target="#modalHapus" style="font-size:14px; margin-left:10px;"><span class="glyphicon glyphicon-trash"></span> Hapus</button>';
-                          echo   '</div>';
-                          echo '</div>';
+                              echo '<div class="row">';
+                              echo   '<div class="col-md-3" style="font-size:14px">Poin Benar: <b>'.$soal['poin_benar'].'</b></div>';
+                              echo   '<div class="col-md-3" style="font-size:14px">Poin Salah: '.$soal['poin_salah'].'</div>';
+                              echo   '<div class="col-md-3" style="font-size:14px">Poin Kosong: '.$soal['poin_kosong'].'</div>';
+                              echo '</div>';
+                            
+                              echo  '<div class="form-group row" style="margin-top:10px;">';
+                              echo    '<div class="col-md-6">';
+                                
+                                $stage = $soal['stage_id'];
+                                $querypilstage = mysqli_query($link, "SELECT * FROM `stage` WHERE `id_stage`='$stage' ");
+                                $stagesoal = mysqli_fetch_array($querypilstage);
+                                
+                                echo   'Kelompok soal: '.$stagesoal['nama_stage'].'</div>';
+                                echo   '<button id="editsoal" onclick="editsoal(this);" class="button button1 col-md-2" style="margin-left:80px; text-decoration:none" data-ujian="';
+                                  echo $soal['id_soal'];
+                                  echo '"><span class="glyphicon glyphicon-pencil"></span> Edit</button>';
+                              echo    '<button onclick="hapusSoalnya(this);" class="button button2 col-md-2 hapus" data-toggle="modal" data-target="#modalHapus" style="font-size:14px; margin-left:10px;"><span class="glyphicon glyphicon-trash"></span> Hapus</button>';
+                              echo   '</div>';
+                              echo '</div>';
                     echo '</div>';
                 echo '</div>';
                echo '</div>';
