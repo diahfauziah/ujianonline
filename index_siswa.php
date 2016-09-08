@@ -204,8 +204,8 @@
         background-color: #929292;
       }
       .button3 {
-        background-color: #f8f8f8;
-        border-color: #f8f8f8;
+        background-color: #fff;
+        border-color: #fff;
         color: #000000;
         font-size: 13px;
         border: 1px solid #e1edef;
@@ -471,7 +471,7 @@
         					  echo     '</div>';
         					  echo    '</div>';
         					  echo '</li>';
-        					  echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#929292; margin-left:5px; cursor:pointer;"></i>';
+        					  echo '<i class="fa fa-times-circle-o fa-lg coret fa-2x" style="color:#929292; margin-left:5px; cursor:pointer;"></i>';
         					  echo '</div>';
         					  $i++;
         					}
@@ -524,7 +524,7 @@
           </div>
           <div class="col-md-2" style="padding-left:0px;">
             Daftar soal
-            <div class="panel panel-default" style="width:233px;margin-bottom:5px;" id="nomorSoal">
+            <div class="panel panel-default" style="width:233px;margin-bottom:5px;background-color:#f8f8f8;" id="nomorSoal">
               <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
         			  <?php
           				$query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");

@@ -502,7 +502,7 @@
 		<br />
         <?php $numrow = mysqli_num_rows($query);
                 if($numrow==0){
-                  echo   '<tr><div style="text-align:center; color:#777; margin-top:-50px; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada ujian yang dibuat.</div></tr>';
+                  echo   '<tr><div style="text-align:center; color:#777; margin-top:-50px; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada ujian yang dibuat. Silahkan buat ujian baru.</div></tr>';
           } ?>
 
         <!-- Modal Hapus -->
@@ -530,7 +530,7 @@
               <div class="modal-content">
                  <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-                    <label class="modal-title">Link Ujian Deret Aritmetika</label>
+                    <label class="modal-title">Link Ujian <b id="p2"></b></label>
                  </div>
                  <div class="modal-body">
                     <a href="#" id="modalshare" style="text-decoration: underline;"></a>
@@ -556,6 +556,8 @@
   $(function(){
     $(".bagikan").click(function(){
       x = $(this).attr("data-id");
+	  y = $(this).closest('.table-row').find('.link-judul').text();
+	  $("#p2").text(y);
       $("#modalshare").text(x);
       $("#modalshare").attr("href", x);
     });
