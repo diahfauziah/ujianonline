@@ -406,7 +406,7 @@
           </div>
       </div>
     </div>
-	<div class="modal fade" id="modalTambahKategori" tabindex="-1" role="dialog" aria-labelledby="modalTambahKategoriLabel">
+	<div class="modal fade" id="modalTambahKategori" tabindex="1" role="dialog" aria-labelledby="modalTambahKategoriLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -426,7 +426,7 @@
         </div>
       </div>
     </div>
-	<div class="modal fade" id="modalKelas" tabindex="-1" role="dialog" aria-labelledby="modalKelas">
+	<div class="modal fade" id="modalKelas" tabindex="1" role="dialog" aria-labelledby="modalKelas">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -492,6 +492,14 @@
 	<!-- jquery validation -->
 	<script src="js/jquery.validate.min.js"></script>
 	<script>
+		$('#modalTambahKategori').on('shown.bs.modal', function() {
+			$('#namamapel').focus();
+		});
+		
+		$('#modalKelas').on('shown.bs.modal', function() {
+			$('#namakelas').focus();
+		});
+		
 		jQuery(document).ready(function(){
 			var $form = $('#form');
 

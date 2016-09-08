@@ -634,6 +634,22 @@
     </footer>
   </body>
   <script type="text/javascript">
+	$('#modalTambahKategori').on('shown.bs.modal', function() {
+		$('#namamapel').focus();
+	});
+	
+	$('#modalEditKategori').on('shown.bs.modal', function() {
+		$('#namaeditmapel').focus();
+	});
+	
+	$('#modalKelas').on('shown.bs.modal', function() {
+		$('#namakelas').focus();
+	});
+	
+	$('#modalEditKelas').on('shown.bs.modal', function() {
+		$('#namaeditkelas').focus();
+	});
+	
     $(document).ready(function() {
     $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
         e.preventDefault();

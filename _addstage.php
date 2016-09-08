@@ -12,7 +12,9 @@
 		while ($stg = mysqli_fetch_array($querystg)){
 			echo '<option value="';
 			echo $stg['id_stage'];
-			echo '">';
+			echo '"';
+			if ($namstage==$stg['nama_stage']) echo 'selected';
+			echo '>';
 			echo $stg['nama_stage'];
 			echo '</option>';
 		}

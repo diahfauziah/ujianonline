@@ -1532,6 +1532,10 @@
       }, 2000);
     });
 		
+		$('#modalStage').on('shown.bs.modal', function() {
+			$('#namastage').focus();
+		});
+		
 		function hideTambahSoal(){
 			$('#formTambahSoal').css({"display":"none"});
 		}
@@ -1945,4 +1949,57 @@
               }
           });
     </script>
+	<script>
+		jQuery(document).ready(function(){
+			var $form = $('#form');
+
+            $form.validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-block help-block-error', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "",  // validate all fields including form hidden input
+                rules: {
+                    Judul: {
+                        required: true,
+                        maxlength: 100
+                    },
+                    Waktu: {
+                        required: true,
+                    },
+					AcakSoal: {
+                        required: true,
+                    },
+					KategoriUjian: {
+                        required: true,
+                    },
+					KategoriKelas: {
+                        required: true,
+                    },
+					PerluLogin: {
+                        required: true,
+                    }
+                },
+                messages: {},
+
+                highlight: function (element) { // hightlight error inputs
+                    $(element)
+                        .closest('.form-group').addClass('has-error'); // set error class to the control group
+                },
+
+                unhighlight: function (element) { // revert the change done by hightlight
+                    $(element)
+                        .closest('.form-group').removeClass('has-error'); // set error class to the control group
+                },
+
+                success: function (label) {
+                    label
+                        .closest('.form-group').removeClass('has-error'); // set success class to the control group
+                },
+
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+		});
+	</script>
 </html>
