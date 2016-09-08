@@ -671,9 +671,8 @@
                             </div>
                             <div style="margin-left: 0px;">  
                               <div class="col-md-12" style="width:96%">
-                                <form class="form-horizontal col-md-12" action="input_soal_pilihanganda.php?id=<?php echo $id ?>" method="post">
+                                <form id="form1" class="form-horizontal col-md-12" action="input_soal_pilihanganda.php?id=<?php echo $id ?>" method="post">
                                   <input type="hidden" id="idujian1" name="idujian1" value="<?php echo $id; ?>" />
-                                  <input type="hidden" id="jawabanbenar1" name="jawabanbenar1" />
                                   <input type="hidden" id="from1" name="from1" value="tambahsoal" />
                                   <div class="form-group">
                                      <label class="form-control-label">Pertanyaan</label>
@@ -681,6 +680,7 @@
                                      </textarea>
                                   </div>
                                   <p style="margin-left:-10px; font-size:14px; color:#ffbf30; margin-top:10px;">Klik huruf didalam lingkaran untuk menetapkan jawaban yang benar</p>
+								  <input type="hidden" id="jawabanbenar1" name="jawabanbenar1" />
                                    <?php 
                                       $huruf = array("A","B","C","D","E","F","G","H");
                                       $i = 0; 
@@ -786,7 +786,7 @@
                             </div>
                             <div style="margin-left: 0px;">
                               <div class="col-md-12" style="width:96%">
-                                <form class="form-horizontal col-md-12" action="input_soal_isian.php?id=<?php echo $id ?>" method="post">
+                                <form id="form2" class="form-horizontal col-md-12" action="input_soal_isian.php?id=<?php echo $id ?>" method="post">
                                   <input type="hidden" id="from2" name="from2" value="tambahsoal" />
                                   <div class="form-group">
                                     <label class="form-control-label">Pertanyaan</label>
@@ -847,7 +847,7 @@
                             </div>
                             <div style="margin-left: 0px;">
                               <div class="col-md-12" style="width:96%">
-                                <form class="form-horizontal col-md-12" action="input_soal_essay.php?id=<?php echo $id; ?>" method="post">
+                                <form id="form3" class="form-horizontal col-md-12" action="input_soal_essay.php?id=<?php echo $id; ?>" method="post">
                                  <input type="hidden" id="from3" name="from3" value="tambahsoal" />
                                   <div class="form-group">
                                      <label class="form-control-label">Pertanyaan</label>
@@ -992,7 +992,7 @@
                             </div>
                             <div style="margin-left: 0px;">  
                               <div class="col-md-12" style="width:96%">
-                                <form class="form-horizontal col-md-12" action="input_soal_sebab.php?id=<?php echo $id; ?>" method="post">
+                                <form id="form6" class="form-horizontal col-md-12" action="input_soal_sebab.php?id=<?php echo $id; ?>" method="post">
                                   <input type="hidden" id="from" name="from" value="tambahsoal" />
                                   <input type="hidden" id="jawabanbenar6" name="jawabanbenar6" />
                                   <input type="hidden" id="pertanyaan6" name="pertanyaan6" />
@@ -1083,7 +1083,7 @@
                             </div>
                             <div style="margin-left: 0px;">  
                               <div class="col-md-12" style="width:96%">
-                                <form class="form-horizontal col-md-12" action="input_soal_pil123.php?id=<?php echo $id; ?>" method="post">
+                                <form id="form7" class="form-horizontal col-md-12" action="input_soal_pil123.php?id=<?php echo $id; ?>" method="post">
                                   <input type="hidden" id="from7" name="from7" value="tambahsoal" />
                                   <input type="hidden" id="jawabanbenar7" name="jawabanbenar7" />
                                   <div class="form-group">
@@ -1166,7 +1166,7 @@
                             </div>
                             <div style="margin-left: 0px;">  
                               <div class="col-md-12" style="width:96%">
-                                <form class="form-horizontal col-md-12" action="input_soal_checkbox.php?id=<?php echo $id; ?>" method="post">
+                                <form id="form5" class="form-horizontal col-md-12" action="input_soal_checkbox.php?id=<?php echo $id; ?>" method="post">
                                   <input type="hidden" id="from5" name="from5" value="tambahsoal" />
                                   <div class="form-group">
                                      <label class="form-control-label">Pertanyaan</label>
@@ -1246,7 +1246,7 @@
                             </div>
                             <div style="margin-left: 0px;">
                               <div class="col-md-12" style="width:96%">
-                                <form class="form-horizontal col-md-12" action="input_soal_bs.php?id=<?php echo $id; ?>" method="post">
+                                <form id="form4" class="form-horizontal col-md-12" action="input_soal_bs.php?id=<?php echo $id; ?>" method="post">
                                   <input type="hidden" id="from4" name="from4" value="tambahsoal" />
                                   <input type="hidden" id="jawabanbenar4" name="jawabanbenar4" />
                                   <div class="form-group">
@@ -1492,6 +1492,9 @@
 
     <!-- Include Language file if we want to use it. -->
     <script type="text/javascript" src="froala/js/languages/ro.js"></script>
+	
+	<!-- jquery validation -->
+	<script src="js/jquery.validate.min.js"></script>
 
     <!-- Initialize the editor. -->
     <script>
@@ -1951,33 +1954,114 @@
     </script>
 	<script>
 		jQuery(document).ready(function(){
-			var $form = $('#form');
+			var $form1 = $('#form1');
+			var $form2 = $('#form2');
+			var $form3 = $('#form3');
+			var $form4 = $('#form4');
+			var $form5 = $('#form5');
+			var $form6 = $('#form6');
+			var $form7 = $('#form7');
 
-            $form.validate({
+            $form1.validate({
                 errorElement: 'span', //default input error message container
                 errorClass: 'help-block help-block-error', // default input error message class
                 focusInvalid: false, // do not focus the last invalid input
                 ignore: "",  // validate all fields including form hidden input
                 rules: {
-                    Judul: {
-                        required: true,
-                        maxlength: 100
+                    pertanyaan1: {
+                        required: true
                     },
-                    Waktu: {
-                        required: true,
+					jawabanbenar1: {
+						required: true
+					},
+					stage1: {
+						required: true
+					},
+					poinbenar1: {
+						required: true
+					}
+                },
+                messages: {},
+
+                highlight: function (element) { // hightlight error inputs
+                    $(element)
+                        .closest('.form-group').addClass('has-error'); // set error class to the control group
+                },
+
+                unhighlight: function (element) { // revert the change done by hightlight
+                    $(element)
+                        .closest('.form-group').removeClass('has-error'); // set error class to the control group
+                },
+
+                success: function (label) {
+                    label
+                        .closest('.form-group').removeClass('has-error'); // set success class to the control group
+                },
+
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+			
+			$form2.validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-block help-block-error', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "",  // validate all fields including form hidden input
+                rules: {
+                    pertanyaan2: {
+                        required: true
                     },
-					AcakSoal: {
-                        required: true,
+					jawabanbenar2: {
+						required: true
+					},
+					stage2: {
+						required: true
+					},
+					poinbenar2: {
+						required: true
+					}
+                },
+                messages: {},
+
+                highlight: function (element) { // hightlight error inputs
+                    $(element)
+                        .closest('.form-group').addClass('has-error'); // set error class to the control group
+                },
+
+                unhighlight: function (element) { // revert the change done by hightlight
+                    $(element)
+                        .closest('.form-group').removeClass('has-error'); // set error class to the control group
+                },
+
+                success: function (label) {
+                    label
+                        .closest('.form-group').removeClass('has-error'); // set success class to the control group
+                },
+
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+			
+			$form3.validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-block help-block-error', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "",  // validate all fields including form hidden input
+                rules: {
+                    pertanyaan3: {
+                        required: true
                     },
-					KategoriUjian: {
-                        required: true,
-                    },
-					KategoriKelas: {
-                        required: true,
-                    },
-					PerluLogin: {
-                        required: true,
-                    }
+					jawabanbenar3: {
+						required: true
+					},
+					stage3: {
+						required: true
+					},
+					poinbenar3: {
+						required: true
+					}
                 },
                 messages: {},
 
