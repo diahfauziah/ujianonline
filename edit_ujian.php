@@ -165,7 +165,16 @@
 
       } 
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #30cbe8 !important;
+        color: #777 !important;
+      }
+	  li#cari:hover {
+		background-color: #f8f8f8;
+	  }
+	  .navbar-nav li:hover {
+        background-color:#e7e7e7;
+      }
+      .menu, ul.navbar-right {
+        font-size: 15px;
       }
       
       .container {
@@ -368,7 +377,7 @@
               <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li>
+              <li id="cari">
                 <form class="navbar-form" role="search">
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="Search">
@@ -412,13 +421,6 @@
 					<input type="text" class="form-control" id="Judul" name="Judul" value="<?php echo $ujian['judul_ujian'] ?>">
 				  </div>
 				</div>
-				<!-- <div class="form-group">
-				  <label for="URL" class="col-md-4 control-label">URL</label>
-				  <div class="col-md-8">
-					<a href="#" class="form-control disabled" style="background-color:#f8f8f8"><?php echo $ujian['url_ujian'] ?></a>
-				  </div> 
-				  <input type="hidden" id="URL" name="URL" value="<?php echo $ujian['url_ujian'] ?>" />
-				</div> -->
 				<div class="form-group">
 				  <label for="Waktu" class="col-md-4 control-label">Waktu</label>
 				  <div class="col-md-3">

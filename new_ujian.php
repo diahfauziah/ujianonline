@@ -76,8 +76,17 @@
         border-bottom-color: #e7e7e7;
       } 
       
-      .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #30cbe8 !important;
+       .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #777 !important;
+      }
+	  li#cari:hover {
+		background-color: #f8f8f8;
+	  }
+	  .navbar-nav li:hover {
+        background-color:#e7e7e7;
+      }
+      .menu, ul.navbar-right {
+        font-size: 15px;
       }
      
       /*.menu li {
@@ -252,7 +261,7 @@
             <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li>
+            <li id="cari">
               <form class="navbar-form" role="search">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search">

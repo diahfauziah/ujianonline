@@ -58,7 +58,7 @@
 
 	if($insert_query2){
 		$_SESSION['statuspesan'] = "sukses";
-		$_SESSION['pesan'] = "Soal baru berhasil dimasukkan";
+		$_SESSION['pesan'] = "Soal baru berhasil dimasukkan <i class='fa fa-check-circle'></i>";
 		header('location:tambah_soal.php?tab=1&id='.$id);
 	} else {
 		$_SESSION['statuspesan'] = "gagal";

@@ -50,8 +50,17 @@
         border-width: 1px;
       } 
       
-      .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #30cbe8 !important;
+       .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #777 !important;
+      }
+	  li#cari:hover {
+		background-color: #f8f8f8;
+	  }
+	  .navbar-nav li:hover {
+        background-color:#e7e7e7;
+      }
+      .menu, ul.navbar-right {
+        font-size: 15px;
       }
 
       /*.menu li {
@@ -191,9 +200,9 @@
         border-radius: 4px;
       }
       .button1, .button1:link, .button1:visited {
-        background-color: #ffbf30;
+        background-color: #30cbe8;
         color: #ffffff;
-        border: 1px solid #ffbf30;
+        border: 1px solid #30cbe8;
         border-radius: 0px;
       }
       .button4, .button4:link, .button4:visited {
@@ -208,7 +217,7 @@
       
       th {
         color: #ffffff;
-        background-color: #30cbe8;
+        background-color: #ffbf30;
         text-decoration: none;
         font-family: 'Didact Gothic', sans-serif;
       }
@@ -336,7 +345,7 @@
               <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li>
+              <li id="cari">
                 <form class="navbar-form" role="search">
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="Search">
@@ -503,7 +512,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-            <h4 class="modal-title" id="modalTambahKategoriLabel">Materi Baru</h4>
+            <h4 class="modal-title" id="modalTambahKategoriLabel">Tambah Materi Baru</h4>
           </div>
           <form id="form1" autocomplete="off" action="newmapel.php" method="post" class="form form-inline"> 
             <div class="modal-body">
@@ -569,7 +578,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-            <h4 class="modal-title" id="modalKelasLabel">Kelas Baru</h4>
+            <h4 class="modal-title" id="modalKelasLabel">Tambah Kelas Baru</h4>
           </div>
           <form id="form4" autocomplete="off" action="newkelas.php" method="post" class="form form-inline"> 
             <div class="modal-body">
@@ -591,7 +600,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-            <h4 class="modal-title" id="modalEditKelasLabel">Kelas Baru</h4>
+            <h4 class="modal-title" id="modalEditKelasLabel">Edit Kelas</h4>
           </div>
           <form id="form2" autocomplete="off" action="editkelas.php" method="post" class="form form-inline"> 
           <div class="modal-body">
@@ -614,7 +623,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-            <h4 class="modal-title" id="modalKelasLabel">Kelas Baru</h4>
+            <h4 class="modal-title" id="modalKelasLabel">Hapus Kelas</h4>
           </div>
           <form id="form1" autocomplete="off" action="hapuskelas.php" method="post" class="form form-inline"> 
             <div class="modal-body">

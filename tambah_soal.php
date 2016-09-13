@@ -82,10 +82,19 @@
         border-bottom-width: 1px;
         /*background-color: #30cbe8; */
       } 
-      
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #30cbe8 !important;
+        color: #777 !important;
       }
+	  li#cari:hover {
+		background-color: #f8f8f8;
+	  }
+	  .navbar-nav li:hover {
+        background-color:#e7e7e7;
+      }
+      .menu, ul.navbar-right {
+        font-size: 15px;
+      }
+		
       .container {
           padding-right: 15px;
           padding-left: 15px;
@@ -107,9 +116,6 @@
       span.label:hover {
      /*   background-color: #ffbf30; */
         
-      }
-      .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #30cbe8 !important;
       }
       
       #teksSoal {
@@ -367,7 +373,7 @@
             <li><a href="kategori.php"><span class="glyphicon glyphicon-tag" style="font-size:13px"></span> Kategori</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li>
+            <li id="cari">
               <form class="navbar-form" role="search">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search">
@@ -403,6 +409,22 @@
         </div>
         <div class="row">
           <div class="col-md-10">
+			<?php 
+                if(!empty($_SESSION['statuspesan'])){
+                  if (($_SESSION['statuspesan'] == "sukses")){
+                    echo '<div class="alert alert-success" style="margin-top:10px;">';
+                    echo   '<strong>Berhasil!</strong> ';
+                    echo   $_SESSION['pesan'];
+                    echo '</div>';
+                    $_SESSION['statuspesan'] = "";
+                  } else if ($_SESSION["statuspesan"]=="gagal") {
+                    echo '<div class="alert alert-danger" style="margin-top:10px;">';
+                    echo   '<strong>Gagal!</strong>';
+                    echo   $_SESSION['pesan'];
+                    echo '</div>';
+                  }
+                }
+              ?>
             <div id="kolominformasi">
               <div class="panel panel-default" style="margin-top:20px; background-color:#ffffff" id="informasiujian">
                 <div class="panel-body">
@@ -485,22 +507,6 @@
                 </div>
               </div>
             </div>
-              <?php 
-                if(!empty($_SESSION['statuspesan'])){
-                  if (($_SESSION['statuspesan'] == "sukses")){
-                    echo '<div class="alert alert-success" style="margin-top:10px;">';
-                    echo   '<strong>Berhasil!</strong> ';
-                    echo   $_SESSION['pesan'];
-                    echo '</div>';
-                    $_SESSION['statuspesan'] = "";
-                  } else if ($_SESSION["statuspesan"]=="gagal") {
-                    echo '<div class="alert alert-danger" style="margin-top:10px;">';
-                    echo   '<strong>Gagal!</strong>';
-                    echo   $_SESSION['pesan'];
-                    echo '</div>';
-                  }
-                }
-              ?>
             <div id="kotakSoal">
             <?php 
               include('koneksi.php'); 
@@ -679,7 +685,7 @@
                                      <textarea id="pertanyaan1" name="pertanyaan1" class="form-control" rows="3">
                                      </textarea>
                                   </div>
-                                  <p style="margin-left:-10px; font-size:14px; color:#ffbf30; margin-top:10px;">Klik huruf didalam lingkaran untuk menetapkan jawaban yang benar</p>
+                                  <p style="margin-left:-10px; font-size:14px; background-color:#ffbf30; color:#fff; margin-top:10px;">Klik huruf didalam lingkaran untuk menetapkan jawaban yang benar</p>
 								  <input type="hidden" id="jawabanbenar1" name="jawabanbenar1" />
                                    <?php 
                                       $huruf = array("A","B","C","D","E","F","G","H");
@@ -755,7 +761,7 @@
 										  </div>
                                         </select>
                                       </div>
-                                      <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+                                      <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7; outline:none;" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
                                     </div>
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
@@ -1327,7 +1333,7 @@
           </div>
           <div class="col-md-2" style="margin-top:10px; padding-left:0px">
             <div id="daftarsoal" style="position:fixed">
-              Daftar soal <?php echo $ujian['judul_ujian'] ?> 
+              Daftar soal <b><?php echo $ujian['judul_ujian'] ?></b>
               <div id="console"></div>
               <div class="panel panel-default" style="width:233px;margin-bottom:5px;" id="nomorSoal">
                   <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">

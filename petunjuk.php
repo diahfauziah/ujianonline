@@ -230,26 +230,46 @@
                 <li data-target="#myCarousel" data-slide-to="1"></li>
                 <li data-target="#myCarousel" data-slide-to="2"></li>
                 <li data-target="#myCarousel" data-slide-to="3"></li>
+				<li data-target="#myCarousel" data-slide-to="4"></li>
+				<li data-target="#myCarousel" data-slide-to="5"></li>
+				<li data-target="#myCarousel" data-slide-to="6"></li>
+				<li data-target="#myCarousel" data-slide-to="7"></li>
               </ol>
 
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                  <img src="image/1a.png" alt="Chania" width="100%">
+                  <img src="image/pilih.png" alt="Chania" width="100%">
                 </div>
 
                 <div class="item">
-                  <img src="image/2coret.png" alt="Chania" width="100%">
+                  <img src="image/coret1.png" alt="Chania" width="100%">
                 </div>
-
+				
+				<div class="item">
+                  <img src="image/blok2.png" alt="Chania" width="100%">
+                </div>
+				
                 <div class="item">
-                  <img src="image/3highlight.png" alt="Chania" width="100%">
+                  <img src="image/hapusformat.png" alt="Chania" width="100%">
                 </div>
-
-                <div class="item">
-                  <img src="image/4hapusformat.png" alt="Chania" width="100%">
+				
+				<div class="item">
+                  <img src="image/aturulang.png" alt="Chania" width="100%">
                 </div>
-
+				
+				<div class="item">
+                  <img src="image/jawab.png" alt="Chania" width="100%">
+                </div>
+				
+				<div class="item">
+                  <img src="image/silang.png" alt="Chania" width="100%">
+                </div>
+				
+				<div class="item">
+                  <img src="image/nomor.png" alt="Chania" width="100%">
+                </div>
+				
               </div>
 
               <!-- Left and right controls -->

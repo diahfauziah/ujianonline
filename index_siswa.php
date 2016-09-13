@@ -297,7 +297,7 @@
         margin-bottom: 5px;
         box-shadow: 0 1px #e1edef;
         width: 91%;
-        margin-left: 25px;
+        margin-left: 47px;
       }
       .opsicheckbox {
         border: 1px solid #e1edef;
@@ -455,10 +455,11 @@
         				  $huruf = array("A","B","C","D","E","F","G","H","I");
         				  $i = 0;
         					while($pilihan = mysqli_fetch_array($query2)){
-        					  echo '<div class="row">';
+        					  echo '<div class="row" style="margin-bottom:5px">';
+							  echo '<i class="fa fa-times-circle-o fa-lg coret fa-2x" style="color:#929292; margin-left:15px; margin-top:10px;cursor:pointer; float:left;"></i>';
         					  echo '<li class="list-group-item opsijawaban" data-idsoal="';
         					  echo $soal['id_soal'];
-        					  echo '" style="float:left">';
+        					  echo '">';
         					  echo   '<div class="row">';
         					  echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
         					  //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#30cbe8"></i>';
@@ -471,7 +472,6 @@
         					  echo     '</div>';
         					  echo    '</div>';
         					  echo '</li>';
-        					  echo '<i class="fa fa-times-circle-o fa-lg coret fa-2x" style="color:#929292; margin-left:5px; cursor:pointer;"></i>';
         					  echo '</div>';
         					  $i++;
         					}
@@ -524,8 +524,14 @@
           </div>
           <div class="col-md-2" style="padding-left:0px;">
             Daftar soal
+			
             <div class="panel panel-default" style="width:233px;margin-bottom:5px;background-color:#f8f8f8;" id="nomorSoal">
               <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
+			  <div class="row" style="padding-left:15px;padding-right:120px;"><div style="background-color:yellow">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p></div>
+				</div>
+				<div class="row">
+					
+				</div>
         			  <?php
           				$query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");
                   $arraynomor = mysqli_fetch_array($query4);
@@ -586,8 +592,7 @@
           				}
           				
           			?>
-          		  <div class="row" style="padding-left:15px;">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p>
-                </div>
+          		
               </div>
             </div>
             <button type="submit" class="button button4 col-md-12" id="btnkumpulkan" style="width:233px;text-decoration:none;" >Kumpulkan</button>

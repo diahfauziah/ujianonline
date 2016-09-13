@@ -84,8 +84,17 @@
         border-bottom-width: 1px;
       } 
 
-      .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #30cbe8 !important;
+       .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #777 !important;
+      }
+	  li#cari:hover {
+		background-color: #f8f8f8;
+	  }
+	  .navbar-nav li:hover {
+        background-color:#e7e7e7;
+      }
+      .menu, ul.navbar-right {
+        font-size: 15px;
       }
       
       .container {
@@ -275,7 +284,7 @@
 				  <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
 				</ul> 
 				<ul class="nav navbar-nav navbar-right">
-				  <li>
+				  <li id="cari">
 					<form class="navbar-form" role="search">
 					<div class="input-group">
 					  <input type="text" class="form-control" placeholder="Search">
@@ -301,7 +310,7 @@
             $ujian = mysqli_fetch_array($query);
       ?>
       <div class="content">
-        <h2 style="margin: 14px; margin-bottom: 5px; color:rgba(186, 182, 182, 1); font-family: 'Georgia', serif; text-align:center;">Laporan Ujian <a href="http://localhost/ujianonline/tambah_soal.php?tab=1&id=<?php echo $ujian['id_ujian']?>"><?php echo $ujian['judul_ujian'] ?></a></h2>
+        <h2 style="margin: 14px; margin-bottom: 30px; color:rgba(186, 182, 182, 1); font-family: 'Georgia', serif; text-align:center;">Laporan Ujian <a href="http://localhost/ujianonline/tambah_soal.php?tab=1&id=<?php echo $ujian['id_ujian']?>"><?php echo $ujian['judul_ujian'] ?></a></h2>
 		<div class="row">
 			<div class="col-md-offset-2 col-md-8">
 				<button class="button button1 pull-right" style="border-radius:20px; font-size:13px"><i class="fa fa-download"></i> Download sbg Excel</button>

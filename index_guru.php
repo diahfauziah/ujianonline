@@ -36,6 +36,11 @@
             });
         });
       });
+	  $(function(){
+		$("i.fa").hover(function(){
+			$(this).toggleClass("fa-lg fa-2x");
+		});  
+	  });
     </script>
 
     <!-- Style -->
@@ -83,13 +88,18 @@
       } 
 
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #30cbe8 !important;
+        color: #777 !important;
       }
-
-      .menu {
-        font-size: 13px;
+	  li#cari:hover {
+		background-color: #f8f8f8;
+	  }
+	  .navbar-nav li:hover {
+        background-color:#e7e7e7;
       }
-    
+      .menu, ul.navbar-right {
+        font-size: 15px;
+      }
+		
       .container {
           padding-right: 15px;
           padding-left: 15px;
@@ -123,7 +133,7 @@
       }
       th {
         color: #ffffff;
-        background-color: #30cbe8;
+        background-color: #ffbf30;
         text-decoration: none;
         font-family: 'Didact Gothic', sans-serif;
       }
@@ -168,6 +178,9 @@
       .link2 a:visited {
         color: #818181;
       }
+	  .link2 {
+		outline:none;  
+	  }
       .link2 a:hover {
         color: #30cbe8;
       }
@@ -187,9 +200,9 @@
         border-radius: 4px;
       }
       .button1, .button1:link, .button1:visited, .col-md-3 a:link, .col-md-3 a:visited, .col-md-3 a:active {
-        background-color: #ffbf30;
+        background-color: #30cbe8;
         color: #ffffff;
-        border: 1px solid #ffbf30;
+        border: 1px solid #30cbe8;
         border-radius: 0px;
       }
       .button1:hover, .col-md-3 a:hover, .button2:hover {
@@ -208,7 +221,10 @@
         /*color: #2a2a2a;*/
         color: #30cbe8;
       }
-
+	   .judul {
+		   font-size: 15px;
+		   font-weight: bold;
+	   }
       .judul a:hover{
         /*color: #30cbe8;*/
         /* color: #ffbf30; */
@@ -244,7 +260,10 @@
           cursor: pointer;
           transition: 0.3s;
       }
-
+		table.i.fa, table.i.fa:visited {
+			color: #30cbe8;
+		}
+		
       /* When moving the mouse over the close button */
       .closebtn:hover {
           color: black;
@@ -288,12 +307,12 @@
 			  </div>
 			  <div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav menu">
-				  <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:13px"></span> Beranda</a></li>
-				  <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:13px"></span> Kategori</a></li>
+				  <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:15px"></span> Beranda</a></li>
+				  <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:15px"></span> Kategori</a></li>
 				</ul>
 				<!-- <ul class="nav navbar-nav navbar-right" style="padding-right:90px;"> -->
 				<ul class="nav navbar-nav navbar-right">
-				  <li>
+				  <li id="cari">
 					<form class="navbar-form" role="search">
 					  <div class="input-group">
 						<input type="text" class="form-control" placeholder="Search">
@@ -315,7 +334,7 @@
 	<div class="container">
 	  <?php include("koneksi.php"); ?>
       <div class="content">
-        <h2 style="margin-bottom: 30px; color:#30cbe8; font-family: 'Georgia', serif;">Daftar Ujian</h2>
+        <h2 style="margin-bottom: 30px; color:#30cbe8; font-family: 'Georgia', serif; text-align:center">Daftar Ujian</h2>
         <div class="row">
           <div class="col-md-9">
             <form id="form1" action="index_guru.php" method="post" class="form-inline" role="form">
@@ -467,8 +486,8 @@
                   echo   '<div class="judul">';
                   echo     '<a class="link-judul" href="tambah_soal.php?tab=1&id='.$data['id_ujian'].'"">'. $data['judul_ujian'] .'</a><br>';
                   echo   '</div>';
-                  echo   '<div style="font-size: 12px; color:#aba8a8;" class="link2">';
-                  echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.php?id='.$data['id_ujian'].'">Tambah Soal</a>';
+                  echo   '<div style="font-size: 13px; color:#aba8a8;" class="link2">';
+                  echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" style="outline:none;" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.php?id='.$data['id_ujian'].'">Tambah Soal</a>';
                   echo   '</div>';    
                   echo  '</td>';
                   echo  '<td>'. $data['total_soal'] .'</td>';
@@ -486,9 +505,9 @@
                   echo  '<td>';
       				    echo  $namak['nama'];
       				    echo  '</td>';
-                  echo  '<td><a href="#" class="lihat_tampilan" data-id='.$data['id_ujian'].' data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><span class="glyphicon glyphicon-eye-open"></span> </a> </td>';
-                  echo  '<td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" data-id='.$data['url_ujian'].' title="Bagikan link ujian"><span class="glyphicon glyphicon-share-alt"></span> </a></td>';
-                  echo  '<td><a href="laporan_ujian.php?id='.$data['id_ujian'].'" data-toggle="tooltip" data-placement="top" title="Lihat laporan ujian"><span class="glyphicon glyphicon-stats"></span> </a></td>';
+                  echo  '<td><a href="#" class="lihat_tampilan" data-id='.$data['id_ujian'].' data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><i class="fa fa-eye fa-lg"></i> </a> </td>';
+                  echo  '<td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" data-id='.$data['url_ujian'].' title="Bagikan link ujian"><i class="fa fa-share-alt fa-lg"></i> </a></td>';
+                  echo  '<td><a href="laporan_ujian.php?id='.$data['id_ujian'].'" data-toggle="tooltip" data-placement="top" title="Lihat laporan ujian"><i class="fa fa-bar-chart fa-lg"></i> </a></td>';
                     $yrdata = strtotime($data['modified_date']);
                     $bulan = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
                   echo  '<td>';
@@ -579,6 +598,7 @@
     $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
         $(".alert-success").slideUp(500);
     });
+	
   });
   
   $(function(){
