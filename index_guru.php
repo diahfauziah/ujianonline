@@ -500,7 +500,7 @@
 							$qmtr = mysqli_query($link, "SELECT * FROM materi WHERE id_materi='$idmtri'");
 							$qmtrdta = mysqli_fetch_array($qmtr);
 							echo $qmtrdta['nama'];
-							echo ' ';
+							echo '; ';
 						}
           		  echo  '</td>';
       	       			$idk = $data['id_kelas'];

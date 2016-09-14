@@ -6,7 +6,7 @@
 		
 		$dibuat = $_SESSION['userid'];
 		
-		$query = mysqli_query($link, "INSERT INTO `mata_pelajaran`(`nama`, `dibuat_oleh`) VALUES ('$mapel', '$dibuat')");
+		$query = mysqli_query($link, "INSERT INTO `materi`(`nama`, `dibuat_oleh`) VALUES ('$mapel', '$dibuat')");
 		
 		if ($query){
 			$_SESSION['statuspesan'] = "sukses";
