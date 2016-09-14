@@ -5,13 +5,13 @@
 		$namstage = $_GET['name'];
 		$idguru = $_SESSION['userid'];
 		
-		$query = mysqli_query($link, "INSERT INTO mata_pelajaran(nama, dibuat_oleh) VALUES('$namstage','$idguru')");
+		$query = mysqli_query($link, "INSERT INTO materi(nama, dibuat_oleh) VALUES('$namstage','$idguru')");
 		
 		echo '<option value="">Pilih Materi</option>';
-		$querystg = mysqli_query($link, "SELECT * FROM mata_pelajaran WHERE dibuat_oleh='$idguru'");
+		$querystg = mysqli_query($link, "SELECT * FROM materi WHERE dibuat_oleh='$idguru'");
 		while ($stg = mysqli_fetch_array($querystg)){
 			echo '<option value="';
-			echo $stg['id_kategori'];
+			echo $stg['id_materi'];
 			echo '"';
 			if ($namstage==$stg['nama']) echo 'selected';
 			echo '>';

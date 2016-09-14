@@ -183,11 +183,16 @@
                     <label class="col-md-2" style="text-align:right; padding-right:0px;">Kategori:</label>
                       <div class="col-md-10" style="text-align:left">
                         <?php
-                          $idm = $ujian['mata_pelajaran'];
-                        $querynamamapel = "select * from mata_pelajaran where id_kategori=$idm";
-                        $qnm = mysqli_query($link, $querynamamapel);
-                        $namamp = mysqli_fetch_array($qnm);
-                        echo $namamp['nama'];
+                        $idm = $ujian['id_ujian'];
+						  $querynamamapel = "select * from materi_ujian where id_ujian=$idm";
+						  $qnm = mysqli_query($link, $querynamamapel);	
+						  while ($datamateri = mysqli_fetch_array($qnm)){
+							$idmtri = $datamateri['id_materi'];
+							$qmtr = mysqli_query($link, "SELECT * FROM materi WHERE id_materi='$idmtri'");
+							$qmtrdta = mysqli_fetch_array($qmtr);
+							echo $qmtrdta['nama'];
+							echo ' ';
+						  }
                         echo " - ";
                         $idk = $ujian['id_kelas'];
                         $querynmk = "select * from kelas where id_kelas=$idk";

@@ -453,15 +453,15 @@
 					<select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
 					  <?php
 					  $dibuat = $_SESSION['userid'];
-					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
+					  $kat = mysqli_query($link, "SELECT * FROM `materi` WHERE `dibuat_oleh`=$dibuat");
 					  
 					  while($kate = mysqli_fetch_array($kat)){
 						echo '<option value="';
-						echo $kate['id_kategori'];
+						echo $kate['id_materi'];
 						echo '" ';
-						if ($kate['id_kategori']==$ujian['mata_pelajaran']){
+						/*if ($kate['id_materi']==$ujian['mata_pelajaran']){
 							echo 'selected';
-						}
+						}*/
 						echo '>';
 						echo $kate['nama'];
 						echo '</option>';

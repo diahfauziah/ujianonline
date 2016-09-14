@@ -419,13 +419,13 @@
 										  echo '</tr>'; }
       								} */
 										
-    								  $mp2 = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
+    								  $mp2 = mysqli_query($link, "SELECT * FROM `materi` WHERE `dibuat_oleh`=$dibuat");
     								
         							while($data1 = mysqli_fetch_array($mp2)){
         							  echo '<tr>';
         							  echo   '<td class="kategori">';
         							  echo   $data1['nama'];
-        							  echo   '<td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#" data-toggle="modal" data-target="#modalEditKategori" data-id="'.$data1['id_kategori'].'">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapusKategori" data-id="'.$data1['id_kategori'].'">Hapus</a></div></td>';
+        							  echo   '<td><div style="font-size: 12px; color:#aba8a8;" class="link2"><a href="#" data-toggle="modal" data-target="#modalEditKategori" data-id="'.$data1['id_materi'].'">Edit</a> | <a href="#" data-toggle="modal" data-target="#modalHapusKategori" data-id="'.$data1['id_materi'].'">Hapus</a></div></td>';
         							  echo '</tr>';
         							}
                     ?>

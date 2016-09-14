@@ -529,9 +529,6 @@
               <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
 			  <div class="row" style="padding-left:15px;padding-right:120px;"><div style="background-color:yellow">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p></div>
 				</div>
-				<div class="row">
-					
-				</div>
         			  <?php
           				$query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");
                   $arraynomor = mysqli_fetch_array($query4);

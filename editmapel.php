@@ -6,7 +6,7 @@
 		$mapel = $_POST['namaeditmapel'];
 		$dibuat = $_SESSION['userid'];
 		
-		$query = mysqli_query($link, "UPDATE `mata_pelajaran` SET `nama`='$mapel', `dibuat_oleh`='$dibuat' WHERE `id_kategori`='$idmapel'");
+		$query = mysqli_query($link, "UPDATE `materi` SET `nama`='$mapel', `dibuat_oleh`='$dibuat' WHERE `id_materi`='$idmapel'");
 		
 		if ($query){
 			$_SESSION['statuspesan'] = "sukses";

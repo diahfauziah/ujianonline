@@ -340,7 +340,7 @@
             <form id="form1" action="index_guru.php" method="post" class="form-inline" role="form">
 			<?php 
 				$dibuat = $_SESSION['userid'];
-          		$kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
+          		$kat = mysqli_query($link, "SELECT * FROM `materi` WHERE `dibuat_oleh`=$dibuat");
 				$numrows = mysqli_num_rows($kat);
 				if($numrows==0){ ?>
 					<div class="form-group">
@@ -373,11 +373,11 @@
           					  
           					  while($kate = mysqli_fetch_array($kat)){
           						echo '<option value="';
-          						echo $kate['id_kategori'];
+          						echo $kate['id_materi'];
           						echo '" ';
-          						if ($_SESSION['matapelajaran']==$kate['id_kategori']){
+          						/*if ($_SESSION['matapelajaran']==$kate['id_materi']){
           							echo 'selected';
-          						}
+          						}*/
           						echo '>';
           						echo $kate['nama'];
           						echo '</option>';
@@ -468,14 +468,14 @@
       				  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat order by modified_date asc";
       			  } else if ($_SESSION['matapelajaran']!="0" && $_SESSION['kelas']=="0") {
         				$idmapel = $_SESSION['matapelajaran'];
-        				$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and mata_pelajaran=$idmapel order by modified_date desc";
+        				$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat order by modified_date desc";
       			  } else if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']!="0") {
       				  $idkel = $_SESSION['kelas'];
       				  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel order by modified_date desc";
       			  } else {
         				$idmapel = $_SESSION['matapelajaran'];
         				$idkel = $_SESSION['kelas'];
-        				$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and mata_pelajaran=$idmapel and id_kelas=$idkel order by modified_date desc";
+        				$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel order by modified_date desc";
       			  }      			  
               
               $query = mysqli_query($link, $querymapel);
@@ -491,13 +491,18 @@
                   echo   '</div>';    
                   echo  '</td>';
                   echo  '<td>'. $data['total_soal'] .'</td>';
-        				    $idm = $data['mata_pelajaran'];
-            				$querynamamapel = "select * from mata_pelajaran where id_kategori=$idm";
-            				$qnm = mysqli_query($link, $querynamamapel);
-        	     			$namamp = mysqli_fetch_array($qnm);
+				  $idm = $data['id_ujian'];
+				  $querynamamapel = "select * from materi_ujian where id_ujian=$idm";
+				  $qnm = mysqli_query($link, $querynamamapel);	
                   echo  '<td>';
-          				echo  $namamp['nama'];
-          				echo  '</td>';
+						while ($datamateri = mysqli_fetch_array($qnm)){
+							$idmtri = $datamateri['id_materi'];
+							$qmtr = mysqli_query($link, "SELECT * FROM materi WHERE id_materi='$idmtri'");
+							$qmtrdta = mysqli_fetch_array($qmtr);
+							echo $qmtrdta['nama'];
+							echo ' ';
+						}
+          		  echo  '</td>';
       	       			$idk = $data['id_kelas'];
       				      $querynmk = "select * from kelas where id_kelas=$idk";
       				      $qnk = mysqli_query($link, $querynmk);

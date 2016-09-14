@@ -4,11 +4,11 @@
 		include("koneksi.php");
 		$id = $_POST['idmapelhapus'];
 		
-		$check = mysqli_query($link, "SELECT * FROM info_ujian WHERE mata_pelajaran='$id'");
+		$check = mysqli_query($link, "SELECT * FROM materi_ujian WHERE id_materi='$id'");
 		$numrow = mysqli_num_rows($check);
 		
 		if ($numrow == 0){
-			$delete = mysqli_query($link, "DELETE FROM `mata_pelajaran` WHERE `id_kategori`=$id");
+			$delete = mysqli_query($link, "DELETE FROM `materi` WHERE `id_materi`=$id");
 		
 			if ($delete){
 				$_SESSION['statuspesan'] = "sukses";
@@ -16,7 +16,7 @@
 				header('location:kategori.php');
 			} else {
 				$_SESSION['statuspesan'] = "gagal";
-				$_SESSION['pesan'] = " Mata Pelajaran tidak berhasil dihapus";
+				$_SESSION['pesan'] = " Materi tidak berhasil dihapus";
 				header('location:kategori.php');
 			}
 		} else {
