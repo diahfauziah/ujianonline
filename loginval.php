@@ -16,7 +16,7 @@
 				$_SESSION['userid'] = $user["id_guru"];
 				$_SESSION['username'] = $user["username"];
 				$_SESSION['kategori_guru'] = $user["kategori_guru"];
-				$_SESSION['matapelajaran'] = "0";
+				$_SESSION['matapelajaran'] = "";
 				$_SESSION['kelas'] = "0";
 				$_SESSION['role'] = "guru";
 				$newURL = "index_guru.php";

@@ -382,6 +382,7 @@
 										  
 										?> 
 							  </select> -->
+							  <?php if (isset($_POST['kategori'])) $_SESSION['matapelajaran'] = $_POST['kategori']; ?>
 							  <input id="kategori" name="kategori" type="text" data-role="tagsinput" class="col-md-3 form-control"/>
 						  </div>
 						  <div class="form-group">
@@ -457,18 +458,38 @@
 					  </thead>
 					  <tbody>
 						<?php
-							  if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']=="0"){
+							  if ($_SESSION['matapelajaran']=="" && $_SESSION['kelas']=="0"){
 								  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat";
 							  } else if ($_SESSION['matapelajaran']!="0" && $_SESSION['kelas']=="0") {
-									$idmapel = $_SESSION['matapelajaran'];
-									$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat";
-							  } else if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']!="0") {
+									$matr = $_SESSION['matapelajaran'];
+									$datam = explode(',',$matr);
+									$bnyk = count($datam);
+									$qrym = " ";
+									for ($j = 0; $j < $bnyk; $j++){
+										$qrymtemp = "id_materi='$datam[$j]' ";
+										$qrym = "$qrym $qrymtemp";
+										if ($j+1 < $bnyk) $qrym = "$qrym or ";
+									}
+									$querymt = "SELECT id_ujian FROM materi_ujian WHERE $qrym";
+									
+									$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_ujian IN ($querymt)";
+							  } else if ($_SESSION['matapelajaran']=="" && $_SESSION['kelas']!="0") {
 								  $idkel = $_SESSION['kelas'];
 								  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel";
 							  } else {
-									$idmapel = $_SESSION['matapelajaran'];
 									$idkel = $_SESSION['kelas'];
-									$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel";
+									$matr = $_SESSION['matapelajaran'];
+									$datam = explode(',',$matr);
+									$bnyk = count($datam);
+									$qrym = " ";
+									for ($j = 0; $j < $bnyk; $j++){
+										$qrymtemp = "id_materi='$datam[$j]' ";
+										$qrym = "$qrym $qrymtemp";
+										if ($j+1 < $bnyk) $qrym = "$qrym or ";
+									}
+									$querymt = "SELECT id_ujian FROM materi_ujian WHERE $qrym";
+									
+									$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel and id_ujian IN ($querymt)";
 							  }      			  
 						  
 						  $query = mysqli_query($link, $querymapel);
@@ -614,7 +635,7 @@
 	});
 	materi.initialize();
 	
-	var elt = $('input');
+	var elt = $('input[name="kategori"]');
 	elt.tagsinput({
 	  itemValue: 'value',
 	  itemText: 'text',
@@ -624,7 +645,44 @@
 		source: materi.ttAdapter()
 	  }
 	});
-	  
+
+	if (1==<?php
+		if (isset($_SESSION['matapelajaran'])&&(!empty($_SESSION['matapelajaran']))){
+			echo 1;
+		} else {
+			echo 0;
+		}
+	?>) {
+		<?php
+		$matr = $_SESSION['matapelajaran'];
+		$datam = explode(',',$matr);
+		$bnyk = count($datam);
+		$qrym = " ";
+		for ($j = 0; $j < $bnyk; $j++){
+			$qrymtemp = "id_materi='$datam[$j]' ";
+			$qrym = "$qrym $qrymtemp";
+			if ($j+1 < $bnyk) $qrym = "$qrym or ";
+		}
+		$querymt = "SELECT * FROM materi WHERE $qrym";
+		$datakat = mysqli_query($link, $querymt);
+		
+		if ($datakat){
+			while ($datamateri = mysqli_fetch_array($datakat)){
+				$idmtri = $datamateri['id_materi'];
+				$qmtr = mysqli_query($link, "SELECT * FROM materi WHERE id_materi='$idmtri'");
+				$qmtrdta = mysqli_fetch_array($qmtr);
+				?> var x = <?php echo '"{\"value\":' .$qmtrdta['id_materi'] .', \"text\":\"' .$qmtrdta['nama'] .'\"}"'; ?>;
+				var obj = jQuery.parseJSON(x);
+				elt.tagsinput('add', obj);
+				<?php
+			}
+		}?>
+	}
+	
+	$('input[name="kategori"]').on('change', function(){
+		$('#form1').submit();
+	});
+	
   $(function(){
   	var clipboard = new Clipboard('.btn-copy-clip');
 
