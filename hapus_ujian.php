@@ -23,27 +23,27 @@
 				$delete = "DELETE FROM `pilihan_jawaban` WHERE `id_soal`='$idsoal' ";
 				$delete_query = mysqli_query($link, $delete);
 			}
-			
-			// periksa jawaban_user
-			$cekdulu = mysqli_query($link, "SELECT * FROM jawaban_user WHERE id_ujian='$id'");
-			if ($cekdulu){
-				$delete = "DELETE FROM `jawaban_user` WHERE `id_ujian`='$idsoal' ";
-				$delete_query = mysqli_query($link, $delete);
-			}
-			
-			// periksa laporan_ujian_guru
-			$cekdulu = mysqli_query($link, "SELECT * FROM laporan_ujian_guru WHERE id_ujian='$id'");
-			if ($cekdulu){
-				$delete = "DELETE FROM `laporan_ujian_guru` WHERE `id_ujian`='$idsoal' ";
-				$delete_query = mysqli_query($link, $delete);
-			}
-			
-			// periksa materi_ujian
-			$cekdulu = mysqli_query($link, "SELECT * FROM materi_ujian WHERE id_ujian='$id'");
-			if ($cekdulu){
-				$delete = "DELETE FROM `materi_ujian` WHERE `id_ujian`='$idsoal' ";
-				$delete_query = mysqli_query($link, $delete);
-			}
+		}
+		
+		// periksa jawaban_user
+		$cekdulu = mysqli_query($link, "SELECT * FROM jawaban_user WHERE id_ujian='$id'");
+		if ($cekdulu){
+			$delete = "DELETE FROM `jawaban_user` WHERE `id_ujian`='$id' ";
+			$delete_query = mysqli_query($link, $delete);
+		}
+		
+		// periksa laporan_ujian_guru
+		$cekdulu = mysqli_query($link, "SELECT * FROM laporan_ujian_guru WHERE id_ujian='$id'");
+		if ($cekdulu){
+			$delete = "DELETE FROM `laporan_ujian_guru` WHERE `id_ujian`='$id' ";
+			$delete_query = mysqli_query($link, $delete);
+		}
+		
+		// periksa materi_ujian
+		$cekdulu = mysqli_query($link, "SELECT * FROM materi_ujian WHERE id_ujian='$id'");
+		if ($cekdulu){
+			$delete = "DELETE FROM materi_ujian WHERE id_ujian='$id' ";
+			$delete_query = mysqli_query($link, $delete);
 		}
 		
 		$delete = "DELETE FROM `soal` WHERE `id_ujian`='$id' ";

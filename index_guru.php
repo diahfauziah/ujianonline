@@ -605,6 +605,8 @@
   });
   
 	// TAGSINPUT
+	localStorage.clear();
+	
     var materi = new Bloodhound({
 	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
 	  queryTokenizer: Bloodhound.tokenizers.whitespace,

@@ -18,6 +18,7 @@
 	
     <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
+	<link href="css/bootstrap-tagsinput-typeahead.css" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -292,6 +293,7 @@
               <hr />
             <form id="form" autocomplete="off" class="form-horizontal" action="input_ujian.php" method="post">
 			<?php 
+			  $dibuat = $_SESSION['userid'];
 			  if(!empty($_SESSION['statuspesan']))
 			  {
 				if (($_SESSION['statuspesan'] == "sukses")){
@@ -338,7 +340,7 @@
                   <!-- <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
                     <option value="">Pilih Materi</option>
 					<?php
-					 /* $dibuat = $_SESSION['userid'];
+					  /*$dibuat = $_SESSION['userid'];
 					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
 					  
 					  while($kate = mysqli_fetch_array($kat)){
@@ -356,12 +358,7 @@
                   <select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
                     <option value="">Pilih Kelas</option>
                     <?php
-					  if ($_SESSION['kategori_guru']=="SMA"){
-						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=$dibuat)";
-					  } else {
-						$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=$dibuat)";
-					  }
-					  $kel = mysqli_query($link, $querykelas);
+					  $kel = mysqli_query($link, "SELECT * FROM `kelas` WHERE `dibuat_oleh`=$dibuat");
 					  
 					  while($kate = mysqli_fetch_array($kel)){
 						echo '<option value="';
@@ -625,7 +622,6 @@
 	function addmapel(){
 		var xmlhttp = new XMLHttpRequest();
 		var str = $('input[name="namamapel"]').val();
-		alert(str);
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				addItemTag($.trim(xmlhttp.responseText));
@@ -667,6 +663,8 @@
 	});
 	
 	// TAGSINPUT
+	localStorage.clear();
+	
     var materi = new Bloodhound({
 	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
 	  queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -684,10 +682,10 @@
 		source: materi.ttAdapter()
 	  }
 	});
-	
+		
 	function addItemTag(resp){
-		alert(resp);
-		elt.tagsinput('add', resp);
+		var obj = jQuery.parseJSON(resp);
+		elt.tagsinput('add', obj);
 	};
 	  
 	</script>
