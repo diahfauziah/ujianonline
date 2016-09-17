@@ -347,6 +347,14 @@
 			color: red;
 			font-size:14px;
 		}
+		.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+			background-color: #ffbf30;
+			color: #ffffff;
+		}
+		.nav-tabs>li>a {
+			border: 1px solid #ddd;
+			background-color: #f8f8f8;
+		}
       
     </style>
   </head>

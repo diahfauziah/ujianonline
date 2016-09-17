@@ -140,22 +140,7 @@
         text-decoration: none;
         font-family: 'Didact Gothic', sans-serif;
       }
-      .breadcrumb li {
-        font-size: 12px;
-      }
-      .breadcrumb a {
-        color: rgba(109, 116, 122, 1);
-      }
-      .breadcrumb a:hover {
-        color: rgba(42, 100, 150, 1);
-      }
-      .breadcrumb > .active {
-        color: rgba(186, 182, 182, 1);
-      }
-      .breadcrumb > li + li:before {
-        color: #cccccc;
-        content: " > ";
-      }
+      
       .table a:hover  {
         color: #30cbe8;
       }
@@ -460,14 +445,14 @@
 					<table class="table table-hover">
 					  <thead>
 						<tr>
-						  <th style="text-align: left;">Judul</th>
+						  <th style="text-align: left; width:25%">Judul</th>
 						  <th style="">Total Soal</th>
 						  <th style="width:20%">Materi</th>
-						  <th style="">Kelas</th>
+						  <th style="width:10%">Kelas</th>
 						  <th style="">Tampilan ujian</th>
 						  <th style="">Link ujian</th>
 						  <th>Laporan</th>
-						  <th style="">Terakhir diperbarui</th>
+						  <th style="width:20%">Terakhir diperbarui</th>
 						</tr>
 					  </thead>
 					  <tbody>
