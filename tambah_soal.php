@@ -1431,7 +1431,7 @@
 					  </div>
 					  <button class="button button1 btntambahsoal" style="border-radius:20px; font-size:13px; outline:none" id="btntambah"><i class="fa fa-plus"></i> Tambah soal</button>
 					  <a href="petunjukguru.php?id=<?php echo $id ?>" class="button button1" style="border-radius:20px; font-size:13px; outline:none"><span class="glyphicon glyphicon-eye-open"></span> Lihat ujian</a>
-					  <a href="#" class="back-to-top" style="display:inline"><i class="fa fa-arrow-circle-up"></i></a>
+					  <a href="#" class="back-to-top" style="display:none"><i class="fa fa-arrow-circle-up"></i></a>
 					</div>
 				  </div>  
 				</div>
