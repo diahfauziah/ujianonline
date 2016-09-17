@@ -291,6 +291,10 @@
       .form-control {
         border-radius: 0px;
       }
+	  .bootstrap-tagsinput {
+		  min-width: 190px;
+		  max-width: 500px;
+	  }
 	  select.form-control {
 		  border-radius: 4px;
 	  }
@@ -363,7 +367,7 @@
 							  </div>
 							<?php  } else {
 						?>
-						  <div class="form-group">
+						  <div class="form-group materi-tag">
 							<label class="control-label" style="color:#ffbf30;margin-right:10px;" for="kategori">Kategori</label>
 								<!-- <select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control">
 										 <?php
@@ -392,16 +396,13 @@
 										  
 										?> 
 							  </select> -->
-							  <input type="text" value="Matematika" data-role="tagsinput" class="col-md-3 form-control"/>
+							  <input id="kategori" name="kategori" type="text" data-role="tagsinput" class="col-md-3 form-control"/>
 						  </div>
 						  <div class="form-group">
 							<select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control">
 								<?php
-										  if ($_SESSION['kategori_guru']=="SMA"){
-											$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=$dibuat)";
-										  } else {
-											$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=$dibuat)";
-										  }
+										  $querykelas = "SELECT * FROM `kelas` WHERE `dibuat_oleh`=$dibuat";
+										  
 										  $kel = mysqli_query($link, $querykelas);
 										  
 										  if (isset($_POST['kelas'])){
@@ -579,6 +580,12 @@
 		  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
 		</div>
 	</div>
+	
+	<!-- Include jQuery. -->
+    <script type="text/javascript" src="js/typeahead.bundle.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/rainbow.min.js"></script>
+	
   </body>
 </html>
 <script type="text/javascript">
@@ -611,6 +618,25 @@
 	
   });
   
+	// TAGSINPUT
+    var materi = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  prefetch: 'materi.php'
+	});
+	materi.initialize();
+	
+	var elt = $('input');
+	elt.tagsinput({
+	  itemValue: 'value',
+	  itemText: 'text',
+	  typeaheadjs: {
+		name: 'materi',
+		displayKey: 'text',
+		source: materi.ttAdapter()
+	  }
+	});
+		  
   $(function(){
   	var clipboard = new Clipboard('.btn-copy-clip');
 
