@@ -16,8 +16,10 @@
     <!-- Bootstrap -->
     <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-tagsinput.css" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-tagsinput.min.js"></script>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	
 	<!-- Froala -->
@@ -450,24 +452,25 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label">Kategori</label>
 				  <div class="col-md-5">
-					<select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
+					<!-- <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
 					  <?php
-					  $dibuat = $_SESSION['userid'];
+					   $dibuat = $_SESSION['userid'];
 					  $kat = mysqli_query($link, "SELECT * FROM `materi` WHERE `dibuat_oleh`=$dibuat");
 					  
-					  while($kate = mysqli_fetch_array($kat)){
+					  /* while($kate = mysqli_fetch_array($kat)){
 						echo '<option value="';
 						echo $kate['id_materi'];
 						echo '" ';
 						/*if ($kate['id_materi']==$ujian['mata_pelajaran']){
 							echo 'selected';
-						}*/
+						}
 						echo '>';
 						echo $kate['nama'];
 						echo '</option>';
-					  }
+					  } */
 					?>
-					</select>
+					</select> -->
+					<input type="text" data-role="tagsinput" class="form-control"/>
 				  </div>
 				  <div class="col-md-3">
 					<select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
