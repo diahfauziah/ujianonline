@@ -15,6 +15,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+	
     <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
     <script src="js/jquery.min.js"></script>
@@ -332,10 +333,10 @@
               <div class="form-group">
                 <label class="control-label col-md-3" for="KategoriUjian">Kategori</label>
                 <div class="col-md-5">
-                  <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
+                  <!-- <select class="form-control" id="KategoriUjian" name="KategoriUjian" required>
                     <option value="">Pilih Materi</option>
 					<?php
-					  $dibuat = $_SESSION['userid'];
+					 /* $dibuat = $_SESSION['userid'];
 					  $kat = mysqli_query($link, "SELECT * FROM `mata_pelajaran` WHERE `dibuat_oleh`=$dibuat");
 					  
 					  while($kate = mysqli_fetch_array($kat)){
@@ -344,9 +345,10 @@
 						echo '">';
 						echo $kate['nama'];
 						echo '</option>';
-					  }
+					  } */
 					?>
-                  </select>
+                  </select> -->
+				  <input type="text" class="form-control"/>
                 </div>
                 <div class="col-md-4">
                   <select class="form-control" id="KategoriKelas" name="KategoriKelas" required>

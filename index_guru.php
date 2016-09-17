@@ -15,9 +15,11 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-tagsinput.css" rel="stylesheet">
     <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-tagsinput.min.js"></script>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	
 	<!-- clipboard js -->
@@ -260,10 +262,12 @@
           cursor: pointer;
           transition: 0.3s;
       }
-		table.i.fa, table.i.fa:visited {
+		table.i.fa, table.i.fa:visited, table.i.fa:link {
 			color: #30cbe8;
 		}
-		
+		a:link, a, a:visited {
+			color: #30cbe8;
+		}
       /* When moving the mouse over the close button */
       .closebtn:hover {
           color: black;
@@ -287,292 +291,293 @@
       .form-control {
         border-radius: 0px;
       }
+	  select.form-control {
+		  border-radius: 4px;
+	  }
     </style>
   </head>
   <body>
 	<div id="wrapper">
-    <!-- Navbar -->
-	<div id="header">
-		<nav class="navbar navbar-default">
-		  <div class="container">
-			<div class="topheader">
-			  <div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				  <span class="icon-bar"></span>
-				  <span class="icon-bar"></span>
-				  <span class="icon-bar"></span>
-				</button>
-				<!-- <a class="navbar-brand" href="#myPage" style="padding-left:120px;">Ujian Online</a> -->
-				<a class="navbar-brand" href="#myPage">Ujian Online</a>
+		<!-- Navbar -->
+		<div id="header">
+			<nav class="navbar navbar-default">
+			  <div class="container">
+				<div class="topheader">
+				  <div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+					</button>
+					<!-- <a class="navbar-brand" href="#myPage" style="padding-left:120px;">Ujian Online</a> -->
+					<a class="navbar-brand" href="#myPage">Ujian Online</a>
+				  </div>
+				  <div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav menu">
+					  <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:15px"></span> Beranda</a></li>
+					  <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:15px"></span> Kategori</a></li>
+					</ul>
+					<!-- <ul class="nav navbar-nav navbar-right" style="padding-right:90px;"> -->
+					<ul class="nav navbar-nav navbar-right">
+					  <li id="cari">
+						<form class="navbar-form" role="search">
+						  <div class="input-group">
+							<input type="text" class="form-control" placeholder="Search">
+							<div class="input-group-btn">
+							  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
+						  </div>
+						</form>
+					  </li>
+					  <li><a href="#"> <?php echo $_SESSION["nama"]; ?> </a></li>
+					  <li><a href="logout.php"><u>Keluar</u></a></li>
+					</ul>
+				  </div>
+				</div>
 			  </div>
-			  <div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav menu">
-				  <li><a href="index_guru.php"><span class="glyphicon glyphicon-home" style="font-size:15px"></span> Beranda</a></li>
-				  <li><a href="kategori.php"><span class="fa fa-tag" style="font-size:15px"></span> Kategori</a></li>
-				</ul>
-				<!-- <ul class="nav navbar-nav navbar-right" style="padding-right:90px;"> -->
-				<ul class="nav navbar-nav navbar-right">
-				  <li id="cari">
-					<form class="navbar-form" role="search">
-					  <div class="input-group">
-						<input type="text" class="form-control" placeholder="Search">
-						<div class="input-group-btn">
-						  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+			</nav>
+		</div>
+		<div id="content1">
+			<div class="container">
+			  <?php include("koneksi.php"); ?>
+				<div class="content">
+					<h2 style="margin-bottom: 30px; color:#30cbe8; font-family: 'Georgia', serif; text-align:center">Daftar Ujian</h2>
+					<div class="row">
+					  <div class="col-md-9">
+						<form id="form1" action="index_guru.php" method="post" class="form-inline" role="form">
+						<?php 
+							$dibuat = $_SESSION['userid'];
+							$kat = mysqli_query($link, "SELECT * FROM `materi` WHERE `dibuat_oleh`=$dibuat");
+							$numrows = mysqli_num_rows($kat);
+							if($numrows==0){ ?>
+								<div class="form-group">
+								<label class="control-label" style="margin-right:10px;" for="kategori">Kategori</label>
+								<select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control" disabled>
+									<option>All (Materi)</option>
+								</select>
+								</div>
+							  <div class="form-group">
+								<select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control" disabled>
+									<option>All (Kelas)</option>
+								 </select>
+							  </div>
+							<?php  } else {
+						?>
+						  <div class="form-group">
+							<label class="control-label" style="color:#ffbf30;margin-right:10px;" for="kategori">Kategori</label>
+								<!-- <select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control">
+										 <?php
+										  /* if (isset($_POST['kategori'])){
+											$_SESSION['matapelajaran'] = $_POST['kategori'];
+										  }
+										  
+										  echo '<option value="0" ';
+										  if ($_SESSION['matapelajaran']=="0"){
+											  echo "selected";
+										  }
+										  echo '>All (Materi)</option>';
+										  
+										  
+										  while($kate = mysqli_fetch_array($kat)){
+											echo '<option value="';
+											echo $kate['id_materi'];
+											echo '" ';
+											/*if ($_SESSION['matapelajaran']==$kate['id_materi']){
+												echo 'selected';
+											}
+											echo '>';
+											echo $kate['nama'];
+											echo '</option>';
+										  } */
+										  
+										?> 
+							  </select> -->
+							  <input type="text" value="Matematika" data-role="tagsinput" class="col-md-3 form-control"/>
+						  </div>
+						  <div class="form-group">
+							<select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control">
+								<?php
+										  if ($_SESSION['kategori_guru']=="SMA"){
+											$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=$dibuat)";
+										  } else {
+											$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=$dibuat)";
+										  }
+										  $kel = mysqli_query($link, $querykelas);
+										  
+										  if (isset($_POST['kelas'])){
+											$_SESSION['kelas'] = $_POST['kelas'];
+										  }
+										  
+										  echo '<option value="0" ';
+										  if ($_SESSION['kelas']=="0"){
+											  echo "selected";
+										  }
+										  echo '>All (Kelas)</option>';
+										  
+										  
+										  while($kate = mysqli_fetch_array($kel)){
+											echo '<option value="';
+											echo $kate['id_kelas'];
+											echo '" ';
+											if ($_SESSION['kelas']==$kate['id_kelas']){
+												echo 'selected';
+											}
+											echo '>';
+											echo $kate['nama'];
+											echo '</option>';
+										  }
+										?>
+							  </select>
+						  </div>
+							<?php } ?>
+						</form>
+					  </div>
+					  <div class="col-md-3">
+						<a href="new_ujian.php" class="button button1 pull-right" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Buat Ujian Baru</a>
+					  </div>
+					</div>
+					<?php 
+					  if(!empty($_SESSION['statuspesan'])){
+							if (($_SESSION['statuspesan'] == "sukses")){
+								echo '<div class="alert alert-success">';
+								echo   '<a href="#" class="closebtn" data-dismiss="alert" aria-label="close">&times;</a>';
+								echo   '<strong>Berhasil!</strong> ';
+								echo   $_SESSION['pesan'];
+								echo '</div>';
+								$_SESSION['statuspesan'] = "";
+							} else if ($_SESSION["statuspesan"]=="gagal") {
+								echo '<div class="alert alert-danger">';
+								echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+								echo   '<strong>Gagal!</strong>';
+								echo   $_SESSION['pesan'];
+								echo '</div>';
+							}
+						$_SESSION['statuspesan'] = "";
+					  }
+					?>
+					<table class="table table-hover">
+					  <thead>
+						<tr>
+						  <th style="text-align: left;">Judul</th>
+						  <th style="">Total Soal</th>
+						  <th style="width:20%">Materi</th>
+						  <th style="">Kelas</th>
+						  <th style="">Tampilan ujian</th>
+						  <th style="">Link ujian</th>
+						  <th>Laporan</th>
+						  <th style="">Terakhir diperbarui</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<?php
+							  if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']=="0"){
+								  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat order by modified_date asc";
+							  } else if ($_SESSION['matapelajaran']!="0" && $_SESSION['kelas']=="0") {
+									$idmapel = $_SESSION['matapelajaran'];
+									$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat order by modified_date desc";
+							  } else if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']!="0") {
+								  $idkel = $_SESSION['kelas'];
+								  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel order by modified_date desc";
+							  } else {
+									$idmapel = $_SESSION['matapelajaran'];
+									$idkel = $_SESSION['kelas'];
+									$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel order by modified_date desc";
+							  }      			  
+						  
+						  $query = mysqli_query($link, $querymapel);
+
+							while($data = mysqli_fetch_array($query)){
+							  echo '<tr class="table-row">';
+							  echo '<td style="text-align: left;">';
+							  echo   '<div class="judul">';
+							  echo     '<a class="link-judul" href="tambah_soal.php?tab=1&id='.$data['id_ujian'].'"">'. $data['judul_ujian'] .'</a><br>';
+							  echo   '</div>';
+							  echo   '<div style="font-size: 13px; color:#aba8a8;" class="link2">';
+							  echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" style="outline:none;" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.php?id='.$data['id_ujian'].'">Tambah Soal</a>';
+							  echo   '</div>';    
+							  echo  '</td>';
+							  echo  '<td>'. $data['total_soal'] .'</td>';
+							  $idm = $data['id_ujian'];
+							  $querynamamapel = "select * from materi_ujian where id_ujian=$idm";
+							  $qnm = mysqli_query($link, $querynamamapel);	
+							  echo  '<td>';
+									while ($datamateri = mysqli_fetch_array($qnm)){
+										$idmtri = $datamateri['id_materi'];
+										$qmtr = mysqli_query($link, "SELECT * FROM materi WHERE id_materi='$idmtri'");
+										$qmtrdta = mysqli_fetch_array($qmtr);
+										echo $qmtrdta['nama'];
+										echo '; ';
+									}
+							  echo  '</td>';
+									$idk = $data['id_kelas'];
+									  $querynmk = "select * from kelas where id_kelas=$idk";
+									  $qnk = mysqli_query($link, $querynmk);
+									  $namak = mysqli_fetch_array($qnk);
+							  echo  '<td>';
+									echo  $namak['nama'];
+									echo  '</td>';
+							  echo  '<td><a href="#" class="lihat_tampilan" data-id='.$data['id_ujian'].' data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><i class="fa fa-eye fa-lg"></i> </a> </td>';
+							  echo  '<td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" data-id='.$data['url_ujian'].' title="Bagikan link ujian"><i class="fa fa-share-alt fa-lg"></i> </a></td>';
+							  echo  '<td><a href="laporan_ujian.php?id='.$data['id_ujian'].'" data-toggle="tooltip" data-placement="top" title="Lihat laporan ujian"><i class="fa fa-bar-chart fa-lg"></i> </a></td>';
+								$yrdata = strtotime($data['modified_date']);
+								$bulan = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+							  echo  '<td>';
+							  echo date('j', $yrdata)." ".$bulan[date('n', $yrdata)]." ".date('Y', $yrdata).", ".date('G:i', $yrdata);
+							  echo '</td>';
+							  echo '</tr>';      
+						  }
+						?>
+					  </tbody>
+					</table>
+					<br />
+					<?php $numrow = mysqli_num_rows($query);
+							if($numrow==0){
+							  echo   '<tr><div style="text-align:center; color:#777; margin-top:-50px; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada ujian yang dibuat. Silahkan buat ujian baru.</div></tr>';
+					} ?>
+
+					<!-- Modal Hapus -->
+					<div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusLabel">
+					  <div class="modal-dialog" role="document">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+							<h4 class="modal-title" id="modalHapusLabel">Hapus Ujian</h4>
+						  </div>
+						  <div class="modal-body">
+							<p style="padding-left:20px; margin-bottom:0px">Apakah anda ingin menghapus ujian <b id="p1"> Gerak Lurus Beraturan?</b>?</p>
+						  </div>
+						  <div class="modal-footer">
+							<a  href="kategori.php" class="button button1" id="simpan" style="text-decoration:none;">Hapus Ujian</a>
+							<button class="button button1" data-dismiss="modal" style="border-width:2px; background-color:#e7e7e7; border-color:#e7e7e7; color:#777">Batalkan</button>
+						  </div>
 						</div>
 					  </div>
-					</form>
-				  </li>
-				  <li><a href="#"> <?php echo $_SESSION["nama"]; ?> </a></li>
-				  <li><a href="logout.php"><u>Keluar</u></a></li>
-				</ul>
-			  </div>
-			</div>
-		  </div>
-		</nav>
-	</div>
-    <div id="content1">
-	<div class="container">
-	  <?php include("koneksi.php"); ?>
-      <div class="content">
-        <h2 style="margin-bottom: 30px; color:#30cbe8; font-family: 'Georgia', serif; text-align:center">Daftar Ujian</h2>
-        <div class="row">
-          <div class="col-md-9">
-            <form id="form1" action="index_guru.php" method="post" class="form-inline" role="form">
-			<?php 
-				$dibuat = $_SESSION['userid'];
-          		$kat = mysqli_query($link, "SELECT * FROM `materi` WHERE `dibuat_oleh`=$dibuat");
-				$numrows = mysqli_num_rows($kat);
-				if($numrows==0){ ?>
-					<div class="form-group">
-					<label class="control-label" style="margin-right:10px;" for="kategori">Kategori</label>
-				    <select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control" disabled>
-						<option>All (Materi)</option>
-					</select>
 					</div>
-				  <div class="form-group">
-					<select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control" disabled>
-						<option>All (Kelas)</option>
-					 </select>
-				  </div>
-				<?php  } else {
-			?>
-              <div class="form-group">
-                <label class="control-label" style="color:#ffbf30;margin-right:10px;" for="kategori">Kategori</label>
-				    <select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control">
-          					<?php
-          					  if (isset($_POST['kategori'])){
-          						$_SESSION['matapelajaran'] = $_POST['kategori'];
-          					  }
-          					  
-          					  echo '<option value="0" ';
-          					  if ($_SESSION['matapelajaran']=="0"){
-          						  echo "selected";
-          					  }
-          					  echo '>All (Materi)</option>';
-          					  
-          					  
-          					  while($kate = mysqli_fetch_array($kat)){
-          						echo '<option value="';
-          						echo $kate['id_materi'];
-          						echo '" ';
-          						/*if ($_SESSION['matapelajaran']==$kate['id_materi']){
-          							echo 'selected';
-          						}*/
-          						echo '>';
-          						echo $kate['nama'];
-          						echo '</option>';
-          					  }
-          					  
-          					?>
-                  </select>
-              </div>
-			  <div class="form-group">
-				<select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control">
-                    <?php
-          					  if ($_SESSION['kategori_guru']=="SMA"){
-          						$querykelas = "SELECT * FROM `kelas` WHERE id_kelas > 3 and (`dibuat_oleh`=$dibuat)";
-          					  } else {
-          						$querykelas = "SELECT * FROM `kelas` WHERE (id_kelas < 4 or id_kelas > 6) and (`dibuat_oleh`=$dibuat)";
-          					  }
-          					  $kel = mysqli_query($link, $querykelas);
-          					  
-          					  if (isset($_POST['kelas'])){
-          						$_SESSION['kelas'] = $_POST['kelas'];
-          					  }
-          					  
-          					  echo '<option value="0" ';
-          					  if ($_SESSION['kelas']=="0"){
-          						  echo "selected";
-          					  }
-          					  echo '>All (Kelas)</option>';
-          					  
-          					  
-          					  while($kate = mysqli_fetch_array($kel)){
-          						echo '<option value="';
-          						echo $kate['id_kelas'];
-          						echo '" ';
-          						if ($_SESSION['kelas']==$kate['id_kelas']){
-          							echo 'selected';
-          						}
-          						echo '>';
-          						echo $kate['nama'];
-          						echo '</option>';
-          					  }
-          					?>
-                  </select>
-			  </div>
-				<?php } ?>
-            </form>
-          </div>
-          <div class="col-md-3">
-            <a href="new_ujian.php" class="button button1 pull-right" style="margin-bottom:10px; text-decoration:none"><span class="glyphicon glyphicon-plus"></span> Buat Ujian Baru</a>
-          </div>
-        </div>
 
-        <?php 
-          if(!empty($_SESSION['statuspesan'])){
-      			if (($_SESSION['statuspesan'] == "sukses")){
-      				echo '<div class="alert alert-success">';
-      				echo   '<a href="#" class="closebtn" data-dismiss="alert" aria-label="close">&times;</a>';
-      				echo   '<strong>Berhasil!</strong> ';
-      				echo   $_SESSION['pesan'];
-      				echo '</div>';
-      				$_SESSION['statuspesan'] = "";
-      			} else if ($_SESSION["statuspesan"]=="gagal") {
-      				echo '<div class="alert alert-danger">';
-      				echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-      				echo   '<strong>Gagal!</strong>';
-      				echo   $_SESSION['pesan'];
-      				echo '</div>';
-      			}
-            $_SESSION['statuspesan'] = "";
-          }
-        ?>
-
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th style="text-align: left;">Judul</th>
-              <th>Total Soal</th>
-              <th>Materi</th>
-              <th>Kelas</th>
-              <th>Tampilan ujian</th>
-              <th>Link ujian</th>
-              <th>Laporan</th>
-              <th>Terakhir diperbarui</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-      			  if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']=="0"){
-      				  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat order by modified_date asc";
-      			  } else if ($_SESSION['matapelajaran']!="0" && $_SESSION['kelas']=="0") {
-        				$idmapel = $_SESSION['matapelajaran'];
-        				$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat order by modified_date desc";
-      			  } else if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']!="0") {
-      				  $idkel = $_SESSION['kelas'];
-      				  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel order by modified_date desc";
-      			  } else {
-        				$idmapel = $_SESSION['matapelajaran'];
-        				$idkel = $_SESSION['kelas'];
-        				$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel order by modified_date desc";
-      			  }      			  
-              
-              $query = mysqli_query($link, $querymapel);
-
-                while($data = mysqli_fetch_array($query)){
-                  echo '<tr class="table-row">';
-                  echo '<td style="text-align: left;">';
-                  echo   '<div class="judul">';
-                  echo     '<a class="link-judul" href="tambah_soal.php?tab=1&id='.$data['id_ujian'].'"">'. $data['judul_ujian'] .'</a><br>';
-                  echo   '</div>';
-                  echo   '<div style="font-size: 13px; color:#aba8a8;" class="link2">';
-                  echo     '<a href="edit_ujian.php?id='.$data['id_ujian'].'">Edit</a> | <a href="#"  class="hapus" style="outline:none;" data-id='.$data['id_ujian'].' data-toggle="modal" data-target="#modalHapus">Hapus</a> | <a href="tambah_soal.php?id='.$data['id_ujian'].'">Tambah Soal</a>';
-                  echo   '</div>';    
-                  echo  '</td>';
-                  echo  '<td>'. $data['total_soal'] .'</td>';
-				  $idm = $data['id_ujian'];
-				  $querynamamapel = "select * from materi_ujian where id_ujian=$idm";
-				  $qnm = mysqli_query($link, $querynamamapel);	
-                  echo  '<td>';
-						while ($datamateri = mysqli_fetch_array($qnm)){
-							$idmtri = $datamateri['id_materi'];
-							$qmtr = mysqli_query($link, "SELECT * FROM materi WHERE id_materi='$idmtri'");
-							$qmtrdta = mysqli_fetch_array($qmtr);
-							echo $qmtrdta['nama'];
-							echo '; ';
-						}
-          		  echo  '</td>';
-      	       			$idk = $data['id_kelas'];
-      				      $querynmk = "select * from kelas where id_kelas=$idk";
-      				      $qnk = mysqli_query($link, $querynmk);
-      				      $namak = mysqli_fetch_array($qnk);
-                  echo  '<td>';
-      				    echo  $namak['nama'];
-      				    echo  '</td>';
-                  echo  '<td><a href="#" class="lihat_tampilan" data-id='.$data['id_ujian'].' data-toggle="tooltip" data-placement="top" title="Lihat tampilan ujian" ><i class="fa fa-eye fa-lg"></i> </a> </td>';
-                  echo  '<td><a href="#" class="bagikan" data-toggle="tooltip" data-placement="top" data-id='.$data['url_ujian'].' title="Bagikan link ujian"><i class="fa fa-share-alt fa-lg"></i> </a></td>';
-                  echo  '<td><a href="laporan_ujian.php?id='.$data['id_ujian'].'" data-toggle="tooltip" data-placement="top" title="Lihat laporan ujian"><i class="fa fa-bar-chart fa-lg"></i> </a></td>';
-                    $yrdata = strtotime($data['modified_date']);
-                    $bulan = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
-                  echo  '<td>';
-                  echo date('j', $yrdata)." ".$bulan[date('n', $yrdata)]." ".date('Y', $yrdata).", ".date('G:i', $yrdata);
-                  echo '</td>';
-                  echo '</tr>';      
-              }
-            ?>
-          </tbody>
-        </table>
-		<br />
-        <?php $numrow = mysqli_num_rows($query);
-                if($numrow==0){
-                  echo   '<tr><div style="text-align:center; color:#777; margin-top:-50px; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada ujian yang dibuat. Silahkan buat ujian baru.</div></tr>';
-          } ?>
-
-        <!-- Modal Hapus -->
-        <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-                <h4 class="modal-title" id="modalHapusLabel">Hapus Ujian</h4>
-              </div>
-              <div class="modal-body">
-                <p style="padding-left:20px; margin-bottom:0px">Apakah anda ingin menghapus ujian <b id="p1"> Gerak Lurus Beraturan?</b>?</p>
-              </div>
-              <div class="modal-footer">
-                <a  href="kategori.php" class="button button1" id="simpan" style="text-decoration:none;">Hapus Ujian</a>
-                <button class="button button1" data-dismiss="modal" style="border-width:2px; background-color:#e7e7e7; border-color:#e7e7e7; color:#777">Batalkan</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Modal Bagikan -->
-        <div class="modal fade" id="modalBagikan" tabindex="-1" role="dialog" aria-labelledby="modalBagikanLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
-                    <label class="modal-title">Link Ujian <b id="p2"></b></label>
-                 </div>
-                 <div class="modal-body">
-                    <a href="#" id="modalshare" style="text-decoration: underline;"></a>
-                    <button id="btn-tool" class="btn button button1 pull-right btn-copy-clip" data-clipboard-target="#modalshare" style="background-color:#e7e7e7; border-color:#e7e7e7; color:#000000">
-          						<img width="13" src="image/clippy.svg" alt="Copy to clipboard"> Copy
-          					</button>
-                 </div>
-                 <div class="modal-footer"></div>
-              </div>
-            </div>
-        </div>  
-
-      </div>
-    </div>
-
-  	</div>
-	<div id="footer">
-  	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
+					<!-- Modal Bagikan -->
+					<div class="modal fade" id="modalBagikan" tabindex="-1" role="dialog" aria-labelledby="modalBagikanLabel">
+						<div class="modal-dialog" role="document">
+						  <div class="modal-content">
+							 <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+								<label class="modal-title">Link Ujian <b id="p2"></b></label>
+							 </div>
+							 <div class="modal-body">
+								<a href="#" id="modalshare" style="text-decoration: underline;"></a>
+								<button id="btn-tool" class="btn button button1 pull-right btn-copy-clip" data-clipboard-target="#modalshare" style="background-color:#e7e7e7; border-color:#e7e7e7; color:#000000">
+											<img width="13" src="image/clippy.svg" alt="Copy to clipboard"> Copy
+										</button>
+							 </div>
+							 <div class="modal-footer"></div>
+						  </div>
+						</div>
+					</div>  
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+		  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
+		</div>
 	</div>
   </body>
 </html>
