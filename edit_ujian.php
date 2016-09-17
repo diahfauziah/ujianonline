@@ -17,9 +17,9 @@
     <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-tagsinput.css" rel="stylesheet">
+	<link href="css/bootstrap-tagsinput-typeahead.css" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-tagsinput.min.js"></script>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	
 	<!-- Froala -->
@@ -356,6 +356,9 @@
         min-height: 600px;
         padding: 20px 12px;
       }
+	  .bootstrap-tagsinput {
+		  min-width: 274px;
+	  }
 
     </style>
   </head>
@@ -414,7 +417,23 @@
            </div>
       </div>
       <div class="row">
-        
+          <?php 
+			if(!empty($_SESSION['statuspesan'])){
+			  if (($_SESSION['statuspesan'] == "sukses")){
+				echo '<div class="alert alert-success" style="margin-top:10px;">';
+				echo   '<strong>Berhasil!</strong> ';
+				echo   $_SESSION['pesan'];
+				echo '</div>';
+				$_SESSION['statuspesan'] = "";
+			  } else if ($_SESSION["statuspesan"]=="gagal") {
+				echo '<div class="alert alert-danger" style="margin-top:10px;">';
+				echo   '<strong>Gagal!</strong>';
+				echo   $_SESSION['pesan'];
+				echo '</div>';
+				$_SESSION['statuspesan'] = "";
+			  }
+			}
+		  ?>
           <form id="form" autocomplete="off" action="update_ujian.php?id=<?php echo $ujian['id_ujian']?>" class="form-horizontal" method="post">
             <div class="col-md-8">
 				<div class="form-group">
@@ -470,7 +489,7 @@
 					  } */
 					?>
 					</select> -->
-					<input type="text" data-role="tagsinput" class="form-control" />
+					<input id="KategoriUjian" name="KategoriUjian" type="text" data-role="tagsinput" class="form-control" />
 				  </div>
 				  <div class="col-md-3">
 					<select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
@@ -542,6 +561,10 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/tooltipsy.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-tagsinput.min.js"></script>
+	<script type="text/javascript" src="js/typeahead.bundle.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/rainbow.min.js"></script>
 
     <!-- Include JS files. -->
     <script type="text/javascript" src="froala/js/froala_editor.min.js"></script>
@@ -634,6 +657,10 @@
 	</script>
 	
 	<script type="text/javascript">
+		$(".alert").fadeTo(2000, 500).slideUp(500, function(){
+			$(".alert").slideUp(1000);
+		});
+	
 	  $(function(){
 		$.FroalaEditor.DefineIcon('clear', {NAME: 'refresh'});
 		$.FroalaEditor.RegisterCommand('clear', {
@@ -685,7 +712,47 @@
 			$("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
 		});
 	});
-
+	
+	localStorage.clear();
+	
+    var materi = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  prefetch: 'materi.php'
+	});
+	materi.initialize();
+	
+	var elt = $('input[name="KategoriUjian"]');
+	elt.tagsinput({
+	  itemValue: 'value',
+	  itemText: 'text',
+	  typeaheadjs: {
+		name: 'materi',
+		displayKey: 'text',
+		source: materi.ttAdapter()
+	  }
+	});
+	
+	if (1==<?php 
+		$datakat = mysqli_query($link, "SELECT * FROM materi_ujian WHERE id_ujian='$id'");
+		if ($datakat){
+			echo 1;
+		} else {
+			echo 0;
+		}
+	?>) {
+		<?php
+		while ($datamateri = mysqli_fetch_array($datakat)){
+			$idmtri = $datamateri['id_materi'];
+			$qmtr = mysqli_query($link, "SELECT * FROM materi WHERE id_materi='$idmtri'");
+			$qmtrdta = mysqli_fetch_array($qmtr);
+			?> var x = <?php echo '"{\"value\":' .$qmtrdta['id_materi'] .', \"text\":\"' .$qmtrdta['nama'] .'\"}"'; ?>;
+			var obj = jQuery.parseJSON(x);
+			elt.tagsinput('add', obj);
+			<?php
+		}
+		?>
+	}
 	  
 	</script>
   </body>

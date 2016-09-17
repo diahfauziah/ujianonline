@@ -458,17 +458,17 @@
 					  <tbody>
 						<?php
 							  if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']=="0"){
-								  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat order by modified_date asc";
+								  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat";
 							  } else if ($_SESSION['matapelajaran']!="0" && $_SESSION['kelas']=="0") {
 									$idmapel = $_SESSION['matapelajaran'];
-									$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat order by modified_date desc";
+									$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat";
 							  } else if ($_SESSION['matapelajaran']=="0" && $_SESSION['kelas']!="0") {
 								  $idkel = $_SESSION['kelas'];
-								  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel order by modified_date desc";
+								  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel";
 							  } else {
 									$idmapel = $_SESSION['matapelajaran'];
 									$idkel = $_SESSION['kelas'];
-									$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel order by modified_date desc";
+									$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel";
 							  }      			  
 						  
 						  $query = mysqli_query($link, $querymapel);
@@ -624,7 +624,7 @@
 		source: materi.ttAdapter()
 	  }
 	});
-		  
+	  
   $(function(){
   	var clipboard = new Clipboard('.btn-copy-clip');
 

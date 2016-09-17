@@ -38,11 +38,25 @@
 				
 				$idujian = $_GET['id'];
 				
-				$update = "UPDATE info_ujian SET judul_ujian='$judul', lama_ujian='$waktuujian', acak_soal='$acaksoal', mata_pelajaran='$kategoriujian', id_kelas='$kategorikelas', perlu_login='$perlulogin', petunjuk='$petunjuk', modified_date=NOW() WHERE id_ujian='$idujian'";
+				$update = "UPDATE info_ujian SET judul_ujian='$judul', lama_ujian='$waktuujian', acak_soal='$acaksoal', id_kelas='$kategorikelas', perlu_login='$perlulogin', petunjuk='$petunjuk', modified_date=NOW() WHERE id_ujian='$idujian'";
 				
 				$update_query = mysqli_query($link, $update);
 				
-				if ($update_query){
+				$katujian = explode(',', $kategoriujian);
+	
+				echo $kategoriujian;
+				
+				$totalmateri = count($katujian);
+					
+				$delmateri = mysqli_query($link, "DELETE FROM materi_ujian WHERE id_ujian='$idujian'");
+				
+				for ($i = 0; $i < $totalmateri; $i++){
+					$idmateri = $katujian[$i];
+					
+					$saveujianmateri = mysqli_query($link, "INSERT INTO materi_ujian(id_ujian, id_materi) VALUES ('$idujian', '$idmateri')");
+				}
+				
+				if ($saveujianmateri){
 					$_SESSION['statuspesan'] = "sukses";
 					$_SESSION['pesan'] = " Ujian $judul berhasil diperbaharui <i class='fa fa-check-circle'></i>";
 					header('location:index_guru.php');

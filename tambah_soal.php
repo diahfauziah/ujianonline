@@ -429,6 +429,7 @@
 							echo   '<strong>Gagal!</strong>';
 							echo   $_SESSION['pesan'];
 							echo '</div>';
+							$_SESSION['statuspesan'] = "";
 						  }
 						}
 					  ?>
@@ -1575,6 +1576,12 @@
 			$(".alert").slideUp(1000);
 		});
 		
+		function slideAlert(elmt){
+			$(elmt).fadeTo(2000, 500).slideUp(500, function(){
+				$(elmt).slideUp(1000);
+			});
+		};
+		
 		$(".hapus").click(function(){
 		  var y = "";
 		  var x = "";
@@ -1815,6 +1822,13 @@
 			xmlhttp.onreadystatechange = function() {
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 					document.getElementById(elm).innerHTML = xmlhttp.responseText;
+					$elmm = "#"+elm;
+					$('html, body').animate({
+						scrollTop: $($elmm).offset().top
+					}, 100);
+					$(".alert").fadeTo(2000, 500).slideUp(500, function(){
+						$(".alert").slideUp(1000);
+					});
 				}
 			};
 			xmlhttp.open("GET", "_savesoalditambahsoal.php?kat=1&" + strsave, true);

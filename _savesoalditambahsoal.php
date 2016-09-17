@@ -10,6 +10,14 @@
 		$poinksg = $_GET['poinksg'];
 		
 		$update = mysqli_query($link, "UPDATE soal SET pertanyaan='$pertanyaan', stage_id='$stage', jawaban_benar='$jwbbnr', poin_benar='$poinbnr', poin_kosong='$poinksg', poin_salah='$poinslh' WHERE id_soal='$id'");
+		
+		if ($update){
+			$_SESSION['statuspesan'] = "sukses";
+			$_SESSION['pesan'] = " Soal berhasil diperbaharui <i class='fa fa-check-circle'></i>";
+		} else {
+			$_SESSION['statuspesan'] = "gagal";
+			$_SESSION['pesan'] = " Soal tidak berhasil diperbaharui";
+		}
 	}
 	$query1 = mysqli_query($link, "SELECT * FROM `soal` WHERE `id_soal`='$id' ");
 
@@ -18,6 +26,20 @@
 			echo $soal['id_soal'];
 			echo '">';
             echo '<div class="panel panel-default soaltersimpan" style="margin-top:10px; background-color:#ffffff; border:0px;">';
+						if(!empty($_SESSION['statuspesan'])){
+						  if (($_SESSION['statuspesan'] == "sukses")){
+							echo '<div class="alert alert-success" style="margin-top:10px;">';
+							echo   '<strong>Berhasil!</strong> ';
+							echo   $_SESSION['pesan'];
+							echo '</div>';
+							$_SESSION['statuspesan'] = "";
+						  } else if ($_SESSION["statuspesan"]=="gagal") {
+							echo '<div class="alert alert-danger" style="margin-top:10px;">';
+							echo   '<strong>Gagal!</strong>';
+							echo   $_SESSION['pesan'];
+							echo '</div>';
+						  }
+						}
             echo '<div class="panel-body">';
             echo     '<div class="row">';
             echo       '<div style="margin-left:10px; width:15px; float:left;">';
