@@ -7,16 +7,17 @@
 		
 		$query = mysqli_query($link, "INSERT INTO materi(nama, dibuat_oleh) VALUES('$namstage','$idguru')");
 		
-		echo '<option value="">Pilih Materi</option>';
-		$querystg = mysqli_query($link, "SELECT * FROM materi WHERE dibuat_oleh='$idguru'");
-		while ($stg = mysqli_fetch_array($querystg)){
-			echo '<option value="';
-			echo $stg['id_materi'];
-			echo '"';
-			if ($namstage==$stg['nama']) echo 'selected';
-			echo '>';
-			echo $stg['nama'];
-			echo '</option>';
-		}
+		$get = mysqli_query($link, "SELECT MAX(id_materi) FROM materi");
+		$getid = mysqli_fetch_array($get);
+		$idmateri = $getid['MAX(id_materi)'];
+		
+		$data = mysqli_query($link, "SELECT * FROM materi WHERE id_materi='$idmateri'");
+		$dtmat = mysqli_fetch_array($data);
+		
+		echo '{"value":';
+		echo $dtmat['id_materi'];
+		echo ', "text":"';
+		echo $dtmat['nama'];
+		echo '"}';
 	}
 ?>

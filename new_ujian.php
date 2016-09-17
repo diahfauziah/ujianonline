@@ -21,7 +21,6 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <script src="js/bootstrap-tagsinput.min.js"></script>
 	
 	<!-- Froala -->
       <!-- Include Font Awesome. -->
@@ -241,6 +240,9 @@
       .button1:hover, .button2:hover, a.button:hover, .button4:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
+	  .bootstrap-tagsinput {
+		  min-width: 274px;
+	  }
     </style>
   </head>
   <body>
@@ -348,7 +350,7 @@
 					  } */
 					?>
                   </select> -->
-				  <input type="text" class="form-control"/>
+				  <input id="KategoriUjian" name="KategoriUjian" type="text" data-role="tagsinput" class="form-control"/>
                 </div>
                 <div class="col-md-4">
                   <select class="form-control" id="KategoriKelas" name="KategoriKelas" required>
@@ -466,6 +468,9 @@
     <script type="text/javascript" src="js/tooltipsy.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-tagsinput.min.js"></script>
+    <script type="text/javascript" src="js/typeahead.bundle.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/rainbow.min.js"></script>
 
     <!-- Include JS files. -->
     <script type="text/javascript" src="froala/js/froala_editor.min.js"></script>
@@ -620,14 +625,14 @@
 	function addmapel(){
 		var xmlhttp = new XMLHttpRequest();
 		var str = $('input[name="namamapel"]').val();
+		alert(str);
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				document.getElementById("KategoriUjian").innerHTML = xmlhttp.responseText;
+				addItemTag($.trim(xmlhttp.responseText));
 			}
 		};
 		xmlhttp.open("GET", "_addmapel.php?name=" + str, true);
 		xmlhttp.send();
-		$('input[name="namamapel"]').val("");
 	};
 	
 	function addkelas(){
@@ -660,6 +665,30 @@
 			$('.modal-backdrop').remove();
 		}
 	});
+	
+	// TAGSINPUT
+    var materi = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  prefetch: 'materi.php'
+	});
+	materi.initialize();
+	
+	var elt = $('input[name="KategoriUjian"]');
+	elt.tagsinput({
+	  itemValue: 'value',
+	  itemText: 'text',
+	  typeaheadjs: {
+		name: 'materi',
+		displayKey: 'text',
+		source: materi.ttAdapter()
+	  }
+	});
+	
+	function addItemTag(resp){
+		alert(resp);
+		elt.tagsinput('add', resp);
+	};
 	  
 	</script>
   </body>

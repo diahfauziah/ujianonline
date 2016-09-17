@@ -16,6 +16,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-tagsinput.css" rel="stylesheet">
+	<link href="css/bootstrap-tagsinput-typeahead.css" rel="stylesheet">
     <link href='css/didactgothic.css' rel='stylesheet' type='text/css'>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
