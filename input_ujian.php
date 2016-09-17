@@ -37,7 +37,7 @@
 	
 	$dibuat = $_SESSION['userid'];
 	
-	$insert1 = "INSERT INTO `info_ujian`(`mata_pelajaran`, `id_kelas`, `lama_ujian`, `judul_ujian`, `total_soal`, `acak_soal`, `petunjuk`, `perlu_login`, `dibuat_oleh`) VALUES ('$kategoriujian', '$kategorikelas', '$waktuujian', '$judul', '0', '$acaksoal', '$petunjuk', '$perlulogin', '$dibuat')";
+	$insert1 = "INSERT INTO `info_ujian`(`id_kelas`, `lama_ujian`, `judul_ujian`, `total_soal`, `acak_soal`, `petunjuk`, `perlu_login`, `dibuat_oleh`) VALUES ('$kategorikelas', '$waktuujian', '$judul', '0', '$acaksoal', '$petunjuk', '$perlulogin', '$dibuat')";
 	
 	$insert_query = mysqli_query($link, $insert1);
 	
@@ -49,8 +49,21 @@
 	
 	$updatequery = mysqli_query($link, "UPDATE info_ujian SET url_ujian='$url' WHERE id_ujian='$idujian'");
 	
+	$katujian = explode(',', $kategoriujian);
+	
+	echo $kategoriujian;
+	
+	$totalmateri = count($katujian);
+		
+	for ($i = 0; $i < $totalmateri; $i++){
+		$idmateri = $katujian[$i];
+		
+		$saveujianmateri = mysqli_query($link, "INSERT INTO materi_ujian(id_ujian, id_materi) VALUES ('$idujian', '$idmateri')");
+	}
+	
+	
 
-	if($updatequery){
+	if($insert1){
 		$_SESSION['statuspesan'] = "sukses";
 		$_SESSION['matapelajaran'] = "0";
 		$_SESSION['kelas'] = "0";
