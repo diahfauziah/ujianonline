@@ -884,9 +884,10 @@
               $("#soalterjawab").text($soalterjawab);
               $($ini).addClass("tercatat");
 			  //$("#bgterjawab").css({"background-color":"yellow"}).fadeIn(3000).fadeOut(3000);
-			  setInterval(function(){
+			  $("#bgterjawab").toggleClass("bgkuning");
+			  setTimeout(function(){
 				$("#bgterjawab").toggleClass("bgkuning");
-			  },1); 
+			  }, 1000);
             }
             $(this).siblings('i.fa.coret').css({"display":"none"});
             if($(this).find('.opsiGanda').hasClass("tercoret")){
