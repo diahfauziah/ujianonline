@@ -352,7 +352,7 @@
 					  } */
 					?>
                   </select> -->
-				  <input id="KategoriUjian" name="KategoriUjian" type="text" data-role="tagsinput" class="form-control"/>
+				  <input id="KategoriUjian" name="KategoriUjian" type="text" data-role="tagsinput" class="form-control" />
                 </div>
                 <div class="col-md-4">
                   <select class="form-control" id="KategoriKelas" name="KategoriKelas" required>

@@ -343,14 +343,10 @@
 							if($numrows==0){ ?>
 								<div class="form-group">
 								<label class="control-label" style="margin-right:10px;" for="kategori">Kategori</label>
-								<select id="kategori" name="kategori" onchange="this.form.submit()" class="form-control" disabled>
-									<option>All (Materi)</option>
-								</select>
+								<input type="text" disabled placeholder="belum ada materi" />
 								</div>
 							  <div class="form-group">
-								<select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control" disabled>
-									<option>All (Kelas)</option>
-								 </select>
+								<input type="text" disabled placeholder="belum ada kelas" />
 							  </div>
 							<?php  } else {
 						?>
@@ -459,7 +455,7 @@
 					  </thead>
 					  <tbody>
 						<?php
-							  if ($_SESSION['matapelajaran']=="" && $_SESSION['kelas']=="0"){
+							  if (($_SESSION['matapelajaran']=="0"||$_SESSION['matapelajaran']=="") && $_SESSION['kelas']=="0"){
 								  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat";
 							  } else if ($_SESSION['matapelajaran']!="0" && $_SESSION['kelas']=="0") {
 									$matr = $_SESSION['matapelajaran'];
@@ -474,7 +470,7 @@
 									$querymt = "SELECT id_ujian FROM materi_ujian WHERE $qrym";
 									
 									$querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_ujian IN ($querymt)";
-							  } else if ($_SESSION['matapelajaran']=="" && $_SESSION['kelas']!="0") {
+							  } else if (($_SESSION['matapelajaran']=="0"||$_SESSION['matapelajaran']=="") && $_SESSION['kelas']!="0") {
 								  $idkel = $_SESSION['kelas'];
 								  $querymapel = "select * from info_ujian where dibuat_oleh=$dibuat and id_kelas=$idkel";
 							  } else {
