@@ -622,6 +622,7 @@
 	function addmapel(){
 		var xmlhttp = new XMLHttpRequest();
 		var str = $('input[name="namamapel"]').val();
+		$('input[name="namamapel"]').val('');
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				addItemTag($.trim(xmlhttp.responseText));
@@ -634,6 +635,7 @@
 	function addkelas(){
 		var xmlhttp = new XMLHttpRequest();
 		var str = $('input[name="namakelas"]').val();
+		$('input[name="namakelas"]').val('');
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				document.getElementById("KategoriKelas").innerHTML = xmlhttp.responseText;
@@ -647,18 +649,14 @@
 	$('input[name="namamapel"]').keydown(function(e){
 		if (e.keyCode == 13){
 			addmapel();
-			$('#modalTambahKategori').modal('hide');
-			$('body').removeClass('modal-open');
-			$('.modal-backdrop').remove();
+			$("[data-dismiss=modal]").trigger({ type: "click" });
 		}
 	});
 	
 	$('input[name="namakelas"]').keydown(function(e){
 		if (e.keyCode == 13){
 			addkelas();
-			$('#modalKelas').modal('hide');
-			$('body').removeClass('modal-open');
-			$('.modal-backdrop').remove();
+			$("[data-dismiss=modal]").trigger({ type: "click" });
 		}
 	});
 	

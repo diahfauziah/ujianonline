@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if (isset($_GET['name'])){
+	if (isset($_GET['name'])&&(!empty($_GET['name']))){
 		include("koneksi.php");
 		$namstage = $_GET['name'];
 		$idguru = $_SESSION['userid'];
