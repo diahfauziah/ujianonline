@@ -444,7 +444,7 @@
 						$_SESSION['statuspesan'] = "";
 					  }
 					?>
-					<table class="table table-hover">
+					<table class="table table-hover ">
 					  <thead>
 						<tr>
 						  <th style="text-align: left; width:25%">Judul</th>
