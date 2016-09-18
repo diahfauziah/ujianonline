@@ -49,7 +49,6 @@
     <link rel="stylesheet" href="froala/css/plugins/image.css">
     <link rel="stylesheet" href="froala/css/plugins/image_manager.css">
     <link rel="stylesheet" href="froala/css/plugins/line_breaker.css">
-    <link rel="stylesheet" href="froala/css/plugins/quick_insert.css">
     <link rel="stylesheet" href="froala/css/plugins/table.css">
     <link rel="stylesheet" href="froala/css/plugins/video.css">
     <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
@@ -831,6 +830,7 @@
 
         /* Pilih opsi jawaban */
         $(".opsijawaban").click(function(){
+		  // sudah dipilih, ingin membatalkan 	 
           if($(this).hasClass("selected")){
             $(this).closest('ul').find('li.list-group-item').removeClass("selected");
             $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#30cbe8", "border-color":"#e1edef"});
@@ -856,8 +856,13 @@
             }
 
             $(this).siblings('i.fa.coret').css({"display":"inline-block"});
+			$("#bgterjawab").toggleClass("bgkuning");
+			  setTimeout(function(){
+				$("#bgterjawab").toggleClass("bgkuning");
+			  }, 1000);
 
           }else{
+			// memilih
             $(this).closest('ul').find('li.list-group-item').removeClass("selected");
             $(this).closest('ul').find('li.list-group-item').css({"color":"#000000"});
             $(this).addClass("selected");
@@ -884,15 +889,16 @@
               $("#soalterjawab").text($soalterjawab);
               $($ini).addClass("tercatat");
 			  //$("#bgterjawab").css({"background-color":"yellow"}).fadeIn(3000).fadeOut(3000);
-			  $("#bgterjawab").toggleClass("bgkuning");
-			  setTimeout(function(){
-				$("#bgterjawab").toggleClass("bgkuning");
-			  }, 1000);
+			  
             }
             $(this).siblings('i.fa.coret').css({"display":"none"});
             if($(this).find('.opsiGanda').hasClass("tercoret")){
               $(this).find('.opsiGanda').removeClass("tercoret");
             }
+			$("#bgterjawab").toggleClass("bgkuning");
+			  setTimeout(function(){
+				$("#bgterjawab").toggleClass("bgkuning");
+			  }, 1000);
           }
     		  $idsoal = $(this).attr("data-idsoal");
     		  $jwbn = $(this).find(".opsiGanda").html();
@@ -902,6 +908,7 @@
     		  } else {
     			$($setj).removeAttr("value");
     		  }
+			
         });
 
         $(".opsicheckbox").click(function(){

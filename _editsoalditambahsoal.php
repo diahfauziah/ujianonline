@@ -165,6 +165,7 @@
                                         <label style="width:122px;" class="">Kelompok Soal </label>
                                         <select class="form-control" id="stage1" name="stage1" >
                                           <option value="1">Tanpa Kelompok Soal</option>
+										  
                                           <?php
                                             $querystg = mysqli_query($link, "SELECT * FROM stage WHERE dibuat_oleh='$userid'");
                                             while ($stg = mysqli_fetch_array($querystg)){
@@ -180,6 +181,7 @@
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+									  <a href="javascript:;" class="apaitukelsoal" title="Mengelompokkan soal-soal yang terkait menjadi satu kelompok soal. Contoh: <br> 1. Berdasarkan tipe soal: Pilihan Ganda, Isian, Essay <br> 2. Berdasarkan materi: Aljabar, Aritmatika, Integral">Apa itu kelompok soal?</a>
                                     </div>
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
@@ -248,6 +250,7 @@
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+									  <a href="javascript:;" class="apaitukelsoal" title="Mengelompokkan soal-soal yang terkait menjadi satu kelompok soal. Contoh: <br> 1. Berdasarkan tipe soal: Pilihan Ganda, Isian, Essay <br> 2. Berdasarkan materi: Aljabar, Aritmatika, Integral">Apa itu kelompok soal?</a>
                                     </div>
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
@@ -319,6 +322,7 @@
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+									  <a href="javascript:;" class="apaitukelsoal" title="Mengelompokkan soal-soal yang terkait menjadi satu kelompok soal. Contoh: <br> 1. Berdasarkan tipe soal: Pilihan Ganda, Isian, Essay <br> 2. Berdasarkan materi: Aljabar, Aritmatika, Integral">Apa itu kelompok soal?</a>
                                     </div>
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
@@ -494,6 +498,7 @@
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+									  <a href="javascript:;" class="apaitukelsoal" title="Mengelompokkan soal-soal yang terkait menjadi satu kelompok soal. Contoh: <br> 1. Berdasarkan tipe soal: Pilihan Ganda, Isian, Essay <br> 2. Berdasarkan materi: Aljabar, Aritmatika, Integral">Apa itu kelompok soal?</a>
                                     </div>
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
@@ -580,6 +585,7 @@
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+									  <a href="javascript:;" class="apaitukelsoal" title="Mengelompokkan soal-soal yang terkait menjadi satu kelompok soal. Contoh: <br> 1. Berdasarkan tipe soal: Pilihan Ganda, Isian, Essay <br> 2. Berdasarkan materi: Aljabar, Aritmatika, Integral">Apa itu kelompok soal?</a>
                                     </div>
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
@@ -667,6 +673,7 @@
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+									  <a href="javascript:;" class="apaitukelsoal" title="Mengelompokkan soal-soal yang terkait menjadi satu kelompok soal. Contoh: <br> 1. Berdasarkan tipe soal: Pilihan Ganda, Isian, Essay <br> 2. Berdasarkan materi: Aljabar, Aritmatika, Integral">Apa itu kelompok soal?</a>
                                     </div>
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">
@@ -751,6 +758,7 @@
                                         </select>
                                       </div>
                                       <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+									  <a href="javascript:;" class="apaitukelsoal" title="Mengelompokkan soal-soal yang terkait menjadi satu kelompok soal. Contoh: <br> 1. Berdasarkan tipe soal: Pilihan Ganda, Isian, Essay <br> 2. Berdasarkan materi: Aljabar, Aritmatika, Integral">Apa itu kelompok soal?</a>
                                     </div>
                                     <div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
                                       <div class="col-md-3">

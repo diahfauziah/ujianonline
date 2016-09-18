@@ -238,8 +238,7 @@
         position:relative;
         float:right;
       }
-      .tooltip > .tooltip-inner {background-color: #eebf3f; padding:5px 15px; color:rgb(23,44,66); font-weight:bold; font-size:13px;}
-      .popOver + .tooltip > .tooltip-arrow {    border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f;}
+      
       
       .numberCircle {
           border-radius: 50%;
@@ -680,7 +679,7 @@
 										<a data-toggle="tab" href="#formSebabAkibat" class="hashtip" title="<u><b>Contoh</b></u><br>Jelaskan sejarah kemerdekaan Indonesia! <textarea></textarea>">Sebab - akibat</a>
 									  </li>
 									  <li>
-										<a data-toggle="tab" href="#formPilihan123" class="hashtip" title="">Pilihan 1,2,3,4</a>
+										<a data-toggle="tab" href="#formPilihan123" class="hashtip" title="<u><b>Contoh</b></u><br>Pernyataan: <br>1. Pernyataan 1<br>2. Pernyataan 2<br>3. Pernyataan 3<br>4. Pernyataan 4<br>Pernyataan berikut yang benar adalah..<br><i class='fa fa-circle-thin'></i></span> (1), (2), dan (3) benar<br><i class='fa fa-circle'></i> (1) dan (3) benar<br><i class='fa fa-circle-thin'></i> (2) dan (4) benar<br><i class='fa fa-circle-thin'></i> Hanya (4) yang benar<br><i class='fa fa-circle-thin'></i> Benar Semua">Pilihan 1,2,3,4</a>
 									  </li>
 						  </ul>
 						  <div class="tab-content" style="margin-top:10px;">
@@ -780,6 +779,7 @@
 												</select>
 											  </div>
 											  <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7; outline:none;" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+											  <a href="javascript:;" class="apaitukelsoal" title="Mengelompokkan soal-soal yang terkait menjadi satu kelompok soal. Contoh: <br> 1. Berdasarkan tipe soal: Pilihan Ganda, Isian, Essay <br> 2. Berdasarkan materi: Aljabar, Aritmatika, Integral">Apa itu kelompok soal?</a>
 											</div>
 											<div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
 											  <div class="col-md-3">
@@ -841,6 +841,7 @@
 												</select>
 											  </div>
 											  <a href="#" class="button button1" style="font-size:13px; margin-left:-30px; border-radius:15px; color:#777; background-color:#e7e7e7; border-color:#e7e7e7" data-toggle="modal" data-target="#modalStage"><i class="fa fa-plus"></i> Tambah Kelompok Soal</a>
+											  <a href="javascript:;" class="apaitukelsoal" title="Mengelompokkan soal-soal yang terkait menjadi satu kelompok soal. Contoh: <br> 1. Berdasarkan tipe soal: Pilihan Ganda, Isian, Essay <br> 2. Berdasarkan materi: Aljabar, Aritmatika, Integral">Apa itu kelompok soal?</a>
 											</div>
 											<div class="row form-group form-inline" style="margin-bottom:10px; font-size:13px">
 											  <div class="col-md-3">
@@ -1355,7 +1356,7 @@
 				  </div>
 				  <div class="col-md-2" style="margin-top:10px; padding-left:0px">
 					<div id="daftarsoal" style="position:fixed">
-					  Daftar soal <b><?php echo $ujian['judul_ujian'] ?></b>
+					  Daftar soal <b><?php /* echo $ujian['judul_ujian'] */?></b>
 					  <div id="console"></div>
 					  <div class="panel panel-default" style="width:233px;margin-bottom:5px;" id="nomorSoal">
 						  <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
@@ -1526,7 +1527,11 @@
 	
 	<!-- jquery validation -->
 	<script src="js/jquery.validate.min.js"></script>
-
+	<script>
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip(); 
+	});
+	</script>
     <!-- Initialize the editor. -->
     <script>
 		$idujiani = <?php echo $id; ?>;
@@ -1922,6 +1927,8 @@
 					});
 						 $('.selector').froalaEditor('commands.show');
 				   $('span.fr-placeholder').css({"height":"35px"});
+				   
+				   addTooltipsy();
 				}
 			};
 			xmlhttp.open("GET", "_editsoalditambahsoal.php?id=" + str, true);
@@ -1965,6 +1972,7 @@
       //if (eval == "above") return ((y < (vpH + st)));
     }
 
+		
         $('.hashtip').tooltipsy({
               offset: [0, 10],
               show: function (e, $el) {
@@ -1995,6 +2003,70 @@
                   'text-shadow': 'none'
               }
           });
+		  
+		  $('.apaitukelsoal').tooltipsy({
+              offset: [10, 0],
+              show: function (e, $el) {
+                  $el.css({
+                      'left': parseInt($el[0].style.left.replace(/[a-z]/g, '')) - 50 + 'px',
+                      'opacity': '0.0',
+                      'display': 'block'
+                  }).animate({
+                      'left': parseInt($el[0].style.left.replace(/[a-z]/g, '')) + 50 + 'px',
+                      'opacity': '1.0'
+                  }, 300);
+              },
+              hide: function (e, $el) {
+                  $el.slideUp(100);
+              },
+              css: {
+                  'font-size' : '13px',
+                  'font-family':'"Lato", sans-serif',
+                  'padding': '10px',
+                  'max-width': '300px',
+                  'color': '#000000',
+                  'background-color': '#ffffff',
+                  'border-radius': '4px',
+                  'border': '0px solid #ffbf30',
+                  '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                  '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                  'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                  'text-shadow': 'none'
+              }
+          });
+		  
+		  function addTooltipsy(){
+			$('.apaitukelsoal').tooltipsy({
+              offset: [10, 0],
+              show: function (e, $el) {
+                  $el.css({
+                      'left': parseInt($el[0].style.left.replace(/[a-z]/g, '')) - 50 + 'px',
+                      'opacity': '0.0',
+                      'display': 'block'
+                  }).animate({
+                      'left': parseInt($el[0].style.left.replace(/[a-z]/g, '')) + 50 + 'px',
+                      'opacity': '1.0'
+                  }, 300);
+              },
+              hide: function (e, $el) {
+                  $el.slideUp(100);
+              },
+              css: {
+                  'font-size' : '13px',
+                  'font-family':'"Lato", sans-serif',
+                  'padding': '10px',
+                  'max-width': '300px',
+                  'color': '#000000',
+                  'background-color': '#ffffff',
+                  'border-radius': '4px',
+                  'border': '0px solid #ffbf30',
+                  '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                  '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                  'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
+                  'text-shadow': 'none'
+              }
+            });
+		  };
     </script>
 	<script>
 		jQuery(document).ready(function(){

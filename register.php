@@ -40,11 +40,11 @@
         border: 0; 
         font-size: 12px !important;
         border-radius: 0;
-        /*background-color: #4ABDAC; */
+        /*background-color: #30cbe8; */
       } 
       
       .navbar-nav li a:hover, .navbar-nav li.active a {
-        color: #4ABDAC !important;
+        color: #30cbe8 !important;
       }
       .navbar-nav li:hover {
         background-color:#e7e7e7;
@@ -101,9 +101,9 @@
       }
       
       .btn-simpan, .btn-simpan:active, .btn-simpan:focus {
-        background-color: #F7b733;  
+        background-color: #ffbf30;  
         color: #ffffff;
-        border-color: #F7b733; 
+        border-color: #ffbf30; 
         border-radius:0px;
       }
       .btn-simpan:hover {
@@ -114,7 +114,7 @@
         color: rgba(109, 116, 122, 1);
       }
       .breadcrumb a:hover {
-        color: #4ABDAC;
+        color: #30cbe8;
       }
       .breadcrumb > .active {
         color: rgba(186, 182, 182, 1);
@@ -136,10 +136,10 @@
     <!-- Container -->
     <div class="container">
         <div class="col-md-offset-3 col-md-6" style="margin-top:10px; margin-bottom:10px;">
-          <h2 style="text-align:center; font-family:'didact gothic', sans-serif; color:#f7b733; margin-bottom:30px;">Ujian Online</h2>
+          <h2 style="text-align:center; font-family:'didact gothic', sans-serif; color:#ffbf30; margin-bottom:30px;">Ujian Online</h2>
           <div class="panel panel-default" id="panelSoal">
             <div class="panel-body">
-              <h4 style="text-align:center; color:#4ABDAC; font-family:'didact gothic', sans-serif;">Register Guru</h4>
+              <h4 style="text-align:center; color:#30cbe8; font-family:'didact gothic', sans-serif;">Register Guru</h4>
               <hr>
             <form id="form" autocomplete="off" action="registerval.php" method="post" class="form-horizontal">
               <div class="form-group">
@@ -182,7 +182,7 @@
               </div>
               <div class="form-group">
                 <div class="col-md-offset-4 col md-8" style="padding-left:15px;">
-                  <p>Sudah punya akun? <a href="login.php" style="color:#f7b733">Masuk disini.</a></p>
+                  <p>Sudah punya akun? <a href="login.php" style="color:#ffbf30">Masuk disini.</a></p>
                 </div>
               </div>
            </form>

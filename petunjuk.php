@@ -254,6 +254,10 @@
 					  <!-- Wrapper for slides -->
 					  <div class="carousel-inner" role="listbox">
 						<div class="item active">
+						  <img src="image/nomor.png" alt="Chania" width="100%">
+						</div>
+						
+						<div class="item">
 						  <img src="image/pilih.png" alt="Chania" width="100%">
 						</div>
 
@@ -279,10 +283,6 @@
 						
 						<div class="item">
 						  <img src="image/silang.png" alt="Chania" width="100%">
-						</div>
-						
-						<div class="item">
-						  <img src="image/nomor.png" alt="Chania" width="100%">
 						</div>
 						
 					  </div>
