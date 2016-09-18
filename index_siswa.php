@@ -527,7 +527,7 @@
 			
             <div class="panel panel-default" style="width:233px;margin-bottom:5px;background-color:#f8f8f8;" id="nomorSoal">
               <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
-			  <div class="row" style="padding-left:15px;padding-right:120px;"><div style="background-color:yellow">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p></div>
+			  <div class="row" style="padding-left:15px;padding-right:120px;"><div style="background-color:yellow" id="bgterjawab">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p></div>
 				</div>
         			  <?php
           				$query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");
@@ -732,7 +732,6 @@
           $("#totalsoal").html($x);
         });
 
-        
 
         /* Tombol selanjutnya */
         $("#btnnext").click(function(){
@@ -880,6 +879,7 @@
               $soalterjawab = $soalterjawab + 1;
               $("#soalterjawab").text($soalterjawab);
               $($ini).addClass("tercatat");
+			  $("#bgterjawab").css({"color":"yellow"});
             }
             $(this).siblings('i.fa.coret').css({"display":"none"});
             if($(this).find('.opsiGanda').hasClass("tercoret")){

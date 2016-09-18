@@ -141,6 +141,7 @@
 			border: 1px solid #ddd;
 			background-color: #f8f8f8;
 		}
+		a, a:hover { color: #30cbe8; }
     </style>
   </head>
   <body>

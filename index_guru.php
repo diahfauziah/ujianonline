@@ -284,6 +284,7 @@
 	  select.form-control {
 		  border-radius: 4px;
 	  }
+	  input:focus::-webkit-input-placeholder { color:transparent; }
     </style>
   </head>
   <body>
@@ -383,7 +384,7 @@
 										?> 
 							  </select> -->
 							  <?php if (isset($_POST['kategori'])) $_SESSION['matapelajaran'] = $_POST['kategori']; ?>
-							  <input id="kategori" name="kategori" type="text" data-role="tagsinput" class="col-md-3 form-control"/>
+							  <input id="kategori" name="kategori" type="text" data-role="tagsinput" class="col-md-3 form-control" placeholder="Ketik materi yang dicari" />
 						  </div>
 						  <div class="form-group">
 							<select id="kelas" name="kelas" onchange="this.form.submit()" class="form-control">
@@ -572,6 +573,7 @@
 							 </div>
 							 <div class="modal-body">
 								<a href="#" id="modalshare" style="text-decoration: underline;"></a>
+								<div id="tulisansukses" style="display:inline"></div>
 								<button id="btn-tool" class="btn button button1 pull-right btn-copy-clip" data-clipboard-target="#modalshare" style="background-color:#e7e7e7; border-color:#e7e7e7; color:#000000">
 											<img width="13" src="image/clippy.svg" alt="Copy to clipboard"> Copy
 										</button>
@@ -595,7 +597,26 @@
 	
   </body>
 </html>
+
 <script type="text/javascript">
+	
+	function SelectText(element) {
+		var doc = document;
+		var text = doc.getElementById(element);    
+		if (doc.body.createTextRange) { // ms
+			var range = doc.body.createTextRange();
+			range.moveToElementText(text);
+			range.select();
+		} else if (window.getSelection) {
+			var selection = window.getSelection();
+			var range = doc.createRange();
+			range.selectNodeContents(text);
+			selection.removeAllRanges();
+			selection.addRange(range);
+			
+		}
+	}
+	
   $(function(){
     $(".bagikan").click(function(){
       x = $(this).attr("data-id");
@@ -622,7 +643,9 @@
     $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
         $(".alert-success").slideUp(500);
     });
-	
+	$("#btn-tool").click(function(){
+		$("#tulisansukses").css({"background-color":"#dff0d8", "color":"#3c763d"}).text("Link telah berhasil di-copy!").fadeIn(1000).fadeOut(1000);	
+	});
   });
   
 	// TAGSINPUT

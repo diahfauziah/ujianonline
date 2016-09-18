@@ -355,7 +355,9 @@
 			border: 1px solid #ddd;
 			background-color: #f8f8f8;
 		}
-      
+		span.fr-placeholder {
+			height:30px;
+		}
     </style>
   </head>
   <body>

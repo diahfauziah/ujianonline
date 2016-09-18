@@ -28,7 +28,7 @@
             echo '<div class="panel panel-default soaltersimpan" style="margin-top:10px; background-color:#ffffff; border:0px;">';
 						if(!empty($_SESSION['statuspesan'])){
 						  if (($_SESSION['statuspesan'] == "sukses")){
-							echo '<div class="alert alert-success" style="margin-top:10px;">';
+							echo '<div class="alert alert-success" style="margin-top:10px; margin-bottom:10px">';
 							echo   '<strong>Berhasil!</strong> ';
 							echo   $_SESSION['pesan'];
 							echo '</div>';
