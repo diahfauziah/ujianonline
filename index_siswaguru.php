@@ -31,6 +31,7 @@
     <!-- Include Editor style. -->
     <link href="froala/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
     <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+	
 
     <!-- Include Code Mirror style -->
     <link rel="stylesheet" href="css/codemirror.min.css">
@@ -48,7 +49,6 @@
     <link rel="stylesheet" href="froala/css/plugins/image.css">
     <link rel="stylesheet" href="froala/css/plugins/image_manager.css">
     <link rel="stylesheet" href="froala/css/plugins/line_breaker.css">
-    <link rel="stylesheet" href="froala/css/plugins/quick_insert.css">
     <link rel="stylesheet" href="froala/css/plugins/table.css">
     <link rel="stylesheet" href="froala/css/plugins/video.css">
     <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
@@ -139,7 +139,7 @@
       }
 
       /* shadow */
-      .nomor-sekarang {
+      .nomor-sekarang, .button5:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
 
@@ -204,11 +204,16 @@
         background-color: #929292;
       }
       .button3 {
-        background-color: #f8f8f8;
-        border-color: #f8f8f8;
+        background-color: #fff;
+        border-color: #fff;
         color: #000000;
         font-size: 13px;
         border: 1px solid #e1edef;
+      }
+	  .button5, .button5:link, .button5:visited {
+		background-color: #30cbe8;
+        color: #ffffff;
+        border: 1px solid #30cbe8;
       }
       .buttonprev, .buttonprev:link, .buttonprev:visited {
         background-color: #adadad;
@@ -255,17 +260,6 @@
         color : #ffffff;
         border-color : #87e2f3;
       }
-      .button5, .button5:link, .button5:visited {
-        background-color: #f8f8f8;
-        color: #30cbe8;
-        border: 1px solid #30cbe8;
-        font-size: 15px;
-      }
-      .button5:hover {
-        background-color: #30cbe8;
-        color: #ffffff;
-        border: 1px solid #30cbe8;
-      }
       
       .disabled, .disabled:hover, .disabled:visited, .disabled:focus{
         cursor: not-allowed;
@@ -308,7 +302,7 @@
         margin-bottom: 5px;
         box-shadow: 0 1px #e1edef;
         width: 91%;
-        margin-left: 25px;
+        margin-left: 47px;
       }
       .opsicheckbox {
         border: 1px solid #e1edef;
@@ -324,6 +318,9 @@
       .tercoret{
         text-decoration: line-through;
       }
+	  .bgkuning {
+		  background-color: yellow;
+	  }
       
     </style>
   </head>
@@ -359,7 +356,7 @@
     </nav>
     
     <div class="container">
-      <a href="index_guru.php" class="button button5 pull-left" style="margin-left:-60px; position:fixed; text-decoration:none"><i class="fa fa-chevron-left"></i> Kembali ke Beranda</a>
+      <a href="index_guru.php" class="button button5 pull-left" style="margin-left:-100px; font-size:15px; position:fixed; text-decoration:none"><i class="fa fa-chevron-left"></i> Kembali ke Beranda</a>
       <div class="col-md-offset-1 col-md-10">
     	  <form id="form" method="post" action="hasil.php">
         	<input type="hidden" id="IDujian" name="IDujian" value="<?php echo $id; ?>" />
@@ -369,9 +366,6 @@
             <div id="panelsoal">
               <?php 
     		       $j = 1;
-               if(($ujian['total_soal']==0)){
-                  echo   '<div style="text-align:center; color:#777; background-color:#f8f8f8; padding-top:10px; padding-bottom:10px">Belum ada soal untuk ujian ini</div>';
-                }
                 while($soal = mysqli_fetch_array($query)){
                   echo '<div class="panel panel-default" style="border-radius:0px; margin-bottom:0px" id="kotak';
                   echo   $j;
@@ -470,10 +464,11 @@
         				  $huruf = array("A","B","C","D","E","F","G","H","I");
         				  $i = 0;
         					while($pilihan = mysqli_fetch_array($query2)){
-        					  echo '<div class="row">';
+        					  echo '<div class="row" style="margin-bottom:5px">';
+							  echo '<i class="fa fa-times-circle-o fa-lg coret fa-2x" style="color:#929292; margin-left:15px; margin-top:10px;cursor:pointer; float:left;"></i>';
         					  echo '<li class="list-group-item opsijawaban" data-idsoal="';
         					  echo $soal['id_soal'];
-        					  echo '" style="float:left">';
+        					  echo '">';
         					  echo   '<div class="row">';
         					  echo     '<div style="margin-left:15px; width:50px; float:left; padding-right:10px;">';
         					  //echo       '<i class="fa fa-circle-thin fa-2x setjawaban" style="color:#30cbe8"></i>';
@@ -486,7 +481,6 @@
         					  echo     '</div>';
         					  echo    '</div>';
         					  echo '</li>';
-        					  echo '<i class="fa fa-times-circle-o fa-lg coret" style="color:#929292; margin-left:5px; cursor:pointer;"></i>';
         					  echo '</div>';
         					  $i++;
         					}
@@ -539,8 +533,11 @@
           </div>
           <div class="col-md-2" style="padding-left:0px;">
             Daftar soal
-            <div class="panel panel-default" style="width:233px;margin-bottom:5px;" id="nomorSoal">
+			
+            <div class="panel panel-default" style="width:233px;margin-bottom:5px;background-color:#f8f8f8;" id="nomorSoal">
               <div class="panel-body" style="padding-top: 5px; padding-left: 5px; padding-bottom:5px; padding-right:0px;">
+			  <div class="row" style="padding-left:15px;padding-right:120px;"><div id="bgterjawab">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p></div>
+				</div>
         			  <?php
           				$query4 = mysqli_query($link, "SELECT COUNT(*) FROM soal where id_ujian='$id' ");
                   $arraynomor = mysqli_fetch_array($query4);
@@ -601,8 +598,7 @@
           				}
           				
           			?>
-          		  <div class="row" style="padding-left:15px;">Terjawab: <p style="display:inline" id="soalterjawab">0</p> / <p style="display:inline" id="totalsoal"> </p>
-                </div>
+          		
               </div>
             </div>
             <button type="submit" class="button button4 col-md-12" id="btnkumpulkan" style="width:233px;text-decoration:none;" >Kumpulkan</button>
@@ -789,11 +785,6 @@
           $("#btnnext").addClass("disabled");
         }
 
-        if('<?php echo $nomormax ?>'== 0){
-          $("#btnnext").removeClass("button2");
-          $("#btnnext").addClass("disabled"); 
-        }
-
         /* Tombol sebelumnya */
         $("#btnprev").click(function(){
           if($soal_sekarang > 1){
@@ -838,19 +829,14 @@
         if(($soal_sekarang)==1){
           $("#btnprev").removeClass("buttonprev");
           $("#btnprev").addClass("disabled");
-        }else if(($soal_sekarang =='<?php echo $nomormax ?>')){
-            $("#btnnext").removeClass("button2");
-            $("#btnnext").addClass("disabled");
-            $("#btnkumpulkan").removeClass("button4");
-            $("#btnkumpulkan").addClass("button2");
         }else{
           $("#btnprev").removeClass("disabled");
           $("#btnprev").addClass("buttonprev");
         };
 
-
         /* Pilih opsi jawaban */
         $(".opsijawaban").click(function(){
+		  // sudah dipilih, ingin membatalkan 	 
           if($(this).hasClass("selected")){
             $(this).closest('ul').find('li.list-group-item').removeClass("selected");
             $(this).closest('ul').find('li.list-group-item').find('.numberCircle').css({"background":"fff","color":"#30cbe8", "border-color":"#e1edef"});
@@ -876,8 +862,13 @@
             }
 
             $(this).siblings('i.fa.coret').css({"display":"inline-block"});
+			$("#bgterjawab").toggleClass("bgkuning");
+			  setTimeout(function(){
+				$("#bgterjawab").toggleClass("bgkuning");
+			  }, 1000);
 
           }else{
+			// memilih
             $(this).closest('ul').find('li.list-group-item').removeClass("selected");
             $(this).closest('ul').find('li.list-group-item').css({"color":"#000000"});
             $(this).addClass("selected");
@@ -903,11 +894,17 @@
               $soalterjawab = $soalterjawab + 1;
               $("#soalterjawab").text($soalterjawab);
               $($ini).addClass("tercatat");
+			  //$("#bgterjawab").css({"background-color":"yellow"}).fadeIn(3000).fadeOut(3000);
+			  
             }
             $(this).siblings('i.fa.coret').css({"display":"none"});
             if($(this).find('.opsiGanda').hasClass("tercoret")){
               $(this).find('.opsiGanda').removeClass("tercoret");
             }
+			$("#bgterjawab").toggleClass("bgkuning");
+			  setTimeout(function(){
+				$("#bgterjawab").toggleClass("bgkuning");
+			  }, 1000);
           }
     		  $idsoal = $(this).attr("data-idsoal");
     		  $jwbn = $(this).find(".opsiGanda").html();
@@ -917,6 +914,7 @@
     		  } else {
     			$($setj).removeAttr("value");
     		  }
+			
         });
 
         $(".opsicheckbox").click(function(){
