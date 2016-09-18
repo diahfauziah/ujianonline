@@ -13,16 +13,16 @@
 			if ($delete){
 				$_SESSION['statuspesan'] = "sukses";
 				$_SESSION['pesan'] = " Kelas berhasil dihapus <i class='fa fa-trash-o'></i>";
-				header('location:kategori.php');
+				header('location:kategori.php?tab=1');
 			} else {
 				$_SESSION['statuspesan'] = "gagal";
 				$_SESSION['pesan'] = " Kelas tidak berhasil dihapus";
-				header('location:kategori.php');
+				header('location:kategori.php?tab=1');
 			}
 		} else {
 			$_SESSION['statuspesan'] = "gagal";
 			$_SESSION['pesan'] = " Kelas tidak berhasil dihapus karena terkait ujian tertentu";
-			header('location:kategori.php');
+			header('location:kategori.php?tab=1');
 		}		
 	}
 ?>

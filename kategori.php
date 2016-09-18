@@ -3,6 +3,11 @@
 	if ($_SESSION['role']!="guru"){
 		header('location:login.php');
 	}
+	if (isset($_GET['tab'])) {
+		$statusfrom = $_GET['tab'];
+	} else {
+		$statusfrom = 0;
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -373,33 +378,33 @@
           <div class="col-md-offset-2 col-md-10 bhoechie-tab-container">
             <div class="col-md-2 bhoechie-tab-menu">
                       <div class="list-group">
-                        <a href="#tab1" data-toggle="tab" class="list-group-item active text-center">Materi</a>
-                        <a href="#tab2" data-toggle="tab" class="list-group-item text-center">Kelas</a>
+                        <a href="#tab1" data-toggle="tab" class="list-group-item <?php if($statusfrom==0) echo 'active '; ?> text-center">Materi</a>
+                        <a href="#tab2" data-toggle="tab" class="list-group-item <?php if($statusfrom==1) echo 'active '; ?> text-center">Kelas</a>
                       </div>
             </div>
             <div class="col-md-10 bhoechie-tab" style="background-color:#ffffff;">
-              <div class="bhoechie-tab-content active" id="tab1" style="background-color:#ffffff">
+              <div class="bhoechie-tab-content <?php if($statusfrom==0) echo 'active '; ?>" id="tab1" style="background-color:#ffffff">
                 <a href="#" class="button button1" data-toggle="modal" data-target="#modalTambahKategori" style="margin-bottom:10px; text-decoration:none; outline:none; font-size:13px; border-radius:15px;"><span class="glyphicon glyphicon-plus"></span> Tambah Materi</a>
                 <?php 
-            							  if(!empty($_SESSION['statuspesan']))
-            							  {
-              								if (($_SESSION['statuspesan'] == "sukses")){
-              									echo '<div class="alert alert-success">';
-              									echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-              									echo   '<strong>Berhasil!</strong> ';
-              									echo   $_SESSION['pesan'];
-              									echo '</div>';
-              									$_SESSION['statuspesan'] = "";
-              								} else if ($_SESSION["statuspesan"]=="gagal") {
-              									echo '<div class="alert alert-danger">';
-              									echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-              									echo   '<strong>Gagal!</strong>';
-              									echo   $_SESSION['pesan'];
-              									echo '</div>';
-              									$_SESSION['statuspesan'] = "";
-              								}
-          							    }
-							  ?>
+				  if(!empty($_SESSION['statuspesan'])&&$statusfrom==0)
+				  {
+					if (($_SESSION['statuspesan'] == "sukses")){
+						echo '<div class="alert alert-success">';
+						echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+						echo   '<strong>Berhasil!</strong> ';
+						echo   $_SESSION['pesan'];
+						echo '</div>';
+						$_SESSION['statuspesan'] = "";
+					} else if ($_SESSION["statuspesan"]=="gagal") {
+						echo '<div class="alert alert-danger">';
+						echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+						echo   '<strong>Gagal!</strong>';
+						echo   $_SESSION['pesan'];
+						echo '</div>';
+						$_SESSION['statuspesan'] = "";
+					}
+				}
+				?>
                 <table class="table table-hover">
                   <thead>
                     <tr>
@@ -438,29 +443,29 @@
 				<br />
               </div>
 
-              <!-- train section -->
-              <div class="bhoechie-tab-content" id="tab2" style="background-color:#ffffff">
+              <!-- class section -->
+              <div class="bhoechie-tab-content <?php if($statusfrom==1) echo 'active '; ?>" id="tab2" style="background-color:#ffffff">
                 <a href="#" class="button button1" data-toggle="modal" data-target="#modalKelas" style="margin-bottom:10px; text-decoration:none; font-size:13px; border-radius:15px;"><span class="glyphicon glyphicon-plus"></span> Tambah Kelas</a>
-  						  <?php 
-    						  if(!empty($_SESSION['statuspesan']))
-    						  {
-      							if (($_SESSION['statuspesan'] == "sukses")){
-      								echo '<div class="alert alert-success">';
-      								echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-      								echo   '<strong>Berhasil!</strong> ';
-      								echo   $_SESSION['pesan'];
-      								echo '</div>';
-      								$_SESSION['statuspesan'] = "";
-      							} else if ($_SESSION["statuspesan"]=="gagal") {
-      								echo '<div class="alert alert-danger">';
-      								echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-      								echo   '<strong>Gagal!</strong>';
-      								echo   $_SESSION['pesan'];
-      								echo '</div>';
-      								$_SESSION['statuspesan'] = "";
-      							}
-  						    }
-  						  ?>
+  				<?php 
+				  if(!empty($_SESSION['statuspesan']) && $statusfrom==1)
+				  {
+					if (($_SESSION['statuspesan'] == "sukses")){
+						echo '<div class="alert alert-success">';
+						echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+						echo   '<strong>Berhasil!</strong> ';
+						echo   $_SESSION['pesan'];
+						echo '</div>';
+						$_SESSION['statuspesan'] = "";
+					} else if ($_SESSION["statuspesan"]=="gagal") {
+						echo '<div class="alert alert-danger">';
+						echo   '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+						echo   '<strong>Gagal!</strong>';
+						echo   $_SESSION['pesan'];
+						echo '</div>';
+						$_SESSION['statuspesan'] = "";
+					}
+				}
+				?>
                 <table class="table table-hover">
                   <thead>
                     <tr>
