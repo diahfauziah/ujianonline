@@ -316,6 +316,20 @@
 	  .bgkuning {
 		  background-color: yellow;
 	  }
+	   .modal-dialog {
+        height: 80% !important;
+        padding-top:10%;
+      }
+      .modal-body {
+        height: 80%;
+        overflow: auto;
+      }
+      .modal-content {
+        border-radius: 0px;
+      }
+      .modal-body {
+        padding: 10px;
+      }
       
     </style>
   </head>
@@ -345,6 +359,9 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right" style="padding-right: 160px;">
             <li><a href="#"> <?php echo $_SESSION['nama']; ?> </a></li>
+          </ul>
+		  <ul class="nav navbar-nav navbar-right" style="">
+            <li><a href="#" data-toggle="modal" data-target="#modalHapus"><b> Help </b></a></li>
           </ul>
         </div>
       </div>
@@ -599,6 +616,24 @@
           </div>
     		</form>
       </div>
+	  <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalBagikanLabel">
+						<div class="modal-dialog" role="document">
+						  <div class="modal-content">
+							 <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" arial-label="close"><span aria-hidden="true"></span>&times;</button>
+								<label class="modal-title">Link Ujian <b id="p2"></b></label>
+							 </div>
+							 <div class="modal-body">
+								<a href="#" id="modalshare" style="text-decoration: underline;"></a>
+								<div id="tulisansukses" style="display:inline"></div>
+								<button id="btn-tool" class="btn button button1 pull-right btn-copy-clip" data-clipboard-target="#modalshare" style="background-color:#e7e7e7; border-color:#e7e7e7; color:#000000">
+											<img width="13" src="image/clippy.svg" alt="Copy to clipboard"> Copy
+										</button>
+							 </div>
+							 <div class="modal-footer"></div>
+						  </div>
+						</div>
+					</div> 
     </div>
   	<footer class="text-center">
   	  <p>2016 © Diah Fauziah. Ujian Online Template.</p>
